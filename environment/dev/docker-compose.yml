@@ -1,0 +1,35 @@
+version: '2'
+
+volumes:
+  itop-data-volume:
+    driver: local
+
+services:
+  mysql:
+    hostname: mysql
+    image: mysql
+    env_file: .secret
+    volumes:
+      - itop-data-volume:/var/lib/mysql
+      - ../../docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+
+  phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      container_name: phpmyadmin
+      environment:
+        PMA_ARBITRARY: "1"
+      restart: always
+      ports:
+       - 3306:80
+      volumes:
+         - ../../core/:/www/itop/
+
+  itop:
+    image: itop
+    command: ["bash", "run.sh"]
+    volumes:
+      - ../../core/conf:/var/www/html/itop/conf
+      - ../../core/data:/var/www/html/itop/data
+      - ../../core/log:/var/www/html/itop/log
+    ports:
+      - 80:80
