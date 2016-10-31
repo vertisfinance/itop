@@ -19,4 +19,8 @@ RUN ln -sf /proc/self/fd/1 /var/log/apache2/error.log
 
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
+COPY php.ini /etc/php/7.0/apache2/
+COPY php.ini /etc/php/7.0/cli/
 COPY run.sh /
+
+RUN apt-get update && apt-get -y install vim

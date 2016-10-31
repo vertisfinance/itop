@@ -184,7 +184,7 @@ $MyModuleSettings = array(
 		  17 => 3,
 		  8 => 0,
 		),
-		'debug' => false,
+		'debug' => true,
 	),
 	'itop-attachments' => array (
 		'allowed_classes' => array (

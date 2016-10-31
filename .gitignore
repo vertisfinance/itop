@@ -1,3 +1,4 @@
 *.secret
 *.crt
 *.key
+core/data
