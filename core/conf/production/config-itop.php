@@ -80,7 +80,12 @@ $MySettings = array(
 
 	// email_transport: Mean to send emails: PHPMail (uses the function mail()) or SMTP (implements the client protocole)
 	//	default: 'PHPMail'
-	'email_transport' => 'PHPMail',
+	'email_transport' => 'SMTP',
+	'email_transport_smtp.host' => 'smtp.gmail.com',
+	'email_transport_smtp.password' => getenv("MAILER_PASSWORD"),
+	'email_transport_smtp.username' => getenv("MAILER_USER"),
+	'email_transport_smtp.port' => '587',
+	'email_transport_smtp.encryption' => 'tls',
 
 	// email_validation_pattern: Regular expression to validate/detect the format of an eMail address
 	//	default: '[a-zA-Z0-9._&\'-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z0-9-]{2,}'
@@ -89,6 +94,8 @@ $MySettings = array(
 	'encryption_key' => '@iT0pEncr1pti0n!',
 
 	'fast_reload_interval' => 60,
+
+	'forgot_password' => true,
 
 	// link_set_attribute_qualifier: Link set from string: attribute qualifier (encloses both the attcode and the value)
 	//	default: '\''
@@ -111,6 +118,8 @@ $MySettings = array(
 	'log_issue' => true,
 
 	'log_notification' => true,
+
+	'log_usage' => true,
 
 	'log_web_service' => true,
 
@@ -180,12 +189,12 @@ $MyModuleSettings = array(
 		  17 => 3,
 		  8 => 0,
 		),
-		'debug' => false,
+		'debug' => true,
 	),
 	'combodo-email-synchro' => array (
-		'notify_errors_to' => '',
-		'notify_errors_from' => '',
-		'debug' => false,
+		'notify_errors_to' => 'gabor.egyed@vertis.com',
+		'notify_errors_from' => getenv("MAILER_USER"),
+		'debug' => true,
 		'periodicity' => 30,
 		'body_parts_order' => 'text/html,text/plain',
 		'pop3_auth_option' => 'USER',
@@ -226,7 +235,7 @@ $MyModuleSettings = array(
 	'itop-backup' => array (
 		'mysql_bindir' => '',
 		'week_days' => 'monday, tuesday, wednesday, thursday, friday',
-		'time' => '23:30',
+		'time' => '13:20',
 		'retention_count' => 5,
 		'enabled' => true,
 		'debug' => false,

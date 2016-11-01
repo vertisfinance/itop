@@ -28,6 +28,7 @@
     <item>authent-external</item>
     <item>authent-ldap</item>
     <item>authent-local</item>
+    <item>combodo-email-synchro</item>
     <item>itop-backup</item>
     <item>itop-config</item>
     <item>itop-profiles-itil</item>
@@ -41,12 +42,14 @@
     <item>itop-storage-mgmt</item>
     <item>itop-virtualization-mgmt</item>
     <item>itop-bridge-virtualization-storage</item>
-    <item>itop-service-mgmt-provider</item>
+    <item>itop-service-mgmt</item>
     <item>itop-request-mgmt-itil</item>
     <item>itop-incident-mgmt-itil</item>
     <item>itop-change-mgmt-itil</item>
     <item>itop-knownerror-mgmt</item>
     <item>itop-problem-mgmt</item>
+    <item>email-reply</item>
+    <item>itop-standard-email-synchro</item>
   </selected_modules>
   <sample_data></sample_data>
   <old_addon></old_addon>

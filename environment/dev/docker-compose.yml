@@ -27,6 +27,7 @@ services:
   itop:
     image: itop
     command: ["bash", "run.sh"]
+    env_file: .secret
     volumes:
       - ../../core/env-production:/var/www/html/itop/env-production
       - ../../core/conf:/var/www/html/itop/conf
