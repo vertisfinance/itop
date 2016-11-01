@@ -32,5 +32,6 @@ services:
       - ../../core/conf:/var/www/html/itop/conf
       - ../../core/log:/var/www/html/itop/log
       - ../../core/data:/var/www/html/itop/data
+      - ../../core/extensions:/var/www/html/itop/extensions
     ports:
       - 80:80

@@ -158,10 +158,6 @@ $MySettings = array(
 	//	default: 'Europe/Paris'
 	'timezone' => 'Europe/Paris',
 
-	// tracking_level_linked_set_default: Default tracking level if not explicitely set at the attribute level, for AttributeLinkedSet (defaults to NONE in case of a fresh install, LIST otherwise - this to preserve backward compatibility while upgrading from a version older than 2.0.3 - see TRAC #936)
-	//	default: 1
-	'tracking_level_linked_set_default' => 0,
-
 	// url_validation_pattern: Regular expression to validate/detect the format of an URL (URL attributes and Wiki formatting for Text attributes)
 	//	default: '(https?|ftp)\\://([a-zA-Z0-9+!*(),;?&=\\$_.-]+(\\:[a-zA-Z0-9+!*(),;?&=\\$_.-]+)?@)?([a-zA-Z0-9-.]{3,})(\\:[0-9]{2,5})?(/([a-zA-Z0-9%+\\$_-]\\.?)+)*/?(\\?[a-zA-Z+&\\$_.-][a-zA-Z0-9;:[\\]@&%=+/\\$_.-]*)?(#[a-zA-Z_.-][a-zA-Z0-9+\\$_.-]*)?'
 	'url_validation_pattern' => '(https?|ftp)\\://([a-zA-Z0-9+!*(),;?&=\\$_.-]+(\\:[a-zA-Z0-9+!*(),;?&=\\$_.-]+)?@)?([a-zA-Z0-9-.]{3,})(\\:[0-9]{2,5})?(/([a-zA-Z0-9%+\\$_-]\\.?)+)*/?(\\?[a-zA-Z+&\\$_.-][a-zA-Z0-9;:[\\]@&%=+/\\$_.-]*)?(#[a-zA-Z_.-][a-zA-Z0-9+\\$_.-]*)?',
@@ -186,6 +182,40 @@ $MyModuleSettings = array(
 		),
 		'debug' => false,
 	),
+	'combodo-email-synchro' => array (
+		'notify_errors_to' => '',
+		'notify_errors_from' => '',
+		'debug' => false,
+		'periodicity' => 30,
+		'body_parts_order' => 'text/html,text/plain',
+		'pop3_auth_option' => 'USER',
+		'imap_options' => array (
+		  0 => 'imap',
+		),
+		'maximum_email_size' => '10M',
+		'big_files_dir' => '',
+		'exclude_attachment_types' => array (
+		  0 => 'application/exe',
+		),
+		'introductory-patterns' => array (
+		  0 => '/^le .+ a écrit :$/i',
+		  1 => '/^on .+ wrote:$/i',
+		  2 => '|^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2} .+:$|',
+		),
+		'multiline-delimiter-patterns' => array (
+		  0 => '/\\RFrom: .+\\RSent: .+\\R/m',
+		  1 => '/\\R_+\\R/m',
+		  2 => '/\\RDe : .+\\R\\R?Envoyé : /m',
+		  3 => '/\\RDe : .+\\RDate d\'envoi : .+\\R/m',
+		  4 => '/\\R-----Message d\'origine-----\\R/m',
+		),
+		'use_message_id_as_uid' => false,
+		'images_minimum_size' => '100x20',
+		'images_maximum_size' => '',
+	),
+	'email-reply' => array (
+		'enabled_default' => true,
+	),
 	'itop-attachments' => array (
 		'allowed_classes' => array (
 		  0 => 'Ticket',
@@ -200,6 +230,13 @@ $MyModuleSettings = array(
 		'retention_count' => 5,
 		'enabled' => true,
 		'debug' => false,
+	),
+	'itop-standard-email-synchro' => array (
+		'inline_image_max_width' => '500',
+		'ticket_log' => array (
+		  'UserRequest' => 'public_log',
+		  'Incident' => 'public_log',
+		),
 	),
 );
 
@@ -226,6 +263,12 @@ $MyModules = array(
 		'env-production/authent-external/model.authent-external.php',
 		'env-production/authent-ldap/model.authent-ldap.php',
 		'env-production/authent-local/model.authent-local.php',
+		'env-production/combodo-email-synchro/model.email-synchro.php',
+		'env-production/combodo-email-synchro/mailinbox.class.inc.php',
+		'env-production/combodo-email-synchro/emailprocessor.class.inc.php',
+		'env-production/combodo-email-synchro/emailbackgroundprocess.class.inc.php',
+		'env-production/combodo-email-synchro/trigger.class.inc.php',
+		'env-production/email-reply/main.email-reply.php',
 		'env-production/itop-attachments/model.itop-attachments.php',
 		'env-production/itop-attachments/main.attachments.php',
 		'env-production/itop-backup/main.itop-backup.php',
@@ -237,6 +280,8 @@ $MyModules = array(
 		'env-production/itop-endusers-devices/model.itop-endusers-devices.php',
 		'env-production/itop-profiles-itil/model.itop-profiles-itil.php',
 		'env-production/itop-sla-computation/main.itop-sla-computation.php',
+		'env-production/itop-standard-email-synchro/mailinboxstandard.class.inc.php',
+		'env-production/itop-standard-email-synchro/model.itop-standard-email-synchro.php',
 		'env-production/itop-storage-mgmt/model.itop-storage-mgmt.php',
 		'env-production/itop-tickets/model.itop-tickets.php',
 		'env-production/itop-tickets/main.itop-tickets.php',
@@ -249,7 +294,7 @@ $MyModules = array(
 		'env-production/itop-problem-mgmt/model.itop-problem-mgmt.php',
 		'env-production/itop-request-mgmt-itil/model.itop-request-mgmt-itil.php',
 		'env-production/itop-request-mgmt-itil/main.itop-request-mgmt-itil.php',
-		'env-production/itop-service-mgmt-provider/model.itop-service-mgmt-provider.php',
+		'env-production/itop-service-mgmt/model.itop-service-mgmt.php',
 	),
 	'webservices' => array (
 		'webservices/webservices.basic.php',
