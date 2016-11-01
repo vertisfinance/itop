@@ -28,8 +28,6 @@ services:
     image: itop
     command: ["bash", "run.sh"]
     volumes:
-      - ../../core/conf:/var/www/html/itop/conf
-      - ../../core/data:/var/www/html/itop/data
-      - ../../core/log:/var/www/html/itop/log
+      - ../../core:/var/www/html/itop
     ports:
       - 80:80
