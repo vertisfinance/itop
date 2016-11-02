@@ -2289,3 +2289,908 @@ Parameters:
 2016-11-01 15:23:44 - Info - operation 'async_action', peak memory usage. 12503120
 2016-11-01 15:23:44 - Info - MetaModel::Startup (ModelOnly = 1)
 2016-11-01 15:23:48 - Info - operation 'async_action', peak memory usage. 12491360
+2016-11-02 10:05:58 - Info - CheckPHPVersion
+2016-11-02 10:05:58 - Info - php.ini file(s): '/etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini'
+2016-11-02 10:05:58 - Info - Temporary directory for files upload (/tmp) is writable.
+2016-11-02 10:05:58 - Info - upload_max_filesize: 2M
+2016-11-02 10:05:58 - Info - post_max_size: 8M
+2016-11-02 10:05:58 - Info - max_file_uploads: 20
+2016-11-02 10:05:58 - Info - memory_limit is 134217728, ok.
+2016-11-02 10:05:58 - Info - session.save_path is: '/var/lib/php/sessions'.
+2016-11-02 10:05:58 - Ok - The current PHP Version (7.0.8-0ubuntu0.16.04.3) is greater than the minimum version required to run iTop, which is (5.2.0)
+2016-11-02 10:05:58 - Ok - Required PHP extension(s): dom, hash, iconv, json, mysqli, pcre, session, simplexml, soap.
+2016-11-02 10:05:58 - Ok - Optional PHP extension(s): ldap, mcrypt.
+2016-11-02 10:05:58 - Ok - Loaded php.ini files: /etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini
+2016-11-02 10:05:58 - Ok - The value for session.save_path (/var/lib/php/sessions) is writable for the web server.
+2016-11-02 10:06:00 - Info - CheckBackupPrerequisites
+2016-11-02 10:06:00 - Info - PHP functions disabled: pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,
+2016-11-02 10:06:00 - Info - mysqldump -V said: mysqldump  Ver 10.13 Distrib 5.7.16, for Linux (x86_64)
+2016-11-02 10:06:00 - Info - operation 'async_action', peak memory usage. 1486040
+2016-11-02 10:06:06 - Info - GetApplicationVersion returns: product_name: iTop, product_version: 2.1.0.2127
+2016-11-02 10:06:18 - Info - ======= Installation starts =======
+Parameters:
+<?xml version="1.0" encoding="UTF-8"?>
+<installation>
+  <mode>upgrade</mode>
+  <preinstall>
+    <copies type="array"/>
+    <backup>
+      <destination>/var/www/html/itop/data/iTop-backup-2016-11-02.zip</destination>
+      <configuration_file>/var/www/html/itop//conf/production/config-itop.php</configuration_file>
+    </backup>
+  </preinstall>
+  <source_dir>datamodels/2.x/</source_dir>
+  <datamodel_version>2.1.0</datamodel_version>
+  <previous_configuration_file>/var/www/html/itop//conf/production/config-itop.php</previous_configuration_file>
+  <extensions_dir>extensions</extensions_dir>
+  <target_env>production</target_env>
+  <workspace_dir></workspace_dir>
+  <database>
+    <server>mysql</server>
+    <user>itop</user>
+    <pwd>**removed**</pwd>
+    <name>itop</name>
+    <prefix></prefix>
+  </database>
+  <url>https://localhost/itop/</url>
+  <admin_account>
+    <user></user>
+    <pwd>**removed**</pwd>
+    <language></language>
+  </admin_account>
+  <language></language>
+  <selected_modules type="array">
+    <item>authent-external</item>
+    <item>authent-ldap</item>
+    <item>authent-local</item>
+    <item>combodo-email-synchro</item>
+    <item>itop-backup</item>
+    <item>itop-config</item>
+    <item>itop-profiles-itil</item>
+    <item>itop-sla-computation</item>
+    <item>itop-tickets</item>
+    <item>itop-welcome-itil</item>
+    <item>itop-config-mgmt</item>
+    <item>itop-attachments</item>
+    <item>itop-datacenter-mgmt</item>
+    <item>itop-endusers-devices</item>
+    <item>itop-storage-mgmt</item>
+    <item>itop-virtualization-mgmt</item>
+    <item>itop-bridge-virtualization-storage</item>
+    <item>itop-service-mgmt</item>
+    <item>itop-request-mgmt-itil</item>
+    <item>itop-incident-mgmt-itil</item>
+    <item>itop-change-mgmt-itil</item>
+    <item>itop-knownerror-mgmt</item>
+    <item>itop-problem-mgmt</item>
+    <item>email-reply</item>
+    <item>itop-standard-email-synchro</item>
+  </selected_modules>
+  <sample_data></sample_data>
+  <old_addon></old_addon>
+  <options type="array"/>
+</installation>
+
+
+2016-11-02 10:06:18 - Info - operation 'async_action', peak memory usage. 1478440
+2016-11-02 10:06:18 - Info - operation 'async_action', peak memory usage. 1464568
+2016-11-02 10:06:18 - Info - Data file: '/tmp/itop-Xh5Rfa'
+2016-11-02 10:06:18 - Info - Starting backup of mysql/itop(suffix:'')
+2016-11-02 10:06:18 - Info - Executing command: mysqldump --opt --default-character-set=utf8 --add-drop-database --single-transaction --host='mysql'  --user=xxxxx --password=xxxxx --result-file='/tmp/itop-Xh5Rfa' 'itop' 
+2016-11-02 10:06:20 - Info - mysqldump said: mysqldump: [Warning] Using a password on the command line interface can be insecure.
+2016-11-02 10:06:20 - Info - Archive: /var/www/html/itop/data/iTop-backup-2016-11-02.zip created
+2016-11-02 10:06:20 - Info - operation 'async_action', peak memory usage. 1491216
+2016-11-02 10:06:20 - Info - Compiling data model.
+2016-11-02 10:06:22 - Info - Data model successfully compiled to '/var/www/html/itop/env-production'.
+2016-11-02 10:06:22 - Info - operation 'async_action', peak memory usage. 6437168
+2016-11-02 10:06:22 - Info - Update Database Schema for environment 'production'.
+2016-11-02 10:06:22 - Info - MetaModel::Startup (ModelOnly = 1)
+2016-11-02 10:06:22 - Info - Renaming 'priv_internalUser' into 'priv_internaluser' (lowercase)
+2016-11-02 10:06:22 - Info - Renaming 'priv_internalUser' failed (already done in a previous upgrade?)
+2016-11-02 10:06:22 - Info - Cleanup of 'priv_change' to remove orphan records
+2016-11-02 10:06:22 - Info - There is a total of 1373 records in priv_change.
+2016-11-02 10:06:22 - Info - There are 2 useless records in priv_change (0.15%)
+2016-11-02 10:06:22 - Info - Removing the orphan records...
+2016-11-02 10:06:22 - Info - Cleanup completed successfully.
+2016-11-02 10:06:22 - Info - Calling Module Handler: AttachmentInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:22 - Info - Calling Module Handler: ConfigMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:22 - Info - Renaming class in DB - final class from 'DBserver' to 'DBServer': 0 rows affected
+2016-11-02 10:06:22 - Info - Renaming class in DB - final class from 'OSfamily' to 'OSFamily': 0 rows affected
+2016-11-02 10:06:22 - Info - Renaming class in DB - final class from 'OSversion' to 'OSVersion': 0 rows affected
+2016-11-02 10:06:22 - Info - Renaming class in DB - final class from 'Webserver' to 'WebServer': 0 rows affected
+2016-11-02 10:06:22 - Info - Renaming class in DB - final class from 'OSpatch' to 'OSPatch': 0 rows affected
+2016-11-02 10:06:22 - Info - Renaming class in DB - final class from 'OsLicence' to 'OSLicence': 0 rows affected
+2016-11-02 10:06:22 - Info - Renaming class in DB - final class from 'IOSversion' to 'IOSVersion': 0 rows affected
+2016-11-02 10:06:22 - Info - Renaming class in DB - final class from 'IPinterface' to 'IPInterface': 0 rows affected
+2016-11-02 10:06:22 - Info - Calling Module Handler: EndUserMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:22 - Info - Renaming class in DB - final class from 'IpPhone' to 'IPPhone': 0 rows affected
+2016-11-02 10:06:22 - Info - Calling Module Handler: StorageMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:22 - Info - Calling Module Handler: TicketsInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:22 - Info - Calling Module Handler: KnownErrorMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:22 - Info - Calling Module Handler: ServiceMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:22 - Info - Creating the structure in ''.
+2016-11-02 10:06:28 - Ok - Database structure successfully updated.
+2016-11-02 10:06:28 - Ok - Hierchical keys rebuilt: The attribute parent_id from Organization is a hierarchical key.
+Rebuilding the fields parent_id_right and parent_id_left from table 'organization'...
+Ok, table 'organization' successfully updated.
+The attribute parent_id from Group is a hierarchical key.
+Rebuilding the fields parent_id_right and parent_id_left from table 'group'...
+Ok, table 'group' successfully updated.
+
+2016-11-02 10:06:28 - Ok - Data sources checked: There are no Data Sources in the database.
+Ok.
+
+2016-11-02 10:06:28 - Info - 'priv_change.origin' already initialized, nothing to do.
+2016-11-02 10:06:28 - Info - 'priv_async_task.status' already initialized, nothing to do.
+2016-11-02 10:06:28 - Info - Database Schema Successfully Updated for environment 'production'.
+2016-11-02 10:06:28 - Info - operation 'async_action', peak memory usage. 22452312
+2016-11-02 10:06:28 - Info - After Database Creation
+2016-11-02 10:06:28 - Info - MetaModel::Startup (ModelOnly = 1)
+2016-11-02 10:06:28 - Info - Calling Module Handler: AttachmentInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:28 - Info - Initializing attachment/item_org_id - null to zero
+2016-11-02 10:06:28 - Info - Initializing attachment/item_org_id - zero to the container
+2016-11-02 10:06:28 - Info - Initializing attachment/item_org_id - 0 records have been adjusted
+2016-11-02 10:06:28 - Info - Calling Module Handler: ConfigMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:28 - Info - Calling Module Handler: EndUserMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:28 - Info - Calling Module Handler: StorageMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:28 - Info - Calling Module Handler: TicketsInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:28 - Info - Calling Module Handler: KnownErrorMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:28 - Info - Calling Module Handler: ServiceMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:28 - Info - URP_Profiles::GetPredefinedObjects() returned 12 elements.
+2016-11-02 10:06:28 - Info - Calling Module Handler: AttachmentInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:28 - Info - Calling Module Handler: ConfigMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:28 - Info - Calling Module Handler: EndUserMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:28 - Info - Calling Module Handler: StorageMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:28 - Info - Calling Module Handler: TicketsInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:28 - Info - Calling Module Handler: KnownErrorMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:28 - Info - Calling Module Handler: ServiceMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 10:06:28 - Info - operation 'async_action', peak memory usage. 13290968
+2016-11-02 10:06:28 - Info - MetaModel::Startup (ModelOnly = )
+2016-11-02 10:06:28 - Info - starting data load session
+2016-11-02 10:06:28 - Info - Loading file: /var/www/html/itop/env-production/email-reply/data.struct.ta-actions.xml (just to get the keys mapping)
+2016-11-02 10:06:28 - Info - loading of data.struct.ta-actions.xml done.
+2016-11-02 10:06:28 - Info - Loading file: /var/www/html/itop/env-production/email-reply/data.struct.ta-triggers.xml (just to get the keys mapping)
+2016-11-02 10:06:28 - Info - loading of data.struct.ta-triggers.xml done.
+2016-11-02 10:06:28 - Info - Loading file: /var/www/html/itop/env-production/email-reply/data.struct.ta-links.xml (just to get the keys mapping)
+2016-11-02 10:06:28 - Info - loading of data.struct.ta-links.xml done.
+2016-11-02 10:06:28 - Warning - unresolved extkey in lnkTriggerAction::-1()::action_id=Action::-1
+2016-11-02 10:06:28 - Warning - unresolved extkey in lnkTriggerAction::-1()::trigger_id=Trigger::-50
+2016-11-02 10:06:28 - Info - ending data load session
+2016-11-02 10:06:28 - Info - operation 'async_action', peak memory usage. 13162912
+2016-11-02 10:06:28 - Info - MetaModel::Startup from /var/www/html/itop//conf/production/config-itop.php (ModelOnly = 1)
+2016-11-02 10:06:32 - Info - operation 'async_action', peak memory usage. 13346200
+2016-11-02 10:16:45 - Info - CheckPHPVersion
+2016-11-02 10:16:45 - Info - php.ini file(s): '/etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini'
+2016-11-02 10:16:45 - Info - Temporary directory for files upload (/tmp) is writable.
+2016-11-02 10:16:45 - Info - upload_max_filesize: 2M
+2016-11-02 10:16:45 - Info - post_max_size: 8M
+2016-11-02 10:16:45 - Info - max_file_uploads: 20
+2016-11-02 10:16:45 - Info - memory_limit is 134217728, ok.
+2016-11-02 10:16:45 - Info - session.save_path is: '/var/lib/php/sessions'.
+2016-11-02 10:16:45 - Ok - The current PHP Version (7.0.8-0ubuntu0.16.04.3) is greater than the minimum version required to run iTop, which is (5.2.0)
+2016-11-02 10:16:45 - Ok - Required PHP extension(s): dom, hash, iconv, json, mysqli, pcre, session, simplexml, soap.
+2016-11-02 10:16:45 - Ok - Optional PHP extension(s): ldap, mcrypt.
+2016-11-02 10:16:45 - Ok - Loaded php.ini files: /etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini
+2016-11-02 10:16:45 - Ok - The value for session.save_path (/var/lib/php/sessions) is writable for the web server.
+2016-11-02 10:16:47 - Info - CheckBackupPrerequisites
+2016-11-02 10:16:47 - Info - PHP functions disabled: pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,
+2016-11-02 10:16:47 - Info - mysqldump -V said: mysqldump  Ver 10.13 Distrib 5.7.16, for Linux (x86_64)
+2016-11-02 10:16:47 - Info - operation 'async_action', peak memory usage. 1486056
+2016-11-02 10:16:49 - Info - GetApplicationVersion returns: product_name: iTop, product_version: 2.1.0.2127
+2016-11-02 10:16:54 - Info - GetApplicationVersion returns: product_name: iTop, product_version: 2.1.0.2127
+2016-11-02 10:16:55 - Info - CheckBackupPrerequisites
+2016-11-02 10:16:55 - Info - PHP functions disabled: pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,
+2016-11-02 10:16:55 - Info - mysqldump -V said: mysqldump  Ver 10.13 Distrib 5.7.16, for Linux (x86_64)
+2016-11-02 10:16:55 - Info - operation 'async_action', peak memory usage. 1484856
+2016-11-02 10:16:56 - Info - CheckPHPVersion
+2016-11-02 10:16:56 - Info - php.ini file(s): '/etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini'
+2016-11-02 10:16:56 - Info - Temporary directory for files upload (/tmp) is writable.
+2016-11-02 10:16:56 - Info - upload_max_filesize: 2M
+2016-11-02 10:16:56 - Info - post_max_size: 8M
+2016-11-02 10:16:56 - Info - max_file_uploads: 20
+2016-11-02 10:16:56 - Info - memory_limit is 134217728, ok.
+2016-11-02 10:16:56 - Info - session.save_path is: '/var/lib/php/sessions'.
+2016-11-02 10:16:56 - Ok - The current PHP Version (7.0.8-0ubuntu0.16.04.3) is greater than the minimum version required to run iTop, which is (5.2.0)
+2016-11-02 10:16:56 - Ok - Required PHP extension(s): dom, hash, iconv, json, mysqli, pcre, session, simplexml, soap.
+2016-11-02 10:16:56 - Ok - Optional PHP extension(s): ldap, mcrypt.
+2016-11-02 10:16:56 - Ok - Loaded php.ini files: /etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini
+2016-11-02 10:16:56 - Ok - The value for session.save_path (/var/lib/php/sessions) is writable for the web server.
+2016-11-02 14:31:20 - Info - CheckPHPVersion
+2016-11-02 14:31:20 - Info - php.ini file(s): '/etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini'
+2016-11-02 14:31:20 - Info - Temporary directory for files upload (/tmp) is writable.
+2016-11-02 14:31:20 - Info - upload_max_filesize: 2M
+2016-11-02 14:31:20 - Info - post_max_size: 8M
+2016-11-02 14:31:20 - Info - max_file_uploads: 20
+2016-11-02 14:31:20 - Info - memory_limit is 134217728, ok.
+2016-11-02 14:31:20 - Info - session.save_path is: '/var/lib/php/sessions'.
+2016-11-02 14:31:20 - Ok - The current PHP Version (7.0.8-0ubuntu0.16.04.3) is greater than the minimum version required to run iTop, which is (5.2.0)
+2016-11-02 14:31:20 - Ok - Required PHP extension(s): dom, hash, iconv, json, mysqli, pcre, session, simplexml, soap.
+2016-11-02 14:31:20 - Ok - Optional PHP extension(s): ldap, mcrypt.
+2016-11-02 14:31:20 - Ok - Loaded php.ini files: /etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini
+2016-11-02 14:31:20 - Ok - The value for session.save_path (/var/lib/php/sessions) is writable for the web server.
+2016-11-02 14:31:22 - Info - CheckBackupPrerequisites
+2016-11-02 14:31:22 - Info - PHP functions disabled: pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,
+2016-11-02 14:31:22 - Info - mysqldump -V said: mysqldump  Ver 10.13 Distrib 5.7.16, for Linux (x86_64)
+2016-11-02 14:31:22 - Info - operation 'async_action', peak memory usage. 1486488
+2016-11-02 14:31:25 - Info - GetApplicationVersion returns: product_name: iTop, product_version: 2.1.0.2127
+2016-11-02 14:31:36 - Info - ======= Installation starts =======
+Parameters:
+<?xml version="1.0" encoding="UTF-8"?>
+<installation>
+  <mode>upgrade</mode>
+  <preinstall>
+    <copies type="array"/>
+    <backup>
+      <destination>/var/www/html/data/iTop-backup-2016-11-02.zip</destination>
+      <configuration_file>/var/www/html//conf/production/config-itop.php</configuration_file>
+    </backup>
+  </preinstall>
+  <source_dir>datamodels/2.x/</source_dir>
+  <datamodel_version>2.1.0</datamodel_version>
+  <previous_configuration_file>/var/www/html//conf/production/config-itop.php</previous_configuration_file>
+  <extensions_dir>extensions</extensions_dir>
+  <target_env>production</target_env>
+  <workspace_dir></workspace_dir>
+  <database>
+    <server>mysql</server>
+    <user>itop</user>
+    <pwd>**removed**</pwd>
+    <name>itop</name>
+    <prefix></prefix>
+  </database>
+  <url>https://localhost/</url>
+  <admin_account>
+    <user></user>
+    <pwd>**removed**</pwd>
+    <language></language>
+  </admin_account>
+  <language></language>
+  <selected_modules type="array">
+    <item>authent-external</item>
+    <item>authent-ldap</item>
+    <item>authent-local</item>
+    <item>combodo-email-synchro</item>
+    <item>itop-backup</item>
+    <item>itop-config</item>
+    <item>itop-profiles-itil</item>
+    <item>itop-sla-computation</item>
+    <item>itop-tickets</item>
+    <item>itop-welcome-itil</item>
+    <item>itop-config-mgmt</item>
+    <item>itop-attachments</item>
+    <item>itop-datacenter-mgmt</item>
+    <item>itop-endusers-devices</item>
+    <item>itop-storage-mgmt</item>
+    <item>itop-virtualization-mgmt</item>
+    <item>itop-bridge-virtualization-storage</item>
+    <item>itop-service-mgmt</item>
+    <item>itop-request-mgmt-itil</item>
+    <item>itop-incident-mgmt-itil</item>
+    <item>itop-change-mgmt-itil</item>
+    <item>itop-knownerror-mgmt</item>
+    <item>itop-problem-mgmt</item>
+    <item>email-reply</item>
+    <item>itop-standard-email-synchro</item>
+  </selected_modules>
+  <sample_data></sample_data>
+  <old_addon></old_addon>
+  <options type="array"/>
+</installation>
+
+
+2016-11-02 14:31:36 - Info - operation 'async_action', peak memory usage. 1477888
+2016-11-02 14:31:36 - Info - operation 'async_action', peak memory usage. 1465048
+2016-11-02 14:31:36 - Info - Data file: '/tmp/itop-YYxJ5B'
+2016-11-02 14:31:36 - Info - Starting backup of mysql/itop(suffix:'')
+2016-11-02 14:31:36 - Info - Executing command: mysqldump --opt --default-character-set=utf8 --add-drop-database --single-transaction --host='mysql'  --user=xxxxx --password=xxxxx --result-file='/tmp/itop-YYxJ5B' 'itop' 
+2016-11-02 14:31:37 - Info - mysqldump said: mysqldump: [Warning] Using a password on the command line interface can be insecure.
+2016-11-02 14:31:38 - Info - Archive: /var/www/html/data/iTop-backup-2016-11-02.zip created
+2016-11-02 14:31:38 - Info - operation 'async_action', peak memory usage. 1491696
+2016-11-02 14:31:38 - Info - Compiling data model.
+2016-11-02 14:31:39 - Info - Data model successfully compiled to '/var/www/html/env-production'.
+2016-11-02 14:31:39 - Info - operation 'async_action', peak memory usage. 6437264
+2016-11-02 14:31:39 - Info - Update Database Schema for environment 'production'.
+2016-11-02 14:31:39 - Info - MetaModel::Startup (ModelOnly = 1)
+2016-11-02 14:31:39 - Info - Renaming 'priv_internalUser' into 'priv_internaluser' (lowercase)
+2016-11-02 14:31:39 - Info - Renaming 'priv_internalUser' failed (already done in a previous upgrade?)
+2016-11-02 14:31:39 - Info - Cleanup of 'priv_change' to remove orphan records
+2016-11-02 14:31:39 - Info - There is a total of 1374 records in priv_change.
+2016-11-02 14:31:39 - Info - There are 2 useless records in priv_change (0.15%)
+2016-11-02 14:31:39 - Info - Removing the orphan records...
+2016-11-02 14:31:39 - Info - Cleanup completed successfully.
+2016-11-02 14:31:39 - Info - Calling Module Handler: AttachmentInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:39 - Info - Calling Module Handler: ConfigMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:39 - Info - Renaming class in DB - final class from 'DBserver' to 'DBServer': 0 rows affected
+2016-11-02 14:31:39 - Info - Renaming class in DB - final class from 'OSfamily' to 'OSFamily': 0 rows affected
+2016-11-02 14:31:39 - Info - Renaming class in DB - final class from 'OSversion' to 'OSVersion': 0 rows affected
+2016-11-02 14:31:39 - Info - Renaming class in DB - final class from 'Webserver' to 'WebServer': 0 rows affected
+2016-11-02 14:31:39 - Info - Renaming class in DB - final class from 'OSpatch' to 'OSPatch': 0 rows affected
+2016-11-02 14:31:39 - Info - Renaming class in DB - final class from 'OsLicence' to 'OSLicence': 0 rows affected
+2016-11-02 14:31:39 - Info - Renaming class in DB - final class from 'IOSversion' to 'IOSVersion': 0 rows affected
+2016-11-02 14:31:39 - Info - Renaming class in DB - final class from 'IPinterface' to 'IPInterface': 0 rows affected
+2016-11-02 14:31:39 - Info - Calling Module Handler: EndUserMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:39 - Info - Renaming class in DB - final class from 'IpPhone' to 'IPPhone': 0 rows affected
+2016-11-02 14:31:39 - Info - Calling Module Handler: StorageMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:39 - Info - Calling Module Handler: TicketsInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:39 - Info - Calling Module Handler: KnownErrorMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:39 - Info - Calling Module Handler: ServiceMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:39 - Info - Creating the structure in ''.
+2016-11-02 14:31:46 - Ok - Database structure successfully updated.
+2016-11-02 14:31:46 - Ok - Hierchical keys rebuilt: The attribute parent_id from Organization is a hierarchical key.
+Rebuilding the fields parent_id_right and parent_id_left from table 'organization'...
+Ok, table 'organization' successfully updated.
+The attribute parent_id from Group is a hierarchical key.
+Rebuilding the fields parent_id_right and parent_id_left from table 'group'...
+Ok, table 'group' successfully updated.
+
+2016-11-02 14:31:46 - Ok - Data sources checked: There are no Data Sources in the database.
+Ok.
+
+2016-11-02 14:31:46 - Info - 'priv_change.origin' already initialized, nothing to do.
+2016-11-02 14:31:46 - Info - 'priv_async_task.status' already initialized, nothing to do.
+2016-11-02 14:31:46 - Info - Database Schema Successfully Updated for environment 'production'.
+2016-11-02 14:31:46 - Info - operation 'async_action', peak memory usage. 22452600
+2016-11-02 14:31:46 - Info - After Database Creation
+2016-11-02 14:31:46 - Info - MetaModel::Startup (ModelOnly = 1)
+2016-11-02 14:31:46 - Info - Calling Module Handler: AttachmentInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:46 - Info - Initializing attachment/item_org_id - null to zero
+2016-11-02 14:31:46 - Info - Initializing attachment/item_org_id - zero to the container
+2016-11-02 14:31:46 - Info - Initializing attachment/item_org_id - 0 records have been adjusted
+2016-11-02 14:31:46 - Info - Calling Module Handler: ConfigMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:46 - Info - Calling Module Handler: EndUserMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:46 - Info - Calling Module Handler: StorageMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:46 - Info - Calling Module Handler: TicketsInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:46 - Info - Calling Module Handler: KnownErrorMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:46 - Info - Calling Module Handler: ServiceMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:46 - Info - URP_Profiles::GetPredefinedObjects() returned 12 elements.
+2016-11-02 14:31:46 - Info - Calling Module Handler: AttachmentInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:46 - Info - Calling Module Handler: ConfigMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:46 - Info - Calling Module Handler: EndUserMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:46 - Info - Calling Module Handler: StorageMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:46 - Info - Calling Module Handler: TicketsInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:46 - Info - Calling Module Handler: KnownErrorMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:46 - Info - Calling Module Handler: ServiceMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:31:46 - Info - operation 'async_action', peak memory usage. 13324160
+2016-11-02 14:31:46 - Info - MetaModel::Startup (ModelOnly = )
+2016-11-02 14:31:46 - Info - starting data load session
+2016-11-02 14:31:46 - Info - Loading file: /var/www/html/env-production/email-reply/data.struct.ta-actions.xml (just to get the keys mapping)
+2016-11-02 14:31:46 - Info - loading of data.struct.ta-actions.xml done.
+2016-11-02 14:31:46 - Info - Loading file: /var/www/html/env-production/email-reply/data.struct.ta-triggers.xml (just to get the keys mapping)
+2016-11-02 14:31:46 - Info - loading of data.struct.ta-triggers.xml done.
+2016-11-02 14:31:46 - Info - Loading file: /var/www/html/env-production/email-reply/data.struct.ta-links.xml (just to get the keys mapping)
+2016-11-02 14:31:46 - Info - loading of data.struct.ta-links.xml done.
+2016-11-02 14:31:46 - Warning - unresolved extkey in lnkTriggerAction::-1()::action_id=Action::-1
+2016-11-02 14:31:46 - Warning - unresolved extkey in lnkTriggerAction::-1()::trigger_id=Trigger::-50
+2016-11-02 14:31:46 - Info - ending data load session
+2016-11-02 14:31:46 - Info - operation 'async_action', peak memory usage. 13196184
+2016-11-02 14:31:46 - Info - MetaModel::Startup from /var/www/html//conf/production/config-itop.php (ModelOnly = 1)
+2016-11-02 14:31:49 - Info - operation 'async_action', peak memory usage. 13379472
+2016-11-02 14:33:49 - Info - CheckPHPVersion
+2016-11-02 14:33:49 - Info - php.ini file(s): '/etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini'
+2016-11-02 14:33:49 - Info - Temporary directory for files upload (/tmp) is writable.
+2016-11-02 14:33:49 - Info - upload_max_filesize: 2M
+2016-11-02 14:33:49 - Info - post_max_size: 8M
+2016-11-02 14:33:49 - Info - max_file_uploads: 20
+2016-11-02 14:33:49 - Info - memory_limit is 134217728, ok.
+2016-11-02 14:33:49 - Info - session.save_path is: '/var/lib/php/sessions'.
+2016-11-02 14:33:49 - Ok - The current PHP Version (7.0.8-0ubuntu0.16.04.3) is greater than the minimum version required to run iTop, which is (5.2.0)
+2016-11-02 14:33:49 - Ok - Required PHP extension(s): dom, hash, iconv, json, mysqli, pcre, session, simplexml, soap.
+2016-11-02 14:33:49 - Ok - Optional PHP extension(s): ldap, mcrypt.
+2016-11-02 14:33:49 - Ok - Loaded php.ini files: /etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini
+2016-11-02 14:33:49 - Ok - The value for session.save_path (/var/lib/php/sessions) is writable for the web server.
+2016-11-02 14:33:51 - Info - CheckBackupPrerequisites
+2016-11-02 14:33:51 - Info - PHP functions disabled: pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,
+2016-11-02 14:33:51 - Info - mysqldump -V said: mysqldump  Ver 10.13 Distrib 5.7.16, for Linux (x86_64)
+2016-11-02 14:33:52 - Info - operation 'async_action', peak memory usage. 1491560
+2016-11-02 14:33:54 - Info - GetApplicationVersion returns: product_name: iTop, product_version: 2.1.0.2127
+2016-11-02 14:34:04 - Info - ======= Installation starts =======
+Parameters:
+<?xml version="1.0" encoding="UTF-8"?>
+<installation>
+  <mode>upgrade</mode>
+  <preinstall>
+    <copies type="array"/>
+    <backup>
+      <destination>/var/www/html/data/iTop-backup-2016-11-02.zip</destination>
+      <configuration_file>/var/www/html//conf/production/config-itop.php</configuration_file>
+    </backup>
+  </preinstall>
+  <source_dir>datamodels/2.x/</source_dir>
+  <datamodel_version>2.1.0</datamodel_version>
+  <previous_configuration_file>/var/www/html//conf/production/config-itop.php</previous_configuration_file>
+  <extensions_dir>extensions</extensions_dir>
+  <target_env>production</target_env>
+  <workspace_dir></workspace_dir>
+  <database>
+    <server>mysql</server>
+    <user>itop</user>
+    <pwd>**removed**</pwd>
+    <name>itop</name>
+    <prefix></prefix>
+  </database>
+  <url>https://itop.vertis.com/</url>
+  <admin_account>
+    <user></user>
+    <pwd>**removed**</pwd>
+    <language></language>
+  </admin_account>
+  <language></language>
+  <selected_modules type="array">
+    <item>authent-external</item>
+    <item>authent-ldap</item>
+    <item>authent-local</item>
+    <item>combodo-email-synchro</item>
+    <item>itop-backup</item>
+    <item>itop-config</item>
+    <item>itop-profiles-itil</item>
+    <item>itop-sla-computation</item>
+    <item>itop-tickets</item>
+    <item>itop-welcome-itil</item>
+    <item>itop-config-mgmt</item>
+    <item>itop-attachments</item>
+    <item>itop-datacenter-mgmt</item>
+    <item>itop-endusers-devices</item>
+    <item>itop-storage-mgmt</item>
+    <item>itop-virtualization-mgmt</item>
+    <item>itop-bridge-virtualization-storage</item>
+    <item>itop-service-mgmt</item>
+    <item>itop-request-mgmt-itil</item>
+    <item>itop-incident-mgmt-itil</item>
+    <item>itop-change-mgmt-itil</item>
+    <item>itop-knownerror-mgmt</item>
+    <item>itop-problem-mgmt</item>
+    <item>email-reply</item>
+    <item>itop-standard-email-synchro</item>
+  </selected_modules>
+  <sample_data></sample_data>
+  <old_addon></old_addon>
+  <options type="array"/>
+</installation>
+
+
+2016-11-02 14:34:04 - Info - operation 'async_action', peak memory usage. 1474312
+2016-11-02 14:34:04 - Info - operation 'async_action', peak memory usage. 1460952
+2016-11-02 14:34:04 - Info - Data file: '/tmp/itop-T7yppx'
+2016-11-02 14:34:04 - Info - Starting backup of mysql/itop(suffix:'')
+2016-11-02 14:34:04 - Info - Executing command: mysqldump --opt --default-character-set=utf8 --add-drop-database --single-transaction --host='mysql'  --user=xxxxx --password=xxxxx --result-file='/tmp/itop-T7yppx' 'itop' 
+2016-11-02 14:34:06 - Info - mysqldump said: mysqldump: [Warning] Using a password on the command line interface can be insecure.
+2016-11-02 14:34:06 - Info - Archive: /var/www/html/data/iTop-backup-2016-11-02.zip created
+2016-11-02 14:34:06 - Info - operation 'async_action', peak memory usage. 1487600
+2016-11-02 14:34:06 - Info - Compiling data model.
+2016-11-02 14:34:07 - Info - Data model successfully compiled to '/var/www/html/env-production'.
+2016-11-02 14:34:07 - Info - operation 'async_action', peak memory usage. 6433168
+2016-11-02 14:34:07 - Info - Update Database Schema for environment 'production'.
+2016-11-02 14:34:07 - Info - MetaModel::Startup (ModelOnly = 1)
+2016-11-02 14:34:07 - Info - Renaming 'priv_internalUser' into 'priv_internaluser' (lowercase)
+2016-11-02 14:34:07 - Info - Renaming 'priv_internalUser' failed (already done in a previous upgrade?)
+2016-11-02 14:34:07 - Info - Cleanup of 'priv_change' to remove orphan records
+2016-11-02 14:34:07 - Info - There is a total of 1373 records in priv_change.
+2016-11-02 14:34:07 - Info - There are 2 useless records in priv_change (0.15%)
+2016-11-02 14:34:07 - Info - Removing the orphan records...
+2016-11-02 14:34:07 - Info - Cleanup completed successfully.
+2016-11-02 14:34:07 - Info - Calling Module Handler: AttachmentInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:07 - Info - Calling Module Handler: ConfigMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:07 - Info - Renaming class in DB - final class from 'DBserver' to 'DBServer': 0 rows affected
+2016-11-02 14:34:07 - Info - Renaming class in DB - final class from 'OSfamily' to 'OSFamily': 0 rows affected
+2016-11-02 14:34:07 - Info - Renaming class in DB - final class from 'OSversion' to 'OSVersion': 0 rows affected
+2016-11-02 14:34:07 - Info - Renaming class in DB - final class from 'Webserver' to 'WebServer': 0 rows affected
+2016-11-02 14:34:07 - Info - Renaming class in DB - final class from 'OSpatch' to 'OSPatch': 0 rows affected
+2016-11-02 14:34:07 - Info - Renaming class in DB - final class from 'OsLicence' to 'OSLicence': 0 rows affected
+2016-11-02 14:34:07 - Info - Renaming class in DB - final class from 'IOSversion' to 'IOSVersion': 0 rows affected
+2016-11-02 14:34:07 - Info - Renaming class in DB - final class from 'IPinterface' to 'IPInterface': 0 rows affected
+2016-11-02 14:34:07 - Info - Calling Module Handler: EndUserMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:07 - Info - Renaming class in DB - final class from 'IpPhone' to 'IPPhone': 0 rows affected
+2016-11-02 14:34:07 - Info - Calling Module Handler: StorageMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:07 - Info - Calling Module Handler: TicketsInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:07 - Info - Calling Module Handler: KnownErrorMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:07 - Info - Calling Module Handler: ServiceMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:07 - Info - Creating the structure in ''.
+2016-11-02 14:34:13 - Ok - Database structure successfully updated.
+2016-11-02 14:34:14 - Ok - Hierchical keys rebuilt: The attribute parent_id from Organization is a hierarchical key.
+Rebuilding the fields parent_id_right and parent_id_left from table 'organization'...
+Ok, table 'organization' successfully updated.
+The attribute parent_id from Group is a hierarchical key.
+Rebuilding the fields parent_id_right and parent_id_left from table 'group'...
+Ok, table 'group' successfully updated.
+
+2016-11-02 14:34:14 - Ok - Data sources checked: There are no Data Sources in the database.
+Ok.
+
+2016-11-02 14:34:14 - Info - 'priv_change.origin' already initialized, nothing to do.
+2016-11-02 14:34:14 - Info - 'priv_async_task.status' already initialized, nothing to do.
+2016-11-02 14:34:14 - Info - Database Schema Successfully Updated for environment 'production'.
+2016-11-02 14:34:14 - Info - operation 'async_action', peak memory usage. 22990456
+2016-11-02 14:34:14 - Info - After Database Creation
+2016-11-02 14:34:14 - Info - MetaModel::Startup (ModelOnly = 1)
+2016-11-02 14:34:14 - Info - Calling Module Handler: AttachmentInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:14 - Info - Initializing attachment/item_org_id - null to zero
+2016-11-02 14:34:14 - Info - Initializing attachment/item_org_id - zero to the container
+2016-11-02 14:34:14 - Info - Initializing attachment/item_org_id - 0 records have been adjusted
+2016-11-02 14:34:14 - Info - Calling Module Handler: ConfigMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:14 - Info - Calling Module Handler: EndUserMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:14 - Info - Calling Module Handler: StorageMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:14 - Info - Calling Module Handler: TicketsInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:14 - Info - Calling Module Handler: KnownErrorMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:14 - Info - Calling Module Handler: ServiceMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:14 - Info - URP_Profiles::GetPredefinedObjects() returned 12 elements.
+2016-11-02 14:34:14 - Info - Calling Module Handler: AttachmentInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:14 - Info - Calling Module Handler: ConfigMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:14 - Info - Calling Module Handler: EndUserMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:14 - Info - Calling Module Handler: StorageMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:14 - Info - Calling Module Handler: TicketsInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:14 - Info - Calling Module Handler: KnownErrorMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:14 - Info - Calling Module Handler: ServiceMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:34:14 - Info - operation 'async_action', peak memory usage. 13287192
+2016-11-02 14:34:14 - Info - MetaModel::Startup (ModelOnly = )
+2016-11-02 14:34:14 - Info - starting data load session
+2016-11-02 14:34:14 - Info - Loading file: /var/www/html/env-production/email-reply/data.struct.ta-actions.xml (just to get the keys mapping)
+2016-11-02 14:34:14 - Info - loading of data.struct.ta-actions.xml done.
+2016-11-02 14:34:14 - Info - Loading file: /var/www/html/env-production/email-reply/data.struct.ta-triggers.xml (just to get the keys mapping)
+2016-11-02 14:34:14 - Info - loading of data.struct.ta-triggers.xml done.
+2016-11-02 14:34:14 - Info - Loading file: /var/www/html/env-production/email-reply/data.struct.ta-links.xml (just to get the keys mapping)
+2016-11-02 14:34:14 - Info - loading of data.struct.ta-links.xml done.
+2016-11-02 14:34:14 - Warning - unresolved extkey in lnkTriggerAction::-1()::action_id=Action::-1
+2016-11-02 14:34:14 - Warning - unresolved extkey in lnkTriggerAction::-1()::trigger_id=Trigger::-50
+2016-11-02 14:34:14 - Info - ending data load session
+2016-11-02 14:34:14 - Info - operation 'async_action', peak memory usage. 13159216
+2016-11-02 14:34:14 - Info - MetaModel::Startup from /var/www/html//conf/production/config-itop.php (ModelOnly = 1)
+2016-11-02 14:34:17 - Info - operation 'async_action', peak memory usage. 13342400
+2016-11-02 14:45:10 - Error - <b>Error:</b> the configuration file '/var/www/html/conf/production/config-itop.php' already exists and cannot be overwritten.
+2016-11-02 14:47:30 - Info - CheckPHPVersion
+2016-11-02 14:47:30 - Info - php.ini file(s): '/etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini'
+2016-11-02 14:47:30 - Info - Temporary directory for files upload (/tmp) is writable.
+2016-11-02 14:47:30 - Info - upload_max_filesize: 2M
+2016-11-02 14:47:30 - Info - post_max_size: 8M
+2016-11-02 14:47:30 - Info - max_file_uploads: 20
+2016-11-02 14:47:30 - Info - memory_limit is 134217728, ok.
+2016-11-02 14:47:30 - Info - session.save_path is: '/var/lib/php/sessions'.
+2016-11-02 14:47:30 - Ok - The current PHP Version (7.0.8-0ubuntu0.16.04.3) is greater than the minimum version required to run iTop, which is (5.2.0)
+2016-11-02 14:47:30 - Ok - Required PHP extension(s): dom, hash, iconv, json, mysqli, pcre, session, simplexml, soap.
+2016-11-02 14:47:30 - Ok - Optional PHP extension(s): ldap, mcrypt.
+2016-11-02 14:47:30 - Ok - Loaded php.ini files: /etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini
+2016-11-02 14:47:30 - Ok - The value for session.save_path (/var/lib/php/sessions) is writable for the web server.
+2016-11-02 14:47:34 - Info - CheckBackupPrerequisites
+2016-11-02 14:47:34 - Info - PHP functions disabled: pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,
+2016-11-02 14:47:34 - Info - mysqldump -V said: mysqldump  Ver 10.13 Distrib 5.7.16, for Linux (x86_64)
+2016-11-02 14:47:34 - Info - operation 'async_action', peak memory usage. 1486520
+2016-11-02 14:47:36 - Info - GetApplicationVersion returns: product_name: iTop, product_version: 2.1.0.2127
+2016-11-02 14:47:53 - Info - ======= Installation starts =======
+Parameters:
+<?xml version="1.0" encoding="UTF-8"?>
+<installation>
+  <mode>upgrade</mode>
+  <preinstall>
+    <copies type="array"/>
+    <backup>
+      <destination>/var/www/html/data/iTop-backup-2016-11-02.zip</destination>
+      <configuration_file>/var/www/html//conf/production/config-itop.php</configuration_file>
+    </backup>
+  </preinstall>
+  <source_dir>datamodels/2.x/</source_dir>
+  <datamodel_version>2.1.0</datamodel_version>
+  <previous_configuration_file>/var/www/html//conf/production/config-itop.php</previous_configuration_file>
+  <extensions_dir>extensions</extensions_dir>
+  <target_env>production</target_env>
+  <workspace_dir></workspace_dir>
+  <database>
+    <server>mysql</server>
+    <user>itop</user>
+    <pwd>**removed**</pwd>
+    <name>itop</name>
+    <prefix></prefix>
+  </database>
+  <url>https://localhost:4430/</url>
+  <admin_account>
+    <user></user>
+    <pwd>**removed**</pwd>
+    <language></language>
+  </admin_account>
+  <language></language>
+  <selected_modules type="array">
+    <item>authent-external</item>
+    <item>authent-ldap</item>
+    <item>authent-local</item>
+    <item>combodo-email-synchro</item>
+    <item>itop-backup</item>
+    <item>itop-config</item>
+    <item>itop-profiles-itil</item>
+    <item>itop-sla-computation</item>
+    <item>itop-tickets</item>
+    <item>itop-welcome-itil</item>
+    <item>itop-config-mgmt</item>
+    <item>itop-attachments</item>
+    <item>itop-datacenter-mgmt</item>
+    <item>itop-endusers-devices</item>
+    <item>itop-storage-mgmt</item>
+    <item>itop-virtualization-mgmt</item>
+    <item>itop-bridge-virtualization-storage</item>
+    <item>itop-service-mgmt</item>
+    <item>itop-request-mgmt-itil</item>
+    <item>itop-incident-mgmt-itil</item>
+    <item>itop-change-mgmt-itil</item>
+    <item>itop-knownerror-mgmt</item>
+    <item>itop-problem-mgmt</item>
+    <item>email-reply</item>
+    <item>itop-standard-email-synchro</item>
+  </selected_modules>
+  <sample_data></sample_data>
+  <old_addon></old_addon>
+  <options type="array"/>
+</installation>
+
+
+2016-11-02 14:47:53 - Info - operation 'async_action', peak memory usage. 1478432
+2016-11-02 14:47:53 - Info - operation 'async_action', peak memory usage. 1465080
+2016-11-02 14:47:53 - Info - Data file: '/tmp/itop-WbCvDP'
+2016-11-02 14:47:53 - Info - Starting backup of mysql/itop(suffix:'')
+2016-11-02 14:47:53 - Info - Executing command: mysqldump --opt --default-character-set=utf8 --add-drop-database --single-transaction --host='mysql'  --user=xxxxx --password=xxxxx --result-file='/tmp/itop-WbCvDP' 'itop' 
+2016-11-02 14:47:55 - Info - mysqldump said: mysqldump: [Warning] Using a password on the command line interface can be insecure.
+2016-11-02 14:47:55 - Info - Archive: /var/www/html/data/iTop-backup-2016-11-02.zip created
+2016-11-02 14:47:55 - Info - operation 'async_action', peak memory usage. 1491728
+2016-11-02 14:47:55 - Info - Compiling data model.
+2016-11-02 14:47:56 - Info - Data model successfully compiled to '/var/www/html/env-production'.
+2016-11-02 14:47:56 - Info - operation 'async_action', peak memory usage. 6437296
+2016-11-02 14:47:56 - Info - Update Database Schema for environment 'production'.
+2016-11-02 14:47:56 - Info - MetaModel::Startup (ModelOnly = 1)
+2016-11-02 14:47:56 - Info - Renaming 'priv_internalUser' into 'priv_internaluser' (lowercase)
+2016-11-02 14:47:56 - Info - Renaming 'priv_internalUser' failed (already done in a previous upgrade?)
+2016-11-02 14:47:56 - Info - Cleanup of 'priv_change' to remove orphan records
+2016-11-02 14:47:56 - Info - There is a total of 1375 records in priv_change.
+2016-11-02 14:47:56 - Info - There are 2 useless records in priv_change (0.15%)
+2016-11-02 14:47:56 - Info - Removing the orphan records...
+2016-11-02 14:47:56 - Info - Cleanup completed successfully.
+2016-11-02 14:47:56 - Info - Calling Module Handler: AttachmentInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:47:56 - Info - Calling Module Handler: ConfigMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:47:56 - Info - Renaming class in DB - final class from 'DBserver' to 'DBServer': 0 rows affected
+2016-11-02 14:47:56 - Info - Renaming class in DB - final class from 'OSfamily' to 'OSFamily': 0 rows affected
+2016-11-02 14:47:56 - Info - Renaming class in DB - final class from 'OSversion' to 'OSVersion': 0 rows affected
+2016-11-02 14:47:56 - Info - Renaming class in DB - final class from 'Webserver' to 'WebServer': 0 rows affected
+2016-11-02 14:47:56 - Info - Renaming class in DB - final class from 'OSpatch' to 'OSPatch': 0 rows affected
+2016-11-02 14:47:56 - Info - Renaming class in DB - final class from 'OsLicence' to 'OSLicence': 0 rows affected
+2016-11-02 14:47:56 - Info - Renaming class in DB - final class from 'IOSversion' to 'IOSVersion': 0 rows affected
+2016-11-02 14:47:56 - Info - Renaming class in DB - final class from 'IPinterface' to 'IPInterface': 0 rows affected
+2016-11-02 14:47:56 - Info - Calling Module Handler: EndUserMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:47:56 - Info - Renaming class in DB - final class from 'IpPhone' to 'IPPhone': 0 rows affected
+2016-11-02 14:47:56 - Info - Calling Module Handler: StorageMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:47:56 - Info - Calling Module Handler: TicketsInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:47:56 - Info - Calling Module Handler: KnownErrorMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:47:56 - Info - Calling Module Handler: ServiceMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:47:56 - Info - Creating the structure in ''.
+2016-11-02 14:48:03 - Ok - Database structure successfully updated.
+2016-11-02 14:48:03 - Ok - Hierchical keys rebuilt: The attribute parent_id from Organization is a hierarchical key.
+Rebuilding the fields parent_id_right and parent_id_left from table 'organization'...
+Ok, table 'organization' successfully updated.
+The attribute parent_id from Group is a hierarchical key.
+Rebuilding the fields parent_id_right and parent_id_left from table 'group'...
+Ok, table 'group' successfully updated.
+
+2016-11-02 14:48:03 - Ok - Data sources checked: There are no Data Sources in the database.
+Ok.
+
+2016-11-02 14:48:03 - Info - 'priv_change.origin' already initialized, nothing to do.
+2016-11-02 14:48:03 - Info - 'priv_async_task.status' already initialized, nothing to do.
+2016-11-02 14:48:03 - Info - Database Schema Successfully Updated for environment 'production'.
+2016-11-02 14:48:03 - Info - operation 'async_action', peak memory usage. 22451976
+2016-11-02 14:48:03 - Info - After Database Creation
+2016-11-02 14:48:03 - Info - MetaModel::Startup (ModelOnly = 1)
+2016-11-02 14:48:03 - Info - Calling Module Handler: AttachmentInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:48:03 - Info - Initializing attachment/item_org_id - null to zero
+2016-11-02 14:48:03 - Info - Initializing attachment/item_org_id - zero to the container
+2016-11-02 14:48:03 - Info - Initializing attachment/item_org_id - 0 records have been adjusted
+2016-11-02 14:48:03 - Info - Calling Module Handler: ConfigMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:48:03 - Info - Calling Module Handler: EndUserMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:48:03 - Info - Calling Module Handler: StorageMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:48:03 - Info - Calling Module Handler: TicketsInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:48:03 - Info - Calling Module Handler: KnownErrorMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:48:03 - Info - Calling Module Handler: ServiceMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:48:03 - Info - URP_Profiles::GetPredefinedObjects() returned 12 elements.
+2016-11-02 14:48:03 - Info - Calling Module Handler: AttachmentInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:48:03 - Info - Calling Module Handler: ConfigMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:48:03 - Info - Calling Module Handler: EndUserMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:48:03 - Info - Calling Module Handler: StorageMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:48:03 - Info - Calling Module Handler: TicketsInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:48:03 - Info - Calling Module Handler: KnownErrorMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:48:03 - Info - Calling Module Handler: ServiceMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:48:03 - Info - operation 'async_action', peak memory usage. 13360520
+2016-11-02 14:48:03 - Info - MetaModel::Startup (ModelOnly = )
+2016-11-02 14:48:03 - Info - starting data load session
+2016-11-02 14:48:03 - Info - Loading file: /var/www/html/env-production/email-reply/data.struct.ta-actions.xml (just to get the keys mapping)
+2016-11-02 14:48:03 - Info - loading of data.struct.ta-actions.xml done.
+2016-11-02 14:48:03 - Info - Loading file: /var/www/html/env-production/email-reply/data.struct.ta-triggers.xml (just to get the keys mapping)
+2016-11-02 14:48:03 - Info - loading of data.struct.ta-triggers.xml done.
+2016-11-02 14:48:03 - Info - Loading file: /var/www/html/env-production/email-reply/data.struct.ta-links.xml (just to get the keys mapping)
+2016-11-02 14:48:03 - Info - loading of data.struct.ta-links.xml done.
+2016-11-02 14:48:03 - Warning - unresolved extkey in lnkTriggerAction::-1()::action_id=Action::-1
+2016-11-02 14:48:03 - Warning - unresolved extkey in lnkTriggerAction::-1()::trigger_id=Trigger::-50
+2016-11-02 14:48:03 - Info - ending data load session
+2016-11-02 14:48:03 - Info - operation 'async_action', peak memory usage. 13232544
+2016-11-02 14:48:03 - Info - MetaModel::Startup from /var/www/html//conf/production/config-itop.php (ModelOnly = 1)
+2016-11-02 14:48:06 - Info - operation 'async_action', peak memory usage. 13415896
+2016-11-02 14:49:19 - Info - CheckPHPVersion
+2016-11-02 14:49:19 - Info - php.ini file(s): '/etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini'
+2016-11-02 14:49:19 - Info - Temporary directory for files upload (/tmp) is writable.
+2016-11-02 14:49:19 - Info - upload_max_filesize: 2M
+2016-11-02 14:49:19 - Info - post_max_size: 8M
+2016-11-02 14:49:19 - Info - max_file_uploads: 20
+2016-11-02 14:49:19 - Info - memory_limit is 134217728, ok.
+2016-11-02 14:49:19 - Info - session.save_path is: '/var/lib/php/sessions'.
+2016-11-02 14:49:19 - Ok - The current PHP Version (7.0.8-0ubuntu0.16.04.3) is greater than the minimum version required to run iTop, which is (5.2.0)
+2016-11-02 14:49:19 - Ok - Required PHP extension(s): dom, hash, iconv, json, mysqli, pcre, session, simplexml, soap.
+2016-11-02 14:49:19 - Ok - Optional PHP extension(s): ldap, mcrypt.
+2016-11-02 14:49:19 - Ok - Loaded php.ini files: /etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini
+2016-11-02 14:49:19 - Ok - The value for session.save_path (/var/lib/php/sessions) is writable for the web server.
+2016-11-02 14:49:21 - Info - CheckBackupPrerequisites
+2016-11-02 14:49:21 - Info - PHP functions disabled: pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,
+2016-11-02 14:49:21 - Info - mysqldump -V said: mysqldump  Ver 10.13 Distrib 5.7.16, for Linux (x86_64)
+2016-11-02 14:49:21 - Info - operation 'async_action', peak memory usage. 1482408
+2016-11-02 14:49:22 - Info - GetApplicationVersion returns: product_name: iTop, product_version: 2.1.0.2127
+2016-11-02 14:50:08 - Info - CheckPHPVersion
+2016-11-02 14:50:08 - Info - php.ini file(s): '/etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini'
+2016-11-02 14:50:08 - Info - Temporary directory for files upload (/tmp) is writable.
+2016-11-02 14:50:08 - Info - upload_max_filesize: 2M
+2016-11-02 14:50:08 - Info - post_max_size: 8M
+2016-11-02 14:50:08 - Info - max_file_uploads: 20
+2016-11-02 14:50:08 - Info - memory_limit is 134217728, ok.
+2016-11-02 14:50:08 - Info - session.save_path is: '/var/lib/php/sessions'.
+2016-11-02 14:50:08 - Ok - The current PHP Version (7.0.8-0ubuntu0.16.04.3) is greater than the minimum version required to run iTop, which is (5.2.0)
+2016-11-02 14:50:08 - Ok - Required PHP extension(s): dom, hash, iconv, json, mysqli, pcre, session, simplexml, soap.
+2016-11-02 14:50:08 - Ok - Optional PHP extension(s): ldap, mcrypt.
+2016-11-02 14:50:08 - Ok - Loaded php.ini files: /etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini
+2016-11-02 14:50:08 - Ok - The value for session.save_path (/var/lib/php/sessions) is writable for the web server.
+2016-11-02 14:50:10 - Info - CheckBackupPrerequisites
+2016-11-02 14:50:10 - Info - PHP functions disabled: pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,
+2016-11-02 14:50:10 - Info - mysqldump -V said: mysqldump  Ver 10.13 Distrib 5.7.16, for Linux (x86_64)
+2016-11-02 14:50:10 - Info - operation 'async_action', peak memory usage. 1482456
+2016-11-02 14:50:11 - Info - GetApplicationVersion returns: product_name: iTop, product_version: 2.1.0.2127
+2016-11-02 14:50:20 - Info - ======= Installation starts =======
+Parameters:
+<?xml version="1.0" encoding="UTF-8"?>
+<installation>
+  <mode>upgrade</mode>
+  <preinstall>
+    <copies type="array"/>
+    <backup>
+      <destination>/var/www/html/data/iTop-backup-2016-11-02.zip</destination>
+      <configuration_file>/var/www/html//conf/production/config-itop.php</configuration_file>
+    </backup>
+  </preinstall>
+  <source_dir>datamodels/2.x/</source_dir>
+  <datamodel_version>2.1.0</datamodel_version>
+  <previous_configuration_file>/var/www/html//conf/production/config-itop.php</previous_configuration_file>
+  <extensions_dir>extensions</extensions_dir>
+  <target_env>production</target_env>
+  <workspace_dir></workspace_dir>
+  <database>
+    <server>mysql</server>
+    <user>itop</user>
+    <pwd>**removed**</pwd>
+    <name>itop</name>
+    <prefix></prefix>
+  </database>
+  <url>https://itop.vertis.com:4430/</url>
+  <admin_account>
+    <user></user>
+    <pwd>**removed**</pwd>
+    <language></language>
+  </admin_account>
+  <language></language>
+  <selected_modules type="array">
+    <item>authent-external</item>
+    <item>authent-ldap</item>
+    <item>authent-local</item>
+    <item>combodo-email-synchro</item>
+    <item>itop-backup</item>
+    <item>itop-config</item>
+    <item>itop-profiles-itil</item>
+    <item>itop-sla-computation</item>
+    <item>itop-tickets</item>
+    <item>itop-welcome-itil</item>
+    <item>itop-config-mgmt</item>
+    <item>itop-attachments</item>
+    <item>itop-datacenter-mgmt</item>
+    <item>itop-endusers-devices</item>
+    <item>itop-storage-mgmt</item>
+    <item>itop-virtualization-mgmt</item>
+    <item>itop-bridge-virtualization-storage</item>
+    <item>itop-service-mgmt</item>
+    <item>itop-request-mgmt-itil</item>
+    <item>itop-incident-mgmt-itil</item>
+    <item>itop-change-mgmt-itil</item>
+    <item>itop-knownerror-mgmt</item>
+    <item>itop-problem-mgmt</item>
+    <item>email-reply</item>
+    <item>itop-standard-email-synchro</item>
+  </selected_modules>
+  <sample_data></sample_data>
+  <old_addon></old_addon>
+  <options type="array"/>
+</installation>
+
+
+2016-11-02 14:50:20 - Info - operation 'async_action', peak memory usage. 1474376
+2016-11-02 14:50:20 - Info - operation 'async_action', peak memory usage. 1461024
+2016-11-02 14:50:21 - Info - Data file: '/tmp/itop-PP1fqQ'
+2016-11-02 14:50:21 - Info - Starting backup of mysql/itop(suffix:'')
+2016-11-02 14:50:21 - Info - Executing command: mysqldump --opt --default-character-set=utf8 --add-drop-database --single-transaction --host='mysql'  --user=xxxxx --password=xxxxx --result-file='/tmp/itop-PP1fqQ' 'itop' 
+2016-11-02 14:50:22 - Info - mysqldump said: mysqldump: [Warning] Using a password on the command line interface can be insecure.
+2016-11-02 14:50:22 - Info - Archive: /var/www/html/data/iTop-backup-2016-11-02.zip created
+2016-11-02 14:50:22 - Info - operation 'async_action', peak memory usage. 1487672
+2016-11-02 14:50:22 - Info - Compiling data model.
+2016-11-02 14:50:24 - Info - Data model successfully compiled to '/var/www/html/env-production'.
+2016-11-02 14:50:24 - Info - operation 'async_action', peak memory usage. 6433240
+2016-11-02 14:50:24 - Info - Update Database Schema for environment 'production'.
+2016-11-02 14:50:24 - Info - MetaModel::Startup (ModelOnly = 1)
+2016-11-02 14:50:24 - Info - Renaming 'priv_internalUser' into 'priv_internaluser' (lowercase)
+2016-11-02 14:50:24 - Info - Renaming 'priv_internalUser' failed (already done in a previous upgrade?)
+2016-11-02 14:50:24 - Info - Cleanup of 'priv_change' to remove orphan records
+2016-11-02 14:50:24 - Info - There is a total of 1374 records in priv_change.
+2016-11-02 14:50:24 - Info - There are 2 useless records in priv_change (0.15%)
+2016-11-02 14:50:24 - Info - Removing the orphan records...
+2016-11-02 14:50:24 - Info - Cleanup completed successfully.
+2016-11-02 14:50:24 - Info - Calling Module Handler: AttachmentInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:24 - Info - Calling Module Handler: ConfigMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:24 - Info - Renaming class in DB - final class from 'DBserver' to 'DBServer': 0 rows affected
+2016-11-02 14:50:24 - Info - Renaming class in DB - final class from 'OSfamily' to 'OSFamily': 0 rows affected
+2016-11-02 14:50:24 - Info - Renaming class in DB - final class from 'OSversion' to 'OSVersion': 0 rows affected
+2016-11-02 14:50:24 - Info - Renaming class in DB - final class from 'Webserver' to 'WebServer': 0 rows affected
+2016-11-02 14:50:24 - Info - Renaming class in DB - final class from 'OSpatch' to 'OSPatch': 0 rows affected
+2016-11-02 14:50:24 - Info - Renaming class in DB - final class from 'OsLicence' to 'OSLicence': 0 rows affected
+2016-11-02 14:50:24 - Info - Renaming class in DB - final class from 'IOSversion' to 'IOSVersion': 0 rows affected
+2016-11-02 14:50:24 - Info - Renaming class in DB - final class from 'IPinterface' to 'IPInterface': 0 rows affected
+2016-11-02 14:50:24 - Info - Calling Module Handler: EndUserMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:24 - Info - Renaming class in DB - final class from 'IpPhone' to 'IPPhone': 0 rows affected
+2016-11-02 14:50:24 - Info - Calling Module Handler: StorageMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:24 - Info - Calling Module Handler: TicketsInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:24 - Info - Calling Module Handler: KnownErrorMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:24 - Info - Calling Module Handler: ServiceMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:24 - Info - Creating the structure in ''.
+2016-11-02 14:50:30 - Ok - Database structure successfully updated.
+2016-11-02 14:50:30 - Ok - Hierchical keys rebuilt: The attribute parent_id from Organization is a hierarchical key.
+Rebuilding the fields parent_id_right and parent_id_left from table 'organization'...
+Ok, table 'organization' successfully updated.
+The attribute parent_id from Group is a hierarchical key.
+Rebuilding the fields parent_id_right and parent_id_left from table 'group'...
+Ok, table 'group' successfully updated.
+
+2016-11-02 14:50:30 - Ok - Data sources checked: There are no Data Sources in the database.
+Ok.
+
+2016-11-02 14:50:30 - Info - 'priv_change.origin' already initialized, nothing to do.
+2016-11-02 14:50:30 - Info - 'priv_async_task.status' already initialized, nothing to do.
+2016-11-02 14:50:30 - Info - Database Schema Successfully Updated for environment 'production'.
+2016-11-02 14:50:30 - Info - operation 'async_action', peak memory usage. 22448568
+2016-11-02 14:50:30 - Info - After Database Creation
+2016-11-02 14:50:30 - Info - MetaModel::Startup (ModelOnly = 1)
+2016-11-02 14:50:30 - Info - Calling Module Handler: AttachmentInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:30 - Info - Initializing attachment/item_org_id - null to zero
+2016-11-02 14:50:30 - Info - Initializing attachment/item_org_id - zero to the container
+2016-11-02 14:50:30 - Info - Initializing attachment/item_org_id - 0 records have been adjusted
+2016-11-02 14:50:30 - Info - Calling Module Handler: ConfigMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:30 - Info - Calling Module Handler: EndUserMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:30 - Info - Calling Module Handler: StorageMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:30 - Info - Calling Module Handler: TicketsInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:30 - Info - Calling Module Handler: KnownErrorMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:30 - Info - Calling Module Handler: ServiceMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:30 - Info - URP_Profiles::GetPredefinedObjects() returned 12 elements.
+2016-11-02 14:50:30 - Info - Calling Module Handler: AttachmentInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:30 - Info - Calling Module Handler: ConfigMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:30 - Info - Calling Module Handler: EndUserMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:30 - Info - Calling Module Handler: StorageMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:30 - Info - Calling Module Handler: TicketsInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:30 - Info - Calling Module Handler: KnownErrorMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:30 - Info - Calling Module Handler: ServiceMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.1.0)
+2016-11-02 14:50:30 - Info - operation 'async_action', peak memory usage. 13320128
+2016-11-02 14:50:30 - Info - MetaModel::Startup (ModelOnly = )
+2016-11-02 14:50:30 - Info - starting data load session
+2016-11-02 14:50:30 - Info - Loading file: /var/www/html/env-production/email-reply/data.struct.ta-actions.xml (just to get the keys mapping)
+2016-11-02 14:50:30 - Info - loading of data.struct.ta-actions.xml done.
+2016-11-02 14:50:30 - Info - Loading file: /var/www/html/env-production/email-reply/data.struct.ta-triggers.xml (just to get the keys mapping)
+2016-11-02 14:50:30 - Info - loading of data.struct.ta-triggers.xml done.
+2016-11-02 14:50:30 - Info - Loading file: /var/www/html/env-production/email-reply/data.struct.ta-links.xml (just to get the keys mapping)
+2016-11-02 14:50:30 - Info - loading of data.struct.ta-links.xml done.
+2016-11-02 14:50:30 - Warning - unresolved extkey in lnkTriggerAction::-1()::action_id=Action::-1
+2016-11-02 14:50:30 - Warning - unresolved extkey in lnkTriggerAction::-1()::trigger_id=Trigger::-50
+2016-11-02 14:50:30 - Info - ending data load session
+2016-11-02 14:50:30 - Info - operation 'async_action', peak memory usage. 13192152
+2016-11-02 14:50:30 - Info - MetaModel::Startup from /var/www/html//conf/production/config-itop.php (ModelOnly = 1)
+2016-11-02 14:50:34 - Info - operation 'async_action', peak memory usage. 13375336

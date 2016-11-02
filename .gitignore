@@ -1,5 +1,6 @@
 *.secret
 *.crt
 *.key
-core/data
-core/conf/production/parameters.yml
+*.env
+*.zip
+*.log

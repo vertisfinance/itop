@@ -15,7 +15,6 @@ services:
 
   phpmyadmin:
       image: phpmyadmin/phpmyadmin
-      container_name: phpmyadmin
       environment:
         PMA_ARBITRARY: "1"
       restart: always
@@ -32,8 +31,8 @@ services:
       - ../../core/log:/var/www/html/log
       - ../../core/data:/var/www/html/data
       - ../../core/extensions:/var/www/html/extensions
-      - ./localhost.crt:/var/certificate.crt
-      - ./localhost.key:/var/certificate.key
+      - ./itop.vertis.com.crt:/var/certificate.crt
+      - ./itop.vertis.com.key:/var/certificate.key
       - ./conf/000-default.conf:/etc/apache2/sites-available/000-default.conf
     ports:
       - 4430:443

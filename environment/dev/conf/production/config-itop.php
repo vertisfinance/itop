@@ -29,7 +29,7 @@ $MySettings = array(
 
 	// app_root_url: Root URL used for navigating within the application, or from an email to the application (you can put $SERVER_NAME$ as a placeholder for the server's name)
 	//	default: ''
-	'app_root_url' => 'http://localhost/itop/',
+	'app_root_url' => 'https://localhost:4430/',
 
 	// buttons_position: Position of the forms buttons: bottom | top | both
 	//	default: 'both'
@@ -81,11 +81,26 @@ $MySettings = array(
 	// email_transport: Mean to send emails: PHPMail (uses the function mail()) or SMTP (implements the client protocole)
 	//	default: 'PHPMail'
 	'email_transport' => 'SMTP',
-	'email_transport_smtp.host' => 'smtp.gmail.com',
-	'email_transport_smtp.password' => getenv("MAILER_PASSWORD"),
-	'email_transport_smtp.username' => getenv("MAILER_USER"),
-	'email_transport_smtp.port' => '587',
+
+	// email_transport_smtp.encryption: tls or ssl (optional)
+	//	default: ''
 	'email_transport_smtp.encryption' => 'tls',
+
+	// email_transport_smtp.host: host name or IP address (optional)
+	//	default: 'localhost'
+	'email_transport_smtp.host' => 'smtp.gmail.com',
+
+	// email_transport_smtp.password: Authentication password (optional)
+	//	default: ''
+	'email_transport_smtp.password' => 'vbudeu*22ets',
+
+	// email_transport_smtp.port: port number (optional)
+	//	default: 25
+	'email_transport_smtp.port' => 587,
+
+	// email_transport_smtp.username: Authentication user (optional)
+	//	default: ''
+	'email_transport_smtp.username' => 'bot@vertis.com',
 
 	// email_validation_pattern: Regular expression to validate/detect the format of an eMail address
 	//	default: '[a-zA-Z0-9._&\'-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z0-9-]{2,}'
@@ -93,8 +108,10 @@ $MySettings = array(
 
 	'encryption_key' => '@iT0pEncr1pti0n!',
 
-	'fast_reload_interval' => 60,
+	'fast_reload_interval' => '60',
 
+	// forgot_password: Enable the "Forgot password" feature
+	//	default: true
 	'forgot_password' => true,
 
 	// link_set_attribute_qualifier: Link set from string: attribute qualifier (encloses both the attcode and the value)
@@ -119,17 +136,19 @@ $MySettings = array(
 
 	'log_notification' => true,
 
+	// log_usage: Log the usage of the application (i.e. the date/time and the user name of each login)
+	//	default: false
 	'log_usage' => true,
 
 	'log_web_service' => true,
 
-	'max_display_limit' => 15,
+	'max_display_limit' => '15',
 
 	// max_linkset_output: Maximum number of items shown when getting a list of related items in an email, using the form $this->some_list$. 0 means no limit.
 	//	default: 100
 	'max_linkset_output' => 100,
 
-	'min_display_limit' => 10,
+	'min_display_limit' => '10',
 
 	// online_help: Hyperlink to the online-help web page
 	//	default: 'http://www.combodo.com/itop-help'
@@ -157,7 +176,7 @@ $MySettings = array(
 	//	default: ''
 	'source_dir' => 'datamodels/2.x/',
 
-	'standard_reload_interval' => 300,
+	'standard_reload_interval' => '300',
 
 	// synchro_trace: Synchronization details: none, display, save (includes 'display')
 	//	default: 'none'
@@ -193,7 +212,7 @@ $MyModuleSettings = array(
 	),
 	'combodo-email-synchro' => array (
 		'notify_errors_to' => 'gabor.egyed@vertis.com',
-		'notify_errors_from' => getenv("MAILER_USER"),
+		'notify_errors_from' => 'bot@vertis.com',
 		'debug' => true,
 		'periodicity' => 30,
 		'body_parts_order' => 'text/html,text/plain',

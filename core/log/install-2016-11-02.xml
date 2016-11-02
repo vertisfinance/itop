@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <installation>
-  <mode>install</mode>
+  <mode>upgrade</mode>
   <preinstall>
     <copies type="array"/>
+    <backup>
+      <destination>/var/www/html/itop/data/iTop-backup-2016-11-02.zip</destination>
+      <configuration_file>/var/www/html/itop//conf/production/config-itop.php</configuration_file>
+    </backup>
   </preinstall>
   <source_dir>datamodels/2.x/</source_dir>
   <datamodel_version>2.1.0</datamodel_version>
-  <previous_configuration_file></previous_configuration_file>
+  <previous_configuration_file>/var/www/html/itop//conf/production/config-itop.php</previous_configuration_file>
   <extensions_dir>extensions</extensions_dir>
   <target_env>production</target_env>
   <workspace_dir></workspace_dir>
@@ -17,13 +21,13 @@
     <name>itop</name>
     <prefix></prefix>
   </database>
-  <url>http://localhost/itop/</url>
+  <url>https://localhost/itop/</url>
   <admin_account>
-    <user>itop</user>
+    <user></user>
     <pwd>**removed**</pwd>
-    <language>EN US</language>
+    <language></language>
   </admin_account>
-  <language>EN US</language>
+  <language></language>
   <selected_modules type="array">
     <item>authent-external</item>
     <item>authent-ldap</item>
