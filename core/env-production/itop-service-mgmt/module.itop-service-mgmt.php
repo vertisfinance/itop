@@ -3,7 +3,7 @@
 
 SetupWebPage::AddModule(
 	__FILE__, // Path to the current file, all other file names are relative to the directory containing this file
-	'itop-service-mgmt/2.1.0',
+	'itop-service-mgmt/2.3.0',
 	array(
 		// Identification
 		//
@@ -13,7 +13,7 @@ SetupWebPage::AddModule(
 		// Setup
 		//
 		'dependencies' => array(
-			'itop-config-mgmt/2.0.0',
+			'itop-config-mgmt/2.2.0',
 			'itop-tickets/2.0.0',
 		),
 		'mandatory' => false,
@@ -31,6 +31,7 @@ SetupWebPage::AddModule(
 		'data.sample' => array(
 			'data.sample.organizations.xml',
 			'data.sample.contracts.xml',
+			'data.sample.servicefamilies.xml',
 			'data.sample.services.xml',
 			'data.sample.serviceelements.xml',
 			'data.sample.sla.xml',

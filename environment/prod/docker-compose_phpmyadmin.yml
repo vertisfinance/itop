@@ -1,0 +1,38 @@
+version: '2'
+
+volumes:
+  itop-data-volume:
+    driver: local
+
+services:
+  mysql:
+    hostname: mysql
+    image: mysql
+    env_file: .secret
+    volumes:
+      - itop-data-volume:/var/lib/mysql
+      - ../../docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+
+  phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      environment:
+        PMA_ARBITRARY: "1"
+      restart: always
+      ports:
+       - 3306:80
+
+  itop:
+    image: itop
+    command: ["bash", "run.sh"]
+    env_file: .secret
+    volumes:
+      - ../../core/env-production:/var/www/html/env-production
+      - ./conf:/var/www/html/conf
+      - ../../core/log:/var/www/html/log
+      - ../../core/data:/var/www/html/data
+      - ../../core/extensions:/var/www/html/extensions
+      - ./itop.vertis.com.crt:/var/certificate.crt
+      - ./itop.vertis.com.key:/var/certificate.key
+      - ./conf/000-default.conf:/etc/apache2/sites-available/000-default.conf
+    ports:
+      - 4430:443

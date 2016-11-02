@@ -3194,3 +3194,744 @@ Ok.
 2016-11-02 14:50:30 - Info - operation 'async_action', peak memory usage. 13192152
 2016-11-02 14:50:30 - Info - MetaModel::Startup from /var/www/html//conf/production/config-itop.php (ModelOnly = 1)
 2016-11-02 14:50:34 - Info - operation 'async_action', peak memory usage. 13375336
+2016-11-02 14:57:57 - Error - <b>Error:</b> the configuration file '/var/www/html/conf/production/config-itop.php' already exists and cannot be overwritten.
+2016-11-02 14:58:35 - Info - CheckPHPVersion
+2016-11-02 14:58:35 - Info - php.ini file(s): '/etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini'
+2016-11-02 14:58:35 - Info - Temporary directory for files upload (/tmp) is writable.
+2016-11-02 14:58:35 - Info - upload_max_filesize: 2M
+2016-11-02 14:58:35 - Info - post_max_size: 8M
+2016-11-02 14:58:35 - Info - max_file_uploads: 20
+2016-11-02 14:58:35 - Info - memory_limit is 134217728, ok.
+2016-11-02 14:58:35 - Info - session.save_path is: '/var/lib/php/sessions'.
+2016-11-02 14:58:35 - Ok - The current PHP Version (7.0.8-0ubuntu0.16.04.3) is greater than the minimum version required to run iTop, which is (5.3.6)
+2016-11-02 14:58:35 - Ok - Required PHP extension(s): dom, hash, iconv, json, mysqli, pcre, session, simplexml, soap, zip.
+2016-11-02 14:58:35 - Ok - Optional PHP extension(s): gd, ldap, mcrypt.
+2016-11-02 14:58:35 - Ok - Loaded php.ini files: /etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini
+2016-11-02 14:58:35 - Ok - The value for session.save_path (/var/lib/php/sessions) is writable for the web server.
+2016-11-02 14:58:36 - Info - CheckBackupPrerequisites
+2016-11-02 14:58:36 - Info - PHP functions disabled: pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,
+2016-11-02 14:58:36 - Info - mysqldump -V said: mysqldump  Ver 10.13 Distrib 5.7.16, for Linux (x86_64)
+2016-11-02 14:58:36 - Info - operation 'async_action', peak memory usage. 1924568
+2016-11-02 14:58:39 - Info - GetApplicationVersion returns: product_name: iTop, product_version: 2.1.0.2127
+2016-11-02 15:00:32 - Info - CheckPHPVersion
+2016-11-02 15:00:32 - Info - php.ini file(s): '/etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini'
+2016-11-02 15:00:32 - Info - Temporary directory for files upload (/tmp) is writable.
+2016-11-02 15:00:32 - Info - upload_max_filesize: 2M
+2016-11-02 15:00:32 - Info - post_max_size: 8M
+2016-11-02 15:00:32 - Info - max_file_uploads: 20
+2016-11-02 15:00:32 - Info - memory_limit is 134217728, ok.
+2016-11-02 15:00:32 - Info - session.save_path is: '/var/lib/php/sessions'.
+2016-11-02 15:00:32 - Ok - The current PHP Version (7.0.8-0ubuntu0.16.04.3) is greater than the minimum version required to run iTop, which is (5.3.6)
+2016-11-02 15:00:32 - Ok - Required PHP extension(s): dom, hash, iconv, json, mysqli, pcre, session, simplexml, soap, zip.
+2016-11-02 15:00:32 - Ok - Optional PHP extension(s): gd, ldap, mcrypt.
+2016-11-02 15:00:32 - Ok - Loaded php.ini files: /etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini
+2016-11-02 15:00:32 - Ok - The value for session.save_path (/var/lib/php/sessions) is writable for the web server.
+2016-11-02 15:00:33 - Info - CheckBackupPrerequisites
+2016-11-02 15:00:33 - Info - PHP functions disabled: pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,
+2016-11-02 15:00:33 - Info - mysqldump -V said: mysqldump  Ver 10.13 Distrib 5.7.16, for Linux (x86_64)
+2016-11-02 15:00:33 - Info - operation 'async_action', peak memory usage. 1964872
+2016-11-02 15:00:35 - Info - GetApplicationVersion returns: product_name: iTop, product_version: 2.1.0.2127
+2016-11-02 15:00:37 - Info - CheckGraphviz
+2016-11-02 15:00:37 - Info - PHP functions disabled: pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,
+2016-11-02 15:00:37 - Info - /usr/bin/dot -V said: dot - graphviz version 2.38.0 (20140413.2041)
+2016-11-02 15:00:37 - Info - operation 'async_action', peak memory usage. 1818216
+2016-11-02 15:00:53 - Info - ======= Installation starts =======
+Parameters:
+<?xml version="1.0" encoding="UTF-8"?>
+<installation>
+  <mode>upgrade</mode>
+  <preinstall>
+    <copies type="array"/>
+    <backup>
+      <destination>/var/www/html/data/iTop-backup-2016-11-02.zip</destination>
+      <configuration_file>/var/www/html//conf/production/config-itop.php</configuration_file>
+    </backup>
+  </preinstall>
+  <source_dir>datamodels/2.x/</source_dir>
+  <datamodel_version>2.3.0</datamodel_version>
+  <previous_configuration_file>/var/www/html//conf/production/config-itop.php</previous_configuration_file>
+  <extensions_dir>extensions</extensions_dir>
+  <target_env>production</target_env>
+  <workspace_dir></workspace_dir>
+  <database>
+    <server>mysql</server>
+    <user>itop</user>
+    <pwd>**removed**</pwd>
+    <name>itop</name>
+    <prefix></prefix>
+  </database>
+  <url>https://localhost:4430/</url>
+  <graphviz_path>/usr/bin/dot</graphviz_path>
+  <admin_account>
+    <user></user>
+    <pwd>**removed**</pwd>
+    <language></language>
+  </admin_account>
+  <language></language>
+  <selected_modules type="array">
+    <item>authent-external</item>
+    <item>authent-ldap</item>
+    <item>authent-local</item>
+    <item>combodo-email-synchro</item>
+    <item>itop-backup</item>
+    <item>itop-config</item>
+    <item>itop-profiles-itil</item>
+    <item>itop-sla-computation</item>
+    <item>itop-tickets</item>
+    <item>itop-welcome-itil</item>
+    <item>itop-config-mgmt</item>
+    <item>itop-attachments</item>
+    <item>itop-datacenter-mgmt</item>
+    <item>itop-endusers-devices</item>
+    <item>itop-storage-mgmt</item>
+    <item>itop-virtualization-mgmt</item>
+    <item>itop-bridge-virtualization-storage</item>
+    <item>itop-service-mgmt</item>
+    <item>itop-request-mgmt-itil</item>
+    <item>itop-incident-mgmt-itil</item>
+    <item>itop-portal</item>
+    <item>itop-portal-base</item>
+    <item>itop-full-itil</item>
+    <item>itop-change-mgmt-itil</item>
+    <item>itop-knownerror-mgmt</item>
+    <item>itop-problem-mgmt</item>
+    <item>email-reply</item>
+    <item>itop-standard-email-synchro</item>
+  </selected_modules>
+  <sample_data></sample_data>
+  <old_addon></old_addon>
+  <options type="array"/>
+</installation>
+
+
+2016-11-02 15:00:53 - Info - operation 'async_action', peak memory usage. 1830232
+2016-11-02 15:00:53 - Info - operation 'async_action', peak memory usage. 1816360
+2016-11-02 15:00:53 - Info - Data file: '/tmp/itop-dh0u8b'
+2016-11-02 15:00:53 - Info - Starting backup of mysql/itop(suffix:'')
+2016-11-02 15:00:53 - Info - Executing command: mysqldump --opt --default-character-set=utf8 --add-drop-database --single-transaction --host='mysql'  --user=xxxxx --password=xxxxx --result-file='/tmp/itop-dh0u8b' 'itop' 
+2016-11-02 15:00:54 - Info - mysqldump said: mysqldump: [Warning] Using a password on the command line interface can be insecure.
+2016-11-02 15:00:54 - Info - Archive: /var/www/html/data/iTop-backup-2016-11-02.zip created
+2016-11-02 15:00:54 - Info - operation 'async_action', peak memory usage. 1843008
+2016-11-02 15:00:54 - Info - Compiling data model.
+2016-11-02 15:00:59 - Info - Data model successfully compiled to '/var/www/html/env-production'.
+2016-11-02 15:00:59 - Info - operation 'async_action', peak memory usage. 17191416
+2016-11-02 15:00:59 - Info - Update Database Schema for environment 'production'.
+2016-11-02 15:00:59 - Info - MetaModel::Startup (ModelOnly = 1)
+2016-11-02 15:00:59 - Info - Renaming 'priv_internalUser' into 'priv_internaluser' (lowercase)
+2016-11-02 15:00:59 - Info - Renaming 'priv_internalUser' failed (already done in a previous upgrade?)
+2016-11-02 15:00:59 - Info - Cleanup of 'priv_change' to remove orphan records
+2016-11-02 15:00:59 - Info - There is a total of 1376 records in priv_change.
+2016-11-02 15:00:59 - Info - There are 2 useless records in priv_change (0.15%)
+2016-11-02 15:00:59 - Info - Removing the orphan records...
+2016-11-02 15:00:59 - Info - Cleanup completed successfully.
+2016-11-02 15:00:59 - Info - Calling Module Handler: AttachmentInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:00:59 - Info - No orphan attachment found.
+2016-11-02 15:00:59 - Info - Calling Module Handler: ConfigMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:00:59 - Info - Renaming class in DB - final class from 'DBserver' to 'DBServer': 0 rows affected
+2016-11-02 15:00:59 - Info - Renaming class in DB - final class from 'OSfamily' to 'OSFamily': 0 rows affected
+2016-11-02 15:00:59 - Info - Renaming class in DB - final class from 'OSversion' to 'OSVersion': 0 rows affected
+2016-11-02 15:00:59 - Info - Renaming class in DB - final class from 'Webserver' to 'WebServer': 0 rows affected
+2016-11-02 15:00:59 - Info - Renaming class in DB - final class from 'OSpatch' to 'OSPatch': 0 rows affected
+2016-11-02 15:00:59 - Info - Renaming class in DB - final class from 'OsLicence' to 'OSLicence': 0 rows affected
+2016-11-02 15:00:59 - Info - Renaming class in DB - final class from 'IOSversion' to 'IOSVersion': 0 rows affected
+2016-11-02 15:00:59 - Info - Renaming class in DB - final class from 'IPinterface' to 'IPInterface': 0 rows affected
+2016-11-02 15:00:59 - Info - Calling Module Handler: EndUserMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.2.0)
+2016-11-02 15:00:59 - Info - Renaming class in DB - final class from 'IpPhone' to 'IPPhone': 0 rows affected
+2016-11-02 15:00:59 - Info - Calling Module Handler: StorageMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.2.0)
+2016-11-02 15:00:59 - Info - Calling Module Handler: TicketsInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:00:59 - Info - Calling Module Handler: KnownErrorMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:00:59 - Info - Calling Module Handler: ServiceMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:00:59 - Info - Creating the structure in ''.
+2016-11-02 15:01:00 - Info - 0.285s - query: CREATE TABLE `priv_changeop_setatt_url` (`id` INT(11) NOT NULL  PRIMARY KEY, `oldvalue` VARCHAR(2048) DEFAULT '', `newvalue` VARCHAR(2048) DEFAULT '') ENGINE = innodb CHARACTER SET utf8 COLLATE utf8_unicode_ci 
+2016-11-02 15:01:00 - Info - 0.310s - query: CREATE TABLE `priv_changeop_setatt_html` (`id` INT(11) NOT NULL  PRIMARY KEY) ENGINE = innodb CHARACTER SET utf8 COLLATE utf8_unicode_ci 
+2016-11-02 15:01:00 - Info - 0.260s - query: CREATE TABLE `priv_changeop_setatt_custfields` (`id` INT(11) NOT NULL  PRIMARY KEY, `prevdata` LONGTEXT) ENGINE = innodb CHARACTER SET utf8 COLLATE utf8_unicode_ci 
+2016-11-02 15:01:00 - Info - 0.260s - query: CREATE TABLE `priv_event_restservice` (`id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, `operation` VARCHAR(255) DEFAULT '', `version` VARCHAR(255) DEFAULT '', `json_input` TEXT, `code` INT(11) DEFAULT 0, `json_output` TEXT, `provider` VARCHAR(255) DEFAULT '') ENGINE = innodb CHARACTER SET utf8 COLLATE utf8_unicode_ci 
+2016-11-02 15:01:01 - Info - 0.270s - query: CREATE TABLE `priv_bulk_export_result` (`id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, `created` DATETIME, `user_id` INT(11) DEFAULT 0, `chunk_size` INT(11) DEFAULT 0, `format` VARCHAR(255) DEFAULT '', `temp_file_path` VARCHAR(255) DEFAULT '', `search` LONGTEXT, `status_info` LONGTEXT) ENGINE = innodb CHARACTER SET utf8 COLLATE utf8_unicode_ci 
+2016-11-02 15:01:01 - Info - 0.410s - query: CREATE TABLE `priv_ownership_token` (`id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, `acquired` DATETIME, `last_seen` DATETIME, `obj_class` VARCHAR(255) DEFAULT '', `obj_key` INT(11), `token` VARCHAR(255) DEFAULT '', `user_id` INT(11) DEFAULT 0, INDEX (`user_id`)) ENGINE = innodb CHARACTER SET utf8 COLLATE utf8_unicode_ci 
+2016-11-02 15:01:02 - Info - 0.394s - query: CREATE TABLE `inline_image` (`id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, `expire` DATETIME, `temp_id` VARCHAR(255) DEFAULT '', `item_class` VARCHAR(255) DEFAULT '', `item_id` INT(11) DEFAULT 0, `item_org_id` INT(11) DEFAULT 0, `contents_data` LONGBLOB, `contents_mimetype` VARCHAR(255), `contents_filename` VARCHAR(255), `secret` VARCHAR(255) DEFAULT '', INDEX `temp_id` (`temp_id`), INDEX `item_class_item_id` (`item_class`, `item_id`), INDEX `item_org_id` (`item_org_id`)) ENGINE = innodb CHARACTER SET utf8 COLLATE utf8_unicode_ci 
+2016-11-02 15:01:02 - Info - 0.277s - query: CREATE TABLE `priv_changeop_attachment_added` (`id` INT(11) NOT NULL  PRIMARY KEY, `attachment_id` INT(11) DEFAULT 0, INDEX (`attachment_id`), `filename` VARCHAR(255) DEFAULT '') ENGINE = innodb CHARACTER SET utf8 COLLATE utf8_unicode_ci 
+2016-11-02 15:01:02 - Info - 0.285s - query: CREATE TABLE `priv_changeop_attachment_removed` (`id` INT(11) NOT NULL  PRIMARY KEY, `filename` VARCHAR(255) DEFAULT '') ENGINE = innodb CHARACTER SET utf8 COLLATE utf8_unicode_ci 
+2016-11-02 15:01:03 - Info - 0.521s - query: ALTER TABLE `priv_async_task` CHANGE `status` `status` ENUM('error','idle','planned','running') DEFAULT 'planned', CHANGE `event_id` `event_id` INT(11) DEFAULT 0, CHANGE `remaining_retries` `remaining_retries` INT(11) DEFAULT 0, CHANGE `last_error_code` `last_error_code` INT(11) DEFAULT 0, CHANGE `last_error` `last_error` VARCHAR(255) DEFAULT '', CHANGE `realclass` `realclass` VARCHAR(255) DEFAULT 'AsyncTask' 
+2016-11-02 15:01:03 - Info - 0.436s - query: ALTER TABLE `priv_async_send_email` CHANGE `version` `version` INT(11) DEFAULT 1, CHANGE `subject` `subject` TEXT, CHANGE `message` `message` LONGTEXT 
+2016-11-02 15:01:03 - Info - 0.411s - query: ALTER TABLE `priv_db_properties` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `description` `description` VARCHAR(255) DEFAULT '', CHANGE `value` `value` VARCHAR(255) DEFAULT '', CHANGE `change_comment` `change_comment` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:01:03 - Info - 0.034s - query: ALTER TABLE `priv_change` CHANGE `userinfo` `userinfo` VARCHAR(255) DEFAULT '', CHANGE `origin` `origin` ENUM('csv-import.php','csv-interactive','custom-extension','email-processing','interactive','synchro-data-source','webservice-rest','webservice-soap') DEFAULT 'interactive' 
+2016-11-02 15:01:08 - Info - 4.710s - query: ALTER TABLE `priv_changeop` CHANGE `changeid` `changeid` INT(11) DEFAULT 0, CHANGE `objclass` `objclass` VARCHAR(255) DEFAULT '', CHANGE `objkey` `objkey` INT(11) DEFAULT 0, CHANGE `optype` `optype` VARCHAR(255) DEFAULT 'CMDBChangeOp' 
+2016-11-02 15:01:09 - Info - 0.755s - query: ALTER TABLE `priv_changeop_delete` CHANGE `fclass` `fclass` VARCHAR(255) DEFAULT '', CHANGE `fname` `fname` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:01:10 - Info - 0.889s - query: ALTER TABLE `priv_changeop_setatt` CHANGE `attcode` `attcode` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:01:10 - Info - 0.034s - query: ALTER TABLE `priv_changeop_setatt_scalar` CHANGE `oldvalue` `oldvalue` VARCHAR(255) DEFAULT '', CHANGE `newvalue` `newvalue` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:01:12 - Info - 2.541s - query: ALTER TABLE `priv_changeop_setatt_data` CHANGE `prevdata_data` `prevdata_data` LONGBLOB, CHANGE `prevdata_mimetype` `prevdata_mimetype` VARCHAR(255), CHANGE `prevdata_filename` `prevdata_filename` VARCHAR(255) 
+2016-11-02 15:01:12 - Info - 0.042s - query: ALTER TABLE `priv_changeop_setatt_log` CHANGE `lastentry` `lastentry` INT(11) DEFAULT 0 
+2016-11-02 15:01:13 - Info - 0.611s - query: ALTER TABLE `priv_changeop_plugin` CHANGE `description` `description` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:01:14 - Info - 0.839s - query: ALTER TABLE `priv_changeop_links` CHANGE `item_class` `item_class` VARCHAR(255) DEFAULT '', CHANGE `item_id` `item_id` INT(11) DEFAULT 0 
+2016-11-02 15:01:15 - Info - 0.712s - query: ALTER TABLE `priv_changeop_links_addremove` CHANGE `type` `type` ENUM('added','removed') DEFAULT 'added' 
+2016-11-02 15:01:15 - Info - 0.563s - query: ALTER TABLE `priv_changeop_links_tune` CHANGE `link_id` `link_id` INT(11) DEFAULT 0 
+2016-11-02 15:01:17 - Info - 1.431s - query: ALTER TABLE `priv_user` CHANGE `contactid` `contactid` INT(11) DEFAULT 0, CHANGE `login` `login` VARCHAR(255) DEFAULT '', CHANGE `language` `language` VARCHAR(255) DEFAULT 'EN US', ADD `status` ENUM('disabled','enabled') DEFAULT 'enabled', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'User' 
+2016-11-02 15:01:17 - Info - 0.571s - query: ALTER TABLE `priv_internaluser` ADD `reset_pwd_token_hash` TINYBLOB, ADD `reset_pwd_token_salt` TINYBLOB 
+2016-11-02 15:01:18 - Info - 1.284s - query: ALTER TABLE `priv_module_install` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `version` `version` VARCHAR(255) DEFAULT '', CHANGE `parent_id` `parent_id` INT(11) DEFAULT 0 
+2016-11-02 15:01:19 - Info - 0.662s - query: ALTER TABLE `priv_app_dashboards` CHANGE `user_id` `user_id` INT(11) DEFAULT 0, CHANGE `menu_code` `menu_code` VARCHAR(255) DEFAULT '', CHANGE `contents` `contents` TEXT 
+2016-11-02 15:01:20 - Info - 0.764s - query: ALTER TABLE `priv_shortcut` CHANGE `user_id` `user_id` INT(11) DEFAULT 0, CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `context` `context` TEXT, CHANGE `realclass` `realclass` VARCHAR(255) DEFAULT 'Shortcut' 
+2016-11-02 15:01:20 - Info - 0.553s - query: ALTER TABLE `priv_shortcut_oql` CHANGE `oql` `oql` TEXT, CHANGE `auto_reload` `auto_reload` ENUM('custom','none') DEFAULT 'none', CHANGE `auto_reload_sec` `auto_reload_sec` INT(11) DEFAULT 60 
+2016-11-02 15:01:21 - Info - 0.996s - query: ALTER TABLE `priv_app_preferences` CHANGE `userid` `userid` INT(11) DEFAULT 0 
+2016-11-02 15:01:22 - Info - 0.438s - query: ALTER TABLE `priv_auditrule` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `description` `description` VARCHAR(255) DEFAULT '', CHANGE `query` `query` TEXT, CHANGE `valid_flag` `valid_flag` ENUM('false','true') DEFAULT 'true', CHANGE `category_id` `category_id` INT(11) DEFAULT 0 
+2016-11-02 15:01:22 - Info - 0.461s - query: ALTER TABLE `priv_auditcategory` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `description` `description` VARCHAR(255) DEFAULT '', CHANGE `definition_set` `definition_set` TEXT 
+2016-11-02 15:01:23 - Info - 0.544s - query: ALTER TABLE `priv_query` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `description` `description` TEXT, CHANGE `realclass` `realclass` VARCHAR(255) DEFAULT 'Query' 
+2016-11-02 15:01:23 - Info - 0.412s - query: ALTER TABLE `priv_query_oql` CHANGE `oql` `oql` TEXT 
+2016-11-02 15:01:24 - Info - 0.821s - query: ALTER TABLE `priv_event` CHANGE `message` `message` TEXT, CHANGE `userinfo` `userinfo` VARCHAR(255) DEFAULT '', CHANGE `realclass` `realclass` VARCHAR(255) DEFAULT 'Event' 
+2016-11-02 15:01:25 - Info - 0.923s - query: ALTER TABLE `priv_event_notification` CHANGE `trigger_id` `trigger_id` INT(11) DEFAULT 0, CHANGE `action_id` `action_id` INT(11) DEFAULT 0, CHANGE `object_id` `object_id` INT(11) DEFAULT 0 
+2016-11-02 15:01:26 - Info - 1.384s - query: ALTER TABLE `priv_event_issue` CHANGE `issue` `issue` VARCHAR(255) DEFAULT '', CHANGE `impact` `impact` VARCHAR(255) DEFAULT '', CHANGE `page` `page` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:01:27 - Info - 0.511s - query: ALTER TABLE `priv_event_webservice` CHANGE `verb` `verb` VARCHAR(255) DEFAULT '', CHANGE `result` `result` TINYINT(1) DEFAULT 0 
+2016-11-02 15:01:28 - Info - 0.622s - query: ALTER TABLE `priv_event_loginusage` CHANGE `user_id` `user_id` INT(11) DEFAULT 0 
+2016-11-02 15:01:28 - Info - 0.745s - query: ALTER TABLE `priv_action` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `description` `description` VARCHAR(255) DEFAULT '', CHANGE `status` `status` ENUM('test','enabled','disabled') DEFAULT 'test', CHANGE `realclass` `realclass` VARCHAR(255) DEFAULT 'Action' 
+2016-11-02 15:01:29 - Info - 0.612s - query: ALTER TABLE `priv_action_email` CHANGE `test_recipient` `test_recipient` VARCHAR(255) DEFAULT '', CHANGE `from` `from` VARCHAR(255) DEFAULT '', CHANGE `reply_to` `reply_to` VARCHAR(255) DEFAULT '', CHANGE `subject` `subject` VARCHAR(255) DEFAULT '', CHANGE `body` `body` TEXT, CHANGE `importance` `importance` ENUM('high','low','normal') DEFAULT 'normal' 
+2016-11-02 15:01:30 - Info - 0.631s - query: ALTER TABLE `priv_trigger` CHANGE `description` `description` VARCHAR(255) DEFAULT '', CHANGE `realclass` `realclass` VARCHAR(255) DEFAULT 'Trigger' 
+2016-11-02 15:01:30 - Info - 0.803s - query: ALTER TABLE `priv_trigger_onobject` CHANGE `target_class` `target_class` VARCHAR(255) DEFAULT 'ApplicationSolution' 
+2016-11-02 15:01:31 - Info - 1.117s - query: ALTER TABLE `priv_trigger_onstatechange` CHANGE `state` `state` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:01:32 - Info - 0.781s - query: ALTER TABLE `priv_link_action_trigger` CHANGE `action_id` `action_id` INT(11) DEFAULT 0, CHANGE `trigger_id` `trigger_id` INT(11) DEFAULT 0, CHANGE `order` `order` INT(11) DEFAULT 0 
+2016-11-02 15:01:33 - Info - 0.444s - query: ALTER TABLE `priv_trigger_threshold` CHANGE `stop_watch_code` `stop_watch_code` VARCHAR(255) DEFAULT '', CHANGE `threshold_index` `threshold_index` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:01:34 - Info - 0.873s - query: ALTER TABLE `priv_sync_datasource` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `description` `description` TEXT, CHANGE `status` `status` ENUM('implementation','obsolete','production') DEFAULT 'implementation', CHANGE `user_id` `user_id` INT(11) DEFAULT 0, CHANGE `notify_contact_id` `notify_contact_id` INT(11) DEFAULT 0, CHANGE `scope_class` `scope_class` VARCHAR(255) DEFAULT 'ApplicationSolution', CHANGE `database_table_name` `database_table_name` VARCHAR(255) DEFAULT '', CHANGE `scope_restriction` `scope_restriction` VARCHAR(255) DEFAULT '', CHANGE `reconciliation_policy` `reconciliation_policy` ENUM('use_attributes','use_primary_key') DEFAULT 'use_attributes', CHANGE `action_on_zero` `action_on_zero` ENUM('create','error') DEFAULT 'create', CHANGE `action_on_one` `action_on_one` ENUM('error','update') DEFAULT 'update', CHANGE `action_on_multiple` `action_on_multiple` ENUM('create','error','take_first') DEFAULT 'error', CHANGE `delete_policy` `delete_policy` ENUM('delete','ignore','update','update_then_delete') DEFAULT 'ignore', CHANGE `delete_policy_update` `delete_policy_update` VARCHAR(255) DEFAULT '', CHANGE `user_delete_policy` `user_delete_policy` ENUM('administrators','everybody','nobody') DEFAULT 'nobody', CHANGE `url_icon` `url_icon` VARCHAR(2048) DEFAULT '', CHANGE `url_application` `url_application` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:01:34 - Info - 0.645s - query: ALTER TABLE `priv_sync_att` CHANGE `sync_source_id` `sync_source_id` INT(11) DEFAULT 0, CHANGE `attcode` `attcode` VARCHAR(255) DEFAULT '', CHANGE `update` `update` TINYINT(1) DEFAULT 1, CHANGE `reconcile` `reconcile` TINYINT(1) DEFAULT 0, CHANGE `update_policy` `update_policy` ENUM('master_locked','master_unlocked','write_if_empty') DEFAULT 'master_locked', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'SynchroAttribute' 
+2016-11-02 15:01:34 - Info - 0.034s - query: ALTER TABLE `priv_sync_att_extkey` CHANGE `reconciliation_attcode` `reconciliation_attcode` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:01:34 - Info - 0.042s - query: ALTER TABLE `priv_sync_att_linkset` CHANGE `row_separator` `row_separator` VARCHAR(255) DEFAULT '|', CHANGE `attribute_separator` `attribute_separator` VARCHAR(255) DEFAULT ';', CHANGE `value_separator` `value_separator` VARCHAR(255) DEFAULT ':', CHANGE `attribute_qualifier` `attribute_qualifier` VARCHAR(255) DEFAULT '\'' 
+2016-11-02 15:01:35 - Info - 0.594s - query: ALTER TABLE `priv_sync_log` CHANGE `sync_source_id` `sync_source_id` INT(11) DEFAULT 0, CHANGE `status` `status` ENUM('completed','error','running') DEFAULT 'running', CHANGE `status_curr_job` `status_curr_job` INT(11) DEFAULT 0, CHANGE `status_curr_pos` `status_curr_pos` INT(11) DEFAULT 0, CHANGE `stats_nb_replica_seen` `stats_nb_replica_seen` INT(11) DEFAULT 0, CHANGE `stats_nb_replica_total` `stats_nb_replica_total` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_deleted` `stats_nb_obj_deleted` INT(11) DEFAULT 0, CHANGE `stats_deleted_errors` `stats_deleted_errors` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_obsoleted` `stats_nb_obj_obsoleted` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_obsoleted_errors` `stats_nb_obj_obsoleted_errors` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_created` `stats_nb_obj_created` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_created_errors` `stats_nb_obj_created_errors` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_created_warnings` `stats_nb_obj_created_warnings` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_updated` `stats_nb_obj_updated` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_updated_errors` `stats_nb_obj_updated_errors` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_updated_warnings` `stats_nb_obj_updated_warnings` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_unchanged_warnings` `stats_nb_obj_unchanged_warnings` INT(11) DEFAULT 0, CHANGE `stats_nb_replica_reconciled_errors` `stats_nb_replica_reconciled_errors` INT(11) DEFAULT 0, CHANGE `stats_nb_replica_disappeared_no_action` `stats_nb_replica_disappeared_no_action` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_new_updated` `stats_nb_obj_new_updated` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_new_updated_warnings` `stats_nb_obj_new_updated_warnings` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_new_unchanged` `stats_nb_obj_new_unchanged` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_new_unchanged_warnings` `stats_nb_obj_new_unchanged_warnings` INT(11) DEFAULT 0, CHANGE `memory_usage_peak` `memory_usage_peak` INT(11) DEFAULT 0 
+2016-11-02 15:01:35 - Info - 0.589s - query: ALTER TABLE `priv_sync_replica` CHANGE `sync_source_id` `sync_source_id` INT(11) DEFAULT 0, CHANGE `dest_id` `dest_id` INT(11) DEFAULT 0, CHANGE `dest_class` `dest_class` VARCHAR(255) DEFAULT 'Organization', CHANGE `status` `status` ENUM('modified','new','obsolete','orphan','synchronized') DEFAULT 'new', CHANGE `status_dest_creator` `status_dest_creator` TINYINT(1) DEFAULT 0, CHANGE `status_last_error` `status_last_error` VARCHAR(255) DEFAULT '', CHANGE `status_last_warning` `status_last_warning` VARCHAR(255) DEFAULT '', ADD INDEX `dest_class_dest_id` (`dest_class`, `dest_id`) 
+2016-11-02 15:01:36 - Info - 0.653s - query: ALTER TABLE `priv_backgroundtask` CHANGE `class_name` `class_name` VARCHAR(255) DEFAULT '', CHANGE `total_exec_count` `total_exec_count` INT(11) DEFAULT 0, CHANGE `latest_run_duration` `latest_run_duration` DECIMAL(8,3) DEFAULT 0, CHANGE `min_run_duration` `min_run_duration` DECIMAL(8,3) DEFAULT 0, CHANGE `max_run_duration` `max_run_duration` DECIMAL(8,3) DEFAULT 0, CHANGE `average_run_duration` `average_run_duration` DECIMAL(8,3) DEFAULT 0, CHANGE `running` `running` TINYINT(1) DEFAULT 0, CHANGE `status` `status` ENUM('active','paused') DEFAULT 'active' 
+2016-11-02 15:01:37 - Info - 0.555s - query: ALTER TABLE `priv_user_local` CHANGE `password_hash` `password_hash` TINYBLOB, CHANGE `password_salt` `password_salt` TINYBLOB 
+2016-11-02 15:01:37 - Info - 0.561s - query: ALTER TABLE `email_replica` CHANGE `ticket_id` `ticket_id` INT(11) DEFAULT 0, CHANGE `uidl` `uidl` VARCHAR(255) DEFAULT '', CHANGE `message_id` `message_id` VARCHAR(255) DEFAULT '', CHANGE `status` `status` ENUM('error','ok') DEFAULT 'ok' 
+2016-11-02 15:01:38 - Info - 0.594s - query: ALTER TABLE `mailinbox_base` CHANGE `server` `server` VARCHAR(255) DEFAULT '', CHANGE `mailbox` `mailbox` VARCHAR(255) DEFAULT '', CHANGE `login` `login` VARCHAR(255) DEFAULT '', CHANGE `password` `password` VARCHAR(64) DEFAULT '', CHANGE `protocol` `protocol` ENUM('imap','pop3') DEFAULT 'pop3', CHANGE `active` `active` ENUM('no','yes') DEFAULT 'yes', CHANGE `realclass` `realclass` VARCHAR(255) DEFAULT 'MailInboxBase' 
+2016-11-02 15:01:39 - Info - 0.655s - query: ALTER TABLE `priv_trigger_onlogupdate` CHANGE `target_log` `target_log` VARCHAR(255) DEFAULT 'public_log' 
+2016-11-02 15:01:39 - Info - 0.982s - query: ALTER TABLE `attachment` CHANGE `temp_id` `temp_id` VARCHAR(255) DEFAULT '', CHANGE `item_class` `item_class` VARCHAR(255) DEFAULT '', CHANGE `item_id` `item_id` INT(11) DEFAULT 0, CHANGE `item_org_id` `item_org_id` INT(11) DEFAULT 0, CHANGE `contents_data` `contents_data` LONGBLOB, CHANGE `contents_mimetype` `contents_mimetype` VARCHAR(255), CHANGE `contents_filename` `contents_filename` VARCHAR(255) 
+2016-11-02 15:01:40 - Info - 0.956s - query: ALTER TABLE `organization` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `code` `code` VARCHAR(255) DEFAULT '', CHANGE `status` `status` ENUM('active','inactive') DEFAULT 'active', CHANGE `parent_id` `parent_id` INT(11) DEFAULT 0, CHANGE `parent_id_left` `parent_id_left` INT(11) DEFAULT 0, CHANGE `parent_id_right` `parent_id_right` INT(11) DEFAULT 0, CHANGE `deliverymodel_id` `deliverymodel_id` INT(11) DEFAULT 0 
+2016-11-02 15:01:41 - Info - 0.722s - query: ALTER TABLE `location` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `status` `status` ENUM('active','inactive') DEFAULT 'active', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `postal_code` `postal_code` VARCHAR(255) DEFAULT '', CHANGE `city` `city` VARCHAR(255) DEFAULT '', CHANGE `country` `country` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:01:42 - Info - 0.771s - query: ALTER TABLE `contact` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `status` `status` ENUM('active','inactive') DEFAULT 'active', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `email` `email` VARCHAR(255) DEFAULT '', CHANGE `phone` `phone` VARCHAR(255) DEFAULT '', CHANGE `notify` `notify` ENUM('no','yes') DEFAULT 'yes', CHANGE `function` `function` VARCHAR(255) DEFAULT '', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'Contact' 
+2016-11-02 15:01:43 - Info - 0.739s - query: ALTER TABLE `person` ADD `picture_data` LONGBLOB, ADD `picture_mimetype` VARCHAR(255), ADD `picture_filename` VARCHAR(255), CHANGE `first_name` `first_name` VARCHAR(255) DEFAULT '', CHANGE `employee_number` `employee_number` VARCHAR(255) DEFAULT '', CHANGE `mobile_phone` `mobile_phone` VARCHAR(255) DEFAULT '', CHANGE `location_id` `location_id` INT(11) DEFAULT 0, CHANGE `manager_id` `manager_id` INT(11) DEFAULT 0 
+2016-11-02 15:01:44 - Info - 0.946s - query: ALTER TABLE `document` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `documenttype_id` `documenttype_id` INT(11) DEFAULT 0, CHANGE `version` `version` VARCHAR(255) DEFAULT '', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'Document' 
+2016-11-02 15:01:50 - Info - 6.359s - query: ALTER TABLE `documentfile` CHANGE `file_data` `file_data` LONGBLOB, CHANGE `file_mimetype` `file_mimetype` VARCHAR(255), CHANGE `file_filename` `file_filename` VARCHAR(255) 
+2016-11-02 15:01:51 - Info - 0.521s - query: ALTER TABLE `documentnote` CHANGE `text` `text` LONGTEXT 
+2016-11-02 15:01:51 - Info - 0.076s - query: ALTER TABLE `documentweb` CHANGE `url` `url` VARCHAR(2048) DEFAULT '' 
+2016-11-02 15:01:52 - Info - 1.023s - query: ALTER TABLE `functionalci` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `business_criticity` `business_criticity` ENUM('high','low','medium') DEFAULT 'low', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'FunctionalCI' 
+2016-11-02 15:01:52 - Info - 0.042s - query: ALTER TABLE `physicaldevice` CHANGE `serialnumber` `serialnumber` VARCHAR(255) DEFAULT '', CHANGE `location_id` `location_id` INT(11) DEFAULT 0, CHANGE `status` `status` ENUM('implementation','obsolete','production','stock') DEFAULT 'production', CHANGE `brand_id` `brand_id` INT(11) DEFAULT 0, CHANGE `model_id` `model_id` INT(11) DEFAULT 0, CHANGE `asset_number` `asset_number` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:01:53 - Info - 0.952s - query: ALTER TABLE `datacenterdevice` CHANGE `rack_id` `rack_id` INT(11) DEFAULT 0, CHANGE `enclosure_id` `enclosure_id` INT(11) DEFAULT 0, CHANGE `managementip` `managementip` VARCHAR(255) DEFAULT '', CHANGE `powera_id` `powera_id` INT(11) DEFAULT 0, CHANGE `powerB_id` `powerB_id` INT(11) DEFAULT 0, ADD `redundancy` VARCHAR(20) DEFAULT 1 
+2016-11-02 15:01:53 - Info - 0.691s - query: ALTER TABLE `networkdevice` CHANGE `networkdevicetype_id` `networkdevicetype_id` INT(11) DEFAULT 0, CHANGE `iosversion_id` `iosversion_id` INT(11) DEFAULT 0, CHANGE `ram` `ram` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:01:53 - Info - 0.042s - query: ALTER TABLE `server` CHANGE `osfamily_id` `osfamily_id` INT(11) DEFAULT 0, CHANGE `osversion_id` `osversion_id` INT(11) DEFAULT 0, CHANGE `oslicence_id` `oslicence_id` INT(11) DEFAULT 0, CHANGE `cpu` `cpu` VARCHAR(255) DEFAULT '', CHANGE `ram` `ram` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:01:54 - Info - 0.755s - query: ALTER TABLE `applicationsolution` CHANGE `status` `status` ENUM('active','inactive') DEFAULT 'active', ADD `redundancy` VARCHAR(20) DEFAULT 'disabled' 
+2016-11-02 15:01:54 - Info - 0.034s - query: ALTER TABLE `businessprocess` CHANGE `status` `status` ENUM('active','inactive') DEFAULT 'active' 
+2016-11-02 15:01:55 - Info - 0.856s - query: ALTER TABLE `softwareinstance` CHANGE `functionalci_id` `functionalci_id` INT(11) DEFAULT 0, CHANGE `software_id` `software_id` INT(11) DEFAULT 0, CHANGE `softwarelicence_id` `softwarelicence_id` INT(11) DEFAULT 0, CHANGE `path` `path` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:01:55 - Info - 0.461s - query: ALTER TABLE `middlewareinstance` CHANGE `middleware_id` `middleware_id` INT(11) DEFAULT 0 
+2016-11-02 15:01:56 - Info - 0.672s - query: ALTER TABLE `databaseschema` CHANGE `dbserver_id` `dbserver_id` INT(11) DEFAULT 0 
+2016-11-02 15:01:57 - Info - 0.454s - query: ALTER TABLE `webapplication` CHANGE `webserver_id` `webserver_id` INT(11) DEFAULT 0, CHANGE `url` `url` VARCHAR(2048) DEFAULT '' 
+2016-11-02 15:01:57 - Info - 0.705s - query: ALTER TABLE `software` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `vendor` `vendor` VARCHAR(255) DEFAULT '', CHANGE `version` `version` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:01:58 - Info - 0.687s - query: ALTER TABLE `patch` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'Patch' 
+2016-11-02 15:01:59 - Info - 0.655s - query: ALTER TABLE `ospatch` CHANGE `osversion_id` `osversion_id` INT(11) DEFAULT 0 
+2016-11-02 15:01:59 - Info - 0.662s - query: ALTER TABLE `softwarepatch` CHANGE `software_id` `software_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:00 - Info - 0.798s - query: ALTER TABLE `licence` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `usage_limit` `usage_limit` VARCHAR(255) DEFAULT '', CHANGE `licence_key` `licence_key` VARCHAR(255) DEFAULT '', CHANGE `perpetual` `perpetual` ENUM('no','yes') DEFAULT 'no', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'Licence' 
+2016-11-02 15:02:01 - Info - 0.904s - query: ALTER TABLE `oslicence` CHANGE `osversion_id` `osversion_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:02 - Info - 0.873s - query: ALTER TABLE `softwarelicence` CHANGE `software_id` `software_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:03 - Info - 0.754s - query: ALTER TABLE `lnkdocumenttolicence` CHANGE `licence_id` `licence_id` INT(11) DEFAULT 0, CHANGE `document_id` `document_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:03 - Info - 0.748s - query: ALTER TABLE `typology` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'Typology' 
+2016-11-02 15:02:04 - Info - 0.753s - query: ALTER TABLE `osversion` CHANGE `osfamily_id` `osfamily_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:05 - Info - 0.655s - query: ALTER TABLE `model` CHANGE `brand_id` `brand_id` INT(11) DEFAULT 0, CHANGE `type` `type` ENUM('DiskArray','Enclosure','IPPhone','MobilePhone','NAS','NetworkDevice','PC','PDU','Peripheral','Phone','PowerSource','Printer','Rack','SANSwitch','Server','StorageSystem','Tablet','TapeLibrary') 
+2016-11-02 15:02:05 - Info - 0.595s - query: ALTER TABLE `iosversion` CHANGE `brand_id` `brand_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:06 - Info - 0.645s - query: ALTER TABLE `lnkdocumenttopatch` CHANGE `patch_id` `patch_id` INT(11) DEFAULT 0, CHANGE `document_id` `document_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:07 - Info - 0.530s - query: ALTER TABLE `lnksoftwareinstancetosoftwarepatch` CHANGE `softwarepatch_id` `softwarepatch_id` INT(11) DEFAULT 0, CHANGE `softwareinstance_id` `softwareinstance_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:07 - Info - 0.620s - query: ALTER TABLE `lnkfunctionalcitoospatch` CHANGE `ospatch_id` `ospatch_id` INT(11) DEFAULT 0, CHANGE `functionalci_id` `functionalci_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:08 - Info - 0.513s - query: ALTER TABLE `lnkdocumenttosoftware` CHANGE `software_id` `software_id` INT(11) DEFAULT 0, CHANGE `document_id` `document_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:08 - Info - 0.829s - query: ALTER TABLE `lnkcontacttofunctionalci` CHANGE `functionalci_id` `functionalci_id` INT(11) DEFAULT 0, CHANGE `contact_id` `contact_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:09 - Info - 0.781s - query: ALTER TABLE `lnkdocumenttofunctionalci` CHANGE `functionalci_id` `functionalci_id` INT(11) DEFAULT 0, CHANGE `document_id` `document_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:10 - Info - 0.503s - query: ALTER TABLE `subnet` CHANGE `subnet_name` `subnet_name` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `ip` `ip` VARCHAR(255) DEFAULT '', CHANGE `ip_mask` `ip_mask` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:10 - Info - 0.528s - query: ALTER TABLE `vlan` CHANGE `vlan_tag` `vlan_tag` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:11 - Info - 0.538s - query: ALTER TABLE `lnksubnettovlan` CHANGE `subnet_id` `subnet_id` INT(11) DEFAULT 0, CHANGE `vlan_id` `vlan_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:11 - Info - 0.552s - query: ALTER TABLE `networkinterface` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'NetworkInterface' 
+2016-11-02 15:02:11 - Info - 0.042s - query: ALTER TABLE `ipinterface` CHANGE `ipaddress` `ipaddress` VARCHAR(255) DEFAULT '', CHANGE `macaddress` `macaddress` VARCHAR(255) DEFAULT '', CHANGE `ipgateway` `ipgateway` VARCHAR(255) DEFAULT '', CHANGE `ipmask` `ipmask` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:12 - Info - 0.553s - query: ALTER TABLE `physicalinterface` CHANGE `connectableci_id` `connectableci_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:13 - Info - 0.588s - query: ALTER TABLE `lnkphysicalinterfacetovlan` CHANGE `physicalinterface_id` `physicalinterface_id` INT(11) DEFAULT 0, CHANGE `vlan_id` `vlan_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:13 - Info - 0.637s - query: ALTER TABLE `lnkconnectablecitonetworkdevice` CHANGE `networkdevice_id` `networkdevice_id` INT(11) DEFAULT 0, CHANGE `connectableci_id` `connectableci_id` INT(11) DEFAULT 0, CHANGE `network_port` `network_port` VARCHAR(255) DEFAULT '', CHANGE `device_port` `device_port` VARCHAR(255) DEFAULT '', CHANGE `type` `type` ENUM('downlink','uplink') DEFAULT 'downlink' 
+2016-11-02 15:02:14 - Info - 0.806s - query: ALTER TABLE `lnkapplicationsolutiontofunctionalci` CHANGE `applicationsolution_id` `applicationsolution_id` INT(11) DEFAULT 0, CHANGE `functionalci_id` `functionalci_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:15 - Info - 0.713s - query: ALTER TABLE `lnkapplicationsolutiontobusinessprocess` CHANGE `businessprocess_id` `businessprocess_id` INT(11) DEFAULT 0, CHANGE `applicationsolution_id` `applicationsolution_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:16 - Info - 0.957s - query: ALTER TABLE `lnkpersontoteam` CHANGE `team_id` `team_id` INT(11) DEFAULT 0, CHANGE `person_id` `person_id` INT(11) DEFAULT 0, CHANGE `role_id` `role_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:16 - Info - 0.796s - query: ALTER TABLE `group` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `status` `status` ENUM('implementation','obsolete','production') DEFAULT 'implementation', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `type` `type` VARCHAR(255) DEFAULT '', CHANGE `parent_id` `parent_id` INT(11) DEFAULT 0, CHANGE `parent_id_left` `parent_id_left` INT(11) DEFAULT 0, CHANGE `parent_id_right` `parent_id_right` INT(11) DEFAULT 0 
+2016-11-02 15:02:17 - Info - 0.571s - query: ALTER TABLE `lnkgrouptoci` CHANGE `group_id` `group_id` INT(11) DEFAULT 0, CHANGE `ci_id` `ci_id` INT(11) DEFAULT 0, CHANGE `reason` `reason` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:18 - Info - 0.528s - query: ALTER TABLE `enclosure` CHANGE `rack_id` `rack_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:18 - Info - 0.546s - query: ALTER TABLE `pdu` CHANGE `rack_id` `rack_id` INT(11) DEFAULT 0, CHANGE `powerstart_id` `powerstart_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:18 - Info - 0.043s - query: ALTER TABLE `pc` CHANGE `osfamily_id` `osfamily_id` INT(11) DEFAULT 0, CHANGE `osversion_id` `osversion_id` INT(11) DEFAULT 0, CHANGE `cpu` `cpu` VARCHAR(255) DEFAULT '', CHANGE `ram` `ram` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:18 - Info - 0.042s - query: ALTER TABLE `telephonyci` CHANGE `phonenumber` `phonenumber` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:18 - Info - 0.042s - query: ALTER TABLE `mobilephone` CHANGE `imei` `imei` VARCHAR(255) DEFAULT '', CHANGE `hw_pin` `hw_pin` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:19 - Info - 0.477s - query: ALTER TABLE `mailinbox_standard` CHANGE `behavior` `behavior` ENUM('both','create_only','update_only') DEFAULT 'both', CHANGE `target_class` `target_class` ENUM('Change','EmergencyChange','Incident','NormalChange','Problem','RoutineChange','UserRequest') DEFAULT 'UserRequest', CHANGE `ticket_default_title` `ticket_default_title` VARCHAR(255) DEFAULT '', CHANGE `title_pattern` `title_pattern` VARCHAR(255) DEFAULT '', CHANGE `unknown_caller_behavior` `unknown_caller_behavior` ENUM('create_contact','reject_email') DEFAULT 'reject_email', CHANGE `error_behavior` `error_behavior` ENUM('delete','mark_as_error') DEFAULT 'mark_as_error', CHANGE `notify_errors_to` `notify_errors_to` VARCHAR(255) DEFAULT '', CHANGE `notify_errors_from` `notify_errors_from` VARCHAR(255) DEFAULT '', CHANGE `trace` `trace` ENUM('no','yes') DEFAULT 'no', CHANGE `email_storage` `email_storage` ENUM('delete','keep') DEFAULT 'keep' 
+2016-11-02 15:02:19 - Info - 0.562s - query: ALTER TABLE `fiberchannelinterface` CHANGE `topology` `topology` VARCHAR(255) DEFAULT '', CHANGE `wwn` `wwn` VARCHAR(255) DEFAULT '', CHANGE `datacenterdevice_id` `datacenterdevice_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:20 - Info - 0.551s - query: ALTER TABLE `tape` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `size` `size` VARCHAR(255) DEFAULT '', CHANGE `tapelibrary_id` `tapelibrary_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:20 - Info - 0.573s - query: ALTER TABLE `nasfilesystem` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `raid_level` `raid_level` VARCHAR(255) DEFAULT '', CHANGE `size` `size` VARCHAR(255) DEFAULT '', CHANGE `nas_id` `nas_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:21 - Info - 1.057s - query: ALTER TABLE `logicalvolume` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `lun_id` `lun_id` VARCHAR(255) DEFAULT '', CHANGE `raid_level` `raid_level` VARCHAR(255) DEFAULT '', CHANGE `size` `size` VARCHAR(255) DEFAULT '', CHANGE `storagesystem_id` `storagesystem_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:22 - Info - 0.636s - query: ALTER TABLE `lnkservertovolume` CHANGE `volume_id` `volume_id` INT(11) DEFAULT 0, CHANGE `server_id` `server_id` INT(11) DEFAULT 0, CHANGE `size_used` `size_used` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:23 - Info - 0.513s - query: ALTER TABLE `lnkdatacenterdevicetosan` CHANGE `san_id` `san_id` INT(11) DEFAULT 0, CHANGE `datacenterdevice_id` `datacenterdevice_id` INT(11) DEFAULT 0, CHANGE `san_port` `san_port` VARCHAR(255) DEFAULT '', CHANGE `datacenterdevice_port` `datacenterdevice_port` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:24 - Info - 1.090s - query: ALTER TABLE `ticket` ADD `operational_status` ENUM('closed','ongoing','resolved') DEFAULT 'ongoing', ADD INDEX (`operational_status`), CHANGE `ref` `ref` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `caller_id` `caller_id` INT(11) DEFAULT 0, CHANGE `team_id` `team_id` INT(11) DEFAULT 0, CHANGE `agent_id` `agent_id` INT(11) DEFAULT 0, CHANGE `title` `title` VARCHAR(255) DEFAULT '', CHANGE `description` `description` TEXT, ADD `description_format` ENUM('text','html') DEFAULT 'text', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'Ticket' 
+2016-11-02 15:02:24 - Info - 0.771s - query: ALTER TABLE `lnkcontacttoticket` CHANGE `ticket_id` `ticket_id` INT(11) DEFAULT 0, CHANGE `contact_id` `contact_id` INT(11) DEFAULT 0, CHANGE `role` `role` VARCHAR(255) DEFAULT '', ADD `impact_code` ENUM('computed','do_not_notify','manual') DEFAULT 'manual' 
+2016-11-02 15:02:25 - Info - 0.896s - query: ALTER TABLE `lnkfunctionalcitoticket` CHANGE `ticket_id` `ticket_id` INT(11) DEFAULT 0, CHANGE `functionalci_id` `functionalci_id` INT(11) DEFAULT 0, CHANGE `impact` `impact` VARCHAR(255) DEFAULT '', ADD `impact_code` ENUM('computed','manual','not_impacted') DEFAULT 'manual' 
+2016-11-02 15:02:26 - Info - 0.816s - query: ALTER TABLE `workorder` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `status` `status` ENUM('closed','open') DEFAULT 'open', CHANGE `description` `description` TEXT, CHANGE `ticket_id` `ticket_id` INT(11) DEFAULT 0, CHANGE `team_id` `team_id` INT(11) DEFAULT 0, CHANGE `owner_id` `owner_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:26 - Info - 0.042s - query: ALTER TABLE `virtualdevice` CHANGE `status` `status` ENUM('implementation','obsolete','production','stock') DEFAULT 'production' 
+2016-11-02 15:02:26 - Info - 0.034s - query: ALTER TABLE `hypervisor` CHANGE `farm_id` `farm_id` INT(11) DEFAULT 0, CHANGE `server_id` `server_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:27 - Info - 0.469s - query: ALTER TABLE `farm` ADD `redundancy` VARCHAR(20) DEFAULT 1 
+2016-11-02 15:02:28 - Info - 1.048s - query: ALTER TABLE `virtualmachine` CHANGE `virtualhost_id` `virtualhost_id` INT(11) DEFAULT 0, CHANGE `osfamily_id` `osfamily_id` INT(11) DEFAULT 0, CHANGE `osversion_id` `osversion_id` INT(11) DEFAULT 0, CHANGE `oslicence_id` `oslicence_id` INT(11) DEFAULT 0, CHANGE `cpu` `cpu` VARCHAR(255) DEFAULT '', CHANGE `ram` `ram` VARCHAR(255) DEFAULT '', CHANGE `managementip` `managementip` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:28 - Info - 0.554s - query: ALTER TABLE `logicalinterface` CHANGE `virtualmachine_id` `virtualmachine_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:29 - Info - 0.562s - query: ALTER TABLE `lnkvirtualdevicetovolume` CHANGE `volume_id` `volume_id` INT(11) DEFAULT 0, CHANGE `virtualdevice_id` `virtualdevice_id` INT(11) DEFAULT 0, CHANGE `size_used` `size_used` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:30 - Info - 1.327s - query: ALTER TABLE `change` CHANGE `status` `status` ENUM('approved','assigned','closed','implemented','monitored','new','notapproved','plannedscheduled','rejected','validated') DEFAULT 'new', CHANGE `reason` `reason` VARCHAR(255) DEFAULT '', CHANGE `requestor_id` `requestor_id` INT(11) DEFAULT 0, CHANGE `impact` `impact` VARCHAR(255) DEFAULT '', CHANGE `supervisor_group_id` `supervisor_group_id` INT(11) DEFAULT 0, CHANGE `supervisor_id` `supervisor_id` INT(11) DEFAULT 0, CHANGE `manager_group_id` `manager_group_id` INT(11) DEFAULT 0, CHANGE `manager_id` `manager_id` INT(11) DEFAULT 0, CHANGE `outage` `outage` ENUM('no','yes') DEFAULT 'no', CHANGE `parent_id` `parent_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:30 - Info - 0.034s - query: ALTER TABLE `change_approved` CHANGE `approval_comment` `approval_comment` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:31 - Info - 1.048s - query: ALTER TABLE `ticket_incident` CHANGE `status` `status` ENUM('assigned','closed','escalated_tto','escalated_ttr','new','pending','resolved') DEFAULT 'new', CHANGE `impact` `impact` ENUM('1','2','3') DEFAULT '1', CHANGE `priority` `priority` ENUM('1','2','3','4') DEFAULT '4', CHANGE `urgency` `urgency` ENUM('1','2','3','4') DEFAULT '4', CHANGE `origin` `origin` ENUM('mail','monitoring','phone','portal') DEFAULT 'phone', CHANGE `service_id` `service_id` INT(11) DEFAULT 0, CHANGE `servicesubcategory_id` `servicesubcategory_id` INT(11) DEFAULT 0, CHANGE `escalation_flag` `escalation_flag` ENUM('no','yes') DEFAULT 'no', CHANGE `escalation_reason` `escalation_reason` VARCHAR(255) DEFAULT '', CHANGE `resolution_code` `resolution_code` ENUM('assistance','bug fixed','hardware repair','other','software patch','system update','training') DEFAULT 'assistance', CHANGE `parent_incident_id` `parent_incident_id` INT(11) DEFAULT 0, CHANGE `parent_problem_id` `parent_problem_id` INT(11) DEFAULT 0, CHANGE `parent_change_id` `parent_change_id` INT(11) DEFAULT 0, CHANGE `user_satisfaction` `user_satisfaction` ENUM('1','2','3','4') DEFAULT '1' 
+2016-11-02 15:02:32 - Info - 0.595s - query: ALTER TABLE `knownerror` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `cust_id` `cust_id` INT(11) DEFAULT 0, CHANGE `problem_id` `problem_id` INT(11) DEFAULT 0, CHANGE `symptom` `symptom` TEXT, CHANGE `error_code` `error_code` VARCHAR(255) DEFAULT '', CHANGE `domain` `domain` ENUM('Application','Desktop','Network','Server') DEFAULT 'Application', CHANGE `vendor` `vendor` VARCHAR(255) DEFAULT '', CHANGE `model` `model` VARCHAR(255) DEFAULT '', CHANGE `version` `version` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:32 - Info - 0.511s - query: ALTER TABLE `lnkerrortofunctionalci` CHANGE `functionalci_id` `functionalci_id` INT(11) DEFAULT 0, CHANGE `error_id` `error_id` INT(11) DEFAULT 0, CHANGE `dummy` `dummy` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:33 - Info - 0.570s - query: ALTER TABLE `lnkdocumenttoerror` CHANGE `document_id` `document_id` INT(11) DEFAULT 0, CHANGE `error_id` `error_id` INT(11) DEFAULT 0, CHANGE `link_type` `link_type` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:33 - Info - 0.505s - query: ALTER TABLE `faq` CHANGE `title` `title` VARCHAR(255) DEFAULT '', CHANGE `category_id` `category_id` INT(11) DEFAULT 0, CHANGE `error_code` `error_code` VARCHAR(255) DEFAULT '', CHANGE `key_words` `key_words` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:34 - Info - 0.453s - query: ALTER TABLE `faqcategory` CHANGE `nam` `nam` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:35 - Info - 0.597s - query: ALTER TABLE `ticket_problem` CHANGE `status` `status` ENUM('assigned','closed','new','resolved') DEFAULT 'new', CHANGE `service_id` `service_id` INT(11) DEFAULT 0, CHANGE `servicesubcategory_id` `servicesubcategory_id` INT(11) DEFAULT 0, CHANGE `product` `product` VARCHAR(255) DEFAULT '', CHANGE `impact` `impact` ENUM('1','2','3') DEFAULT '1', CHANGE `urgency` `urgency` ENUM('1','2','3','4') DEFAULT '1', CHANGE `priority` `priority` ENUM('1','2','3','4') DEFAULT '1', CHANGE `related_change_id` `related_change_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:36 - Info - 1.241s - query: ALTER TABLE `ticket_request` CHANGE `status` `status` ENUM('approved','assigned','closed','escalated_tto','escalated_ttr','new','pending','rejected','resolved','waiting_for_approval') DEFAULT 'new', CHANGE `request_type` `request_type` ENUM('service_request') DEFAULT 'service_request', CHANGE `impact` `impact` ENUM('1','2','3') DEFAULT '1', CHANGE `priority` `priority` ENUM('1','2','3','4') DEFAULT '4', CHANGE `urgency` `urgency` ENUM('1','2','3','4') DEFAULT '4', CHANGE `origin` `origin` ENUM('mail','phone','portal') DEFAULT 'phone', CHANGE `approver_id` `approver_id` INT(11) DEFAULT 0, CHANGE `service_id` `service_id` INT(11) DEFAULT 0, CHANGE `servicesubcategory_id` `servicesubcategory_id` INT(11) DEFAULT 0, CHANGE `escalation_flag` `escalation_flag` ENUM('no','yes') DEFAULT 'no', CHANGE `escalation_reason` `escalation_reason` VARCHAR(255) DEFAULT '', CHANGE `resolution_code` `resolution_code` ENUM('assistance','bug fixed','hardware repair','other','software patch','system update','training') DEFAULT 'assistance', CHANGE `parent_request_id` `parent_request_id` INT(11) DEFAULT 0, CHANGE `parent_incident_id` `parent_incident_id` INT(11) DEFAULT 0, CHANGE `parent_problem_id` `parent_problem_id` INT(11) DEFAULT 0, CHANGE `parent_change_id` `parent_change_id` INT(11) DEFAULT 0, CHANGE `user_satisfaction` `user_satisfaction` ENUM('1','2','3','4') DEFAULT '1' 
+2016-11-02 15:02:37 - Info - 0.956s - query: ALTER TABLE `contract` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `cost` `cost` VARCHAR(255) DEFAULT '', CHANGE `contracttype_id` `contracttype_id` INT(11) DEFAULT 0, CHANGE `billing_frequency` `billing_frequency` VARCHAR(255) DEFAULT '', CHANGE `cost_unit` `cost_unit` VARCHAR(255) DEFAULT '', CHANGE `provider_id` `provider_id` INT(11) DEFAULT 0, CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'Contract' 
+2016-11-02 15:02:37 - Info - 0.033s - query: ALTER TABLE `providercontract` CHANGE `sla` `sla` VARCHAR(255) DEFAULT '', CHANGE `coverage` `coverage` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:37 - Info - 0.562s - query: ALTER TABLE `lnkcontacttocontract` CHANGE `contract_id` `contract_id` INT(11) DEFAULT 0, CHANGE `contact_id` `contact_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:38 - Info - 0.565s - query: ALTER TABLE `lnkcontracttodocument` CHANGE `contract_id` `contract_id` INT(11) DEFAULT 0, CHANGE `document_id` `document_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:38 - Info - 0.593s - query: ALTER TABLE `lnkfunctionalcitoprovidercontract` CHANGE `providercontract_id` `providercontract_id` INT(11) DEFAULT 0, CHANGE `functionalci_id` `functionalci_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:39 - Info - 0.471s - query: ALTER TABLE `servicefamily` CHANGE `name` `name` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:40 - Info - 0.779s - query: ALTER TABLE `service` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `servicefamily_id` `servicefamily_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:40 - Info - 0.570s - query: ALTER TABLE `lnkdocumenttoservice` CHANGE `service_id` `service_id` INT(11) DEFAULT 0, CHANGE `document_id` `document_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:41 - Info - 0.665s - query: ALTER TABLE `lnkcontacttoservice` CHANGE `service_id` `service_id` INT(11) DEFAULT 0, CHANGE `contact_id` `contact_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:42 - Info - 0.677s - query: ALTER TABLE `servicesubcategory` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `service_id` `service_id` INT(11) DEFAULT 0, CHANGE `request_type` `request_type` ENUM('incident','service_request') DEFAULT 'incident' 
+2016-11-02 15:02:42 - Info - 0.580s - query: ALTER TABLE `sla` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:43 - Info - 0.419s - query: ALTER TABLE `slt` CHANGE `name` `name` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:43 - Info - 0.603s - query: ALTER TABLE `lnkslatoslt` CHANGE `sla_id` `sla_id` INT(11) DEFAULT 0, CHANGE `slt_id` `slt_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:44 - Info - 1.041s - query: ALTER TABLE `lnkcustomercontracttoservice` CHANGE `customercontract_id` `customercontract_id` INT(11) DEFAULT 0, CHANGE `service_id` `service_id` INT(11) DEFAULT 0, CHANGE `sla_id` `sla_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:45 - Info - 0.720s - query: ALTER TABLE `lnkprovidercontracttoservice` CHANGE `service_id` `service_id` INT(11) DEFAULT 0, CHANGE `providercontract_id` `providercontract_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:46 - Info - 0.496s - query: ALTER TABLE `lnkfunctionalcitoservice` CHANGE `service_id` `service_id` INT(11) DEFAULT 0, CHANGE `functionalci_id` `functionalci_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:46 - Info - 0.737s - query: ALTER TABLE `deliverymodel` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:47 - Info - 0.990s - query: ALTER TABLE `lnkdeliverymodeltocontact` CHANGE `deliverymodel_id` `deliverymodel_id` INT(11) DEFAULT 0, CHANGE `contact_id` `contact_id` INT(11) DEFAULT 0, CHANGE `role_id` `role_id` INT(11) DEFAULT 0 
+2016-11-02 15:02:48 - Info - 0.547s - query: ALTER TABLE `priv_urp_profiles` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `description` `description` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:49 - Info - 0.871s - query: ALTER TABLE `priv_urp_userprofile` CHANGE `userid` `userid` INT(11) DEFAULT 0, CHANGE `profileid` `profileid` INT(11) DEFAULT 0, CHANGE `description` `description` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:49 - Info - 0.738s - query: ALTER TABLE `priv_urp_userorg` CHANGE `userid` `userid` INT(11) DEFAULT 0, CHANGE `allowed_org_id` `allowed_org_id` INT(11) DEFAULT 0, CHANGE `reason` `reason` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:02:55 - Ok - Database structure successfully updated.
+2016-11-02 15:02:55 - Ok - Hierchical keys rebuilt: The attribute parent_id from Organization is a hierarchical key.
+Rebuilding the fields parent_id_right and parent_id_left from table 'organization'...
+Ok, table 'organization' successfully updated.
+The attribute parent_id from Group is a hierarchical key.
+Rebuilding the fields parent_id_right and parent_id_left from table 'group'...
+Ok, table 'group' successfully updated.
+
+2016-11-02 15:02:55 - Ok - Data sources checked: There are no Data Sources in the database.
+Ok.
+
+2016-11-02 15:02:56 - Ok - Meta enums rebuilt: Executing query: UPDATE `ticket` JOIN `change` ON `change`.id = `ticket`.id SET `ticket`.`operational_status` = 'ongoing' WHERE `change`.`status` IN ('approved', 'assigned', 'implemented', 'monitored', 'new', 'notapproved', 'plannedscheduled', 'validated') AND `ticket`.`operational_status` != 'ongoing'
+Executing query: UPDATE `ticket` JOIN `change` ON `change`.id = `ticket`.id SET `ticket`.`operational_status` = 'closed' WHERE `change`.`status` IN ('closed', 'rejected') AND `ticket`.`operational_status` != 'closed'
+Executing query: UPDATE `ticket` JOIN `ticket_incident` ON `ticket_incident`.id = `ticket`.id SET `ticket`.`operational_status` = 'ongoing' WHERE `ticket_incident`.`status` IN ('assigned', 'escalated_tto', 'escalated_ttr', 'new', 'pending') AND `ticket`.`operational_status` != 'ongoing'
+Executing query: UPDATE `ticket` JOIN `ticket_incident` ON `ticket_incident`.id = `ticket`.id SET `ticket`.`operational_status` = 'closed' WHERE `ticket_incident`.`status` IN ('closed') AND `ticket`.`operational_status` != 'closed'
+Executing query: UPDATE `ticket` JOIN `ticket_incident` ON `ticket_incident`.id = `ticket`.id SET `ticket`.`operational_status` = 'resolved' WHERE `ticket_incident`.`status` IN ('resolved') AND `ticket`.`operational_status` != 'resolved'
+Executing query: UPDATE `ticket` JOIN `ticket_problem` ON `ticket_problem`.id = `ticket`.id SET `ticket`.`operational_status` = 'ongoing' WHERE `ticket_problem`.`status` IN ('assigned', 'new') AND `ticket`.`operational_status` != 'ongoing'
+Executing query: UPDATE `ticket` JOIN `ticket_problem` ON `ticket_problem`.id = `ticket`.id SET `ticket`.`operational_status` = 'closed' WHERE `ticket_problem`.`status` IN ('closed') AND `ticket`.`operational_status` != 'closed'
+Executing query: UPDATE `ticket` JOIN `ticket_problem` ON `ticket_problem`.id = `ticket`.id SET `ticket`.`operational_status` = 'resolved' WHERE `ticket_problem`.`status` IN ('resolved') AND `ticket`.`operational_status` != 'resolved'
+Executing query: UPDATE `ticket` JOIN `ticket_request` ON `ticket_request`.id = `ticket`.id SET `ticket`.`operational_status` = 'ongoing' WHERE `ticket_request`.`status` IN ('approved', 'assigned', 'escalated_tto', 'escalated_ttr', 'new', 'pending', 'waiting_for_approval') AND `ticket`.`operational_status` != 'ongoing'
+Executing query: UPDATE `ticket` JOIN `ticket_request` ON `ticket_request`.id = `ticket`.id SET `ticket`.`operational_status` = 'closed' WHERE `ticket_request`.`status` IN ('closed', 'rejected') AND `ticket`.`operational_status` != 'closed'
+Executing query: UPDATE `ticket` JOIN `ticket_request` ON `ticket_request`.id = `ticket`.id SET `ticket`.`operational_status` = 'resolved' WHERE `ticket_request`.`status` IN ('resolved') AND `ticket`.`operational_status` != 'resolved'
+
+2016-11-02 15:02:56 - Info - 'priv_change.origin' already initialized, nothing to do.
+2016-11-02 15:02:56 - Info - 'priv_async_task.status' already initialized, nothing to do.
+2016-11-02 15:02:56 - Info - Database Schema Successfully Updated for environment 'production'.
+2016-11-02 15:02:56 - Info - operation 'async_action', peak memory usage. 25798584
+2016-11-02 15:02:56 - Info - After Database Creation
+2016-11-02 15:02:56 - Info - MetaModel::Startup (ModelOnly = 1)
+2016-11-02 15:02:56 - Info - Calling Module Handler: AttachmentInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:02:56 - Info - Initializing attachment/item_org_id - null to zero
+2016-11-02 15:02:56 - Info - Initializing attachment/item_org_id - zero to the container
+2016-11-02 15:02:56 - Info - Initializing attachment/item_org_id - 0 records have been adjusted
+2016-11-02 15:02:56 - Info - Calling Module Handler: ConfigMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:02:56 - Info - Calling Module Handler: EndUserMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.2.0)
+2016-11-02 15:02:56 - Info - Calling Module Handler: StorageMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.2.0)
+2016-11-02 15:02:56 - Info - Calling Module Handler: TicketsInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:02:56 - Info - Calling Module Handler: KnownErrorMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:02:56 - Info - Calling Module Handler: ServiceMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:02:56 - Info - URP_Profiles::GetPredefinedObjects() returned 12 elements.
+2016-11-02 15:02:56 - Info - Calling Module Handler: AttachmentInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:02:56 - Info - Calling Module Handler: ConfigMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:02:56 - Info - Calling Module Handler: EndUserMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.2.0)
+2016-11-02 15:02:56 - Info - Calling Module Handler: StorageMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.2.0)
+2016-11-02 15:02:56 - Info - Calling Module Handler: TicketsInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:02:56 - Info - Calling Module Handler: KnownErrorMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:02:56 - Info - Calling Module Handler: ServiceMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:02:56 - Info - operation 'async_action', peak memory usage. 12679264
+2016-11-02 15:02:56 - Info - MetaModel::Startup (ModelOnly = )
+2016-11-02 15:02:56 - Info - starting data load session
+2016-11-02 15:02:56 - Info - Loading file: /var/www/html/env-production/email-reply/data.struct.ta-actions.xml (just to get the keys mapping)
+2016-11-02 15:02:56 - Info - loading of data.struct.ta-actions.xml done.
+2016-11-02 15:02:56 - Info - Loading file: /var/www/html/env-production/email-reply/data.struct.ta-triggers.xml (just to get the keys mapping)
+2016-11-02 15:02:56 - Info - loading of data.struct.ta-triggers.xml done.
+2016-11-02 15:02:56 - Info - Loading file: /var/www/html/env-production/email-reply/data.struct.ta-links.xml (just to get the keys mapping)
+2016-11-02 15:02:56 - Info - loading of data.struct.ta-links.xml done.
+2016-11-02 15:02:56 - Warning - unresolved extkey in lnkTriggerAction::-1()::action_id=Action::-1
+2016-11-02 15:02:56 - Warning - unresolved extkey in lnkTriggerAction::-1()::trigger_id=Trigger::-50
+2016-11-02 15:02:56 - Info - ending data load session
+2016-11-02 15:02:56 - Info - operation 'async_action', peak memory usage. 12066400
+2016-11-02 15:02:56 - Info - MetaModel::Startup from /var/www/html//conf/production/config-itop.php (ModelOnly = 1)
+2016-11-02 15:03:00 - Info - operation 'async_action', peak memory usage. 12232968
+2016-11-02 15:08:47 - Info - CheckPHPVersion
+2016-11-02 15:08:47 - Info - php.ini file(s): '/etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini'
+2016-11-02 15:08:47 - Info - Temporary directory for files upload (/tmp) is writable.
+2016-11-02 15:08:47 - Info - upload_max_filesize: 2M
+2016-11-02 15:08:47 - Info - post_max_size: 8M
+2016-11-02 15:08:47 - Info - max_file_uploads: 20
+2016-11-02 15:08:47 - Info - memory_limit is 134217728, ok.
+2016-11-02 15:08:47 - Info - session.save_path is: '/var/lib/php/sessions'.
+2016-11-02 15:08:47 - Ok - The current PHP Version (7.0.8-0ubuntu0.16.04.3) is greater than the minimum version required to run iTop, which is (5.3.6)
+2016-11-02 15:08:47 - Ok - Required PHP extension(s): dom, hash, iconv, json, mysqli, pcre, session, simplexml, soap, zip.
+2016-11-02 15:08:47 - Ok - Optional PHP extension(s): gd, ldap, mcrypt.
+2016-11-02 15:08:47 - Ok - Loaded php.ini files: /etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini
+2016-11-02 15:08:47 - Ok - The value for session.save_path (/var/lib/php/sessions) is writable for the web server.
+2016-11-02 15:08:49 - Info - CheckBackupPrerequisites
+2016-11-02 15:08:49 - Info - PHP functions disabled: pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,
+2016-11-02 15:08:49 - Info - mysqldump -V said: mysqldump  Ver 10.13 Distrib 5.7.16, for Linux (x86_64)
+2016-11-02 15:08:49 - Info - operation 'async_action', peak memory usage. 1960808
+2016-11-02 15:08:51 - Info - CheckPHPVersion
+2016-11-02 15:08:51 - Info - php.ini file(s): '/etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini'
+2016-11-02 15:08:51 - Info - Temporary directory for files upload (/tmp) is writable.
+2016-11-02 15:08:51 - Info - upload_max_filesize: 2M
+2016-11-02 15:08:51 - Info - post_max_size: 8M
+2016-11-02 15:08:51 - Info - max_file_uploads: 20
+2016-11-02 15:08:51 - Info - memory_limit is 134217728, ok.
+2016-11-02 15:08:51 - Info - session.save_path is: '/var/lib/php/sessions'.
+2016-11-02 15:08:51 - Ok - The current PHP Version (7.0.8-0ubuntu0.16.04.3) is greater than the minimum version required to run iTop, which is (5.3.6)
+2016-11-02 15:08:51 - Ok - Required PHP extension(s): dom, hash, iconv, json, mysqli, pcre, session, simplexml, soap, zip.
+2016-11-02 15:08:51 - Ok - Optional PHP extension(s): gd, ldap, mcrypt.
+2016-11-02 15:08:51 - Ok - Loaded php.ini files: /etc/php/7.0/apache2/php.ini, /etc/php/7.0/apache2/conf.d/10-mysqlnd.ini, /etc/php/7.0/apache2/conf.d/10-opcache.ini, /etc/php/7.0/apache2/conf.d/10-pdo.ini, /etc/php/7.0/apache2/conf.d/15-xml.ini, /etc/php/7.0/apache2/conf.d/20-calendar.ini, /etc/php/7.0/apache2/conf.d/20-ctype.ini, /etc/php/7.0/apache2/conf.d/20-dom.ini, /etc/php/7.0/apache2/conf.d/20-exif.ini, /etc/php/7.0/apache2/conf.d/20-fileinfo.ini, /etc/php/7.0/apache2/conf.d/20-ftp.ini, /etc/php/7.0/apache2/conf.d/20-gd.ini, /etc/php/7.0/apache2/conf.d/20-gettext.ini, /etc/php/7.0/apache2/conf.d/20-iconv.ini, /etc/php/7.0/apache2/conf.d/20-json.ini, /etc/php/7.0/apache2/conf.d/20-ldap.ini, /etc/php/7.0/apache2/conf.d/20-mcrypt.ini, /etc/php/7.0/apache2/conf.d/20-mysqli.ini, /etc/php/7.0/apache2/conf.d/20-pdo_mysql.ini, /etc/php/7.0/apache2/conf.d/20-phar.ini, /etc/php/7.0/apache2/conf.d/20-posix.ini, /etc/php/7.0/apache2/conf.d/20-readline.ini, /etc/php/7.0/apache2/conf.d/20-shmop.ini, /etc/php/7.0/apache2/conf.d/20-simplexml.ini, /etc/php/7.0/apache2/conf.d/20-soap.ini, /etc/php/7.0/apache2/conf.d/20-sockets.ini, /etc/php/7.0/apache2/conf.d/20-sysvmsg.ini, /etc/php/7.0/apache2/conf.d/20-sysvsem.ini, /etc/php/7.0/apache2/conf.d/20-sysvshm.ini, /etc/php/7.0/apache2/conf.d/20-tokenizer.ini, /etc/php/7.0/apache2/conf.d/20-wddx.ini, /etc/php/7.0/apache2/conf.d/20-xmlreader.ini, /etc/php/7.0/apache2/conf.d/20-xmlwriter.ini, /etc/php/7.0/apache2/conf.d/20-xsl.ini, /etc/php/7.0/apache2/conf.d/20-zip.ini
+2016-11-02 15:08:51 - Ok - The value for session.save_path (/var/lib/php/sessions) is writable for the web server.
+2016-11-02 15:09:02 - Error - Error: Failed to issue SQL query: query = SELECT DISTINCT `UserInternal_priv_internaluser`.`id` AS `UserInternalid`, `UserInternal_priv_user`.`contactid` AS `UserInternalcontactid`, `Person_contactid_contact`.`name` AS `UserInternallast_name`, `Person_contactid_person`.`first_name` AS `UserInternalfirst_name`, `Person_contactid_contact`.`email` AS `UserInternalemail`, `UserInternal_priv_user`.`login` AS `UserInternallogin`, `UserInternal_priv_user`.`language` AS `UserInternallanguage`, `UserInternal_priv_user`.`status` AS `UserInternalstatus`, `UserInternal_priv_internaluser`.`reset_pwd_token_hash` AS `UserInternalreset_pwd_token`, `UserInternal_priv_internaluser`.`reset_pwd_token_salt` AS `UserInternalreset_pwd_token_salt`, `UserInternal_priv_user`.`finalclass` AS `UserInternalfinalclass`, CAST(CONCAT(COALESCE(`UserInternal_priv_user`.`login`, '')) AS CHAR) AS `UserInternalfriendlyname`, CAST(CONCAT(COALESCE(`Person_contactid_person`.`first_name`, ''), COALESCE(' ', ''), COALESCE(`Person_contactid_contact`.`name`, '')) AS CHAR) AS `UserInternalcontactid_friendlyname` FROM `priv_internaluser` AS `UserInternal_priv_internaluser`INNER JOIN (`priv_user` AS `UserInternal_priv_user` LEFT JOIN (`person` AS `Person_contactid_person` INNER JOIN `contact` AS `Person_contactid_contact` ON `Person_contactid_person`.`id` = `Person_contactid_contact`.`id`) ON `UserInternal_priv_user`.`contactid` = `Person_contactid_person`.`id`) ON `UserInternal_priv_internaluser`.`id` = `UserInternal_priv_user`.`id` WHERE ((`UserInternal_priv_user`.`login` = 'admin') AND (`UserInternal_priv_user`.`status` = 'enabled')) ORDER BY `UserInternalfriendlyname` ASC , mysql_error = Unknown column 'UserInternal_priv_user.status' in 'field list', mysql_errno = 1054.
+2016-11-02 15:09:09 - Info - CheckBackupPrerequisites
+2016-11-02 15:09:09 - Info - PHP functions disabled: pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,
+2016-11-02 15:09:09 - Info - mysqldump -V said: mysqldump  Ver 10.13 Distrib 5.7.16, for Linux (x86_64)
+2016-11-02 15:09:09 - Info - operation 'async_action', peak memory usage. 1831208
+2016-11-02 15:09:11 - Info - GetApplicationVersion returns: product_name: iTop, product_version: 2.1.0.2127
+2016-11-02 15:09:14 - Info - CheckGraphviz
+2016-11-02 15:09:14 - Info - PHP functions disabled: pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,
+2016-11-02 15:09:14 - Info - /usr/bin/dot -V said: dot - graphviz version 2.38.0 (20140413.2041)
+2016-11-02 15:09:14 - Info - operation 'async_action', peak memory usage. 1814152
+2016-11-02 15:09:31 - Info - ======= Installation starts =======
+Parameters:
+<?xml version="1.0" encoding="UTF-8"?>
+<installation>
+  <mode>upgrade</mode>
+  <preinstall>
+    <copies type="array"/>
+    <backup>
+      <destination>/var/www/html/data/iTop-backup-2016-11-02.zip</destination>
+      <configuration_file>/var/www/html//conf/production/config-itop.php</configuration_file>
+    </backup>
+  </preinstall>
+  <source_dir>datamodels/2.x/</source_dir>
+  <datamodel_version>2.3.0</datamodel_version>
+  <previous_configuration_file>/var/www/html//conf/production/config-itop.php</previous_configuration_file>
+  <extensions_dir>extensions</extensions_dir>
+  <target_env>production</target_env>
+  <workspace_dir></workspace_dir>
+  <database>
+    <server>mysql</server>
+    <user>itop</user>
+    <pwd>**removed**</pwd>
+    <name>itop</name>
+    <prefix></prefix>
+  </database>
+  <url>https://itop.vertis.com:4430/</url>
+  <graphviz_path>/usr/bin/dot</graphviz_path>
+  <admin_account>
+    <user></user>
+    <pwd>**removed**</pwd>
+    <language></language>
+  </admin_account>
+  <language></language>
+  <selected_modules type="array">
+    <item>authent-external</item>
+    <item>authent-ldap</item>
+    <item>authent-local</item>
+    <item>combodo-email-synchro</item>
+    <item>itop-backup</item>
+    <item>itop-config</item>
+    <item>itop-profiles-itil</item>
+    <item>itop-sla-computation</item>
+    <item>itop-tickets</item>
+    <item>itop-welcome-itil</item>
+    <item>itop-config-mgmt</item>
+    <item>itop-attachments</item>
+    <item>itop-datacenter-mgmt</item>
+    <item>itop-endusers-devices</item>
+    <item>itop-storage-mgmt</item>
+    <item>itop-virtualization-mgmt</item>
+    <item>itop-bridge-virtualization-storage</item>
+    <item>itop-service-mgmt</item>
+    <item>itop-request-mgmt-itil</item>
+    <item>itop-incident-mgmt-itil</item>
+    <item>itop-portal</item>
+    <item>itop-portal-base</item>
+    <item>itop-full-itil</item>
+    <item>itop-change-mgmt-itil</item>
+    <item>itop-knownerror-mgmt</item>
+    <item>itop-problem-mgmt</item>
+    <item>email-reply</item>
+    <item>itop-standard-email-synchro</item>
+  </selected_modules>
+  <sample_data></sample_data>
+  <old_addon></old_addon>
+  <options type="array"/>
+</installation>
+
+
+2016-11-02 15:09:31 - Info - operation 'async_action', peak memory usage. 1826168
+2016-11-02 15:09:31 - Info - operation 'async_action', peak memory usage. 1812816
+2016-11-02 15:09:31 - Info - Data file: '/tmp/itop-0aYeOT'
+2016-11-02 15:09:31 - Info - Starting backup of mysql/itop(suffix:'')
+2016-11-02 15:09:31 - Info - Executing command: mysqldump --opt --default-character-set=utf8 --add-drop-database --single-transaction --host='mysql'  --user=xxxxx --password=xxxxx --result-file='/tmp/itop-0aYeOT' 'itop' 
+2016-11-02 15:09:33 - Info - mysqldump said: mysqldump: [Warning] Using a password on the command line interface can be insecure.
+2016-11-02 15:09:33 - Info - Archive: /var/www/html/data/iTop-backup-2016-11-02.zip created
+2016-11-02 15:09:33 - Info - operation 'async_action', peak memory usage. 1839464
+2016-11-02 15:09:33 - Info - Compiling data model.
+2016-11-02 15:09:38 - Info - Data model successfully compiled to '/var/www/html/env-production'.
+2016-11-02 15:09:38 - Info - operation 'async_action', peak memory usage. 17187872
+2016-11-02 15:09:38 - Info - Update Database Schema for environment 'production'.
+2016-11-02 15:09:38 - Info - MetaModel::Startup (ModelOnly = 1)
+2016-11-02 15:09:38 - Info - Renaming 'priv_internalUser' into 'priv_internaluser' (lowercase)
+2016-11-02 15:09:38 - Info - Renaming 'priv_internalUser' failed (already done in a previous upgrade?)
+2016-11-02 15:09:38 - Info - Cleanup of 'priv_change' to remove orphan records
+2016-11-02 15:09:38 - Info - There is a total of 1375 records in priv_change.
+2016-11-02 15:09:38 - Info - There are 2 useless records in priv_change (0.15%)
+2016-11-02 15:09:38 - Info - Removing the orphan records...
+2016-11-02 15:09:38 - Info - Cleanup completed successfully.
+2016-11-02 15:09:38 - Info - Calling Module Handler: AttachmentInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:09:38 - Info - No orphan attachment found.
+2016-11-02 15:09:38 - Info - Calling Module Handler: ConfigMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:09:38 - Info - Renaming class in DB - final class from 'DBserver' to 'DBServer': 0 rows affected
+2016-11-02 15:09:38 - Info - Renaming class in DB - final class from 'OSfamily' to 'OSFamily': 0 rows affected
+2016-11-02 15:09:38 - Info - Renaming class in DB - final class from 'OSversion' to 'OSVersion': 0 rows affected
+2016-11-02 15:09:38 - Info - Renaming class in DB - final class from 'Webserver' to 'WebServer': 0 rows affected
+2016-11-02 15:09:38 - Info - Renaming class in DB - final class from 'OSpatch' to 'OSPatch': 0 rows affected
+2016-11-02 15:09:38 - Info - Renaming class in DB - final class from 'OsLicence' to 'OSLicence': 0 rows affected
+2016-11-02 15:09:38 - Info - Renaming class in DB - final class from 'IOSversion' to 'IOSVersion': 0 rows affected
+2016-11-02 15:09:38 - Info - Renaming class in DB - final class from 'IPinterface' to 'IPInterface': 0 rows affected
+2016-11-02 15:09:38 - Info - Calling Module Handler: EndUserMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.2.0)
+2016-11-02 15:09:38 - Info - Renaming class in DB - final class from 'IpPhone' to 'IPPhone': 0 rows affected
+2016-11-02 15:09:38 - Info - Calling Module Handler: StorageMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.2.0)
+2016-11-02 15:09:38 - Info - Calling Module Handler: TicketsInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:09:38 - Info - Calling Module Handler: KnownErrorMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:09:38 - Info - Calling Module Handler: ServiceMgmtInstaller::BeforeDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:09:38 - Info - Creating the structure in ''.
+2016-11-02 15:09:38 - Info - 0.282s - query: CREATE TABLE `priv_changeop_setatt_url` (`id` INT(11) NOT NULL  PRIMARY KEY, `oldvalue` VARCHAR(2048) DEFAULT '', `newvalue` VARCHAR(2048) DEFAULT '') ENGINE = innodb CHARACTER SET utf8 COLLATE utf8_unicode_ci 
+2016-11-02 15:09:38 - Info - 0.285s - query: CREATE TABLE `priv_changeop_setatt_html` (`id` INT(11) NOT NULL  PRIMARY KEY) ENGINE = innodb CHARACTER SET utf8 COLLATE utf8_unicode_ci 
+2016-11-02 15:09:39 - Info - 0.276s - query: CREATE TABLE `priv_changeop_setatt_custfields` (`id` INT(11) NOT NULL  PRIMARY KEY, `prevdata` LONGTEXT) ENGINE = innodb CHARACTER SET utf8 COLLATE utf8_unicode_ci 
+2016-11-02 15:09:39 - Info - 0.268s - query: CREATE TABLE `priv_event_restservice` (`id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, `operation` VARCHAR(255) DEFAULT '', `version` VARCHAR(255) DEFAULT '', `json_input` TEXT, `code` INT(11) DEFAULT 0, `json_output` TEXT, `provider` VARCHAR(255) DEFAULT '') ENGINE = innodb CHARACTER SET utf8 COLLATE utf8_unicode_ci 
+2016-11-02 15:09:39 - Info - 0.285s - query: CREATE TABLE `priv_bulk_export_result` (`id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, `created` DATETIME, `user_id` INT(11) DEFAULT 0, `chunk_size` INT(11) DEFAULT 0, `format` VARCHAR(255) DEFAULT '', `temp_file_path` VARCHAR(255) DEFAULT '', `search` LONGTEXT, `status_info` LONGTEXT) ENGINE = innodb CHARACTER SET utf8 COLLATE utf8_unicode_ci 
+2016-11-02 15:09:40 - Info - 0.320s - query: CREATE TABLE `priv_ownership_token` (`id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, `acquired` DATETIME, `last_seen` DATETIME, `obj_class` VARCHAR(255) DEFAULT '', `obj_key` INT(11), `token` VARCHAR(255) DEFAULT '', `user_id` INT(11) DEFAULT 0, INDEX (`user_id`)) ENGINE = innodb CHARACTER SET utf8 COLLATE utf8_unicode_ci 
+2016-11-02 15:09:40 - Info - 0.402s - query: CREATE TABLE `inline_image` (`id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, `expire` DATETIME, `temp_id` VARCHAR(255) DEFAULT '', `item_class` VARCHAR(255) DEFAULT '', `item_id` INT(11) DEFAULT 0, `item_org_id` INT(11) DEFAULT 0, `contents_data` LONGBLOB, `contents_mimetype` VARCHAR(255), `contents_filename` VARCHAR(255), `secret` VARCHAR(255) DEFAULT '', INDEX `temp_id` (`temp_id`), INDEX `item_class_item_id` (`item_class`, `item_id`), INDEX `item_org_id` (`item_org_id`)) ENGINE = innodb CHARACTER SET utf8 COLLATE utf8_unicode_ci 
+2016-11-02 15:09:40 - Info - 0.343s - query: CREATE TABLE `priv_changeop_attachment_added` (`id` INT(11) NOT NULL  PRIMARY KEY, `attachment_id` INT(11) DEFAULT 0, INDEX (`attachment_id`), `filename` VARCHAR(255) DEFAULT '') ENGINE = innodb CHARACTER SET utf8 COLLATE utf8_unicode_ci 
+2016-11-02 15:09:41 - Info - 0.293s - query: CREATE TABLE `priv_changeop_attachment_removed` (`id` INT(11) NOT NULL  PRIMARY KEY, `filename` VARCHAR(255) DEFAULT '') ENGINE = innodb CHARACTER SET utf8 COLLATE utf8_unicode_ci 
+2016-11-02 15:09:41 - Info - 0.597s - query: ALTER TABLE `priv_async_task` CHANGE `status` `status` ENUM('error','idle','planned','running') DEFAULT 'planned', CHANGE `event_id` `event_id` INT(11) DEFAULT 0, CHANGE `remaining_retries` `remaining_retries` INT(11) DEFAULT 0, CHANGE `last_error_code` `last_error_code` INT(11) DEFAULT 0, CHANGE `last_error` `last_error` VARCHAR(255) DEFAULT '', CHANGE `realclass` `realclass` VARCHAR(255) DEFAULT 'AsyncTask' 
+2016-11-02 15:09:42 - Info - 0.403s - query: ALTER TABLE `priv_async_send_email` CHANGE `version` `version` INT(11) DEFAULT 1, CHANGE `subject` `subject` TEXT, CHANGE `message` `message` LONGTEXT 
+2016-11-02 15:09:42 - Info - 0.503s - query: ALTER TABLE `priv_db_properties` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `description` `description` VARCHAR(255) DEFAULT '', CHANGE `value` `value` VARCHAR(255) DEFAULT '', CHANGE `change_comment` `change_comment` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:09:42 - Info - 0.043s - query: ALTER TABLE `priv_change` CHANGE `userinfo` `userinfo` VARCHAR(255) DEFAULT '', CHANGE `origin` `origin` ENUM('csv-import.php','csv-interactive','custom-extension','email-processing','interactive','synchro-data-source','webservice-rest','webservice-soap') DEFAULT 'interactive' 
+2016-11-02 15:09:46 - Info - 4.268s - query: ALTER TABLE `priv_changeop` CHANGE `changeid` `changeid` INT(11) DEFAULT 0, CHANGE `objclass` `objclass` VARCHAR(255) DEFAULT '', CHANGE `objkey` `objkey` INT(11) DEFAULT 0, CHANGE `optype` `optype` VARCHAR(255) DEFAULT 'CMDBChangeOp' 
+2016-11-02 15:09:47 - Info - 0.806s - query: ALTER TABLE `priv_changeop_delete` CHANGE `fclass` `fclass` VARCHAR(255) DEFAULT '', CHANGE `fname` `fname` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:09:48 - Info - 1.007s - query: ALTER TABLE `priv_changeop_setatt` CHANGE `attcode` `attcode` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:09:48 - Info - 0.034s - query: ALTER TABLE `priv_changeop_setatt_scalar` CHANGE `oldvalue` `oldvalue` VARCHAR(255) DEFAULT '', CHANGE `newvalue` `newvalue` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:09:52 - Info - 3.620s - query: ALTER TABLE `priv_changeop_setatt_data` CHANGE `prevdata_data` `prevdata_data` LONGBLOB, CHANGE `prevdata_mimetype` `prevdata_mimetype` VARCHAR(255), CHANGE `prevdata_filename` `prevdata_filename` VARCHAR(255) 
+2016-11-02 15:09:52 - Info - 0.043s - query: ALTER TABLE `priv_changeop_setatt_log` CHANGE `lastentry` `lastentry` INT(11) DEFAULT 0 
+2016-11-02 15:09:53 - Info - 0.645s - query: ALTER TABLE `priv_changeop_plugin` CHANGE `description` `description` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:09:53 - Info - 0.815s - query: ALTER TABLE `priv_changeop_links` CHANGE `item_class` `item_class` VARCHAR(255) DEFAULT '', CHANGE `item_id` `item_id` INT(11) DEFAULT 0 
+2016-11-02 15:09:54 - Info - 0.779s - query: ALTER TABLE `priv_changeop_links_addremove` CHANGE `type` `type` ENUM('added','removed') DEFAULT 'added' 
+2016-11-02 15:09:55 - Info - 0.647s - query: ALTER TABLE `priv_changeop_links_tune` CHANGE `link_id` `link_id` INT(11) DEFAULT 0 
+2016-11-02 15:09:56 - Info - 0.863s - query: ALTER TABLE `priv_user` CHANGE `contactid` `contactid` INT(11) DEFAULT 0, CHANGE `login` `login` VARCHAR(255) DEFAULT '', CHANGE `language` `language` VARCHAR(255) DEFAULT 'EN US', ADD `status` ENUM('disabled','enabled') DEFAULT 'enabled', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'User' 
+2016-11-02 15:09:56 - Info - 0.596s - query: ALTER TABLE `priv_internaluser` ADD `reset_pwd_token_hash` TINYBLOB, ADD `reset_pwd_token_salt` TINYBLOB 
+2016-11-02 15:09:58 - Info - 1.215s - query: ALTER TABLE `priv_module_install` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `version` `version` VARCHAR(255) DEFAULT '', CHANGE `parent_id` `parent_id` INT(11) DEFAULT 0 
+2016-11-02 15:09:58 - Info - 0.856s - query: ALTER TABLE `priv_app_dashboards` CHANGE `user_id` `user_id` INT(11) DEFAULT 0, CHANGE `menu_code` `menu_code` VARCHAR(255) DEFAULT '', CHANGE `contents` `contents` TEXT 
+2016-11-02 15:09:59 - Info - 0.771s - query: ALTER TABLE `priv_shortcut` CHANGE `user_id` `user_id` INT(11) DEFAULT 0, CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `context` `context` TEXT, CHANGE `realclass` `realclass` VARCHAR(255) DEFAULT 'Shortcut' 
+2016-11-02 15:10:00 - Info - 0.630s - query: ALTER TABLE `priv_shortcut_oql` CHANGE `oql` `oql` TEXT, CHANGE `auto_reload` `auto_reload` ENUM('custom','none') DEFAULT 'none', CHANGE `auto_reload_sec` `auto_reload_sec` INT(11) DEFAULT 60 
+2016-11-02 15:10:01 - Info - 0.762s - query: ALTER TABLE `priv_app_preferences` CHANGE `userid` `userid` INT(11) DEFAULT 0 
+2016-11-02 15:10:01 - Info - 0.529s - query: ALTER TABLE `priv_auditrule` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `description` `description` VARCHAR(255) DEFAULT '', CHANGE `query` `query` TEXT, CHANGE `valid_flag` `valid_flag` ENUM('false','true') DEFAULT 'true', CHANGE `category_id` `category_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:01 - Info - 0.402s - query: ALTER TABLE `priv_auditcategory` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `description` `description` VARCHAR(255) DEFAULT '', CHANGE `definition_set` `definition_set` TEXT 
+2016-11-02 15:10:03 - Info - 1.087s - query: ALTER TABLE `priv_query` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `description` `description` TEXT, CHANGE `realclass` `realclass` VARCHAR(255) DEFAULT 'Query' 
+2016-11-02 15:10:03 - Info - 0.479s - query: ALTER TABLE `priv_query_oql` CHANGE `oql` `oql` TEXT 
+2016-11-02 15:10:04 - Info - 0.921s - query: ALTER TABLE `priv_event` CHANGE `message` `message` TEXT, CHANGE `userinfo` `userinfo` VARCHAR(255) DEFAULT '', CHANGE `realclass` `realclass` VARCHAR(255) DEFAULT 'Event' 
+2016-11-02 15:10:05 - Info - 0.898s - query: ALTER TABLE `priv_event_notification` CHANGE `trigger_id` `trigger_id` INT(11) DEFAULT 0, CHANGE `action_id` `action_id` INT(11) DEFAULT 0, CHANGE `object_id` `object_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:06 - Info - 1.440s - query: ALTER TABLE `priv_event_issue` CHANGE `issue` `issue` VARCHAR(255) DEFAULT '', CHANGE `impact` `impact` VARCHAR(255) DEFAULT '', CHANGE `page` `page` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:10:07 - Info - 0.504s - query: ALTER TABLE `priv_event_webservice` CHANGE `verb` `verb` VARCHAR(255) DEFAULT '', CHANGE `result` `result` TINYINT(1) DEFAULT 0 
+2016-11-02 15:10:08 - Info - 0.723s - query: ALTER TABLE `priv_event_loginusage` CHANGE `user_id` `user_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:08 - Info - 0.896s - query: ALTER TABLE `priv_action` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `description` `description` VARCHAR(255) DEFAULT '', CHANGE `status` `status` ENUM('test','enabled','disabled') DEFAULT 'test', CHANGE `realclass` `realclass` VARCHAR(255) DEFAULT 'Action' 
+2016-11-02 15:10:09 - Info - 0.545s - query: ALTER TABLE `priv_action_email` CHANGE `test_recipient` `test_recipient` VARCHAR(255) DEFAULT '', CHANGE `from` `from` VARCHAR(255) DEFAULT '', CHANGE `reply_to` `reply_to` VARCHAR(255) DEFAULT '', CHANGE `subject` `subject` VARCHAR(255) DEFAULT '', CHANGE `body` `body` TEXT, CHANGE `importance` `importance` ENUM('high','low','normal') DEFAULT 'normal' 
+2016-11-02 15:10:10 - Info - 0.813s - query: ALTER TABLE `priv_trigger` CHANGE `description` `description` VARCHAR(255) DEFAULT '', CHANGE `realclass` `realclass` VARCHAR(255) DEFAULT 'Trigger' 
+2016-11-02 15:10:10 - Info - 0.687s - query: ALTER TABLE `priv_trigger_onobject` CHANGE `target_class` `target_class` VARCHAR(255) DEFAULT 'ApplicationSolution' 
+2016-11-02 15:10:11 - Info - 0.646s - query: ALTER TABLE `priv_trigger_onstatechange` CHANGE `state` `state` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:10:12 - Info - 0.771s - query: ALTER TABLE `priv_link_action_trigger` CHANGE `action_id` `action_id` INT(11) DEFAULT 0, CHANGE `trigger_id` `trigger_id` INT(11) DEFAULT 0, CHANGE `order` `order` INT(11) DEFAULT 0 
+2016-11-02 15:10:13 - Info - 1.074s - query: ALTER TABLE `priv_trigger_threshold` CHANGE `stop_watch_code` `stop_watch_code` VARCHAR(255) DEFAULT '', CHANGE `threshold_index` `threshold_index` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:10:14 - Info - 0.906s - query: ALTER TABLE `priv_sync_datasource` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `description` `description` TEXT, CHANGE `status` `status` ENUM('implementation','obsolete','production') DEFAULT 'implementation', CHANGE `user_id` `user_id` INT(11) DEFAULT 0, CHANGE `notify_contact_id` `notify_contact_id` INT(11) DEFAULT 0, CHANGE `scope_class` `scope_class` VARCHAR(255) DEFAULT 'ApplicationSolution', CHANGE `database_table_name` `database_table_name` VARCHAR(255) DEFAULT '', CHANGE `scope_restriction` `scope_restriction` VARCHAR(255) DEFAULT '', CHANGE `reconciliation_policy` `reconciliation_policy` ENUM('use_attributes','use_primary_key') DEFAULT 'use_attributes', CHANGE `action_on_zero` `action_on_zero` ENUM('create','error') DEFAULT 'create', CHANGE `action_on_one` `action_on_one` ENUM('error','update') DEFAULT 'update', CHANGE `action_on_multiple` `action_on_multiple` ENUM('create','error','take_first') DEFAULT 'error', CHANGE `delete_policy` `delete_policy` ENUM('delete','ignore','update','update_then_delete') DEFAULT 'ignore', CHANGE `delete_policy_update` `delete_policy_update` VARCHAR(255) DEFAULT '', CHANGE `user_delete_policy` `user_delete_policy` ENUM('administrators','everybody','nobody') DEFAULT 'nobody', CHANGE `url_icon` `url_icon` VARCHAR(2048) DEFAULT '', CHANGE `url_application` `url_application` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:10:15 - Info - 0.662s - query: ALTER TABLE `priv_sync_att` CHANGE `sync_source_id` `sync_source_id` INT(11) DEFAULT 0, CHANGE `attcode` `attcode` VARCHAR(255) DEFAULT '', CHANGE `update` `update` TINYINT(1) DEFAULT 1, CHANGE `reconcile` `reconcile` TINYINT(1) DEFAULT 0, CHANGE `update_policy` `update_policy` ENUM('master_locked','master_unlocked','write_if_empty') DEFAULT 'master_locked', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'SynchroAttribute' 
+2016-11-02 15:10:15 - Info - 0.042s - query: ALTER TABLE `priv_sync_att_extkey` CHANGE `reconciliation_attcode` `reconciliation_attcode` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:10:15 - Info - 0.034s - query: ALTER TABLE `priv_sync_att_linkset` CHANGE `row_separator` `row_separator` VARCHAR(255) DEFAULT '|', CHANGE `attribute_separator` `attribute_separator` VARCHAR(255) DEFAULT ';', CHANGE `value_separator` `value_separator` VARCHAR(255) DEFAULT ':', CHANGE `attribute_qualifier` `attribute_qualifier` VARCHAR(255) DEFAULT '\'' 
+2016-11-02 15:10:15 - Info - 0.661s - query: ALTER TABLE `priv_sync_log` CHANGE `sync_source_id` `sync_source_id` INT(11) DEFAULT 0, CHANGE `status` `status` ENUM('completed','error','running') DEFAULT 'running', CHANGE `status_curr_job` `status_curr_job` INT(11) DEFAULT 0, CHANGE `status_curr_pos` `status_curr_pos` INT(11) DEFAULT 0, CHANGE `stats_nb_replica_seen` `stats_nb_replica_seen` INT(11) DEFAULT 0, CHANGE `stats_nb_replica_total` `stats_nb_replica_total` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_deleted` `stats_nb_obj_deleted` INT(11) DEFAULT 0, CHANGE `stats_deleted_errors` `stats_deleted_errors` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_obsoleted` `stats_nb_obj_obsoleted` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_obsoleted_errors` `stats_nb_obj_obsoleted_errors` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_created` `stats_nb_obj_created` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_created_errors` `stats_nb_obj_created_errors` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_created_warnings` `stats_nb_obj_created_warnings` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_updated` `stats_nb_obj_updated` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_updated_errors` `stats_nb_obj_updated_errors` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_updated_warnings` `stats_nb_obj_updated_warnings` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_unchanged_warnings` `stats_nb_obj_unchanged_warnings` INT(11) DEFAULT 0, CHANGE `stats_nb_replica_reconciled_errors` `stats_nb_replica_reconciled_errors` INT(11) DEFAULT 0, CHANGE `stats_nb_replica_disappeared_no_action` `stats_nb_replica_disappeared_no_action` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_new_updated` `stats_nb_obj_new_updated` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_new_updated_warnings` `stats_nb_obj_new_updated_warnings` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_new_unchanged` `stats_nb_obj_new_unchanged` INT(11) DEFAULT 0, CHANGE `stats_nb_obj_new_unchanged_warnings` `stats_nb_obj_new_unchanged_warnings` INT(11) DEFAULT 0, CHANGE `memory_usage_peak` `memory_usage_peak` INT(11) DEFAULT 0 
+2016-11-02 15:10:16 - Info - 0.589s - query: ALTER TABLE `priv_sync_replica` CHANGE `sync_source_id` `sync_source_id` INT(11) DEFAULT 0, CHANGE `dest_id` `dest_id` INT(11) DEFAULT 0, CHANGE `dest_class` `dest_class` VARCHAR(255) DEFAULT 'Organization', CHANGE `status` `status` ENUM('modified','new','obsolete','orphan','synchronized') DEFAULT 'new', CHANGE `status_dest_creator` `status_dest_creator` TINYINT(1) DEFAULT 0, CHANGE `status_last_error` `status_last_error` VARCHAR(255) DEFAULT '', CHANGE `status_last_warning` `status_last_warning` VARCHAR(255) DEFAULT '', ADD INDEX `dest_class_dest_id` (`dest_class`, `dest_id`) 
+2016-11-02 15:10:17 - Info - 0.670s - query: ALTER TABLE `priv_backgroundtask` CHANGE `class_name` `class_name` VARCHAR(255) DEFAULT '', CHANGE `total_exec_count` `total_exec_count` INT(11) DEFAULT 0, CHANGE `latest_run_duration` `latest_run_duration` DECIMAL(8,3) DEFAULT 0, CHANGE `min_run_duration` `min_run_duration` DECIMAL(8,3) DEFAULT 0, CHANGE `max_run_duration` `max_run_duration` DECIMAL(8,3) DEFAULT 0, CHANGE `average_run_duration` `average_run_duration` DECIMAL(8,3) DEFAULT 0, CHANGE `running` `running` TINYINT(1) DEFAULT 0, CHANGE `status` `status` ENUM('active','paused') DEFAULT 'active' 
+2016-11-02 15:10:17 - Info - 0.555s - query: ALTER TABLE `priv_user_local` CHANGE `password_hash` `password_hash` TINYBLOB, CHANGE `password_salt` `password_salt` TINYBLOB 
+2016-11-02 15:10:18 - Info - 0.612s - query: ALTER TABLE `email_replica` CHANGE `ticket_id` `ticket_id` INT(11) DEFAULT 0, CHANGE `uidl` `uidl` VARCHAR(255) DEFAULT '', CHANGE `message_id` `message_id` VARCHAR(255) DEFAULT '', CHANGE `status` `status` ENUM('error','ok') DEFAULT 'ok' 
+2016-11-02 15:10:18 - Info - 0.445s - query: ALTER TABLE `mailinbox_base` CHANGE `server` `server` VARCHAR(255) DEFAULT '', CHANGE `mailbox` `mailbox` VARCHAR(255) DEFAULT '', CHANGE `login` `login` VARCHAR(255) DEFAULT '', CHANGE `password` `password` VARCHAR(64) DEFAULT '', CHANGE `protocol` `protocol` ENUM('imap','pop3') DEFAULT 'pop3', CHANGE `active` `active` ENUM('no','yes') DEFAULT 'yes', CHANGE `realclass` `realclass` VARCHAR(255) DEFAULT 'MailInboxBase' 
+2016-11-02 15:10:19 - Info - 0.789s - query: ALTER TABLE `priv_trigger_onlogupdate` CHANGE `target_log` `target_log` VARCHAR(255) DEFAULT 'public_log' 
+2016-11-02 15:10:20 - Info - 1.024s - query: ALTER TABLE `attachment` CHANGE `temp_id` `temp_id` VARCHAR(255) DEFAULT '', CHANGE `item_class` `item_class` VARCHAR(255) DEFAULT '', CHANGE `item_id` `item_id` INT(11) DEFAULT 0, CHANGE `item_org_id` `item_org_id` INT(11) DEFAULT 0, CHANGE `contents_data` `contents_data` LONGBLOB, CHANGE `contents_mimetype` `contents_mimetype` VARCHAR(255), CHANGE `contents_filename` `contents_filename` VARCHAR(255) 
+2016-11-02 15:10:21 - Info - 0.905s - query: ALTER TABLE `organization` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `code` `code` VARCHAR(255) DEFAULT '', CHANGE `status` `status` ENUM('active','inactive') DEFAULT 'active', CHANGE `parent_id` `parent_id` INT(11) DEFAULT 0, CHANGE `parent_id_left` `parent_id_left` INT(11) DEFAULT 0, CHANGE `parent_id_right` `parent_id_right` INT(11) DEFAULT 0, CHANGE `deliverymodel_id` `deliverymodel_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:22 - Info - 0.755s - query: ALTER TABLE `location` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `status` `status` ENUM('active','inactive') DEFAULT 'active', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `postal_code` `postal_code` VARCHAR(255) DEFAULT '', CHANGE `city` `city` VARCHAR(255) DEFAULT '', CHANGE `country` `country` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:10:22 - Info - 0.804s - query: ALTER TABLE `contact` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `status` `status` ENUM('active','inactive') DEFAULT 'active', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `email` `email` VARCHAR(255) DEFAULT '', CHANGE `phone` `phone` VARCHAR(255) DEFAULT '', CHANGE `notify` `notify` ENUM('no','yes') DEFAULT 'yes', CHANGE `function` `function` VARCHAR(255) DEFAULT '', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'Contact' 
+2016-11-02 15:10:23 - Info - 0.864s - query: ALTER TABLE `person` ADD `picture_data` LONGBLOB, ADD `picture_mimetype` VARCHAR(255), ADD `picture_filename` VARCHAR(255), CHANGE `first_name` `first_name` VARCHAR(255) DEFAULT '', CHANGE `employee_number` `employee_number` VARCHAR(255) DEFAULT '', CHANGE `mobile_phone` `mobile_phone` VARCHAR(255) DEFAULT '', CHANGE `location_id` `location_id` INT(11) DEFAULT 0, CHANGE `manager_id` `manager_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:24 - Info - 0.935s - query: ALTER TABLE `document` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `documenttype_id` `documenttype_id` INT(11) DEFAULT 0, CHANGE `version` `version` VARCHAR(255) DEFAULT '', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'Document' 
+2016-11-02 15:10:31 - Info - 6.480s - query: ALTER TABLE `documentfile` CHANGE `file_data` `file_data` LONGBLOB, CHANGE `file_mimetype` `file_mimetype` VARCHAR(255), CHANGE `file_filename` `file_filename` VARCHAR(255) 
+2016-11-02 15:10:31 - Info - 0.469s - query: ALTER TABLE `documentnote` CHANGE `text` `text` LONGTEXT 
+2016-11-02 15:10:31 - Info - 0.076s - query: ALTER TABLE `documentweb` CHANGE `url` `url` VARCHAR(2048) DEFAULT '' 
+2016-11-02 15:10:32 - Info - 0.887s - query: ALTER TABLE `functionalci` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `business_criticity` `business_criticity` ENUM('high','low','medium') DEFAULT 'low', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'FunctionalCI' 
+2016-11-02 15:10:32 - Info - 0.027s - query: ALTER TABLE `physicaldevice` CHANGE `serialnumber` `serialnumber` VARCHAR(255) DEFAULT '', CHANGE `location_id` `location_id` INT(11) DEFAULT 0, CHANGE `status` `status` ENUM('implementation','obsolete','production','stock') DEFAULT 'production', CHANGE `brand_id` `brand_id` INT(11) DEFAULT 0, CHANGE `model_id` `model_id` INT(11) DEFAULT 0, CHANGE `asset_number` `asset_number` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:10:34 - Info - 1.372s - query: ALTER TABLE `datacenterdevice` CHANGE `rack_id` `rack_id` INT(11) DEFAULT 0, CHANGE `enclosure_id` `enclosure_id` INT(11) DEFAULT 0, CHANGE `managementip` `managementip` VARCHAR(255) DEFAULT '', CHANGE `powera_id` `powera_id` INT(11) DEFAULT 0, CHANGE `powerB_id` `powerB_id` INT(11) DEFAULT 0, ADD `redundancy` VARCHAR(20) DEFAULT 1 
+2016-11-02 15:10:34 - Info - 0.554s - query: ALTER TABLE `networkdevice` CHANGE `networkdevicetype_id` `networkdevicetype_id` INT(11) DEFAULT 0, CHANGE `iosversion_id` `iosversion_id` INT(11) DEFAULT 0, CHANGE `ram` `ram` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:10:34 - Info - 0.042s - query: ALTER TABLE `server` CHANGE `osfamily_id` `osfamily_id` INT(11) DEFAULT 0, CHANGE `osversion_id` `osversion_id` INT(11) DEFAULT 0, CHANGE `oslicence_id` `oslicence_id` INT(11) DEFAULT 0, CHANGE `cpu` `cpu` VARCHAR(255) DEFAULT '', CHANGE `ram` `ram` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:10:35 - Info - 0.695s - query: ALTER TABLE `applicationsolution` CHANGE `status` `status` ENUM('active','inactive') DEFAULT 'active', ADD `redundancy` VARCHAR(20) DEFAULT 'disabled' 
+2016-11-02 15:10:35 - Info - 0.034s - query: ALTER TABLE `businessprocess` CHANGE `status` `status` ENUM('active','inactive') DEFAULT 'active' 
+2016-11-02 15:10:36 - Info - 0.922s - query: ALTER TABLE `softwareinstance` CHANGE `functionalci_id` `functionalci_id` INT(11) DEFAULT 0, CHANGE `software_id` `software_id` INT(11) DEFAULT 0, CHANGE `softwarelicence_id` `softwarelicence_id` INT(11) DEFAULT 0, CHANGE `path` `path` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:10:36 - Info - 0.545s - query: ALTER TABLE `middlewareinstance` CHANGE `middleware_id` `middleware_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:37 - Info - 0.603s - query: ALTER TABLE `databaseschema` CHANGE `dbserver_id` `dbserver_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:38 - Info - 0.680s - query: ALTER TABLE `webapplication` CHANGE `webserver_id` `webserver_id` INT(11) DEFAULT 0, CHANGE `url` `url` VARCHAR(2048) DEFAULT '' 
+2016-11-02 15:10:38 - Info - 0.620s - query: ALTER TABLE `software` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `vendor` `vendor` VARCHAR(255) DEFAULT '', CHANGE `version` `version` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:10:39 - Info - 0.571s - query: ALTER TABLE `patch` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'Patch' 
+2016-11-02 15:10:39 - Info - 0.536s - query: ALTER TABLE `ospatch` CHANGE `osversion_id` `osversion_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:40 - Info - 0.544s - query: ALTER TABLE `softwarepatch` CHANGE `software_id` `software_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:41 - Info - 0.914s - query: ALTER TABLE `licence` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `usage_limit` `usage_limit` VARCHAR(255) DEFAULT '', CHANGE `licence_key` `licence_key` VARCHAR(255) DEFAULT '', CHANGE `perpetual` `perpetual` ENUM('no','yes') DEFAULT 'no', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'Licence' 
+2016-11-02 15:10:42 - Info - 0.721s - query: ALTER TABLE `oslicence` CHANGE `osversion_id` `osversion_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:42 - Info - 0.680s - query: ALTER TABLE `softwarelicence` CHANGE `software_id` `software_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:43 - Info - 0.804s - query: ALTER TABLE `lnkdocumenttolicence` CHANGE `licence_id` `licence_id` INT(11) DEFAULT 0, CHANGE `document_id` `document_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:44 - Info - 0.831s - query: ALTER TABLE `typology` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'Typology' 
+2016-11-02 15:10:45 - Info - 0.795s - query: ALTER TABLE `osversion` CHANGE `osfamily_id` `osfamily_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:45 - Info - 0.680s - query: ALTER TABLE `model` CHANGE `brand_id` `brand_id` INT(11) DEFAULT 0, CHANGE `type` `type` ENUM('DiskArray','Enclosure','IPPhone','MobilePhone','NAS','NetworkDevice','PC','PDU','Peripheral','Phone','PowerSource','Printer','Rack','SANSwitch','Server','StorageSystem','Tablet','TapeLibrary') 
+2016-11-02 15:10:46 - Info - 0.628s - query: ALTER TABLE `iosversion` CHANGE `brand_id` `brand_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:47 - Info - 0.637s - query: ALTER TABLE `lnkdocumenttopatch` CHANGE `patch_id` `patch_id` INT(11) DEFAULT 0, CHANGE `document_id` `document_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:47 - Info - 0.546s - query: ALTER TABLE `lnksoftwareinstancetosoftwarepatch` CHANGE `softwarepatch_id` `softwarepatch_id` INT(11) DEFAULT 0, CHANGE `softwareinstance_id` `softwareinstance_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:48 - Info - 0.661s - query: ALTER TABLE `lnkfunctionalcitoospatch` CHANGE `ospatch_id` `ospatch_id` INT(11) DEFAULT 0, CHANGE `functionalci_id` `functionalci_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:48 - Info - 0.522s - query: ALTER TABLE `lnkdocumenttosoftware` CHANGE `software_id` `software_id` INT(11) DEFAULT 0, CHANGE `document_id` `document_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:49 - Info - 0.838s - query: ALTER TABLE `lnkcontacttofunctionalci` CHANGE `functionalci_id` `functionalci_id` INT(11) DEFAULT 0, CHANGE `contact_id` `contact_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:50 - Info - 0.856s - query: ALTER TABLE `lnkdocumenttofunctionalci` CHANGE `functionalci_id` `functionalci_id` INT(11) DEFAULT 0, CHANGE `document_id` `document_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:50 - Info - 0.503s - query: ALTER TABLE `subnet` CHANGE `subnet_name` `subnet_name` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `ip` `ip` VARCHAR(255) DEFAULT '', CHANGE `ip_mask` `ip_mask` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:10:51 - Info - 0.536s - query: ALTER TABLE `vlan` CHANGE `vlan_tag` `vlan_tag` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:52 - Info - 0.655s - query: ALTER TABLE `lnksubnettovlan` CHANGE `subnet_id` `subnet_id` INT(11) DEFAULT 0, CHANGE `vlan_id` `vlan_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:52 - Info - 0.486s - query: ALTER TABLE `networkinterface` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'NetworkInterface' 
+2016-11-02 15:10:52 - Info - 0.034s - query: ALTER TABLE `ipinterface` CHANGE `ipaddress` `ipaddress` VARCHAR(255) DEFAULT '', CHANGE `macaddress` `macaddress` VARCHAR(255) DEFAULT '', CHANGE `ipgateway` `ipgateway` VARCHAR(255) DEFAULT '', CHANGE `ipmask` `ipmask` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:10:53 - Info - 0.662s - query: ALTER TABLE `physicalinterface` CHANGE `connectableci_id` `connectableci_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:53 - Info - 0.622s - query: ALTER TABLE `lnkphysicalinterfacetovlan` CHANGE `physicalinterface_id` `physicalinterface_id` INT(11) DEFAULT 0, CHANGE `vlan_id` `vlan_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:54 - Info - 0.661s - query: ALTER TABLE `lnkconnectablecitonetworkdevice` CHANGE `networkdevice_id` `networkdevice_id` INT(11) DEFAULT 0, CHANGE `connectableci_id` `connectableci_id` INT(11) DEFAULT 0, CHANGE `network_port` `network_port` VARCHAR(255) DEFAULT '', CHANGE `device_port` `device_port` VARCHAR(255) DEFAULT '', CHANGE `type` `type` ENUM('downlink','uplink') DEFAULT 'downlink' 
+2016-11-02 15:10:55 - Info - 0.823s - query: ALTER TABLE `lnkapplicationsolutiontofunctionalci` CHANGE `applicationsolution_id` `applicationsolution_id` INT(11) DEFAULT 0, CHANGE `functionalci_id` `functionalci_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:56 - Info - 0.854s - query: ALTER TABLE `lnkapplicationsolutiontobusinessprocess` CHANGE `businessprocess_id` `businessprocess_id` INT(11) DEFAULT 0, CHANGE `applicationsolution_id` `applicationsolution_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:57 - Info - 0.948s - query: ALTER TABLE `lnkpersontoteam` CHANGE `team_id` `team_id` INT(11) DEFAULT 0, CHANGE `person_id` `person_id` INT(11) DEFAULT 0, CHANGE `role_id` `role_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:57 - Info - 0.721s - query: ALTER TABLE `group` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `status` `status` ENUM('implementation','obsolete','production') DEFAULT 'implementation', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `type` `type` VARCHAR(255) DEFAULT '', CHANGE `parent_id` `parent_id` INT(11) DEFAULT 0, CHANGE `parent_id_left` `parent_id_left` INT(11) DEFAULT 0, CHANGE `parent_id_right` `parent_id_right` INT(11) DEFAULT 0 
+2016-11-02 15:10:58 - Info - 0.713s - query: ALTER TABLE `lnkgrouptoci` CHANGE `group_id` `group_id` INT(11) DEFAULT 0, CHANGE `ci_id` `ci_id` INT(11) DEFAULT 0, CHANGE `reason` `reason` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:10:59 - Info - 0.586s - query: ALTER TABLE `enclosure` CHANGE `rack_id` `rack_id` INT(11) DEFAULT 0 
+2016-11-02 15:10:59 - Info - 0.620s - query: ALTER TABLE `pdu` CHANGE `rack_id` `rack_id` INT(11) DEFAULT 0, CHANGE `powerstart_id` `powerstart_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:00 - Info - 0.094s - query: ALTER TABLE `pc` CHANGE `osfamily_id` `osfamily_id` INT(11) DEFAULT 0, CHANGE `osversion_id` `osversion_id` INT(11) DEFAULT 0, CHANGE `cpu` `cpu` VARCHAR(255) DEFAULT '', CHANGE `ram` `ram` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:11:00 - Info - 0.042s - query: ALTER TABLE `telephonyci` CHANGE `phonenumber` `phonenumber` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:11:00 - Info - 0.034s - query: ALTER TABLE `mobilephone` CHANGE `imei` `imei` VARCHAR(255) DEFAULT '', CHANGE `hw_pin` `hw_pin` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:11:00 - Info - 0.410s - query: ALTER TABLE `mailinbox_standard` CHANGE `behavior` `behavior` ENUM('both','create_only','update_only') DEFAULT 'both', CHANGE `target_class` `target_class` ENUM('Change','EmergencyChange','Incident','NormalChange','Problem','RoutineChange','UserRequest') DEFAULT 'UserRequest', CHANGE `ticket_default_title` `ticket_default_title` VARCHAR(255) DEFAULT '', CHANGE `title_pattern` `title_pattern` VARCHAR(255) DEFAULT '', CHANGE `unknown_caller_behavior` `unknown_caller_behavior` ENUM('create_contact','reject_email') DEFAULT 'reject_email', CHANGE `error_behavior` `error_behavior` ENUM('delete','mark_as_error') DEFAULT 'mark_as_error', CHANGE `notify_errors_to` `notify_errors_to` VARCHAR(255) DEFAULT '', CHANGE `notify_errors_from` `notify_errors_from` VARCHAR(255) DEFAULT '', CHANGE `trace` `trace` ENUM('no','yes') DEFAULT 'no', CHANGE `email_storage` `email_storage` ENUM('delete','keep') DEFAULT 'keep' 
+2016-11-02 15:11:01 - Info - 0.520s - query: ALTER TABLE `fiberchannelinterface` CHANGE `topology` `topology` VARCHAR(255) DEFAULT '', CHANGE `wwn` `wwn` VARCHAR(255) DEFAULT '', CHANGE `datacenterdevice_id` `datacenterdevice_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:01 - Info - 0.513s - query: ALTER TABLE `tape` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `size` `size` VARCHAR(255) DEFAULT '', CHANGE `tapelibrary_id` `tapelibrary_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:02 - Info - 0.545s - query: ALTER TABLE `nasfilesystem` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `raid_level` `raid_level` VARCHAR(255) DEFAULT '', CHANGE `size` `size` VARCHAR(255) DEFAULT '', CHANGE `nas_id` `nas_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:02 - Info - 0.513s - query: ALTER TABLE `logicalvolume` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `lun_id` `lun_id` VARCHAR(255) DEFAULT '', CHANGE `raid_level` `raid_level` VARCHAR(255) DEFAULT '', CHANGE `size` `size` VARCHAR(255) DEFAULT '', CHANGE `storagesystem_id` `storagesystem_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:03 - Info - 0.620s - query: ALTER TABLE `lnkservertovolume` CHANGE `volume_id` `volume_id` INT(11) DEFAULT 0, CHANGE `server_id` `server_id` INT(11) DEFAULT 0, CHANGE `size_used` `size_used` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:11:03 - Info - 0.611s - query: ALTER TABLE `lnkdatacenterdevicetosan` CHANGE `san_id` `san_id` INT(11) DEFAULT 0, CHANGE `datacenterdevice_id` `datacenterdevice_id` INT(11) DEFAULT 0, CHANGE `san_port` `san_port` VARCHAR(255) DEFAULT '', CHANGE `datacenterdevice_port` `datacenterdevice_port` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:11:05 - Info - 1.258s - query: ALTER TABLE `ticket` ADD `operational_status` ENUM('closed','ongoing','resolved') DEFAULT 'ongoing', ADD INDEX (`operational_status`), CHANGE `ref` `ref` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `caller_id` `caller_id` INT(11) DEFAULT 0, CHANGE `team_id` `team_id` INT(11) DEFAULT 0, CHANGE `agent_id` `agent_id` INT(11) DEFAULT 0, CHANGE `title` `title` VARCHAR(255) DEFAULT '', CHANGE `description` `description` TEXT, ADD `description_format` ENUM('text','html') DEFAULT 'text', CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'Ticket' 
+2016-11-02 15:11:05 - Info - 0.730s - query: ALTER TABLE `lnkcontacttoticket` CHANGE `ticket_id` `ticket_id` INT(11) DEFAULT 0, CHANGE `contact_id` `contact_id` INT(11) DEFAULT 0, CHANGE `role` `role` VARCHAR(255) DEFAULT '', ADD `impact_code` ENUM('computed','do_not_notify','manual') DEFAULT 'manual' 
+2016-11-02 15:11:06 - Info - 0.896s - query: ALTER TABLE `lnkfunctionalcitoticket` CHANGE `ticket_id` `ticket_id` INT(11) DEFAULT 0, CHANGE `functionalci_id` `functionalci_id` INT(11) DEFAULT 0, CHANGE `impact` `impact` VARCHAR(255) DEFAULT '', ADD `impact_code` ENUM('computed','manual','not_impacted') DEFAULT 'manual' 
+2016-11-02 15:11:07 - Info - 0.588s - query: ALTER TABLE `workorder` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `status` `status` ENUM('closed','open') DEFAULT 'open', CHANGE `description` `description` TEXT, CHANGE `ticket_id` `ticket_id` INT(11) DEFAULT 0, CHANGE `team_id` `team_id` INT(11) DEFAULT 0, CHANGE `owner_id` `owner_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:07 - Info - 0.042s - query: ALTER TABLE `virtualdevice` CHANGE `status` `status` ENUM('implementation','obsolete','production','stock') DEFAULT 'production' 
+2016-11-02 15:11:07 - Info - 0.042s - query: ALTER TABLE `hypervisor` CHANGE `farm_id` `farm_id` INT(11) DEFAULT 0, CHANGE `server_id` `server_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:07 - Info - 0.577s - query: ALTER TABLE `farm` ADD `redundancy` VARCHAR(20) DEFAULT 1 
+2016-11-02 15:11:09 - Info - 1.299s - query: ALTER TABLE `virtualmachine` CHANGE `virtualhost_id` `virtualhost_id` INT(11) DEFAULT 0, CHANGE `osfamily_id` `osfamily_id` INT(11) DEFAULT 0, CHANGE `osversion_id` `osversion_id` INT(11) DEFAULT 0, CHANGE `oslicence_id` `oslicence_id` INT(11) DEFAULT 0, CHANGE `cpu` `cpu` VARCHAR(255) DEFAULT '', CHANGE `ram` `ram` VARCHAR(255) DEFAULT '', CHANGE `managementip` `managementip` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:11:09 - Info - 0.495s - query: ALTER TABLE `logicalinterface` CHANGE `virtualmachine_id` `virtualmachine_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:10 - Info - 0.561s - query: ALTER TABLE `lnkvirtualdevicetovolume` CHANGE `volume_id` `volume_id` INT(11) DEFAULT 0, CHANGE `virtualdevice_id` `virtualdevice_id` INT(11) DEFAULT 0, CHANGE `size_used` `size_used` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:11:11 - Info - 1.241s - query: ALTER TABLE `change` CHANGE `status` `status` ENUM('approved','assigned','closed','implemented','monitored','new','notapproved','plannedscheduled','rejected','validated') DEFAULT 'new', CHANGE `reason` `reason` VARCHAR(255) DEFAULT '', CHANGE `requestor_id` `requestor_id` INT(11) DEFAULT 0, CHANGE `impact` `impact` VARCHAR(255) DEFAULT '', CHANGE `supervisor_group_id` `supervisor_group_id` INT(11) DEFAULT 0, CHANGE `supervisor_id` `supervisor_id` INT(11) DEFAULT 0, CHANGE `manager_group_id` `manager_group_id` INT(11) DEFAULT 0, CHANGE `manager_id` `manager_id` INT(11) DEFAULT 0, CHANGE `outage` `outage` ENUM('no','yes') DEFAULT 'no', CHANGE `parent_id` `parent_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:11 - Info - 0.033s - query: ALTER TABLE `change_approved` CHANGE `approval_comment` `approval_comment` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:11:12 - Info - 1.100s - query: ALTER TABLE `ticket_incident` CHANGE `status` `status` ENUM('assigned','closed','escalated_tto','escalated_ttr','new','pending','resolved') DEFAULT 'new', CHANGE `impact` `impact` ENUM('1','2','3') DEFAULT '1', CHANGE `priority` `priority` ENUM('1','2','3','4') DEFAULT '4', CHANGE `urgency` `urgency` ENUM('1','2','3','4') DEFAULT '4', CHANGE `origin` `origin` ENUM('mail','monitoring','phone','portal') DEFAULT 'phone', CHANGE `service_id` `service_id` INT(11) DEFAULT 0, CHANGE `servicesubcategory_id` `servicesubcategory_id` INT(11) DEFAULT 0, CHANGE `escalation_flag` `escalation_flag` ENUM('no','yes') DEFAULT 'no', CHANGE `escalation_reason` `escalation_reason` VARCHAR(255) DEFAULT '', CHANGE `resolution_code` `resolution_code` ENUM('assistance','bug fixed','hardware repair','other','software patch','system update','training') DEFAULT 'assistance', CHANGE `parent_incident_id` `parent_incident_id` INT(11) DEFAULT 0, CHANGE `parent_problem_id` `parent_problem_id` INT(11) DEFAULT 0, CHANGE `parent_change_id` `parent_change_id` INT(11) DEFAULT 0, CHANGE `user_satisfaction` `user_satisfaction` ENUM('1','2','3','4') DEFAULT '1' 
+2016-11-02 15:11:13 - Info - 0.603s - query: ALTER TABLE `knownerror` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `cust_id` `cust_id` INT(11) DEFAULT 0, CHANGE `problem_id` `problem_id` INT(11) DEFAULT 0, CHANGE `symptom` `symptom` TEXT, CHANGE `error_code` `error_code` VARCHAR(255) DEFAULT '', CHANGE `domain` `domain` ENUM('Application','Desktop','Network','Server') DEFAULT 'Application', CHANGE `vendor` `vendor` VARCHAR(255) DEFAULT '', CHANGE `model` `model` VARCHAR(255) DEFAULT '', CHANGE `version` `version` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:11:13 - Info - 0.547s - query: ALTER TABLE `lnkerrortofunctionalci` CHANGE `functionalci_id` `functionalci_id` INT(11) DEFAULT 0, CHANGE `error_id` `error_id` INT(11) DEFAULT 0, CHANGE `dummy` `dummy` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:11:14 - Info - 0.628s - query: ALTER TABLE `lnkdocumenttoerror` CHANGE `document_id` `document_id` INT(11) DEFAULT 0, CHANGE `error_id` `error_id` INT(11) DEFAULT 0, CHANGE `link_type` `link_type` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:11:15 - Info - 0.611s - query: ALTER TABLE `faq` CHANGE `title` `title` VARCHAR(255) DEFAULT '', CHANGE `category_id` `category_id` INT(11) DEFAULT 0, CHANGE `error_code` `error_code` VARCHAR(255) DEFAULT '', CHANGE `key_words` `key_words` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:11:15 - Info - 0.463s - query: ALTER TABLE `faqcategory` CHANGE `nam` `nam` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:11:16 - Info - 0.728s - query: ALTER TABLE `ticket_problem` CHANGE `status` `status` ENUM('assigned','closed','new','resolved') DEFAULT 'new', CHANGE `service_id` `service_id` INT(11) DEFAULT 0, CHANGE `servicesubcategory_id` `servicesubcategory_id` INT(11) DEFAULT 0, CHANGE `product` `product` VARCHAR(255) DEFAULT '', CHANGE `impact` `impact` ENUM('1','2','3') DEFAULT '1', CHANGE `urgency` `urgency` ENUM('1','2','3','4') DEFAULT '1', CHANGE `priority` `priority` ENUM('1','2','3','4') DEFAULT '1', CHANGE `related_change_id` `related_change_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:17 - Info - 1.250s - query: ALTER TABLE `ticket_request` CHANGE `status` `status` ENUM('approved','assigned','closed','escalated_tto','escalated_ttr','new','pending','rejected','resolved','waiting_for_approval') DEFAULT 'new', CHANGE `request_type` `request_type` ENUM('service_request') DEFAULT 'service_request', CHANGE `impact` `impact` ENUM('1','2','3') DEFAULT '1', CHANGE `priority` `priority` ENUM('1','2','3','4') DEFAULT '4', CHANGE `urgency` `urgency` ENUM('1','2','3','4') DEFAULT '4', CHANGE `origin` `origin` ENUM('mail','phone','portal') DEFAULT 'phone', CHANGE `approver_id` `approver_id` INT(11) DEFAULT 0, CHANGE `service_id` `service_id` INT(11) DEFAULT 0, CHANGE `servicesubcategory_id` `servicesubcategory_id` INT(11) DEFAULT 0, CHANGE `escalation_flag` `escalation_flag` ENUM('no','yes') DEFAULT 'no', CHANGE `escalation_reason` `escalation_reason` VARCHAR(255) DEFAULT '', CHANGE `resolution_code` `resolution_code` ENUM('assistance','bug fixed','hardware repair','other','software patch','system update','training') DEFAULT 'assistance', CHANGE `parent_request_id` `parent_request_id` INT(11) DEFAULT 0, CHANGE `parent_incident_id` `parent_incident_id` INT(11) DEFAULT 0, CHANGE `parent_problem_id` `parent_problem_id` INT(11) DEFAULT 0, CHANGE `parent_change_id` `parent_change_id` INT(11) DEFAULT 0, CHANGE `user_satisfaction` `user_satisfaction` ENUM('1','2','3','4') DEFAULT '1' 
+2016-11-02 15:11:18 - Info - 1.074s - query: ALTER TABLE `contract` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `cost` `cost` VARCHAR(255) DEFAULT '', CHANGE `contracttype_id` `contracttype_id` INT(11) DEFAULT 0, CHANGE `billing_frequency` `billing_frequency` VARCHAR(255) DEFAULT '', CHANGE `cost_unit` `cost_unit` VARCHAR(255) DEFAULT '', CHANGE `provider_id` `provider_id` INT(11) DEFAULT 0, CHANGE `finalclass` `finalclass` VARCHAR(255) DEFAULT 'Contract' 
+2016-11-02 15:11:18 - Info - 0.042s - query: ALTER TABLE `providercontract` CHANGE `sla` `sla` VARCHAR(255) DEFAULT '', CHANGE `coverage` `coverage` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:11:19 - Info - 0.636s - query: ALTER TABLE `lnkcontacttocontract` CHANGE `contract_id` `contract_id` INT(11) DEFAULT 0, CHANGE `contact_id` `contact_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:19 - Info - 0.520s - query: ALTER TABLE `lnkcontracttodocument` CHANGE `contract_id` `contract_id` INT(11) DEFAULT 0, CHANGE `document_id` `document_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:20 - Info - 0.689s - query: ALTER TABLE `lnkfunctionalcitoprovidercontract` CHANGE `providercontract_id` `providercontract_id` INT(11) DEFAULT 0, CHANGE `functionalci_id` `functionalci_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:21 - Info - 0.595s - query: ALTER TABLE `servicefamily` CHANGE `name` `name` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:11:21 - Info - 0.764s - query: ALTER TABLE `service` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0, CHANGE `servicefamily_id` `servicefamily_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:22 - Info - 0.636s - query: ALTER TABLE `lnkdocumenttoservice` CHANGE `service_id` `service_id` INT(11) DEFAULT 0, CHANGE `document_id` `document_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:23 - Info - 0.746s - query: ALTER TABLE `lnkcontacttoservice` CHANGE `service_id` `service_id` INT(11) DEFAULT 0, CHANGE `contact_id` `contact_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:23 - Info - 0.653s - query: ALTER TABLE `servicesubcategory` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `service_id` `service_id` INT(11) DEFAULT 0, CHANGE `request_type` `request_type` ENUM('incident','service_request') DEFAULT 'incident' 
+2016-11-02 15:11:24 - Info - 0.603s - query: ALTER TABLE `sla` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:24 - Info - 0.520s - query: ALTER TABLE `slt` CHANGE `name` `name` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:11:25 - Info - 0.596s - query: ALTER TABLE `lnkslatoslt` CHANGE `sla_id` `sla_id` INT(11) DEFAULT 0, CHANGE `slt_id` `slt_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:26 - Info - 1.091s - query: ALTER TABLE `lnkcustomercontracttoservice` CHANGE `customercontract_id` `customercontract_id` INT(11) DEFAULT 0, CHANGE `service_id` `service_id` INT(11) DEFAULT 0, CHANGE `sla_id` `sla_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:27 - Info - 0.686s - query: ALTER TABLE `lnkprovidercontracttoservice` CHANGE `service_id` `service_id` INT(11) DEFAULT 0, CHANGE `providercontract_id` `providercontract_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:27 - Info - 0.511s - query: ALTER TABLE `lnkfunctionalcitoservice` CHANGE `service_id` `service_id` INT(11) DEFAULT 0, CHANGE `functionalci_id` `functionalci_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:28 - Info - 0.865s - query: ALTER TABLE `deliverymodel` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `org_id` `org_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:29 - Info - 1.049s - query: ALTER TABLE `lnkdeliverymodeltocontact` CHANGE `deliverymodel_id` `deliverymodel_id` INT(11) DEFAULT 0, CHANGE `contact_id` `contact_id` INT(11) DEFAULT 0, CHANGE `role_id` `role_id` INT(11) DEFAULT 0 
+2016-11-02 15:11:30 - Info - 0.644s - query: ALTER TABLE `priv_urp_profiles` CHANGE `name` `name` VARCHAR(255) DEFAULT '', CHANGE `description` `description` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:11:31 - Info - 0.813s - query: ALTER TABLE `priv_urp_userprofile` CHANGE `userid` `userid` INT(11) DEFAULT 0, CHANGE `profileid` `profileid` INT(11) DEFAULT 0, CHANGE `description` `description` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:11:32 - Info - 0.789s - query: ALTER TABLE `priv_urp_userorg` CHANGE `userid` `userid` INT(11) DEFAULT 0, CHANGE `allowed_org_id` `allowed_org_id` INT(11) DEFAULT 0, CHANGE `reason` `reason` VARCHAR(255) DEFAULT '' 
+2016-11-02 15:11:37 - Ok - Database structure successfully updated.
+2016-11-02 15:11:37 - Ok - Hierchical keys rebuilt: The attribute parent_id from Organization is a hierarchical key.
+Rebuilding the fields parent_id_right and parent_id_left from table 'organization'...
+Ok, table 'organization' successfully updated.
+The attribute parent_id from Group is a hierarchical key.
+Rebuilding the fields parent_id_right and parent_id_left from table 'group'...
+Ok, table 'group' successfully updated.
+
+2016-11-02 15:11:37 - Ok - Data sources checked: There are no Data Sources in the database.
+Ok.
+
+2016-11-02 15:11:38 - Ok - Meta enums rebuilt: Executing query: UPDATE `ticket` JOIN `change` ON `change`.id = `ticket`.id SET `ticket`.`operational_status` = 'ongoing' WHERE `change`.`status` IN ('approved', 'assigned', 'implemented', 'monitored', 'new', 'notapproved', 'plannedscheduled', 'validated') AND `ticket`.`operational_status` != 'ongoing'
+Executing query: UPDATE `ticket` JOIN `change` ON `change`.id = `ticket`.id SET `ticket`.`operational_status` = 'closed' WHERE `change`.`status` IN ('closed', 'rejected') AND `ticket`.`operational_status` != 'closed'
+Executing query: UPDATE `ticket` JOIN `ticket_incident` ON `ticket_incident`.id = `ticket`.id SET `ticket`.`operational_status` = 'ongoing' WHERE `ticket_incident`.`status` IN ('assigned', 'escalated_tto', 'escalated_ttr', 'new', 'pending') AND `ticket`.`operational_status` != 'ongoing'
+Executing query: UPDATE `ticket` JOIN `ticket_incident` ON `ticket_incident`.id = `ticket`.id SET `ticket`.`operational_status` = 'closed' WHERE `ticket_incident`.`status` IN ('closed') AND `ticket`.`operational_status` != 'closed'
+Executing query: UPDATE `ticket` JOIN `ticket_incident` ON `ticket_incident`.id = `ticket`.id SET `ticket`.`operational_status` = 'resolved' WHERE `ticket_incident`.`status` IN ('resolved') AND `ticket`.`operational_status` != 'resolved'
+Executing query: UPDATE `ticket` JOIN `ticket_problem` ON `ticket_problem`.id = `ticket`.id SET `ticket`.`operational_status` = 'ongoing' WHERE `ticket_problem`.`status` IN ('assigned', 'new') AND `ticket`.`operational_status` != 'ongoing'
+Executing query: UPDATE `ticket` JOIN `ticket_problem` ON `ticket_problem`.id = `ticket`.id SET `ticket`.`operational_status` = 'closed' WHERE `ticket_problem`.`status` IN ('closed') AND `ticket`.`operational_status` != 'closed'
+Executing query: UPDATE `ticket` JOIN `ticket_problem` ON `ticket_problem`.id = `ticket`.id SET `ticket`.`operational_status` = 'resolved' WHERE `ticket_problem`.`status` IN ('resolved') AND `ticket`.`operational_status` != 'resolved'
+Executing query: UPDATE `ticket` JOIN `ticket_request` ON `ticket_request`.id = `ticket`.id SET `ticket`.`operational_status` = 'ongoing' WHERE `ticket_request`.`status` IN ('approved', 'assigned', 'escalated_tto', 'escalated_ttr', 'new', 'pending', 'waiting_for_approval') AND `ticket`.`operational_status` != 'ongoing'
+Executing query: UPDATE `ticket` JOIN `ticket_request` ON `ticket_request`.id = `ticket`.id SET `ticket`.`operational_status` = 'closed' WHERE `ticket_request`.`status` IN ('closed', 'rejected') AND `ticket`.`operational_status` != 'closed'
+Executing query: UPDATE `ticket` JOIN `ticket_request` ON `ticket_request`.id = `ticket`.id SET `ticket`.`operational_status` = 'resolved' WHERE `ticket_request`.`status` IN ('resolved') AND `ticket`.`operational_status` != 'resolved'
+
+2016-11-02 15:11:38 - Info - 'priv_change.origin' already initialized, nothing to do.
+2016-11-02 15:11:38 - Info - 'priv_async_task.status' already initialized, nothing to do.
+2016-11-02 15:11:38 - Info - Database Schema Successfully Updated for environment 'production'.
+2016-11-02 15:11:38 - Info - operation 'async_action', peak memory usage. 25089360
+2016-11-02 15:11:38 - Info - After Database Creation
+2016-11-02 15:11:38 - Info - MetaModel::Startup (ModelOnly = 1)
+2016-11-02 15:11:38 - Info - Calling Module Handler: AttachmentInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:11:38 - Info - Initializing attachment/item_org_id - null to zero
+2016-11-02 15:11:38 - Info - Initializing attachment/item_org_id - zero to the container
+2016-11-02 15:11:38 - Info - Initializing attachment/item_org_id - 0 records have been adjusted
+2016-11-02 15:11:38 - Info - Calling Module Handler: ConfigMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:11:38 - Info - Calling Module Handler: EndUserMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.2.0)
+2016-11-02 15:11:38 - Info - Calling Module Handler: StorageMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.2.0)
+2016-11-02 15:11:38 - Info - Calling Module Handler: TicketsInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:11:38 - Info - Calling Module Handler: KnownErrorMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:11:38 - Info - Calling Module Handler: ServiceMgmtInstaller::AfterDatabaseCreation(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:11:38 - Info - URP_Profiles::GetPredefinedObjects() returned 12 elements.
+2016-11-02 15:11:38 - Info - Calling Module Handler: AttachmentInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:11:38 - Info - Calling Module Handler: ConfigMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:11:38 - Info - Calling Module Handler: EndUserMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.2.0)
+2016-11-02 15:11:38 - Info - Calling Module Handler: StorageMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.2.0)
+2016-11-02 15:11:38 - Info - Calling Module Handler: TicketsInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:11:38 - Info - Calling Module Handler: KnownErrorMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:11:38 - Info - Calling Module Handler: ServiceMgmtInstaller::AfterDatabaseSetup(oConfig, 2.1.0, 2.3.0)
+2016-11-02 15:11:38 - Info - operation 'async_action', peak memory usage. 12675440
+2016-11-02 15:11:38 - Info - MetaModel::Startup (ModelOnly = )
+2016-11-02 15:11:38 - Info - starting data load session
+2016-11-02 15:11:38 - Info - Loading file: /var/www/html/env-production/email-reply/data.struct.ta-actions.xml (just to get the keys mapping)
+2016-11-02 15:11:38 - Info - loading of data.struct.ta-actions.xml done.
+2016-11-02 15:11:38 - Info - Loading file: /var/www/html/env-production/email-reply/data.struct.ta-triggers.xml (just to get the keys mapping)
+2016-11-02 15:11:38 - Info - loading of data.struct.ta-triggers.xml done.
+2016-11-02 15:11:38 - Info - Loading file: /var/www/html/env-production/email-reply/data.struct.ta-links.xml (just to get the keys mapping)
+2016-11-02 15:11:38 - Info - loading of data.struct.ta-links.xml done.
+2016-11-02 15:11:38 - Warning - unresolved extkey in lnkTriggerAction::-1()::action_id=Action::-1
+2016-11-02 15:11:38 - Warning - unresolved extkey in lnkTriggerAction::-1()::trigger_id=Trigger::-50
+2016-11-02 15:11:38 - Info - ending data load session
+2016-11-02 15:11:38 - Info - operation 'async_action', peak memory usage. 12025592
+2016-11-02 15:11:38 - Info - MetaModel::Startup from /var/www/html//conf/production/config-itop.php (ModelOnly = 1)
+2016-11-02 15:11:42 - Info - operation 'async_action', peak memory usage. 12191992

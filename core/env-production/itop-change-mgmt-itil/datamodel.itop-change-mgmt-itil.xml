@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1">
+<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2">
   <classes>
     <class id="Change" _delta="define">
       <parent>Ticket</parent>
@@ -932,47 +932,32 @@
           <static>false</static>
           <access>protected</access>
           <type>Overload-DBObject</type>
-          <code><![CDATA[	protected function OnInsert()
+          <code><![CDATA[
+    protected function OnInsert()
 	{
-		$oToNotify = $this->Get('contacts_list');
-		$oToImpact = $this->Get('functionalcis_list');
-
-		$oImpactedInfras = DBObjectSet::FromLinkSet($this, 'functionalcis_list', 'functionalci_id');
-	
-		$aComputed = $oImpactedInfras->GetRelatedObjects('impacts', 10);
-	
-		if (isset($aComputed['FunctionalCI']) && is_array($aComputed['FunctionalCI']))
-		{
-			foreach($aComputed['FunctionalCI'] as $iKey => $oObject)
-			{
-				$oNewLink = new lnkFunctionalCIToTicket();
-				$oNewLink->Set('functionalci_id', $iKey);
-				$oToImpact->AddObject($oNewLink);
-			}
-		}
-		if (isset($aComputed['Contact']) && is_array($aComputed['Contact']))
-		{
-			foreach($aComputed['Contact'] as $iKey => $oObject)
-			{
-				$oNewLink = new lnkContactToTicket();
-				$oNewLink->Set('contact_id', $iKey);
-				$oNewLink->Set('role', 'contact automatically computed');
-				$oToNotify->AddObject($oNewLink);
-			}
-		}
-
+        parent::OnInsert();
+        $this->UpdateImpactedItems();
 		$this->Set('creation_date', time());
 		$this->Set('last_update', time());
-	}]]></code>
+	}]]>
+          </code>
         </method>
         <method id="OnUpdate">
           <static>false</static>
           <access>protected</access>
           <type>Overload-DBObject</type>
-          <code><![CDATA[	protected function OnUpdate()
-	{
-		$this->Set('last_update', time());
-	}]]></code>
+          <code><![CDATA[
+    protected function OnUpdate()
+  	{
+        parent::OnUpdate();
+        $aChanges = $this->ListChanges();
+        if (array_key_exists('functionalcis_list', $aChanges))
+        {
+            $this->UpdateImpactedItems();
+        }
+  	    $this->Set('last_update', time());
+  	}]]>
+          </code>
         </method>
       </methods>
       <presentation>
@@ -1117,6 +1102,9 @@
             </item>
             <item id="status">
               <rank>30</rank>
+            </item>
+            <item id="operational_status">
+              <rank>35</rank>
             </item>
             <item id="title">
               <rank>40</rank>
@@ -1907,6 +1895,9 @@
             </item>
             <item id="status">
               <rank>30</rank>
+            </item>
+            <item id="operational_status">
+              <rank>35</rank>
             </item>
             <item id="title">
               <rank>40</rank>
@@ -2899,6 +2890,9 @@
             <item id="status">
               <rank>30</rank>
             </item>
+            <item id="operational_status">
+              <rank>35</rank>
+            </item>
             <item id="title">
               <rank>40</rank>
             </item>
@@ -3584,6 +3578,9 @@
             </item>
             <item id="status">
               <rank>30</rank>
+            </item>
+            <item id="operational_status">
+              <rank>35</rank>
             </item>
             <item id="title">
               <rank>40</rank>
@@ -4338,6 +4335,9 @@
             <item id="status">
               <rank>30</rank>
             </item>
+            <item id="operational_status">
+              <rank>35</rank>
+            </item>
             <item id="title">
               <rank>40</rank>
             </item>
@@ -4531,4 +4531,100 @@
       <auto_reload>fast</auto_reload>
     </menu>
   </menus>
+  <module_parameters>
+    <parameters id="itop-tickets">
+      <relation_context>
+        <UserRequest>
+          <impacts>
+            <down>
+              <items type="array">
+                <item id="open_changes" _delta="define">
+                  <oql><![CDATA[SELECT FCI, C FROM FunctionalCI AS FCI JOIN lnkFunctionalCIToTicket AS L ON L.functionalci_id = FCI.id JOIN Change AS C ON L.ticket_id = C.id WHERE (C.outage = 'yes') AND (C.status NOT IN ('closed', 'rejected')) AND (L.impact_code != 'not_impacted') AND (C.id != :this->id)]]></oql>
+                  <dict>Tickets:Related:OpenChanges</dict>
+                  <icon>itop-change-mgmt-itil/images/change-ongoing.png</icon>
+                </item>
+                <item id="recent_changes" _delta="define">
+                  <oql><![CDATA[SELECT FCI, C FROM FunctionalCI AS FCI JOIN lnkFunctionalCIToTicket AS L ON L.functionalci_id = FCI.id JOIN Change AS C ON L.ticket_id = C.id WHERE (C.outage = 'yes') AND (C.status NOT IN ('closed')) AND (L.impact_code != 'not_impacted') AND (C.id != :this->id) AND (DATE_ADD(C.end_date, INTERVAL 3 DAY) < NOW())]]></oql>
+                  <dict>Tickets:Related:RecentChanges</dict>
+                  <icon>itop-change-mgmt-itil/images/change-done.png</icon>
+                </item>
+              </items>
+            </down>
+          </impacts>
+        </UserRequest>
+        <Incident>
+          <impacts>
+            <down>
+              <items type="array">
+                <item id="open_changes" _delta="define">
+                  <oql><![CDATA[SELECT FCI, C FROM FunctionalCI AS FCI JOIN lnkFunctionalCIToTicket AS L ON L.functionalci_id = FCI.id JOIN Change AS C ON L.ticket_id = C.id WHERE (C.outage = 'yes') AND (C.status NOT IN ('closed', 'rejected')) AND (L.impact_code != 'not_impacted') AND (C.id != :this->id)]]></oql>
+                  <dict>Tickets:Related:OpenChanges</dict>
+                  <icon>itop-change-mgmt-itil/images/change-ongoing.png</icon>
+                </item>
+                <item id="recent_changes" _delta="define">
+                  <oql><![CDATA[SELECT FCI, C FROM FunctionalCI AS FCI JOIN lnkFunctionalCIToTicket AS L ON L.functionalci_id = FCI.id JOIN Change AS C ON L.ticket_id = C.id WHERE (C.outage = 'yes') AND (C.status NOT IN ('closed')) AND (L.impact_code != 'not_impacted') AND (C.id != :this->id) AND (DATE_ADD(C.end_date, INTERVAL 3 DAY) < NOW())]]></oql>
+                  <dict>Tickets:Related:RecentChanges</dict>
+                  <icon>itop-change-mgmt-itil/images/change-done.png</icon>
+                </item>
+              </items>
+            </down>
+          </impacts>
+        </Incident>
+        <Change>
+          <impacts>
+            <down>
+              <items type="array">
+                <item id="open_changes" _delta="define">
+                  <oql><![CDATA[SELECT FCI, C FROM FunctionalCI AS FCI JOIN lnkFunctionalCIToTicket AS L ON L.functionalci_id = FCI.id JOIN Change AS C ON L.ticket_id = C.id WHERE (C.outage = 'yes') AND (C.status NOT IN ('closed', 'rejected')) AND (L.impact_code != 'not_impacted') AND (C.id != :this->id)]]></oql>
+                  <dict>Tickets:Related:OpenChanges</dict>
+                  <icon>itop-change-mgmt-itil/images/change-ongoing.png</icon>
+                </item>
+                <item id="recent_changes" _delta="define">
+                  <oql><![CDATA[SELECT FCI, C FROM FunctionalCI AS FCI JOIN lnkFunctionalCIToTicket AS L ON L.functionalci_id = FCI.id JOIN Change AS C ON L.ticket_id = C.id WHERE (C.outage = 'yes') AND (C.status NOT IN ('closed')) AND (L.impact_code != 'not_impacted') AND (C.id != :this->id) AND (DATE_ADD(C.end_date, INTERVAL 3 DAY) < NOW())]]></oql>
+                  <dict>Tickets:Related:RecentChanges</dict>
+                  <icon>itop-change-mgmt-itil/images/change-done.png</icon>
+                </item>
+              </items>
+            </down>
+          </impacts>
+        </Change>
+      </relation_context>
+    </parameters>
+    <parameters id="itop-config-mgmt">
+      <relation_context>
+        <FunctionalCI>
+          <impacts>
+            <down>
+              <items type="array">
+                <item id="open_changes" _delta="define">
+                  <oql><![CDATA[SELECT FCI, C FROM FunctionalCI AS FCI JOIN lnkFunctionalCIToTicket AS L ON L.functionalci_id = FCI.id JOIN Change AS C ON L.ticket_id = C.id WHERE (C.outage = 'yes') AND (C.status NOT IN ('closed', 'rejected')) AND (L.impact_code != 'not_impacted')]]></oql>
+                  <dict>Tickets:Related:OpenChanges</dict>
+                  <icon>itop-change-mgmt-itil/images/change-ongoing.png</icon>
+                </item>
+                <item id="recent_changes" _delta="define">
+                  <oql><![CDATA[SELECT FCI, C FROM FunctionalCI AS FCI JOIN lnkFunctionalCIToTicket AS L ON L.functionalci_id = FCI.id JOIN Change AS C ON L.ticket_id = C.id WHERE (C.outage = 'yes') AND (C.status IN ('closed')) AND (L.impact_code != 'not_impacted') AND (DATE_ADD(C.end_date, INTERVAL 3 DAY) < NOW())]]></oql>
+                  <dict>Tickets:Related:RecentChanges</dict>
+                  <icon>itop-change-mgmt-itil/images/change-done.png</icon>
+                </item>
+              </items>
+            </down>
+            <up>
+              <items type="array">
+                <item id="open_changes" _delta="define">
+                  <oql><![CDATA[SELECT FCI, C FROM FunctionalCI AS FCI JOIN lnkFunctionalCIToTicket AS L ON L.functionalci_id = FCI.id JOIN Change AS C ON L.ticket_id = C.id WHERE (C.outage = 'yes') AND (C.status NOT IN ('closed', 'rejected')) AND (L.impact_code != 'not_impacted')]]></oql>
+                  <dict>Tickets:Related:OpenChanges</dict>
+                  <icon>itop-change-mgmt-itil/images/change-ongoing.png</icon>
+                </item>
+                <item id="recent_changes" _delta="define">
+                  <oql><![CDATA[SELECT FCI, C FROM FunctionalCI AS FCI JOIN lnkFunctionalCIToTicket AS L ON L.functionalci_id = FCI.id JOIN Change AS C ON L.ticket_id = C.id WHERE (C.outage = 'yes') AND (C.status IN ('closed')) AND (L.impact_code != 'not_impacted') AND (DATE_ADD(C.end_date, INTERVAL 3 DAY) < NOW())]]></oql>
+                  <dict>Tickets:Related:RecentChanges</dict>
+                  <icon>itop-change-mgmt-itil/images/change-done.png</icon>
+                </item>
+              </items>
+            </up>
+          </impacts>
+        </FunctionalCI>
+      </relation_context>
+    </parameters>
+  </module_parameters>
 </itop_design>

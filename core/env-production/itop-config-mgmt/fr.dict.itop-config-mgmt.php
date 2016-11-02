@@ -1,5 +1,5 @@
 <?php
-// Copyright (C) 2010-2012 Combodo SARL
+// Copyright (C) 2010-2015 Combodo SARL
 //
 //   This file is part of iTop.
 //
@@ -146,6 +146,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Person/Attribute:tickets_list+' => '',
 	'Class:Person/Attribute:manager_id_friendlyname' => 'Manager friendly name',
 	'Class:Person/Attribute:manager_id_friendlyname+' => '',
+	'Class:Person/Attribute:picture' => 'Photo',
+	'Class:Person/Attribute:picture+' => '',
 ));
 
 //
@@ -274,6 +276,7 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:FunctionalCI/Attribute:tickets_list+' => '',
 	'Class:FunctionalCI/Attribute:finalclass' => 'Type de CI',
 	'Class:FunctionalCI/Attribute:finalclass+' => '',
+	'Class:FunctionalCI/Tab:OpenedTickets' => 'Tickets en cours',
 ));
 
 //
@@ -425,6 +428,11 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:DatacenterDevice/Attribute:fiberinterfacelist_list+' => '',
 	'Class:DatacenterDevice/Attribute:san_list' => 'SANs',
 	'Class:DatacenterDevice/Attribute:san_list+' => '',
+	'Class:DatacenterDevice/Attribute:redundancy' => 'Redondance',
+	'Class:DatacenterDevice/Attribute:redundancy/count' => 'Le %2$s est alimenté si au moins une source électrique (A ou B) est opérationnelle',
+	// Unused yet
+	'Class:DatacenterDevice/Attribute:redundancy/disabled' => 'Le %2$s est alimenté si toutes ses sources électriques sont opérationnelles',
+	'Class:DatacenterDevice/Attribute:redundancy/percent' => 'Le %2$s est alimenté si au moins %1$s %% de ses sources électriques sont opérationnelles',
 ));
 
 //
@@ -572,7 +580,7 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:PowerSource' => 'Arrivée électrique',
 	'Class:PowerSource+' => '',
 	'Class:PowerSource/Attribute:pdus_list' => 'PDUs',
-	'Class:PowerSourcel/Attribute:pdus_list+' => '',
+	'Class:PowerSource/Attribute:pdus_list+' => '',
 ));
 
 //
@@ -635,6 +643,10 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:ApplicationSolution/Attribute:status/Value:active+' => 'active',
 	'Class:ApplicationSolution/Attribute:status/Value:inactive' => 'inactive',
 	'Class:ApplicationSolution/Attribute:status/Value:inactive+' => 'inactive',
+	'Class:ApplicationSolution/Attribute:redundancy' => 'Analyse d\'impact : configuration de la redondance',
+	'Class:ApplicationSolution/Attribute:redundancy/disabled' => 'La solution est opérationelle si tous les CIs qui la composent sont opérationnels',
+	'Class:ApplicationSolution/Attribute:redundancy/count' => 'Nombre minimal de CIs pour que la solution soit opérationnelle : %1$s',
+	'Class:ApplicationSolution/Attribute:redundancy/percent' => 'Pourcentage minimal de CIs pour que la solution soit opérationnelle : %1$s %%',
 ));
 
 //
@@ -833,6 +845,10 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Farm+' => '',
 	'Class:Farm/Attribute:hypervisor_list' => 'Hyperviseurs',
 	'Class:Farm/Attribute:hypervisor_list+' => '',
+	'Class:Farm/Attribute:redundancy' => 'Haute disponibilité',
+	'Class:Farm/Attribute:redundancy/disabled' => 'Le vCluster est opérationnel si tous les hyperviseurs qui le composent sont opérationnels',
+	'Class:Farm/Attribute:redundancy/count' => 'Nombre minimal d\'hyperviseurs pour que le vCluster soit opérationnel : %1$s',
+	'Class:Farm/Attribute:redundancy/percent' => 'Pourcentage minimal d\'hyperviseurs pour que le vCluster soit opérationnel : %1$s %%',
 ));
 
 //
@@ -1819,11 +1835,11 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'UI-ConfigMgmtMenuOverview-DeviceToRenew' => 'Equipements à remplacer dans 6 mois',
 	'Menu:UI_WelcomeMenu_AllConfigItems' => 'Résumé',
 	'Relation:impacts/Description' => 'Eléments impactés par',
-	'Relation:impacts/VerbUp' => 'Impacte...',
-	'Relation:impacts/VerbDown' => 'Dépend de...',
+	'Relation:impacts/DownStream' => 'Impacte...',
+	'Relation:impacts/UpStream' => 'Dépend de...',
 	'Relation:depends on/Description' => 'Eléments dont dépend',
-	'Relation:depends on/VerbUp' => 'Dépend de...',
-	'Relation:depends on/VerbDown' => 'Impacte...',
+	'Relation:depends on/DownStream' => 'Dépend de...',
+	'Relation:depends on/UpStream' => 'Impacte...',
 	'Menu:ConfigManagement:Typology' => 'Configuration des typologies',
 ));
 
@@ -1831,10 +1847,12 @@ Dict::Add('FR FR', 'French', 'Français', array(
 
 Dict::Add('FR FR', 'French', 'Français', array(
 'Server:baseinfo' => 'Informations générales',
-'Server:Date' => 'Date',
+'Server:Date' => 'Dates',
 'Server:moreinfo' => 'Informations complémentaires',
 'Server:otherinfo' => 'Autres informations',
+'Server:power' => 'Alimentation électrique',
 'Person:info' => 'Informations générales',
+'Person:personal_info' => 'Informations personnelles',
 'Person:notifiy' => 'Notification',
 'Class:Subnet/Tab:IPUsage' => 'IP utilisées',
 'Class:Subnet/Tab:IPUsage-explain' => 'Interfaces ayant une IP dans la plage: <em>%1$s</em> à <em>%2$s</em>',
@@ -1842,5 +1860,15 @@ Dict::Add('FR FR', 'French', 'Français', array(
 'Class:Subnet/Tab:FreeIPs-count' => 'IP disponibles: %1$s',
 'Class:Subnet/Tab:FreeIPs-explain' => 'Voici un échantillon de dix addresses IP disponibles',
 'Class:Document:PreviewTab' => 'Aperçu',
+	'Class:Organization/Attribute:deliverymodel_id' => 'Modèle de support',
+	'Class:Organization/Attribute:deliverymodel_name' => 'Nom modèle de support',
+	'Class:Person/Attribute:name' => 'Nom',
+	'Class:Model/Attribute:type/Value:DiskArray' => 'Baie de disques',
+	'Class:Model/Attribute:type/Value:DiskArray+' => 'Baie de disques',
+	'Class:Subnet/Attribute:subnet_name' => 'Nom de subnet',
+	'Class:IPInterface/Attribute:comment' => 'Commentaire',
+	'Menu:ConfigManagement:virtualization' => 'Virtualisation',
+	'Menu:ConfigManagement:EndUsers' => 'Périphériques utilisateurs',
+	'UI_WelcomeMenu_AllConfigItems' => 'Résumé',
 ));
 ?>

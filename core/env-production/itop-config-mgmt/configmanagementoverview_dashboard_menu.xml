@@ -20,31 +20,31 @@
           <rank>4</rank>
           <class>NetworkDevice</class>
         </dashlet>
-        <dashlet id="21" xsi:type="DashletBadge">
+        <dashlet id="21" xsi:type="DashletBadge" _altered_in="itop-datacenter-mgmt">
           <rank>1</rank>
           <class>Rack</class>
         </dashlet>
-        <dashlet id="22" xsi:type="DashletBadge">
+        <dashlet id="22" xsi:type="DashletBadge" _altered_in="itop-datacenter-mgmt">
           <rank>2</rank>
           <class>Enclosure</class>
         </dashlet>
-        <dashlet id="23" xsi:type="DashletBadge">
+        <dashlet id="23" xsi:type="DashletBadge" _altered_in="itop-datacenter-mgmt">
           <rank>9</rank>
           <class>PowerConnection</class>
         </dashlet>
-        <dashlet id="33" xsi:type="DashletBadge">
+        <dashlet id="33" xsi:type="DashletBadge" _altered_in="itop-storage-mgmt">
           <rank>5</rank>
           <class>StorageSystem</class>
         </dashlet>
-        <dashlet id="34" xsi:type="DashletBadge">
+        <dashlet id="34" xsi:type="DashletBadge" _altered_in="itop-storage-mgmt">
           <rank>6</rank>
           <class>SANSwitch</class>
         </dashlet>
-        <dashlet id="35" xsi:type="DashletBadge">
+        <dashlet id="35" xsi:type="DashletBadge" _altered_in="itop-storage-mgmt">
           <rank>7</rank>
           <class>NAS</class>
         </dashlet>
-        <dashlet id="36" xsi:type="DashletBadge">
+        <dashlet id="36" xsi:type="DashletBadge" _altered_in="itop-storage-mgmt">
           <rank>8</rank>
           <class>TapeLibrary</class>
         </dashlet>
@@ -132,13 +132,13 @@
           <rank>6</rank>
           <class>Group</class>
         </dashlet>
-        <dashlet id="37" xsi:type="DashletBadge">
+        <dashlet id="37" xsi:type="DashletBadge" _altered_in="itop-storage-mgmt">
           <rank>3</rank>
           <class>LogicalVolume</class>
         </dashlet>
       </dashlets>
     </cell>
-    <cell id="2">
+    <cell id="2" _altered_in="itop-endusers-devices">
       <rank>2</rank>
       <dashlets>
         <dashlet id="25" xsi:type="DashletHeaderStatic">
@@ -176,7 +176,7 @@
         </dashlet>
       </dashlets>
     </cell>
-    <cell id="1">
+    <cell id="1" _altered_in="itop-virtualization-mgmt">
       <rank>1</rank>
       <dashlets>
         <dashlet id="38" xsi:type="DashletHeaderStatic">

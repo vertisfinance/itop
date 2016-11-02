@@ -13,14 +13,6 @@ services:
       - itop-data-volume:/var/lib/mysql
       - ../../docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
 
-  phpmyadmin:
-      image: phpmyadmin/phpmyadmin
-      environment:
-        PMA_ARBITRARY: "1"
-      restart: always
-      ports:
-       - 3306:80
-
   itop:
     image: itop
     command: ["bash", "run.sh"]

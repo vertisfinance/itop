@@ -54,6 +54,24 @@ $MySettings = array(
 	//	default: false
 	'csv_import_history_display' => false,
 
+	// date_and_time_format: Format for date and time display (per language)
+	//	default: array (
+	//		  'default' => 
+	//		  array (
+	//		    'date' => 'Y-m-d',
+	//		    'time' => 'H:i:s',
+	//		    'date_time' => '$date $time',
+	//		  ),
+	//		)
+	'date_and_time_format' => array (
+	  'default' => 
+	  array (
+	    'date' => 'Y-m-d',
+	    'time' => 'H:i:s',
+	    'date_time' => '$date $time',
+	  ),
+	),
+
 	'db_character_set' => 'utf8',
 
 	'db_collation' => 'utf8_unicode_ci',
@@ -108,11 +126,25 @@ $MySettings = array(
 
 	'encryption_key' => '@iT0pEncr1pti0n!',
 
+	'ext_auth_variable' => '$_SERVER[\'REMOTE_USER\']',
+
 	'fast_reload_interval' => '60',
 
 	// forgot_password: Enable the "Forgot password" feature
 	//	default: true
 	'forgot_password' => true,
+
+	// graphviz_path: Path to the Graphviz "dot" executable for graphing objects lifecycle
+	//	default: '/usr/bin/dot'
+	'graphviz_path' => '/usr/bin/dot',
+
+	// inline_image_max_display_width: The maximum width (in pixels) when displaying images inside an HTML formatted attribute. Images will be displayed using this this maximum width.
+	//	default: '250'
+	'inline_image_max_display_width' => '250',
+
+	// inline_image_max_storage_width: The maximum width (in pixels) when uploading images to be used inside an HTML formatted attribute. Images larger than the given size will be downsampled before storing them in the database.
+	//	default: '1600'
+	'inline_image_max_storage_width' => '1600',
 
 	// link_set_attribute_qualifier: Link set from string: attribute qualifier (encloses both the attcode and the value)
 	//	default: '\''
@@ -135,6 +167,8 @@ $MySettings = array(
 	'log_issue' => true,
 
 	'log_notification' => true,
+
+	'log_queries' => false,
 
 	// log_usage: Log the usage of the application (i.e. the date/time and the user name of each login)
 	//	default: false
@@ -161,6 +195,8 @@ $MySettings = array(
 	// portal_tickets: CSV list of classes supported in the portal
 	//	default: 'UserRequest'
 	'portal_tickets' => 'UserRequest',
+
+	'query_cache_enabled' => true,
 
 	'secure_connection_required' => false,
 
@@ -209,6 +245,7 @@ $MyModuleSettings = array(
 		  8 => 0,
 		),
 		'debug' => true,
+		'start_tls' => false,
 	),
 	'combodo-email-synchro' => array (
 		'notify_errors_to' => 'gabor.egyed@vertis.com',
@@ -274,102 +311,8 @@ $MyModuleSettings = array(
  *
  */
 $MyModules = array(
-	'application' => array (
-		'application/transaction.class.inc.php',
-		'application/menunode.class.inc.php',
-		'application/user.preferences.class.inc.php',
-		'application/user.dashboard.class.inc.php',
-		'application/audit.rule.class.inc.php',
-		'application/query.class.inc.php',
-		'core/event.class.inc.php',
-		'core/action.class.inc.php',
-		'core/trigger.class.inc.php',
-		'synchro/synchrodatasource.class.inc.php',
-		'core/backgroundtask.class.inc.php',
-	),
-	'business' => array (
-		'env-production/authent-external/model.authent-external.php',
-		'env-production/authent-ldap/model.authent-ldap.php',
-		'env-production/authent-local/model.authent-local.php',
-		'env-production/combodo-email-synchro/model.email-synchro.php',
-		'env-production/combodo-email-synchro/mailinbox.class.inc.php',
-		'env-production/combodo-email-synchro/emailprocessor.class.inc.php',
-		'env-production/combodo-email-synchro/emailbackgroundprocess.class.inc.php',
-		'env-production/combodo-email-synchro/trigger.class.inc.php',
-		'env-production/email-reply/main.email-reply.php',
-		'env-production/itop-attachments/model.itop-attachments.php',
-		'env-production/itop-attachments/main.attachments.php',
-		'env-production/itop-backup/main.itop-backup.php',
-		'env-production/itop-bridge-virtualization-storage/model.itop-bridge-virtualization-storage.php',
-		'env-production/itop-config-mgmt/model.itop-config-mgmt.php',
-		'env-production/itop-config-mgmt/main.itop-config-mgmt.php',
-		'env-production/itop-config/main.itop-config.php',
-		'env-production/itop-datacenter-mgmt/model.itop-datacenter-mgmt.php',
-		'env-production/itop-endusers-devices/model.itop-endusers-devices.php',
-		'env-production/itop-profiles-itil/model.itop-profiles-itil.php',
-		'env-production/itop-sla-computation/main.itop-sla-computation.php',
-		'env-production/itop-standard-email-synchro/mailinboxstandard.class.inc.php',
-		'env-production/itop-standard-email-synchro/model.itop-standard-email-synchro.php',
-		'env-production/itop-storage-mgmt/model.itop-storage-mgmt.php',
-		'env-production/itop-tickets/model.itop-tickets.php',
-		'env-production/itop-tickets/main.itop-tickets.php',
-		'env-production/itop-virtualization-mgmt/model.itop-virtualization-mgmt.php',
-		'env-production/itop-welcome-itil/main.itop-welcome-itil.php',
-		'env-production/itop-welcome-itil/model.itop-welcome-itil.php',
-		'env-production/itop-change-mgmt-itil/model.itop-change-mgmt-itil.php',
-		'env-production/itop-incident-mgmt-itil/model.itop-incident-mgmt-itil.php',
-		'env-production/itop-knownerror-mgmt/model.itop-knownerror-mgmt.php',
-		'env-production/itop-problem-mgmt/model.itop-problem-mgmt.php',
-		'env-production/itop-request-mgmt-itil/model.itop-request-mgmt-itil.php',
-		'env-production/itop-request-mgmt-itil/main.itop-request-mgmt-itil.php',
-		'env-production/itop-service-mgmt/model.itop-service-mgmt.php',
-	),
-	'webservices' => array (
-		'webservices/webservices.basic.php',
-	),
 	'addons' => array (
 		'user rights' => 'addons/userrights/userrightsprofile.class.inc.php',
-	),
-	'dictionaries' => array (
-		'dictionaries/pt_br.dictionary.itop.core.php',
-		'dictionaries/it.dictionary.itop.ui.php',
-		'dictionaries/ru.dictionary.itop.ui.php',
-		'dictionaries/hu.dictionary.itop.core.php',
-		'dictionaries/ja.dictionary.itop.core.php',
-		'dictionaries/tr.dictionary.itop.ui.php',
-		'dictionaries/ru.dictionary.itop.core.php',
-		'dictionaries/da.dictionary.itop.ui.php',
-		'dictionaries/it.dictionary.itop.core.php',
-		'dictionaries/es_cr.dictionary.itop.ui.php',
-		'dictionaries/es_cr.dictionary.itop.core.php',
-		'dictionaries/nl.dictionary.itop.core.php',
-		'dictionaries/de.dictionary.itop.ui.php',
-		'dictionaries/zh.dictionary.itop.ui.php',
-		'dictionaries/nl.dictionary.itop.ui.php',
-		'dictionaries/de.dictionary.itop.core.php',
-		'dictionaries/dictionary.itop.core.php',
-		'dictionaries/fr.dictionary.itop.ui.php',
-		'dictionaries/fr.dictionary.itop.core.php',
-		'dictionaries/hu.dictionary.itop.ui.php',
-		'dictionaries/pt_br.dictionary.itop.ui.php',
-		'dictionaries/zh.dictionary.itop.core.php',
-		'dictionaries/ja.dictionary.itop.ui.php',
-		'dictionaries/tr.dictionary.itop.core.php',
-		'dictionaries/da.dictionary.itop.core.php',
-		'dictionaries/dictionary.itop.ui.php',
-		'env-production/dictionaries/da-da.dict.php',
-		'env-production/dictionaries/de-de.dict.php',
-		'env-production/dictionaries/en-us.dict.php',
-		'env-production/dictionaries/es-cr.dict.php',
-		'env-production/dictionaries/fr-fr.dict.php',
-		'env-production/dictionaries/hu-hu.dict.php',
-		'env-production/dictionaries/it-it.dict.php',
-		'env-production/dictionaries/ja-jp.dict.php',
-		'env-production/dictionaries/nl-nl.dict.php',
-		'env-production/dictionaries/pt-br.dict.php',
-		'env-production/dictionaries/ru-ru.dict.php',
-		'env-production/dictionaries/tr-tr.dict.php',
-		'env-production/dictionaries/zh-cn.dict.php',
 	),
 );
 ?>

@@ -9,7 +9,7 @@ RUN apt-get update && \
 RUN a2enmod ssl
 
 RUN mkdir -p /tmp/itop
-RUN wget -O /tmp/itop/itop.zip https://sourceforge.net/projects/itop/files/itop/2.1.0/iTop-2.1.0-2127.zip
+RUN wget -O /tmp/itop/itop.zip https://sourceforge.net/projects/itop/files/itop/2.3.1/iTop-2.3.1-2832.zip
 RUN unzip /tmp/itop/itop.zip -d /tmp/itop/
 
 RUN mkdir -p /var/www/html/ && cp -r /tmp/itop/web/* /var/www/html/ && rm -rf /tmp/itop && rm /var/www/html/index.html

@@ -6,6 +6,7 @@
  * @license     http://opensource.org/licenses/AGPL-3.0
  
   * @author      Robert Jaehne <robert.jaehne@itomig.de>
+  * @author		  David M. Gümbel <david.guembel@itomig.de>
  
  */
 
@@ -19,7 +20,7 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 	'bkp-status-checks' => 'Einstellungen und Prüfungen',
 	'bkp-mysqldump-ok' => 'mysqldump ist vorhanden: %1$s',
 	'bkp-mysqldump-notfound' => 'mysqldump wurde nicht gefunden: %1$s - Stellen sie sicher, das er eingespielt und im Pfad verfügbar ist oder editieren sie die Konfigurationsdatei um das MySQL bindir anzupassen.',
-	'bkp-mysqldump-issue' => 'mysqldump konnte nicht eingespielt werden (retcode=%1$d): Stellen sie sicher, das er eingespielt und im Pfad verfügbar ist oder editieren sie die Konfigurationsdatei um das MySQL bindir anzupassen.',
+	'bkp-mysqldump-issue' => 'mysqldump konnte nicht eingespielt werden (retcode=%1$d): Stellen sie sicher, das es installiert und im Pfad verfügbar ist oder editieren sie die Konfigurationsdatei um das MySQL bindir anzupassen.',
 	'bkp-missing-dir' => 'Zielverzeichniss %1$s nicht gefunden',
 	'bkp-free-disk-space' => '<b>%1$s frei</b> in %2$s',
 	'bkp-dir-not-writeable' => '%1$s ist nicht schreibbar',
@@ -38,7 +39,7 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 	'bkp-status-backups-manual' => 'Manuelle Backups',
 	'bkp-status-backups-none' => 'Kein Backup vorhanden',
 	'bkp-next-backup' => 'Das nächste Backup wird am <b>%1$s</b> (%2$s) um %3$s durchgeführt',
-	'bkp-button-backup-now' => 'Backup läuft!',
+	'bkp-button-backup-now' => 'Starte Backup',
 	'bkp-button-restore-now' => 'Wiederherstellen!',
 	'bkp-confirm-backup' => 'Bitte bestätigen sie, dass sie jetzt ein Backup erstellen wollen now.',
 	'bkp-confirm-restore' => 'Bitte bestätigen sie, dass sie mit Backup %1$s eine Wiederherstellung durchführen wollen.',

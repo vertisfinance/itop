@@ -127,4 +127,165 @@ class ResponseTicketTTR extends ResponseTicketSLT implements iMetricComputer
 	}
 }
 
+
+class _Ticket extends cmdbAbstractObject
+{
+
+	public function UpdateImpactedItems()
+	{
+		require_once(APPROOT.'core/displayablegraph.class.inc.php');
+		$oContactsSet = $this->Get('contacts_list');
+		$oCIsSet = $this->Get('functionalcis_list');
+
+		$aCIsToImpactCode = array();
+		$aSources = array();
+		$aExcluded = array();
+		
+		$oCIsSet->Rewind();
+		while ($oLink = $oCIsSet->Fetch())
+		{
+			$iKey = $oLink->Get('functionalci_id');
+			$aCIsToImpactCode[$iKey] = $oLink->Get('impact_code');
+			if ($oLink->Get('impact_code') == 'manual')
+			{
+				$oObj = MetaModel::GetObject('FunctionalCI', $iKey);
+				$aSources[$iKey] = $oObj;
+			}
+			else if ($oLink->Get('impact_code') == 'not_impacted')
+			{
+				$oObj = MetaModel::GetObject('FunctionalCI', $iKey);
+				$aExcluded[$iKey] = $oObj;
+			}
+		}
+		
+		$aContactsToRoleCode = array();
+		$oContactsSet->Rewind();
+		while ($oLink = $oContactsSet->Fetch())
+		{
+			$iKey = $oLink->Get('contact_id');
+			$aContactsToRoleCode[$iKey] = $oLink->Get('role_code');
+			if ($oLink->Get('role_code') == 'do_not_notify')
+			{
+				$oObj = MetaModel::GetObject('Contact', $iKey);
+				$aExcluded[$iKey] = $oObj;
+			}
+		}
+		
+		$oNewCIsSet = DBObjectSet::FromScratch('lnkFunctionalCIToTicket');
+		foreach($aCIsToImpactCode as $iKey => $sImpactCode)
+		{
+			if ($sImpactCode != 'computed')
+			{
+				$oNewLink = new lnkFunctionalCIToTicket();
+				$oNewLink->Set('functionalci_id', $iKey);
+				$oNewLink->Set('impact_code', $sImpactCode);
+				$oNewCIsSet->AddObject($oNewLink);				
+			}
+		}
+		
+		$oNewContactsSet = DBObjectSet::FromScratch('lnkContactToTicket');
+		foreach($aContactsToRoleCode as $iKey => $sImpactCode)
+		{
+			if ($sImpactCode != 'computed')
+			{
+				$oNewLink = new lnkContactToTicket();
+				$oNewLink->Set('contact_id', $iKey);
+				$oNewLink->Set('role_code', $sImpactCode);
+				$oNewContactsSet->AddObject($oNewLink);
+			}
+		}
+		
+		$oContactsSet = DBObjectSet::FromScratch('lnkContactToTicket');
+		
+		$sContextKey = 'itop-tickets/relation_context/'.get_class($this).'/impacts/down';
+		$aContextDefs = DisplayableGraph::GetContextDefinitions($sContextKey, true, array('this' => $this));
+		$aDefaultContexts = array();
+		foreach($aContextDefs as $sKey => $aDefinition)
+		{
+			// Add the default context queries to the computation
+			if (array_key_exists('default', $aDefinition) && ($aDefinition['default'] == 'yes'))
+			{
+				$aDefaultContexts[] = $aDefinition['oql'];
+			}
+		}
+		// Merge the directly impacted items with the "new" ones added by the "context" queries
+		$aGraphObjects = array();
+		$oRawGraph = MetaModel::GetRelatedObjectsDown('impacts', $aSources, 10, true /* bEnableRedundancy */, $aExcluded);
+		$oIterator = new RelationTypeIterator($oRawGraph, 'Node');
+		foreach ($oIterator as $oNode)
+		{
+			// Any object node reached AND different from a source will do
+			if ( ($oNode instanceof RelationObjectNode) && ($oNode->GetProperty('is_reached')) && (!$oNode->GetProperty('source')) )
+			{
+				$oObj = $oNode->GetProperty('object');
+				$iKey = $oObj->GetKey();
+				$sRootClass = MetaModel::GetRootClass(get_class($oObj));
+				$aGraphObjects[get_class($oObj).'::'.$iKey] = $oNode->GetProperty('object');
+			}
+		}
+		
+		if (count($aDefaultContexts) > 0)
+		{
+			$oAnnotatedGraph = MetaModel::GetRelatedObjectsDown('impacts', $aSources, 10, true /* bEnableRedundancy */, $aExcluded, $aDefaultContexts);
+			$oIterator = new RelationTypeIterator($oAnnotatedGraph, 'Node');
+			foreach ($oIterator as $oNode)
+			{
+				// Only pick the nodes which are NOT impacted by a context root cause, and merge them in the list
+				if ( ($oNode instanceof RelationObjectNode) && ($oNode->GetProperty('is_reached')) && (!$oNode->GetProperty('source')) && ($oNode->GetProperty('context_root_causes', null) == null) )
+				{
+					$oObj = $oNode->GetProperty('object');
+					$iKey = $oObj->GetKey();
+					$sRootClass = MetaModel::GetRootClass(get_class($oObj));
+					$aGraphObjects[get_class($oObj).'::'.$iKey] = $oNode->GetProperty('object');
+				}
+			}
+		}
+		
+		foreach ($aGraphObjects as $oObj)
+		{
+			$iKey = $oObj->GetKey();
+			$sRootClass = MetaModel::GetRootClass(get_class($oObj));
+			switch ($sRootClass)
+			{
+				case 'FunctionalCI':		
+				// Only link FunctionalCIs which are not already linked to the ticket
+				if (!array_key_exists($iKey, $aCIsToImpactCode) || ($aCIsToImpactCode[$iKey] != 'not_impacted'))
+				{
+					$oNewLink = new lnkFunctionalCIToTicket();
+					$oNewLink->Set('functionalci_id', $iKey);
+					$oNewLink->Set('impact_code', 'computed');
+					$oNewCIsSet->AddObject($oNewLink);
+				}
+				break;
+				
+				case 'Contact':
+				// Only link Contacts which are not already linked to the ticket
+				if (!array_key_exists($iKey, $aContactsToRoleCode) || ($aCIsToImpactCode[$iKey] != 'do_not_notify'))
+				{
+					$oNewLink = new lnkContactToTicket();
+					$oNewLink->Set('contact_id', $iKey);
+					$oNewLink->Set('role_code', 'computed');
+					$oNewContactsSet->AddObject($oNewLink);
+				}
+				break;
+			}
+		}
+		$this->Set('functionalcis_list', $oNewCIsSet);
+		$this->Set('contacts_list', $oNewContactsSet);
+	}
+	
+	public function DisplayBareRelations(WebPage $oPage, $bEditMode = false)
+	{
+		parent::DisplayBareRelations($oPage, $bEditMode);
+		// Display the impact analysis for tickets not in 'closed' or 'resolved' status... and not in edition
+		if ((!$bEditMode) && (!in_array($this->Get('status'), array('resolved', 'closed'))))
+		{
+			$oPage->add_linked_script(utils::GetAbsoluteUrlAppRoot().'js/fraphael.js');
+			$oPage->add_linked_stylesheet(utils::GetAbsoluteUrlAppRoot().'css/jquery.contextMenu.css');
+			$oPage->add_linked_script(utils::GetAbsoluteUrlAppRoot().'js/jquery.contextMenu.js');
+			$oPage->add_linked_script(utils::GetAbsoluteUrlAppRoot().'js/simple_graph.js');
+			$oPage->AddAjaxTab(Dict::S('Ticket:ImpactAnalysis'), utils::GetAbsoluteUrlAppRoot().'pages/ajax.render.php?operation=ticket_impact&class='.get_class($this).'&id='.$this->GetKey(), true);
+		}
+	}
+}
 ?>
