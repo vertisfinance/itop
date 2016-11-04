@@ -5,3 +5,7 @@
 *.zip
 *.log
 *.xml
+core/data/*
+core/env-production/*
+core/log/*
+core/extensions/*
