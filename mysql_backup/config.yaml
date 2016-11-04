@@ -12,7 +12,7 @@ handlers:
     level: ERROR
     mailhost: [smtp.gmail.com, 587]
     fromaddr: bot@vertis.com
-    toaddrs: [gabor.egyed@vertis.com,]
+    toaddrs: [is@vertis.com,]
     subject: Itop-vertis.com Backup process failed
     credentials: [bot@vertis.com, vbudeu*22ets]
     secure: []
@@ -22,7 +22,7 @@ handlers:
     level: INFO
     mailhost: [smtp.gmail.com, 587]
     fromaddr: bot@vertis.com
-    toaddrs: [gabor.egyed@vertis.com,]
+    toaddrs: [is@vertis.com,]
     subject: Itop-vertis.com Backup OK
     credentials: [bot@vertis.com, vbudeu*22ets]
     secure: []
