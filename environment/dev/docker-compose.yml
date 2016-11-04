@@ -3,6 +3,15 @@ version: '2'
 volumes:
   itop-data-volume:
     driver: local
+  itop-conf-volume:
+    driver: local
+  itop-log-volume:
+    driver: local
+  itop-env-production-volume:
+    driver: local
+  itop-backup-volume:
+    driver: local
+
 
 services:
   mysql:
@@ -27,11 +36,10 @@ services:
     command: ["bash", "run.sh"]
     env_file: .secret
     volumes:
-      - ../../core/env-production:/var/www/html/env-production
-      - ./conf:/var/www/html/conf
-      - ../../core/log:/var/www/html/log
-      - ../../core/data:/var/www/html/data
-      - ../../core/extensions:/var/www/html/extensions
+      - itop-env-production-volume:/var/www/html/env-production
+      - itop-conf-volume:/var/www/html/conf
+      - itop-log-volume:/var/www/html/log
+      - itop-backup-volume:/var/www/html/data
       - ./localhost.crt:/certificate.crt
       - ./localhost.key:/certificate.key
       - ../../docker/itop/apache_conf/dev_000-default.conf:/etc/apache2/sites-available/000-default.conf

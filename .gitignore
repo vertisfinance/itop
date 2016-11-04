@@ -2,15 +2,3 @@
 *.crt
 *.key
 *.env
-*.zip
-*.log
-*.xml
-core/data/*
-core/env-production/*
-core/log/*
-environment/prod/conf/production/*
-
-!core/data/README.md
-!core/env-production/README.md
-!core/log/README.md
-!environment/prod/conf/production/README.md
