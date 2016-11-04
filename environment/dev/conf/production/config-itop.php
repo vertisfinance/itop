@@ -140,11 +140,11 @@ $MySettings = array(
 
 	// inline_image_max_display_width: The maximum width (in pixels) when displaying images inside an HTML formatted attribute. Images will be displayed using this this maximum width.
 	//	default: '250'
-	'inline_image_max_display_width' => '250',
+	'inline_image_max_display_width' => 250,
 
 	// inline_image_max_storage_width: The maximum width (in pixels) when uploading images to be used inside an HTML formatted attribute. Images larger than the given size will be downsampled before storing them in the database.
 	//	default: '1600'
-	'inline_image_max_storage_width' => '1600',
+	'inline_image_max_storage_width' => 1600,
 
 	// link_set_attribute_qualifier: Link set from string: attribute qualifier (encloses both the attcode and the value)
 	//	default: '\''

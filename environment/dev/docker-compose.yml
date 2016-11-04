@@ -32,8 +32,8 @@ services:
       - ../../core/log:/var/www/html/log
       - ../../core/data:/var/www/html/data
       - ../../core/extensions:/var/www/html/extensions
-      - ./itop.vertis.com.crt:/certificate.crt
-      - ./itop.vertis.com.key:/certificate.key
+      - ./localhost.crt:/certificate.crt
+      - ./localhost.key:/certificate.key
       - ../../docker/itop/apache_conf/dev_000-default.conf:/etc/apache2/sites-available/000-default.conf
     ports:
       - 4430:443
