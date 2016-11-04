@@ -8,4 +8,7 @@
 core/data/*
 core/env-production/*
 core/log/*
-core/extensions/*
+
+!core/data/README.md
+!core/env-production/README.md
+!core/log/README.md
