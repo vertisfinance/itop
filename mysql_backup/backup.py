@@ -18,7 +18,7 @@ def do_backup():
     now = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M')
     backup_filename = 'itop-' + now + '.sql'
     compose_dir = '/opt/itop/environment/prod/'
-    mysql_backup_dir = '/opt/itop/core/data/backups/auto'
+    mysql_backup_dir = '/opt/itop/'
     backup_dest = 'myvertis@myvertis.com:/home/myvertis/itop.vertis.com-backup/'
     ssh_port = 20022
     mysql_container_name = 'mysql'
