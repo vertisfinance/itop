@@ -77,13 +77,13 @@ $MySettings = array(
 
        'db_host' => 'mysql',
 
-       'db_name' => 'itop',
+       'db_name' => getenv('MYSQL_DATABASE'),
 
-       'db_pwd' => 'itop',
+       'db_pwd' => getenv('MYSQL_PASSWORD'),
 
        'db_subname' => '',
 
-       'db_user' => 'itop',
+       'db_user' => getenv('MYSQL_USER'),
 
        // deadline_format: The format used for displaying "deadline" attributes: any string with the following placeholders: $date$, $difference$
        //      default: '$difference$'
@@ -131,7 +131,6 @@ $MySettings = array(
 
        // forgot_password: Enable the "Forgot password" feature
        //      default: true
-       'forgot_password' => true,
 
        // graphviz_path: Path to the Graphviz "dot" executable for graphing objects lifecycle
        //      default: '/usr/bin/dot'
@@ -233,52 +232,16 @@ $MySettings = array(
  */
 $MyModuleSettings = array(
        'authent-ldap' => array (
-               'host' => 'localhost',
-               'port' => 389,
-               'default_user' => '',
-               'default_pwd' => '',
-               'base_dn' => 'dc=yourcompany,dc=com',
-               'user_query' => '(&(uid=%1$s)(inetuserstatus=ACTIVE))',
+               'host' => '192.168.1.3',
+               'default_user' =>  getenv('LDAP_USER'),
+               'default_pwd' =>  getenv('LDAP_PASSWORD'),
+               'base_dn' => 'DC=vertis,DC=local',
+               'user_query' => '(|(&(samaccountname=%1$s)(objectCategory=User))(&(userprincipalname=%1$s)(objectCategory=User)))',
                'options' => array (
                  17 => 3,
                  8 => 0,
                ),
                'debug' => true,
-               'start_tls' => false,
-       ),
-       'combodo-email-synchro' => array (
-               'notify_errors_to' => 'gabor.egyed@vertis.com',
-               'notify_errors_from' => 'bot@vertis.com',
-               'debug' => true,
-               'periodicity' => 30,
-               'body_parts_order' => 'text/html,text/plain',
-               'pop3_auth_option' => 'USER',
-               'imap_options' => array (
-                 0 => 'imap',
-               ),
-               'maximum_email_size' => '10M',
-               'big_files_dir' => '',
-               'exclude_attachment_types' => array (
-                 0 => 'application/exe',
-               ),
-               'introductory-patterns' => array (
-                 0 => '/^le .+ a écrit :$/i',
-                 1 => '/^on .+ wrote:$/i',
-                 2 => '|^[0-9]{4}/[0-9]{1,2}/[0-9]{1,2} .+:$|',
-               ),
-               'multiline-delimiter-patterns' => array (
-                 0 => '/\\RFrom: .+\\RSent: .+\\R/m',
-                 1 => '/\\R_+\\R/m',
-                 2 => '/\\RDe : .+\\R\\R?Envoyé : /m',
-                 3 => '/\\RDe : .+\\RDate d\'envoi : .+\\R/m',
-                 4 => '/\\R-----Message d\'origine-----\\R/m',
-               ),
-               'use_message_id_as_uid' => false,
-               'images_minimum_size' => '100x20',
-               'images_maximum_size' => '',
-       ),
-       'email-reply' => array (
-               'enabled_default' => true,
        ),
        'itop-attachments' => array (
                'allowed_classes' => array (
@@ -309,9 +272,98 @@ $MyModuleSettings = array(
  * Data model modules to be loaded. Names are specified as relative paths
  *
  */
-$MyModules = array(
-       'addons' => array (
-               'user rights' => 'addons/userrights/userrightsprofile.class.inc.php',
-       ),
-);
+ $MyModules = array(
+ 	'application' => array (
+ 		'application/transaction.class.inc.php',
+ 		'application/menunode.class.inc.php',
+ 		'application/user.preferences.class.inc.php',
+ 		'application/user.dashboard.class.inc.php',
+ 		'application/audit.rule.class.inc.php',
+ 		'application/query.class.inc.php',
+ 		'core/event.class.inc.php',
+ 		'core/action.class.inc.php',
+ 		'core/trigger.class.inc.php',
+ 		'synchro/synchrodatasource.class.inc.php',
+ 		'core/backgroundtask.class.inc.php',
+ 	),
+ 	'business' => array (
+ 		'env-production/authent-external/model.authent-external.php',
+ 		'env-production/authent-ldap/model.authent-ldap.php',
+ 		'env-production/authent-local/model.authent-local.php',
+ 		'env-production/email-reply/main.email-reply.php',
+ 		'env-production/itop-attachments/model.itop-attachments.php',
+ 		'env-production/itop-attachments/main.attachments.php',
+ 		'env-production/itop-backup/main.itop-backup.php',
+ 		'env-production/itop-bridge-virtualization-storage/model.itop-bridge-virtualization-storage.php',
+ 		'env-production/itop-config-mgmt/model.itop-config-mgmt.php',
+ 		'env-production/itop-config-mgmt/main.itop-config-mgmt.php',
+ 		'env-production/itop-config/main.itop-config.php',
+ 		'env-production/itop-datacenter-mgmt/model.itop-datacenter-mgmt.php',
+ 		'env-production/itop-endusers-devices/model.itop-endusers-devices.php',
+ 		'env-production/itop-profiles-itil/model.itop-profiles-itil.php',
+ 		'env-production/itop-sla-computation/main.itop-sla-computation.php',
+ 		'env-production/itop-storage-mgmt/model.itop-storage-mgmt.php',
+ 		'env-production/itop-tickets/model.itop-tickets.php',
+ 		'env-production/itop-tickets/main.itop-tickets.php',
+ 		'env-production/itop-virtualization-mgmt/model.itop-virtualization-mgmt.php',
+ 		'env-production/itop-welcome-itil/main.itop-welcome-itil.php',
+ 		'env-production/itop-welcome-itil/model.itop-welcome-itil.php',
+ 		'env-production/itop-change-mgmt-itil/model.itop-change-mgmt-itil.php',
+ 		'env-production/itop-incident-mgmt-itil/model.itop-incident-mgmt-itil.php',
+ 		'env-production/itop-knownerror-mgmt/model.itop-knownerror-mgmt.php',
+ 		'env-production/itop-problem-mgmt/model.itop-problem-mgmt.php',
+ 		'env-production/itop-request-mgmt-itil/model.itop-request-mgmt-itil.php',
+ 		'env-production/itop-request-mgmt-itil/main.itop-request-mgmt-itil.php',
+ 		'env-production/itop-service-mgmt/model.itop-service-mgmt.php',
+ 		'env-production/combodo-sla-computation/model.combodo-sla-computation.php',
+ 		'env-production/combodo-sla-computation/main.combodo-sla-computation.php',
+ 	),
+ 	'webservices' => array (
+ 		'webservices/webservices.basic.php',
+ 	),
+ 	'addons' => array (
+ 		'user rights' => 'addons/userrights/userrightsprofile.class.inc.php',
+ 	),
+ 	'dictionaries' => array (
+ 		'dictionaries/es_cr.dictionary.itop.core.php',
+ 		'dictionaries/hu.dictionary.itop.core.php',
+ 		'dictionaries/fr.dictionary.itop.core.php',
+ 		'dictionaries/da.dictionary.itop.core.php',
+ 		'dictionaries/hu.dictionary.itop.ui.php',
+ 		'dictionaries/ja.dictionary.itop.ui.php',
+ 		'dictionaries/pt_br.dictionary.itop.core.php',
+ 		'dictionaries/da.dictionary.itop.ui.php',
+ 		'dictionaries/ru.dictionary.itop.ui.php',
+ 		'dictionaries/tr.dictionary.itop.ui.php',
+ 		'dictionaries/tr.dictionary.itop.core.php',
+ 		'dictionaries/zh.dictionary.itop.core.php',
+ 		'dictionaries/pt_br.dictionary.itop.ui.php',
+ 		'dictionaries/zh.dictionary.itop.ui.php',
+ 		'dictionaries/nl.dictionary.itop.ui.php',
+ 		'dictionaries/es_cr.dictionary.itop.ui.php',
+ 		'dictionaries/fr.dictionary.itop.ui.php',
+ 		'dictionaries/it.dictionary.itop.core.php',
+ 		'dictionaries/it.dictionary.itop.ui.php',
+ 		'dictionaries/ja.dictionary.itop.core.php',
+ 		'dictionaries/dictionary.itop.core.php',
+ 		'dictionaries/de.dictionary.itop.core.php',
+ 		'dictionaries/ru.dictionary.itop.core.php',
+ 		'dictionaries/nl.dictionary.itop.core.php',
+ 		'dictionaries/de.dictionary.itop.ui.php',
+ 		'dictionaries/dictionary.itop.ui.php',
+ 		'env-production/dictionaries/da-da.dict.php',
+ 		'env-production/dictionaries/de-de.dict.php',
+ 		'env-production/dictionaries/en-us.dict.php',
+ 		'env-production/dictionaries/es-cr.dict.php',
+ 		'env-production/dictionaries/fr-fr.dict.php',
+ 		'env-production/dictionaries/hu-hu.dict.php',
+ 		'env-production/dictionaries/it-it.dict.php',
+ 		'env-production/dictionaries/ja-jp.dict.php',
+ 		'env-production/dictionaries/nl-nl.dict.php',
+ 		'env-production/dictionaries/pt-br.dict.php',
+ 		'env-production/dictionaries/ru-ru.dict.php',
+ 		'env-production/dictionaries/tr-tr.dict.php',
+ 		'env-production/dictionaries/zh-cn.dict.php',
+ 	),
+ );
 ?>

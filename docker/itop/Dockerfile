@@ -5,14 +5,14 @@ RUN apt-get update && \
 RUN a2enmod ssl
 
 RUN mkdir -p /tmp/itop
-RUN wget -O /tmp/itop/itop.zip https://sourceforge.net/projects/itop/files/itop/2.3.1/iTop-2.3.1-2832.zip
+RUN wget -O /tmp/itop/itop.zip https://sourceforge.net/projects/itop/files/itop/2.1.0/iTop-2.1.0-2127.zip
 RUN unzip /tmp/itop/itop.zip -d /tmp/itop/
 RUN mkdir -p /var/www/html/ && cp -r /tmp/itop/web/* /var/www/html/ && rm -rf /tmp/itop && rm /var/www/html/index.html
 
-RUN mkdir -p /tmp/combodo-email
-RUN wget -O /tmp/combodo-email-synchro.zip http://www.combodo.com/itop-extensions/ticket-from-email-2.6.12-138.zip
-RUN unzip /tmp/combodo-email-synchro.zip -d /tmp/combodo-email/
-RUN cp -r /tmp/combodo-email/* /var/www/html/extensions/ && rm -rf /tmp/combodo-email
+# RUN mkdir -p /tmp/combodo-email
+# RUN wget -O /tmp/combodo-email-synchro.zip http://www.combodo.com/itop-extensions/ticket-from-email-2.6.12-138.zip
+# RUN unzip /tmp/combodo-email-synchro.zip -d /tmp/combodo-email/
+# RUN cp -r /tmp/combodo-email/* /var/www/html/extensions/ && rm -rf /tmp/combodo-email
 
 RUN mkdir -p /tmp/email-reply
 RUN wget -O /tmp/email-reply.zip http://www.combodo.com/itop-extensions/email-reply.zip
