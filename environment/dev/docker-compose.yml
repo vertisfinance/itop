@@ -29,7 +29,7 @@ services:
         PMA_ARBITRARY: "1"
       restart: always
       ports:
-       - 3306:80
+       - 3305:80
 
   itop:
     image: itop
