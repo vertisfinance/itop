@@ -27,7 +27,7 @@ def do_backup():
     # Backup db
     retcode = subprocess.call(
         ['docker', 'exec', 'prod_mysql_1', 'sh', '-c',
-         'exec mysqldump --all-databases -uroot -p"$MYSQL_ROOT_PASSWORD" > itop.sql',
+        'exec mysqldump -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE"> itop.sql',
          ], cwd=compose_dir)
     if retcode != 0:
         errorlogger.error('Backup error')
