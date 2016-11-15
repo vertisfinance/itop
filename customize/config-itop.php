@@ -309,8 +309,11 @@ $MyModuleSettings = array(
  		'env-production/itop-welcome-itil/main.itop-welcome-itil.php',
  		'env-production/itop-welcome-itil/model.itop-welcome-itil.php',
  		'env-production/itop-change-mgmt-itil/model.itop-change-mgmt-itil.php',
- 		'env-production/itop-request-mgmt/model.itop-request-mgmt.php',
- 		'env-production/itop-request-mgmt/main.itop-request-mgmt.php',
+ 		'env-production/itop-incident-mgmt-itil/model.itop-incident-mgmt-itil.php',
+ 		'env-production/itop-knownerror-mgmt/model.itop-knownerror-mgmt.php',
+ 		'env-production/itop-problem-mgmt/model.itop-problem-mgmt.php',
+ 		'env-production/itop-request-mgmt-itil/model.itop-request-mgmt-itil.php',
+ 		'env-production/itop-request-mgmt-itil/main.itop-request-mgmt-itil.php',
  		'env-production/itop-service-mgmt/model.itop-service-mgmt.php',
  	),
  	'webservices' => array (
