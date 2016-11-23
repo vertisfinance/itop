@@ -133,7 +133,6 @@ class Incident extends Ticket
 			)
 		);
 		MetaModel::Init_DefineTransition("new", "ev_resolve", array("target_state"=>"resolved", "actions"=>array(array('verb' => 'SetCurrentDate', 'params' => array(array('type' => 'attcode', 'value' => "resolution_date"))), array('verb' => 'SetElapsedTime', 'params' => array(array('type' => 'attcode', 'value' => "time_spent"), array('type' => 'attcode', 'value' => "start_date"), array('type' => 'string', 'value' => "DefaultWorkingTimeComputer"))), array('verb' => 'ResolveChildTickets', 'params' => array())), "user_restriction"=>null));
-		MetaModel::Init_DefineTransition("new", "ev_close", array("target_state"=>"closed", "actions"=>array(array('verb' => 'SetCurrentDate', 'params' => array(array('type' => 'attcode', 'value' => "close_date")))), "user_restriction"=>null));
 		MetaModel::Init_DefineState(
 			"escalated_tto",
 			array(
@@ -236,7 +235,7 @@ class Incident extends Ticket
 					'agent_id' => OPT_ATT_READONLY,
 					'resolution_date' => OPT_ATT_READONLY,
 					'time_spent' => OPT_ATT_READONLY,
-					'resolution_code' => OPT_ATT_MANDATORY | OPT_ATT_MUSTPROMPT,
+					'resolution_code' => OPT_ATT_READONLY,
 					'solution' => OPT_ATT_MANDATORY | OPT_ATT_MUSTPROMPT,
 					'pending_reason' => OPT_ATT_READONLY,
 					'sla_ttr_passed' => OPT_ATT_READONLY,

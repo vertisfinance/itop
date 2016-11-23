@@ -112,8 +112,8 @@ class UserRequest extends Ticket
 					'ref' => OPT_ATT_READONLY,
 					'org_id' => OPT_ATT_MANDATORY,
 					'caller_id' => OPT_ATT_MANDATORY,
-					'team_id' => OPT_ATT_HIDDEN,
-					'agent_id' => OPT_ATT_HIDDEN,
+					'team_id' => OPT_ATT_MUSTPROMPT,
+					'agent_id' => OPT_ATT_MANDATORY,
 					'priority' => OPT_ATT_READONLY,
 					'start_date' => OPT_ATT_READONLY,
 					'last_update' => OPT_ATT_READONLY,
@@ -143,7 +143,6 @@ class UserRequest extends Ticket
 			)
 		);
 		MetaModel::Init_DefineTransition("new", "ev_resolve", array("target_state"=>"resolved", "actions"=>array(array('verb' => 'SetCurrentDate', 'params' => array(array('type' => 'attcode', 'value' => "resolution_date"))), array('verb' => 'SetElapsedTime', 'params' => array(array('type' => 'attcode', 'value' => "time_spent"), array('type' => 'attcode', 'value' => "start_date"), array('type' => 'string', 'value' => "DefaultWorkingTimeComputer"))), array('verb' => 'ResolveChildTickets', 'params' => array())), "user_restriction"=>null));
-		MetaModel::Init_DefineTransition("new", "ev_close", array("target_state"=>"closed", "actions"=>array(array('verb' => 'SetCurrentDate', 'params' => array(array('type' => 'attcode', 'value' => "close_date")))), "user_restriction"=>null));
 		MetaModel::Init_DefineState(
 			"escalated_tto",
 			array(
@@ -160,8 +159,8 @@ class UserRequest extends Ticket
 			array(
 				"attribute_inherit" => 'new',
 				"attribute_list" => array(
-					'team_id' => OPT_ATT_MANDATORY | OPT_ATT_MUSTPROMPT,
-					'agent_id' => OPT_ATT_MANDATORY | OPT_ATT_MUSTPROMPT,
+					'team_id' => OPT_ATT_READONLY,
+					'agent_id' => OPT_ATT_READONLY,
 					'approver_id' => OPT_ATT_READONLY,
 					'assignment_date' => OPT_ATT_READONLY,
 					'tto_escalation_deadline' => OPT_ATT_HIDDEN,
@@ -174,11 +173,7 @@ class UserRequest extends Ticket
 				),
 			)
 		);
-		MetaModel::Init_DefineTransition("assigned", "ev_pending", array("target_state"=>"pending", "actions"=>array(array('verb' => 'SetCurrentDate', 'params' => array(array('type' => 'attcode', 'value' => "last_pending_date")))), "user_restriction"=>null));
 		MetaModel::Init_DefineTransition("assigned", "ev_resolve", array("target_state"=>"resolved", "actions"=>array(array('verb' => 'SetCurrentDate', 'params' => array(array('type' => 'attcode', 'value' => "resolution_date"))), array('verb' => 'SetElapsedTime', 'params' => array(array('type' => 'attcode', 'value' => "time_spent"), array('type' => 'attcode', 'value' => "start_date"), array('type' => 'string', 'value' => "DefaultWorkingTimeComputer"))), array('verb' => 'ResolveChildTickets', 'params' => array())), "user_restriction"=>null));
-		MetaModel::Init_DefineTransition("assigned", "ev_reassign", array("target_state"=>"assigned", "actions"=>array(), "user_restriction"=>null));
-		MetaModel::Init_DefineTransition("assigned", "ev_timeout", array("target_state"=>"escalated_ttr", "actions"=>array(), "user_restriction"=>null));
-		MetaModel::Init_DefineTransition("assigned", "ev_autoresolve", array("target_state"=>"resolved", "actions"=>array(array('verb' => 'SetCurrentDate', 'params' => array(array('type' => 'attcode', 'value' => "resolution_date"))), array('verb' => 'SetElapsedTime', 'params' => array(array('type' => 'attcode', 'value' => "time_spent"), array('type' => 'attcode', 'value' => "start_date"), array('type' => 'string', 'value' => "DefaultWorkingTimeComputer"))), array('verb' => 'ResolveChildTickets', 'params' => array())), "user_restriction"=>null));
 		MetaModel::Init_DefineState(
 			"escalated_ttr",
 			array(
@@ -264,12 +259,13 @@ class UserRequest extends Ticket
 					'agent_id' => OPT_ATT_READONLY,
 					'resolution_date' => OPT_ATT_READONLY,
 					'time_spent' => OPT_ATT_READONLY,
-					'resolution_code' => OPT_ATT_MANDATORY | OPT_ATT_MUSTPROMPT,
+					'resolution_code' => OPT_ATT_READONLY,
 					'solution' => OPT_ATT_MANDATORY | OPT_ATT_MUSTPROMPT,
 					'pending_reason' => OPT_ATT_READONLY,
 					'sla_ttr_passed' => OPT_ATT_READONLY,
 					'ttr_escalation_deadline' => OPT_ATT_HIDDEN,
 					'sla_ttr_over' => OPT_ATT_READONLY,
+					'team_id' => OPT_ATT_READONLY,
 				),
 			)
 		);
@@ -292,8 +288,8 @@ class UserRequest extends Ticket
 					'resolution_code' => OPT_ATT_READONLY,
 					'solution' => OPT_ATT_READONLY,
 					'pending_reason' => OPT_ATT_READONLY,
-					'user_satisfaction' => OPT_ATT_MUSTPROMPT,
-					'user_comment' => OPT_ATT_MUSTPROMPT,
+					'user_satisfaction' => OPT_ATT_READONLY,
+					'user_comment' => OPT_ATT_NORMAL,
 				),
 			)
 		);
@@ -322,11 +318,7 @@ class UserRequest extends Ticket
     ),
     'fieldset:Ticket:moreinfo' =>
     array (
-      0 => 'service_id',
       1 => 'servicesubcategory_id',
-      2 => 'escalation_flag',
-      3 => 'escalation_reason',
-      4 => 'pending_reason',
     ),
   ),
   'col:col2' =>
@@ -342,13 +334,11 @@ class UserRequest extends Ticket
     array (
       0 => 'team_id',
       1 => 'agent_id',
-      2 => 'approver_id',
     ),
     'fieldset:Ticket:date' =>
     array (
       0 => 'start_date',
       1 => 'last_update',
-      2 => 'assignment_date',
       3 => 'tto_escalation_deadline',
       4 => 'ttr_escalation_deadline',
       5 => 'last_pending_date',
@@ -367,18 +357,9 @@ class UserRequest extends Ticket
     ),
     'fieldset:Ticket:resolution' =>
     array (
-      0 => 'resolution_code',
       1 => 'solution',
       2 => 'time_spent',
-      3 => 'user_satisfaction',
       4 => 'user_comment',
-    ),
-    'fieldset:Ticket:SLA' =>
-    array (
-      0 => 'sla_tto_passed',
-      1 => 'sla_tto_over',
-      2 => 'sla_ttr_passed',
-      3 => 'sla_ttr_over',
     ),
   ),
 ));
