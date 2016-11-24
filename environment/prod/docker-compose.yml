@@ -16,6 +16,7 @@ volumes:
 services:
   mysql:
     hostname: mysql
+    container_name: itop_mysql
     image: mysql
     env_file: .secret
     volumes:
@@ -25,6 +26,7 @@ services:
   itop:
     image: itop
     command: ["bash", "run.sh"]
+    container_name: itop_itop
     env_file: .secret
     volumes:
       - itop-env-production-volume:/var/www/html/env-production
