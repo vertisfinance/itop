@@ -75,5 +75,3 @@ if __name__ == '__main__':
         do_backup()
     except Exception as e:
         errorlogger.exception(e)
-    else:
-        oklogger.info('Backup OK')
