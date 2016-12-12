@@ -19,6 +19,11 @@ services:
     container_name: itop_mysql
     image: vertis-docker-registry:5000/itop-mysql:latest
     env_file: .secret
+    environment:
+      MYSQL_DATABASE: itop
+      MYSQL_USER: itop
+      HOST: itop.vertis.com
+      LDAP_USER: itop
     volumes:
       - itop-data-volume:/var/lib/mysql
 
@@ -36,6 +41,11 @@ services:
     container_name: itop_itop
     command: ["bash", "run.sh"]
     env_file: .secret
+    environment:
+      MYSQL_DATABASE: itop
+      MYSQL_USER: itop
+      HOST: itop.vertis.com
+      LDAP_USER: itop
     volumes:
       - itop-env-production-volume:/var/www/html/env-production
       - itop-conf-volume:/var/www/html/conf
