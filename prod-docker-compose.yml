@@ -28,13 +28,13 @@ services:
       - itop-data-volume:/var/lib/mysql
 
   phpmyadmin:
-      image: phpmyadmin/phpmyadmin
-      container_name: itop_phpmyadmin
-      environment:
-        PMA_ARBITRARY: "1"
-      restart: always
-      ports:
-       - 3305:80
+    image: phpmyadmin/phpmyadmin
+    container_name: itop_phpmyadmin
+    environment:
+      PMA_ARBITRARY: "1"
+    restart: always
+    ports:
+     - 3305:80
 
   itop:
     image: vertis-docker-registry:5000/itop-itop:latest

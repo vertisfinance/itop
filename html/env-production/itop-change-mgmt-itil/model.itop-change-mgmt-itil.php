@@ -43,13 +43,13 @@ abstract class Change extends Ticket
 		MetaModel::Init_AddAttribute(new AttributeExternalField("requestor_email", array("allowed_values"=>null, "extkey_attcode"=>'requestor_id', "target_attcode"=>'email', "always_load_in_tables"=>false)));
 		MetaModel::Init_AddAttribute(new AttributeDateTime("creation_date", array("allowed_values"=>null, "sql"=>'creation_date', "default_value"=>'', "is_null_allowed"=>true, "depends_on"=>array(), "always_load_in_tables"=>false)));
 		MetaModel::Init_AddAttribute(new AttributeString("impact", array("allowed_values"=>null, "sql"=>'impact', "default_value"=>'', "is_null_allowed"=>true, "depends_on"=>array(), "always_load_in_tables"=>false)));
-		MetaModel::Init_AddAttribute(new AttributeExternalKey("supervisor_group_id", array("targetclass"=>'Team', "default_value"=>'120', "allowed_values"=>null, "sql"=>'supervisor_group_id', "is_null_allowed"=>true, "on_target_delete"=>DEL_MANUAL, "depends_on"=>array(), "default_value"=>'120', "display_style"=>'select', "always_load_in_tables"=>false)));
+		MetaModel::Init_AddAttribute(new AttributeExternalKey("supervisor_group_id", array("targetclass"=>'Team', "default_value"=>'120', "allowed_values"=>null, "sql"=>'supervisor_group_id', "is_null_allowed"=>true, "on_target_delete"=>DEL_MANUAL, "depends_on"=>array(), "display_style"=>'select', "always_load_in_tables"=>false)));
 		MetaModel::Init_AddAttribute(new AttributeExternalField("supervisor_group_name", array("allowed_values"=>null, "extkey_attcode"=>'supervisor_group_id', "target_attcode"=>'name', "always_load_in_tables"=>false)));
-		MetaModel::Init_AddAttribute(new AttributeExternalKey("supervisor_id", array("targetclass"=>'Person', "allowed_values"=>new ValueSetObjects("SELECT Person AS p JOIN lnkPersonToTeam AS l ON l.person_id=p.id JOIN Team AS t ON l.team_id=t.id WHERE t.id = 120"), "sql"=>'supervisor_id', "is_null_allowed"=>true, "on_target_delete"=>DEL_MANUAL, "depends_on"=>array('supervisor_group_id'), "allow_target_creation"=>false, "display_style"=>'select', "always_load_in_tables"=>false)));
+		MetaModel::Init_AddAttribute(new AttributeExternalKey("supervisor_id", array("targetclass"=>'Person', "allowed_values"=>new ValueSetObjects("SELECT Person AS p JOIN lnkPersonToTeam AS l ON l.person_id=p.id JOIN Team AS t ON l.team_id=t.id WHERE t.id = :this->supervisor_group_id"), "sql"=>'supervisor_id', "is_null_allowed"=>true, "on_target_delete"=>DEL_MANUAL, "depends_on"=>array('supervisor_group_id'), "allow_target_creation"=>false, "display_style"=>'select', "always_load_in_tables"=>false)));
 		MetaModel::Init_AddAttribute(new AttributeExternalField("supervisor_email", array("allowed_values"=>null, "extkey_attcode"=>'supervisor_id', "target_attcode"=>'email', "always_load_in_tables"=>false)));
 		MetaModel::Init_AddAttribute(new AttributeExternalKey("manager_group_id", array("targetclass"=>'Team', "allowed_values"=>null, "sql"=>'manager_group_id', "is_null_allowed"=>true, "on_target_delete"=>DEL_MANUAL, "depends_on"=>array(), "display_style"=>'select', "default_value"=>'120', "always_load_in_tables"=>false)));
 		MetaModel::Init_AddAttribute(new AttributeExternalField("manager_group_name", array("allowed_values"=>null, "extkey_attcode"=>'manager_group_id', "target_attcode"=>'name', "always_load_in_tables"=>false)));
-		MetaModel::Init_AddAttribute(new AttributeExternalKey("manager_id", array("targetclass"=>'Person', "allowed_values"=>new ValueSetObjects("SELECT Person AS p JOIN lnkPersonToTeam AS l ON l.person_id=p.id JOIN Team AS t ON l.team_id=t.id WHERE t.id = 120"), "sql"=>'manager_id', "is_null_allowed"=>true, "on_target_delete"=>DEL_MANUAL, "depends_on"=>array('manager_group_id'), "allow_target_creation"=>false, "display_style"=>'select', "always_load_in_tables"=>false)));
+		MetaModel::Init_AddAttribute(new AttributeExternalKey("manager_id", array("targetclass"=>'Person', "allowed_values"=>new ValueSetObjects("SELECT Person AS p JOIN lnkPersonToTeam AS l ON l.person_id=p.id JOIN Team AS t ON l.team_id=t.id WHERE t.id = :this->manager_group_id"), "sql"=>'manager_id', "is_null_allowed"=>true, "on_target_delete"=>DEL_MANUAL, "depends_on"=>array('manager_group_id'), "allow_target_creation"=>false, "display_style"=>'select', "always_load_in_tables"=>false)));
 		MetaModel::Init_AddAttribute(new AttributeExternalField("manager_email", array("allowed_values"=>null, "extkey_attcode"=>'manager_id', "target_attcode"=>'email', "always_load_in_tables"=>false)));
 		MetaModel::Init_AddAttribute(new AttributeEnum("outage", array("allowed_values"=>new ValueSetEnum("yes,no"), "display_style"=>'list', "sql"=>'outage', "default_value"=>'no', "is_null_allowed"=>false, "depends_on"=>array(), "always_load_in_tables"=>false)));
 		MetaModel::Init_AddAttribute(new AttributeText("fallback", array("allowed_values"=>null, "sql"=>'fallback', "default_value"=>'', "is_null_allowed"=>true, "depends_on"=>array(), "always_load_in_tables"=>false)));
@@ -565,9 +565,9 @@ class RoutineChange extends Change
 					'requestor_id' => OPT_ATT_MANDATORY,
 					'creation_date' => OPT_ATT_READONLY,
 					'impact' => OPT_ATT_HIDDEN,
-					'supervisor_group_id' => OPT_ATT_HIDDEN,
+					'supervisor_group_id' => OPT_ATT_MANDATORY | OPT_ATT_MUSTPROMPT,
 					'supervisor_id' =>OPT_ATT_MANDATORY | OPT_ATT_MUSTPROMPT,
-					'manager_group_id' => OPT_ATT_HIDDEN,
+					'manager_group_id' => OPT_ATT_MANDATORY | OPT_ATT_MUSTPROMPT,
 					'manager_id' => OPT_ATT_MANDATORY | OPT_ATT_MUSTPROMPT,
 					'outage' => OPT_ATT_HIDDEN,
 					'fallback' => OPT_ATT_HIDDEN,
@@ -583,7 +583,7 @@ class RoutineChange extends Change
 					'ref' => OPT_ATT_READONLY,
 					'agent_id' => OPT_ATT_HIDDEN,
 					'title' => OPT_ATT_MANDATORY,
-					'description' => OPT_ATT_READONLY,
+					'description' => OPT_ATT_MANDATORY,
 					'start_date' => OPT_ATT_HIDDEN,
 					'end_date' => OPT_ATT_HIDDEN,
 					'last_update' => OPT_ATT_READONLY,
@@ -632,7 +632,7 @@ class RoutineChange extends Change
 			array(
 				"attribute_inherit" => 'new',
 				"attribute_list" => array(
-					'description' => OPT_ATT_READONLY,
+					'description' => OPT_ATT_MANDATORY,
 					'team_id' => OPT_ATT_READONLY,
 					'agent_id' => OPT_ATT_MANDATORY | OPT_ATT_MUSTPROMPT,
 					'reason' => OPT_ATT_READONLY,
@@ -692,6 +692,7 @@ class RoutineChange extends Change
 				),
 			)
 		);
+		MetaModel::Init_DefineTransition("approved", "ev_replan", array("target_state"=>"plannedscheduled", "actions"=>array(), "user_restriction"=>null));
 		MetaModel::Init_DefineState(
 			"notapproved",
 			array(
@@ -1068,6 +1069,8 @@ abstract class ApprovedChange extends Change
 				),
 			)
 		);
+		MetaModel::Init_DefineTransition("approved", "ev_implement", array("target_state"=>"implemented", "actions"=>array(), "user_restriction"=>null));
+
 		MetaModel::Init_DefineState(
 			"notapproved",
 			array(
@@ -1341,9 +1344,9 @@ class NormalChange extends ApprovedChange
 					'requestor_id' => OPT_ATT_MANDATORY,
 					'creation_date' => OPT_ATT_READONLY,
 					'impact' => OPT_ATT_HIDDEN,
-					'supervisor_group_id' => OPT_ATT_HIDDEN,
+					'supervisor_group_id' => OPT_ATT_MANDATORY | OPT_ATT_MUSTPROMPT,
 					'supervisor_id' => OPT_ATT_MANDATORY | OPT_ATT_MUSTPROMPT,
-					'manager_group_id' => OPT_ATT_HIDDEN,
+					'manager_group_id' => OPT_ATT_MANDATORY | OPT_ATT_MUSTPROMPT,
 					'manager_id' => OPT_ATT_MANDATORY | OPT_ATT_MUSTPROMPT,
 					'outage' => OPT_ATT_HIDDEN,
 					'fallback' => OPT_ATT_HIDDEN,
@@ -1425,11 +1428,17 @@ class NormalChange extends ApprovedChange
 					'manager_id' => OPT_ATT_READONLY,
 					'outage' => OPT_ATT_READONLY,
 					'approval_date' => OPT_ATT_MANDATORY,
-					'approval_comment' => OPT_ATT_MANDATORY,
+					'approval_comment' =>  OPT_ATT_HIDDEN,
+					'title' => OPT_ATT_READONLY,
+					'description' => OPT_ATT_READONLY,
+					'fallback' => OPT_ATT_READONLY,
+					'start_date' => OPT_ATT_READONLY,
+					'end_date' => OPT_ATT_READONLY,
 				),
 			)
 		);
 		MetaModel::Init_DefineTransition("approved", "ev_implement", array("target_state"=>"implemented", "actions"=>array(), "user_restriction"=>null));
+		MetaModel::Init_DefineTransition("approved", "ev_replan", array("target_state"=>"plannedscheduled", "actions"=>array(), "user_restriction"=>null));
 		MetaModel::Init_DefineState(
 			"notapproved",
 			array(
@@ -1638,9 +1647,9 @@ class EmergencyChange extends ApprovedChange
 					'requestor_id' => OPT_ATT_MANDATORY,
 					'creation_date' => OPT_ATT_READONLY,
 					'impact' => OPT_ATT_HIDDEN,
-					'supervisor_group_id' => OPT_ATT_HIDDEN,
+					'supervisor_group_id' => OPT_ATT_MANDATORY | OPT_ATT_MUSTPROMPT,
 					'supervisor_id' => OPT_ATT_MANDATORY | OPT_ATT_MUSTPROMPT,
-					'manager_group_id' => OPT_ATT_HIDDEN,
+					'manager_group_id' => OPT_ATT_MANDATORY | OPT_ATT_MUSTPROMPT,
 					'manager_id' => OPT_ATT_MANDATORY | OPT_ATT_MUSTPROMPT,
 					'outage' => OPT_ATT_HIDDEN,
 					'fallback' => OPT_ATT_HIDDEN,
@@ -1756,11 +1765,17 @@ class EmergencyChange extends ApprovedChange
 					'manager_id' => OPT_ATT_READONLY,
 					'outage' => OPT_ATT_READONLY,
 					'approval_date' => OPT_ATT_MANDATORY,
-					'approval_comment' => OPT_ATT_MANDATORY,
+					'approval_comment' =>  OPT_ATT_HIDDEN,
+					'title' => OPT_ATT_READONLY,
+					'description' => OPT_ATT_READONLY,
+					'fallback' => OPT_ATT_READONLY,
+					'start_date' => OPT_ATT_READONLY,
+					'end_date' => OPT_ATT_READONLY,
 				),
 			)
 		);
 		MetaModel::Init_DefineTransition("approved", "ev_implement", array("target_state"=>"implemented", "actions"=>array(), "user_restriction"=>null));
+		MetaModel::Init_DefineTransition("approved", "ev_replan", array("target_state"=>"plannedscheduled", "actions"=>array(), "user_restriction"=>null));
 		MetaModel::Init_DefineState(
 			"notapproved",
 			array(

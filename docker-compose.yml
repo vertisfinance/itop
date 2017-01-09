@@ -25,26 +25,26 @@ services:
       LDAP_USER: itop
     volumes:
       - itop-data-volume:/var/lib/mysql
-      # - ../../docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
 
   phpmyadmin:
-      image: phpmyadmin/phpmyadmin
-      container_name: phpmyadmin
-      environment:
-        PMA_ARBITRARY: "1"
-      restart: always
-      ports:
-       - 3305:80
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_ARBITRARY: "1"
+    restart: always
+    ports:
+     - 3305:80
 
   itop:
     image: vertis-docker-registry:5000/itop-itop:latest
     command: ["bash", "run.sh"]
     env_file: .secret
-        environment:
-          MYSQL_DATABASE: itop
-          MYSQL_USER: itop
-          HOST: localhost
-          LDAP_USER: itop
+    environment:
+      MYSQL_DATABASE: itop
+      MYSQL_USER: itop
+      HOST: localhost
+      LDAP_USER: itop
     volumes:
       - itop-env-production-volume:/var/www/html/env-production
       - itop-conf-volume:/var/www/html/conf
@@ -53,6 +53,7 @@ services:
       - ./localhost.crt:/certificate.crt
       - ./localhost.key:/certificate.key
       - ./docker/itop/apache_conf/dev_000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./html/env-production/itop-change-mgmt-itil/model.itop-change-mgmt-itil.php:/var/www/html/env-production/itop-change-mgmt-itil/model.itop-change-mgmt-itil.php
     ports:
       - 4430:443
       - 80:80
