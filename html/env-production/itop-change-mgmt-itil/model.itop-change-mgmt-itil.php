@@ -692,7 +692,6 @@ class RoutineChange extends Change
 				),
 			)
 		);
-		MetaModel::Init_DefineTransition("approved", "ev_replan", array("target_state"=>"plannedscheduled", "actions"=>array(), "user_restriction"=>null));
 		MetaModel::Init_DefineState(
 			"notapproved",
 			array(
