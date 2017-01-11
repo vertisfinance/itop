@@ -16,7 +16,16 @@ COPY docker/itop/php.ini /etc/php/7.0/cli/
 COPY docker/itop/run.sh /etc/
 RUN cp etc/run.sh /
 
-COPY html /var/www/html
+RUN wget -O /itop.zip http://sourceforge.net/projects/itop/files/itop/2.1.0/iTop-2.1.0-2127.zip/download
+RUN unzip itop.zip -d /var/www/html
+RUN cp -r /var/www/html/web/* /var/www/html
+
+RUN rm itop.zip && rm -rf /var/www/html/web
+COPY html/conf /var/www/html/conf
+COPY html/extensions /var/www/html/extensions
+COPY html/env-production /var/www/html/env-production
+RUN mkdir -p /var/www/html/data
+RUN mkdir -p /var/www/html/log
 COPY docker/itop/apache_conf/prod_000-default.conf /etc/apache2/sites-available/000-default.conf
 
 

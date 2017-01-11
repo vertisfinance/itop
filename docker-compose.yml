@@ -53,7 +53,9 @@ services:
       - ./localhost.crt:/certificate.crt
       - ./localhost.key:/certificate.key
       - ./docker/itop/apache_conf/dev_000-default.conf:/etc/apache2/sites-available/000-default.conf
-      - ./html/env-production/itop-change-mgmt-itil/model.itop-change-mgmt-itil.php:/var/www/html/env-production/itop-change-mgmt-itil/model.itop-change-mgmt-itil.php
+      - ./html/env-production:/var/www/html/env-production
+      - ./html/conf:/var/www/html/conf
+      - ./html/extensions:/var/www/html/extensions
     ports:
       - 4430:443
       - 80:80
