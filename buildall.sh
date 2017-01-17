@@ -7,7 +7,7 @@ PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "mysql"
 echo "--------------------"
-docker build -t vertis-docker-registry:5000/itop-mysql -f "$PROJECT_ROOT/docker/mysql/Dockerfile" .
+docker build -t vertis-docker-registry:5000/itop-mysql "$PROJECT_ROOT/docker/mysql"
 
 echo "itop"
 echo "--------------------"
