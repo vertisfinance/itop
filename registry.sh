@@ -13,7 +13,7 @@ if [ [${BRANCH}] = "[master]" ]; then
       for docker_image in itop-itop itop-mysql
       do
         echo $docker_image
-        if [ [$docker_image] = "itop-itop" ]; then
+        if [ $docker_image = "itop-itop" ]; then
           docker build -t $docker_image -f "$PROJECT_ROOT/docker/itop/Dockerfile" .
         else
           docker build -t $docker_image "$PROJECT_ROOT/docker/mysql/"
