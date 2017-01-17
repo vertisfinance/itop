@@ -1,6 +1,6 @@
 <?php
 //
-// File generated on 2017-01-17T08:21:36+0100
+// File generated on 2017-01-17T14:42:25+0100
 // Please do not edit manually
 //
 MetaModel::IncludeModule('env-production/core/main.php');
@@ -16,12 +16,6 @@ MetaModel::IncludeModule('env-production/itop-config-mgmt/main.itop-config-mgmt.
 MetaModel::IncludeModule('env-production/itop-config/main.itop-config.php');
 MetaModel::IncludeModule('env-production/itop-datacenter-mgmt/model.itop-datacenter-mgmt.php');
 MetaModel::IncludeModule('env-production/itop-endusers-devices/model.itop-endusers-devices.php');
-MetaModel::IncludeModule('env-production/itop-portal-base/portal/src/entities/abstractbrick.class.inc.php');
-MetaModel::IncludeModule('env-production/itop-portal-base/portal/src/entities/portalbrick.class.inc.php');
-MetaModel::IncludeModule('env-production/itop-portal-base/portal/src/controllers/abstractcontroller.class.inc.php');
-MetaModel::IncludeModule('env-production/itop-portal-base/portal/src/controllers/brickcontroller.class.inc.php');
-MetaModel::IncludeModule('env-production/itop-portal-base/portal/src/routers/abstractrouter.class.inc.php');
-MetaModel::IncludeModule('env-production/itop-portal/main.itop-portal.php');
 MetaModel::IncludeModule('env-production/itop-profiles-itil/model.itop-profiles-itil.php');
 MetaModel::IncludeModule('env-production/itop-sla-computation/main.itop-sla-computation.php');
 MetaModel::IncludeModule('env-production/itop-storage-mgmt/model.itop-storage-mgmt.php');
