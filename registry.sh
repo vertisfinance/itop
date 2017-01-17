@@ -10,9 +10,9 @@ PUSH=`git diff origin/master | grep diff | head -1 | awk '{print $1}'`
 if [ [${BRANCH}] = "[master]" ]; then
   if [ [${STATUS}] = "[clean]" ]; then
     if [ [${PUSH}] != "[diff]" ]; then
-      for docker_image in itop mysql
+      for docker_image in itop-itop itop-mysql
       do
-        if [ [$docker_image] = "itop" ]; then
+        if [ [$docker_image] = "itop-itop" ]; then
           docker build -t $docker_image -f "$PROJECT_ROOT/docker/itop/Dockerfile" .
         else
           docker build -t $docker_image "$PROJECT_ROOT/docker/mysql/"
