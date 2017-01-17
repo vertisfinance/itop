@@ -129,13 +129,13 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 	'Class:UserRequest/Attribute:time_spent+' => '',
 	'Class:UserRequest/Attribute:resolution_code' => 'Lösungs-Code',
 	'Class:UserRequest/Attribute:resolution_code+' => '',
-	'Class:UserRequest/Attribute:resolution_code/Value:assistance' => 'Unerstützung',
+	'Class:UserRequest/Attribute:resolution_code/Value:assistance' => 'Unterstützung',
 	'Class:UserRequest/Attribute:resolution_code/Value:assistance+' => '',
 	'Class:UserRequest/Attribute:resolution_code/Value:bug fixed' => 'Bugfix',
 	'Class:UserRequest/Attribute:resolution_code/Value:bug fixed+' => '',
-	'Class:UserRequest/Attribute:resolution_code/Value:hardware repair' => 'Hardware-Reperatur',
+	'Class:UserRequest/Attribute:resolution_code/Value:hardware repair' => 'Hardware-Reparatur',
 	'Class:UserRequest/Attribute:resolution_code/Value:hardware repair+' => '',
-	'Class:UserRequest/Attribute:resolution_code/Value:other' => 'Andere',
+	'Class:UserRequest/Attribute:resolution_code/Value:other' => 'Anders (Siehe Lösung)',
 	'Class:UserRequest/Attribute:resolution_code/Value:other+' => '',
 	'Class:UserRequest/Attribute:resolution_code/Value:software patch' => 'Software-Patch',
 	'Class:UserRequest/Attribute:resolution_code/Value:software patch+' => '',
@@ -241,5 +241,9 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 	'Class:UserRequest/Attribute:parent_change_ref+' => '',
 	'Class:UserRequest/Attribute:parent_request_id_friendlyname' => 'Parent-Benutzeranfrage-Id-Friendly Name',
 	'Class:UserRequest/Attribute:parent_request_id_friendlyname+' => '',
-));
+	'Class:UserRequest/Attribute:parent_incident_id' => 'Parent-Incident',
+	'Class:UserRequest/Error:CannotAssignParentRequestIdToSelf' => 'Kann Ticket nicht als eigenes Parent-Ticket verwenden',
+	'Class:UserRequest/Method:ResolveChildTickets' => 'Kind-Tickets lösen',
+	'Class:UserRequest/Method:ResolveChildTickets+' => 'Lösung auf Kind-Tickets übertragen (ev_autoresolve), und folgende Ticket-Eigenschaften angleichen: Service, Team, Agent, Lösungsinformationen',
+	));
 ?>

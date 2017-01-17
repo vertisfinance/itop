@@ -35,5 +35,6 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 	'Attachment:Max_Mo' => '(Maximale Dateigröße: %1$s MB)',
 	'Attachment:Max_Ko' => '(Maximale Dateigröße: %1$s KB)',
 	'Attachments:NoAttachment' => 'Kein Attachment. ',
+	'Attachments:PreviewNotAvailable' => 'Vorschau für diesen Attachment-Typ nicht verfügbar.',
 ));
 ?>

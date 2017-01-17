@@ -1,5 +1,5 @@
 <?php
-// Copyright (C) 2010-2012 Combodo SARL
+// Copyright (C) 2010-2016 Combodo SARL
 //
 //   This file is part of iTop.
 //
@@ -20,7 +20,7 @@
 /**
  * Handles various ajax requests
  *
- * @copyright   Copyright (C) 2010-2012 Combodo SARL
+ * @copyright   Copyright (C) 2010-2016 Combodo SARL
  * @license     http://opensource.org/licenses/AGPL-3.0
  */
 
@@ -35,7 +35,7 @@ try
 //	require_once(APPROOT.'/application/user.preferences.class.inc.php');
 	
 	require_once(APPROOT.'/application/loginwebpage.class.inc.php');
-	LoginWebPage::DoLogin(false /* bMustBeAdmin */, true /* IsAllowedToPortalUsers */); // Check user rights and prompt if needed
+	LoginWebPage::DoLoginEx(null /* any portal */, false);
 	
 	$oPage = new ajax_page("");
 	$oPage->no_cache();
@@ -74,7 +74,7 @@ try
 				$oAttachment->Set('contents', $oDoc);
 				$iAttId = $oAttachment->DBInsert();
 				
-				$aResult['msg'] = $oDoc->GetFileName();
+				$aResult['msg'] = htmlentities($oDoc->GetFileName(), ENT_QUOTES, 'UTF-8');
 				$aResult['icon'] = utils::GetAbsoluteUrlAppRoot().AttachmentPlugIn::GetFileIcon($oDoc->GetFileName());
 				$aResult['att_id'] = $iAttId;
 				$aResult['preview'] = $oDoc->IsPreviewAvailable() ? 'true' : 'false';
@@ -96,7 +96,7 @@ try
 		$oAttachment->DBDelete();
 	}
 	break;
-
+	
 	default:
 		$oPage->p("Missing argument 'operation'");
 	}

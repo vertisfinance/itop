@@ -1,5 +1,5 @@
 <?php
-// Copyright (C) 2014 Combodo SARL
+// Copyright (C) 2016 Combodo SARL
 //
 //   This file is part of iTop.
 //
@@ -20,12 +20,12 @@
 /**
  * Monitor the backup
  *
- * @copyright   Copyright (C) 2013 Combodo SARL
+ * @copyright   Copyright (C) 2016 Combodo SARL
  * @license     http://opensource.org/licenses/AGPL-3.0
  */
 
 if (!defined('__DIR__')) define('__DIR__', dirname(__FILE__));
-require_once(__DIR__.'/../../approot.inc.php');
+if (!defined('APPROOT')) require_once(__DIR__.'/../../approot.inc.php');
 require_once(APPROOT.'application/application.inc.php');
 require_once(APPROOT.'application/itopwebpage.class.inc.php');
 
@@ -169,14 +169,13 @@ try
 	}
 
 	$oRestoreMutex = new iTopMutex('restore.'.utils::GetCurrentEnvironment());
-	if ($oRestoreMutex->TryLock())
+	if ($oRestoreMutex->IsLocked())
 	{
-		$oRestoreMutex->Unlock();
-		$sDisableRestore = '';
+		$sDisableRestore = 'disabled="disabled"';
 	}
 	else
 	{
-		$sDisableRestore = 'disabled="disabled"';
+		$sDisableRestore = '';
 	}
 	
 	// 1st table: list the backups made in the background
@@ -271,20 +270,12 @@ try
 	// Ongoing operation ?
 	//
 	$oBackupMutex = new iTopMutex('backup.'.utils::GetCurrentEnvironment());
-	if ($oBackupMutex->TryLock())
-	{
-		$oBackupMutex->Unlock();
-	}
-	else
+	if ($oBackupMutex->IsLocked())
 	{
 		$oP->p(Dict::S('bkp-backup-running'));
 	}
 	$oRestoreMutex = new iTopMutex('restore.'.utils::GetCurrentEnvironment());
-	if ($oRestoreMutex->TryLock())
-	{
-		$oRestoreMutex->Unlock();
-	}
-	else
+	if ($oRestoreMutex->IsLocked())
 	{
 		$oP->p(Dict::S('bkp-restore-running'));
 	}

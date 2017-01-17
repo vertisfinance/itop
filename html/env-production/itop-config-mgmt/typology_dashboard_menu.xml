@@ -43,7 +43,7 @@
           <rank>9</rank>
           <class>DocumentType</class>
         </dashlet>
-        <dashlet id="8" xsi:type="DashletBadge">
+        <dashlet id="8" xsi:type="DashletBadge" _altered_in="itop-service-mgmt">
           <rank>7</rank>
           <class>ContractType</class>
         </dashlet>

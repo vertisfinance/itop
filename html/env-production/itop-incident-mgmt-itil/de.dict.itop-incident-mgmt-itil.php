@@ -192,10 +192,6 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 	'Menu:Incident:EscalatedIncidents+' => '',
 	'Menu:Incident:OpenIncidents' => 'Alle offenen Incidents',
 	'Menu:Incident:OpenIncidents+' => '',
-	'Menu:Incident:UnassignedIncidents' => 'Noch nicht zugewiesene Incidents',
-	'Menu:Incident:UnassignedIncidents+' => '',
-	'Menu:Incident:HelpdeskIncidents' => 'Level2 zugewiesene Incidents',
-	'Menu:Incident:HelpdeskIncidents+' => '',
 	'UI-IncidentManagementOverview-IncidentByPriority-last-14-days' => 'Incidents der letzten 14 Tage nach Priorität',
 	'UI-IncidentManagementOverview-Last-14-days' => 'Anzahl Incidents der letzten 14 Tage',
 	'UI-IncidentManagementOverview-OpenIncidentByStatus' => 'Offene Incidents nach Status',
@@ -213,5 +209,10 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 	'Class:Incident/Attribute:parent_change_ref+' => '',
 	'Class:Incident/Attribute:parent_incident_id_friendlyname' => 'Parent-Incident-Friendly Name',
 	'Class:Incident/Attribute:parent_incident_id_friendlyname+' => '',
+	'Class:Incident/Attribute:related_request_list' => 'Kind-Requests',
+	'Class:Incident/Error:CannotAssignParentIncidentIdToSelf' => 'Kann Incident-Ticket nicht als eigenes Parent-Ticket verwenden',
+	'Class:Incident/Method:ResolveChildTickets' => 'Kind-Tickets lösen',
+	'Class:Incident/Method:ResolveChildTickets+' => 'Lösung auf Kind-Tickets übertragen (ev_autoresolve), und folgende Ticket-Eigenschaften angleichen: Service, Team, Agent, Lösungsinformationen',
+	'Tickets:Related:OpenIncidents' => 'Offene Incidents',
 ));
 ?>

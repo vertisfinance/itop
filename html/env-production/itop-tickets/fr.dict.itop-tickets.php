@@ -64,11 +64,20 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Ticket/Attribute:contacts_list' => 'Contacts',
 	'Class:Ticket/Attribute:contacts_list+' => '',
 	'Class:Ticket/Attribute:functionalcis_list' => 'CIs',
-	'Class:Ticket/Attribute:functionalcis_list+' => '',
+	'Class:Ticket/Attribute:functionalcis_list+' => 'Tous les éléments de configuration impactés par ce ticket. Les éléments marqués comme "Calculés" sont le résultat du calcul de l\'analyse d\'impact. Les éléments marqués comme "Non impactés" sont exclus de cette analyse.',
 	'Class:Ticket/Attribute:workorders_list' => 'Tâches',
 	'Class:Ticket/Attribute:workorders_list+' => '',
 	'Class:Ticket/Attribute:finalclass' => 'Type',
 	'Class:Ticket/Attribute:finalclass+' => '',
+	'Class:Ticket/Attribute:operational_status' => 'Statut opérationnel',
+	'Class:Ticket/Attribute:operational_status+' => 'Calculé à partir du statut détaillé',
+	'Class:Ticket/Attribute:operational_status/Value:ongoing' => 'En cours',
+	'Class:Ticket/Attribute:operational_status/Value:ongoing+' => 'Traitement en cours',
+	'Class:Ticket/Attribute:operational_status/Value:resolved' => 'Résolu',
+	'Class:Ticket/Attribute:operational_status/Value:resolved+' => '',
+	'Class:Ticket/Attribute:operational_status/Value:closed' => 'Clôt',
+	'Class:Ticket/Attribute:operational_status/Value:closed+' => '',
+	'Ticket:ImpactAnalysis' => 'Analyse d\'Impact',
 ));
 
 
@@ -87,8 +96,12 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:lnkContactToTicket/Attribute:contact_id+' => '',
 	'Class:lnkContactToTicket/Attribute:contact_email' => 'Email Contact',
 	'Class:lnkContactToTicket/Attribute:contact_email+' => '',
-	'Class:lnkContactToTicket/Attribute:role' => 'Rôle',
+	'Class:lnkContactToTicket/Attribute:role' => 'Rôle (texte)',
 	'Class:lnkContactToTicket/Attribute:role+' => '',
+	'Class:lnkContactToTicket/Attribute:role_code' => 'Rôle',
+	'Class:lnkContactToTicket/Attribute:role_code/Value:manual' => 'Ajouté manuellement',
+	'Class:lnkContactToTicket/Attribute:role_code/Value:computed' => 'Calculé',
+	'Class:lnkContactToTicket/Attribute:role_code/Value:do_not_notify' => 'Ne pas notifier',
 ));
 
 //
@@ -106,8 +119,12 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:lnkFunctionalCIToTicket/Attribute:functionalci_id+' => '',
 	'Class:lnkFunctionalCIToTicket/Attribute:functionalci_name' => 'Nom CI',
 	'Class:lnkFunctionalCIToTicket/Attribute:functionalci_name+' => '',
-	'Class:lnkFunctionalCIToTicket/Attribute:impact' => 'Impact',
+	'Class:lnkFunctionalCIToTicket/Attribute:impact' => 'Impact (texte)',
 	'Class:lnkFunctionalCIToTicket/Attribute:impact+' => '',
+	'Class:lnkFunctionalCIToTicket/Attribute:impact_code' => 'Impact',
+	'Class:lnkFunctionalCIToTicket/Attribute:impact_code/Value:manual' => 'Ajouté manuellement',
+	'Class:lnkFunctionalCIToTicket/Attribute:impact_code/Value:computed' => 'Calculé',
+	'Class:lnkFunctionalCIToTicket/Attribute:impact_code/Value:not_impacted' => 'Non impacté',
 ));
 
 
@@ -179,7 +196,11 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:cmdbAbstractObject/Method:SetCurrentUser' => 'SetCurrentUser (initialiser à l\'utilisateur courant)',
 	'Class:cmdbAbstractObject/Method:SetCurrentUser+' => 'Initialiser un champ avec l\'utilisateur qui est en train d\'effectuer une action sur l\'objet',
 	'Class:cmdbAbstractObject/Method:SetCurrentUser/Param:1' => 'Champ Cible',
-	'Class:cmdbAbstractObject/Method:SetCurrentUser/Param:1+' => 'Le champ à initialiser, dans l\'objet courant',
+	'Class:cmdbAbstractObject/Method:SetCurrentUser/Param:1+' => 'Le champ à initialiser, dans l\'objet courant. Si ce champ est une chaîne de caractère, alors le nom usuel sera utilisé. Dans les autres cas, ce sera l\'identifiant de l\'objet. Le nom usuel est le nom usuel de la personne attachée au compte utilisateur. Si aucune personne n\'est rattachée au compte utilisateur, alors le nom usuel est l\'identifiant de connexion.',
+	'Class:cmdbAbstractObject/Method:SetCurrentPerson' => 'SetCurrentPerson (initialiser à l\'utilisateur courant)',
+	'Class:cmdbAbstractObject/Method:SetCurrentPerson+' => 'Initialiser un champ avec la personne associée au compte de l\'utilisateur qui est en train d\'effectuer une action sur l\'objet',
+	'Class:cmdbAbstractObject/Method:SetCurrentPerson/Param:1' => 'Champ Cible',
+	'Class:cmdbAbstractObject/Method:SetCurrentPerson/Param:1+' => 'Le champ à initialiser, dans l\'objet courant. Si ce champ est une chaîne de caractère, alors le nom usuel sera utilisé. Dans les autres cas, ce sera l\'identifiant de l\'objet',
 	'Class:cmdbAbstractObject/Method:SetElapsedTime' => 'SetElapsedTime (initialiser avec le temps passé)',
 	'Class:cmdbAbstractObject/Method:SetElapsedTime+' => 'Initialiser un champ avec la durée écoulée depuis une date donnée par un autre champ (champ de référence)',
 	'Class:cmdbAbstractObject/Method:SetElapsedTime/Param:1' => 'Champ Cible',
@@ -202,4 +223,15 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:ResponseTicketTTO/Interface:iMetricComputer+' => 'Objectif calculé à partir d\'un SLT de type TTO',
 	'Class:ResponseTicketTTR/Interface:iMetricComputer' => 'Temps de Résolution (TTR)',
 	'Class:ResponseTicketTTR/Interface:iMetricComputer+' => 'Objectif calculé à partir d\'un SLT de type TTR',
+
+	'portal:itop-portal' => 'Portail standard', // This is the portal name that will be displayed in portal dispatcher (eg. URL in menus)
+	'Page:DefaultTitle' => 'iTop - Portail utilisateur',
+	'Brick:Portal:UserProfile:Title' => 'Mon profil',
+	'Brick:Portal:NewRequest:Title' => 'Nouvelle requête',
+	'Brick:Portal:NewRequest:Title+' => '<p>Besoin d\'assistance&nbsp;?</p><p>Choisissez un service (assistance ou dépannage) et soumettez votre requête à nos équipes de support.</p>',
+	'Brick:Portal:OngoingRequests:Title' => 'Requêtes en cours',
+	'Brick:Portal:OngoingRequests:Title+' => '<p>Suivez vos requêtes en cours.</p><p>Consultez l\'avancement, ajoutez des commentaires ou des pièces jointes, validez la solution.</p>',
+	'Brick:Portal:OngoingRequests:Tab:OnGoing' => 'En cours',
+	'Brick:Portal:OngoingRequests:Tab:Resolved' => 'Résolues',
+	'Brick:Portal:ClosedRequests:Title' => 'Requêtes fermées',
 ));

@@ -41,7 +41,7 @@
         </dashlet>
       </dashlets>
     </cell>
-    <cell id="1">
+    <cell id="1" _altered_in="itop-request-mgmt-itil">
       <rank>1</rank>
       <dashlets>
         <dashlet id="11" xsi:type="DashletHeaderDynamic">

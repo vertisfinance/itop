@@ -148,6 +148,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Incident/Attribute:pending_reason+' => '',
 	'Class:Incident/Attribute:parent_incident_id' => 'Incident parent',
 	'Class:Incident/Attribute:parent_incident_id+' => '',
+	'Class:Incident/Attribute:parent_problem_id' => 'Problème lié',
+	'Class:Incident/Attribute:parent_problem_id+' => '',
 	'Class:Incident/Attribute:parent_incident_ref' => 'Référence incident parent',
 	'Class:Incident/Attribute:parent_incident_ref+' => '',
 	'Class:Incident/Attribute:parent_change_id' => 'Changement parent',
@@ -221,4 +223,13 @@ Dict::Add('FR FR', 'French', 'Français', array(
 
 	'Class:Incident/Method:ResolveChildTickets' => 'ResolveChildTickets (résoudre les tickets fils)',
 	'Class:Incident/Method:ResolveChildTickets+' => 'Cascader l\'action de résolution du ticket (ev_autoresolve) vers les requêtes et incidents fils, et aligner les caractéristiques suivantes : service, équipe, agent, information de résolution',
+	'Class:Incident/Attribute:user_satisfaction/Value:1' => 'Très satisfait',
+	'Class:Incident/Attribute:user_satisfaction/Value:1+' => 'Très satisfait',
+	'Class:Incident/Attribute:user_satisfaction/Value:2' => 'Plutôt satisfait',
+	'Class:Incident/Attribute:user_satisfaction/Value:2+' => 'Plutôt satisfait',
+	'Class:Incident/Attribute:user_satisfaction/Value:3' => 'Plutôt mécontent',
+	'Class:Incident/Attribute:user_satisfaction/Value:3+' => 'Plutôt mécontent',
+	'Class:Incident/Attribute:user_satisfaction/Value:4' => 'Très mécontent',
+	'Class:Incident/Attribute:user_satisfaction/Value:4+' => 'Très mécontent',
+	'Tickets:Related:OpenIncidents' => 'Open incidents',
 ));

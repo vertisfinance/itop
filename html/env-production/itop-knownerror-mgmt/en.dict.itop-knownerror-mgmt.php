@@ -179,12 +179,14 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Menu:NewError+' => 'Creation of a new known error',
 	'Menu:SearchError' => 'Search for known errors',
 	'Menu:SearchError+' => 'Search for known errors',
-        'Menu:Problem:KnownErrors' => 'All known errors',
-        'Menu:Problem:KnownErrors+' => 'All known errors',
+	'Menu:Problem:KnownErrors' => 'All known errors',
+	'Menu:Problem:KnownErrors+' => 'All known errors',
 	'Menu:FAQCategory' => 'FAQ categories',
 	'Menu:FAQCategory+' => 'All FAQ categories',
 	'Menu:FAQ' => 'FAQs',
 	'Menu:FAQ+' => 'All FAQs',
 
+	'Brick:Portal:FAQ:Menu' => 'FAQ',
+	'Brick:Portal:FAQ:Title' => 'Frequently Asked Questions',
+	'Brick:Portal:FAQ:Title+' => '<p>In a hurry?</p><p>Check out the list of most common questions and (maybe) find the expected answer right away.</p>',
 ));
-?>

@@ -3,7 +3,7 @@
 
 SetupWebPage::AddModule(
 	__FILE__,
-	'itop-tickets/2.1.0',
+	'itop-tickets/2.3.0',
 	array(
 		// Identification
 		//
@@ -13,7 +13,7 @@ SetupWebPage::AddModule(
 		// Setup
 		//
 		'dependencies' => array(
-			'itop-config-mgmt/2.0.0',
+			'itop-config-mgmt/2.2.0',
 		),
 		'mandatory' => true,
 		'visible' => false,
@@ -22,8 +22,8 @@ SetupWebPage::AddModule(
 		// Components
 		//
 		'datamodel' => array(
-			'model.itop-tickets.php',
 			'main.itop-tickets.php',
+			'model.itop-tickets.php',
 		),
 		'data.struct' => array(
 	//		'data.struct.ta-actions.xml',

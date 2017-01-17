@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1">
+<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.3">
   <classes>
     <class id="Organization" _delta="define">
       <parent>cmdbAbstractObject</parent>
@@ -458,6 +458,14 @@
         </reconciliation>
       </properties>
       <fields>
+        <field id="picture" xsi:type="AttributeImage">
+          <display_max_width>96</display_max_width>
+          <display_max_height>96</display_max_height>
+          <storage_max_width>128</storage_max_width>
+          <storage_max_height>128</storage_max_height>
+          <default_image>images/silhouette.png</default_image>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
         <field id="first_name" xsi:type="AttributeString">
           <sql>first_name</sql>
           <default_value/>
@@ -474,7 +482,7 @@
           <is_null_allowed>true</is_null_allowed>
         </field>
         <field id="location_id" xsi:type="AttributeExternalKey">
-          <filter><![CDATA[SELECT l FROM Organization AS child JOIN Organization AS root ON child.parent_id BELOW root.id JOIN Location AS l ON l.org_id=root.id WHERE child.id=:this->org_id]]></filter>
+          <filter><![CDATA[SELECT l FROM Location AS l JOIN Organization AS root ON l.org_id=root.id JOIN Organization AS child ON child.parent_id BELOW root.id WHERE child.id= :this->org_id]]></filter>
           <dependencies>
             <attribute id="org_id"/>
           </dependencies>
@@ -518,7 +526,84 @@
           <count_max>0</count_max>
         </field>
       </fields>
-      <methods/>
+      <methods>
+        <method id="CheckToDelete">
+          <static>false</static>
+          <access>public</access>
+          <type>Overload-DBObject</type>
+          <code><![CDATA[  	public function CheckToDelete(&$oDeletionPlan)
+  	{
+  		if (MetaModel::GetConfig()->Get('demo_mode'))
+		{
+			if ($this->HasUserAccount())
+			{
+				// Do not let users change user accounts in demo mode
+				$oDeletionPlan->AddToDelete($this, null);
+				$oDeletionPlan->SetDeletionIssues($this, array('deletion not allowed in demo mode.'), true);
+				$oDeletionPlan->ComputeResults();
+				return false;
+			}
+		}
+		return parent::CheckToDelete($oDeletionPlan);
+  	}
+]]></code>
+        </method>
+        <method id="DBDeleteSingleObject">
+          <static>false</static>
+          <access>public</access>
+          <type>Overload-DBObject</type>
+          <code><![CDATA[  	public function DBDeleteSingleObject(&$oDeletionPlan)
+	{
+		if (MetaModel::GetConfig()->Get('demo_mode'))
+		{
+			if ($this->HasUserAccount())
+			{
+				// Do not let users change user accounts in demo mode
+				return;
+			}
+		}
+		parent::DBDeleteSingleObject();
+	}
+]]></code>
+        </method>
+        <method id="GetAttributeFlags">
+          <static>false</static>
+          <access>public</access>
+          <type>Overload-DBObject</type>
+          <code><![CDATA[	public function GetAttributeFlags($sAttCode, &$aReasons = array(), $sTargetState = '')
+	{
+		if ( ($sAttCode == 'org_id') && (!$this->IsNew()) )
+		{
+			if (MetaModel::GetConfig()->Get('demo_mode'))
+			{
+				if ($this->HasUserAccount())
+				{
+					// Do not let users change user accounts in demo mode
+					return OPT_ATT_READONLY;
+				}
+			}
+		}
+		return parent::GetAttributeFlags($sAttCode, $aReasons, $sTargetState);
+	}
+]]></code>
+        </method>
+        <method id="HasUserAccount">
+          <static>false</static>
+          <access>public</access>
+          <type>Helper</type>
+          <code><![CDATA[  	public function HasUserAccount()
+  	{
+		static $bHasUserAccount = null;
+		if (is_null($bHasUserAccount))
+		{
+			$oUserSet = new DBObjectSet(DBSearch::FromOQL('SELECT User WHERE contactid = :person', array('person' => $this->GetKey())));
+			$bHasUserAccount = ($oUserSet->Count() > 0);
+		}
+		return $bHasUserAccount;
+  	}
+]]></code>
+        </method>
+      </methods>
       <presentation>
         <details>
           <items>
@@ -568,6 +653,14 @@
             <item id="col:col2">
               <rank>50</rank>
               <items>
+                <item id="fieldset:Person:personal_info">
+                  <rank>5</rank>
+                  <items>
+                    <item id="picture">
+                      <rank>10</rank>
+                    </item>
+                  </items>
+                </item>
                 <item id="fieldset:Person:notifiy">
                   <rank>10</rank>
                   <items>
@@ -1368,6 +1461,7 @@
           <linked_class>SoftwareInstance</linked_class>
           <ext_key_to_me>system_id</ext_key_to_me>
           <edit_mode>in_place</edit_mode>
+          <tracking_level>all</tracking_level>
           <count_min>0</count_min>
           <count_max>0</count_max>
         </field>
@@ -1380,29 +1474,6 @@
           <duplicates/>
         </field>
       </fields>
-      <methods>
-        <method id="GetRelationQueries">
-          <static>true</static>
-          <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[	public static function GetRelationQueries($sRelCode)
-	{
-		switch ($sRelCode)
-		{
-		case "impacts":
-			$aRels = array(
-				"contact" => array("sQuery"=>"SELECT Contact AS c JOIN lnkContactToFunctionalCI AS l1 ON l1.contact_id = c.id WHERE l1.functionalci_id = :this->id", "bPropagate"=>true, "iDistance"=>3),
-				"solution" => array("sQuery"=>"SELECT ApplicationSolution AS s JOIN lnkApplicationSolutionToFunctionalCI AS l1 ON l1.applicationsolution_id = s.id WHERE l1.functionalci_id = :this->id", "bPropagate"=>true, "iDistance"=>2),
-				"SoftwareInstances" => array("sQuery"=>"SELECT SoftwareInstance AS s  WHERE s.system_id = :this->id", "bPropagate"=>true, "iDistance"=>10),
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-		default:
-			return parent::GetRelationQueries($sRelCode);
-		}
-	}]]></code>
-        </method>
-      </methods>
       <presentation>
         <details>
           <items>
@@ -1426,9 +1497,6 @@
             </item>
             <item id="documents_list">
               <rank>70</rank>
-            </item>
-            <item id="tickets_list">
-              <rank>80</rank>
             </item>
             <item id="applicationsolution_list">
               <rank>90</rank>
@@ -1474,6 +1542,88 @@
           </items>
         </list>
       </presentation>
+      <methods>
+        <method id="GetRelationQueries">
+          <comment>/**
+	 * Placeholder for backward compatibility (iTop &lt;= 2.1.0)
+	 * in case an extension attempts to redefine this function...	 
+	 */</comment>
+          <static>true</static>
+          <access>public</access>
+          <type>Overload-DBObject</type>
+          <code><![CDATA[	public static function GetRelationQueries($sRelCode){return parent::GetRelationQueries($sRelCode);} ]]></code>
+        </method>
+        <method id="DisplayBareRelations">
+          <static>false</static>
+          <access>public</access>
+          <type>Overload-cmdbAbstractObject</type>
+          <code><![CDATA[	function DisplayBareRelations(WebPage $oPage, $bEditMode = false)
+	{
+		parent::DisplayBareRelations($oPage, $bEditMode);
+
+		$sTicketListAttCode = 'tickets_list';
+
+		if (MetaModel::IsValidAttCode(get_class($this), $sTicketListAttCode))
+		{
+			// Display one list per leaf class (the only way to display the status as of now)
+
+			$oAttDef = MetaModel::GetAttributeDef(get_class($this), $sTicketListAttCode);
+			$sLnkClass = $oAttDef->GetLinkedClass();
+			$sExtKeyToMe = $oAttDef->GetExtKeyToMe();
+			$sExtKeyToRemote = $oAttDef->GetExtKeyToRemote();
+
+			$iTotal = 0;
+			$aSearches = array();
+
+			foreach (MetaModel::EnumChildClasses('Ticket') as $sSubClass)
+			{
+				if (!MetaModel::HasChildrenClasses($sSubClass))
+				{
+					$sStateAttCode = MetaModel::GetStateAttributeCode($sSubClass);
+					if ($sStateAttCode != '')
+					{
+						$oSearch = DBSearch::FromOQL("SELECT $sSubClass AS t JOIN $sLnkClass AS lnk ON lnk.$sExtKeyToRemote = t.id WHERE $sExtKeyToMe = :myself AND $sStateAttCode NOT IN ('rejected', 'resolved', 'closed')", array('myself' => $this->GetKey()));
+						$aSearches[$sSubClass] = $oSearch;
+
+						$oSet = new DBObjectSet($oSearch);
+						$iTotal += $oSet->Count();
+					}
+				}
+			}
+
+			$sCount = ($iTotal > 0) ? ' ('.$iTotal.')' : '';
+			$oPage->SetCurrentTab(Dict::S('Class:FunctionalCI/Tab:OpenedTickets').$sCount);
+
+			foreach ($aSearches as $sSubClass => $oSearch)
+			{
+				$sBlockId = __class__.'_opened_'.$sSubClass;
+		
+				$oPage->add('<fieldset>');
+				$oPage->add('<legend>'.MetaModel::GetName($sSubClass).'</legend>');
+				$oBlock = new DisplayBlock($oSearch, 'list', false);
+				$oBlock->Display($oPage, $sBlockId, array('menu' => false));
+				$oPage->add('</fieldset>');
+			}
+		}
+	}]]></code>
+        </method>
+      </methods>
+      <relations>
+        <relation id="impacts">
+          <neighbours>
+            <neighbour id="contact">
+              <attribute>contacts_list</attribute>
+              <direction>down</direction>
+            </neighbour>
+            <neighbour id="applicationsolution">
+              <attribute>applicationsolution_list</attribute>
+            </neighbour>
+            <neighbour id="softwareinstance">
+              <attribute>softwares_list</attribute>
+            </neighbour>
+          </neighbours>
+        </relation>
+      </relations>
     </class>
     <class id="PhysicalDevice" _delta="define">
       <parent>FunctionalCI</parent>
@@ -1507,7 +1657,7 @@
           <is_null_allowed>true</is_null_allowed>
         </field>
         <field id="location_id" xsi:type="AttributeExternalKey">
-          <filter><![CDATA[SELECT l FROM Organization AS child JOIN Organization AS root ON child.parent_id BELOW root.id JOIN Location AS l ON l.org_id=root.id WHERE child.id= :this->org_id]]></filter>
+          <filter><![CDATA[SELECT l FROM Location AS l JOIN Organization AS root ON l.org_id=root.id JOIN Organization AS child ON child.parent_id BELOW root.id WHERE child.id= :this->org_id]]></filter>
           <dependencies>
             <attribute id="org_id"/>
           </dependencies>
@@ -1622,9 +1772,6 @@
             <item id="documents_list">
               <rank>150</rank>
             </item>
-            <item id="tickets_list">
-              <rank>160</rank>
-            </item>
           </items>
         </details>
         <search>
@@ -1734,40 +1881,11 @@
           <linked_class>PhysicalInterface</linked_class>
           <ext_key_to_me>connectableci_id</ext_key_to_me>
           <edit_mode>in_place</edit_mode>
+          <tracking_level>all</tracking_level>
           <count_min>0</count_min>
           <count_max>0</count_max>
         </field>
       </fields>
-      <methods>
-        <method id="GetRelationQueries">
-          <static>true</static>
-          <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[	public static function GetRelationQueries($sRelCode)
-	{
-		switch ($sRelCode)
-		{
-		case "impacts":
-			$aRels = array(
-
-
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-
-			case "depends on":
-			$aRels = array(
-				"connected_network" => array("sQuery"=>"SELECT NetworkDevice AS nw JOIN lnkConnectableCIToNetworkDevice AS l1 ON l1.networkdevice_id = nw.id WHERE l1.connectableci_id = :this->id AND l1.connection_type='downlink'", "bPropagate"=>true, "iDistance"=>10),
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-
-		default:
-			return parent::GetRelationQueries($sRelCode);
-		}
-	}]]></code>
-        </method>
-      </methods>
       <presentation>
         <details>
           <items>
@@ -1890,6 +2008,18 @@
           </items>
         </list>
       </presentation>
+      <methods>
+        <method id="GetRelationQueries">
+          <comment>/**
+	 * Placeholder for backward compatibility (iTop &lt;= 2.1.0)
+	 * in case an extension attempts to redefine this function...	 
+	 */</comment>
+          <static>true</static>
+          <access>public</access>
+          <type>Overload-DBObject</type>
+          <code><![CDATA[	public static function GetRelationQueries($sRelCode){return parent::GetRelationQueries($sRelCode);} ]]></code>
+        </method>
+      </methods>
     </class>
     <class id="DatacenterDevice" _delta="define">
       <parent>ConnectableCI</parent>
@@ -1990,6 +2120,7 @@
           <linked_class>FiberChannelInterface</linked_class>
           <ext_key_to_me>datacenterdevice_id</ext_key_to_me>
           <edit_mode>in_place</edit_mode>
+          <tracking_level>all</tracking_level>
           <count_min>0</count_min>
           <count_max>0</count_max>
         </field>
@@ -2001,47 +2132,19 @@
           <ext_key_to_remote>san_id</ext_key_to_remote>
           <duplicates/>
         </field>
+        <field id="redundancy" xsi:type="AttributeRedundancySettings">
+          <sql>redundancy</sql>
+          <relation_code>impacts</relation_code>
+          <from_class>PowerConnection</from_class>
+          <neighbour_id>datacenterdevice</neighbour_id>
+          <enabled>true</enabled>
+          <enabled_mode>fixed</enabled_mode>
+          <min_up>1</min_up>
+          <min_up_type>count</min_up_type>
+          <min_up_mode>fixed</min_up_mode>
+        </field>
       </fields>
-      <methods>
-        <method id="GetRelationQueries">
-          <static>true</static>
-          <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[	public static function GetRelationQueries($sRelCode)
-	{
-		switch ($sRelCode)
-		{
-		case "depends on":
-            $aRels = array();
-            if (class_exists('Enclosure'))
-            {
-              $aRels['Enclosure'] = array("sQuery"=>"SELECT Enclosure WHERE id = :this->enclosure_id", "bPropagate"=>true, "iDistance"=>10);
-            }
-            if (class_exists('SANSwitch'))
-            {
-              $aRels['SANSwitch'] = array("sQuery"=>"SELECT SANSwitch AS san JOIN lnkSanToDatacenterDevice AS l1 ON l1.san_id = san.id WHERE l1.datacenterdevice_id = :this->id", "bPropagate"=>true, "iDistance"=>10);
-            }
-            if (class_exists('PowerConnection'))
-            {
-              $aRels['PowerA'] = array(
-                 "sQuery"=>"SELECT PowerConnection WHERE id = :this->powerA_id",
-					  "bPropagate"=>true,
-                 "iDistance"=>10
-              );
-              $aRels['PowerB'] = array(
-                 "sQuery"=>"SELECT PowerConnection WHERE id = :this->powerB_id",
-					  "bPropagate"=>true,
-                 "iDistance"=>10
-              );
-            }
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-		default:
-			return parent::GetRelationQueries($sRelCode);
-		}
-	}]]></code>
-        </method>
-      </methods>
+      <methods/>
       <presentation>
         <details>
           <items>
@@ -2248,37 +2351,6 @@
           <is_null_allowed>true</is_null_allowed>
         </field>
       </fields>
-      <methods>
-        <method id="GetRelationQueries">
-          <static>true</static>
-          <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[	public static function GetRelationQueries($sRelCode)
-	{
-		switch ($sRelCode)
-		{
-		case "impacts":
-			$aRels = array(
-				"device" => array("sQuery"=>"SELECT ConnectableCI AS d JOIN lnkConnectableCIToNetworkDevice AS l1 ON l1.connectableci_id = d.id WHERE l1.networkdevice_id = :this->id AND l1.connection_type='downlink'", "bPropagate"=>true, "iDistance"=>1),
-
-
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-
-			case "depends on":
-			$aRels = array(
-		//		"connected_network" => array("sQuery"=>"SELECT NetworkDevice AS nw JOIN lnkConnectableCIToNetworkDevice AS l1 ON l1.networkdevice_id = nw.id WHERE l1.connectableci_id = :this->id AND l1.connection_type='uplink'", "bPropagate"=>true, "iDistance"=>10),
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-
-		default:
-			return parent::GetRelationQueries($sRelCode);
-		}
-	}]]></code>
-        </method>
-      </methods>
       <presentation>
         <details>
           <items>
@@ -2287,9 +2359,6 @@
             </item>
             <item id="documents_list">
               <rank>20</rank>
-            </item>
-            <item id="tickets_list">
-              <rank>30</rank>
             </item>
             <item id="applicationsolution_list">
               <rank>35</rank>
@@ -2386,7 +2455,7 @@
                     </item>
                   </items>
                 </item>
-                <item id="fieldset:Server:otherinfo">
+                <item id="fieldset:Server:power">
                   <rank>20</rank>
                   <items>
                     <item id="powerA_id">
@@ -2395,8 +2464,16 @@
                     <item id="powerB_id">
                       <rank>20</rank>
                     </item>
-                    <item id="description">
+                    <item id="redundancy">
                       <rank>30</rank>
+                    </item>
+                  </items>
+                </item>
+                <item id="fieldset:Server:otherinfo">
+                  <rank>30</rank>
+                  <items>
+                    <item id="description">
+                      <rank>10</rank>
                     </item>
                   </items>
                 </item>
@@ -2479,6 +2556,28 @@
           </items>
         </list>
       </presentation>
+      <methods>
+        <method id="GetRelationQueries">
+          <comment>/**
+	 * Placeholder for backward compatibility (iTop &lt;= 2.1.0)
+	 * in case an extension attempts to redefine this function...	 
+	 */</comment>
+          <static>true</static>
+          <access>public</access>
+          <type>Overload-DBObject</type>
+          <code><![CDATA[	public static function GetRelationQueries($sRelCode){return parent::GetRelationQueries($sRelCode);} ]]></code>
+        </method>
+      </methods>
+      <relations>
+        <relation id="impacts">
+          <neighbours>
+            <neighbour id="connectableci">
+              <query_down>SELECT ConnectableCI AS d JOIN lnkConnectableCIToNetworkDevice AS l1 ON l1.connectableci_id = d.id WHERE l1.networkdevice_id = :this-&gt;id AND l1.connection_type='downlink'</query_down>
+              <query_up>SELECT NetworkDevice AS nw JOIN lnkConnectableCIToNetworkDevice AS l1 ON l1.networkdevice_id = nw.id WHERE l1.connectableci_id = :this-&gt;id AND l1.connection_type='downlink'</query_up>
+            </neighbour>
+          </neighbours>
+        </relation>
+      </relations>
     </class>
     <class id="Server" _delta="define">
       <parent>DatacenterDevice</parent>
@@ -2562,43 +2661,6 @@
           <duplicates/>
         </field>
       </fields>
-      <methods>
-        <method id="GetRelationQueries">
-          <static>true</static>
-          <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[	public static function GetRelationQueries($sRelCode)
-	{
-		switch ($sRelCode)
-		{
-		case "impacts":
-			$aRels = array();
-			if (class_exists('Hypervisor'))
-			{
-				$aRels = array(
-					"device" => array("sQuery"=>"SELECT Hypervisor WHERE server_id = :this->id", "bPropagate"=>true, "iDistance"=>10),
-			         );
-			}
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-
-		case "depends on":
-            		$aRels = array();
-            		if (class_exists('LogicalVolume'))
-            		{
-				$aRels = array(
-					"volume" => array("sQuery"=>"SELECT LogicalVolume AS v JOIN lnkServerToVolume AS l1 ON l1.volume_id=v.id WHERE l1.server_id = :this->id", "bPropagate"=>true, "iDistance"=>10),
-				);
-			}
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-
-		default:
-			return parent::GetRelationQueries($sRelCode);
-		}
-	}]]></code>
-        </method>
-      </methods>
       <presentation>
         <details>
           <items>
@@ -2610,9 +2672,6 @@
             </item>
             <item id="documents_list">
               <rank>30</rank>
-            </item>
-            <item id="tickets_list">
-              <rank>40</rank>
             </item>
             <item id="applicationsolution_list">
               <rank>45</rank>
@@ -2724,7 +2783,7 @@
                     </item>
                   </items>
                 </item>
-                <item id="fieldset:Server:otherinfo">
+                <item id="fieldset:Server:power">
                   <rank>20</rank>
                   <items>
                     <item id="powerA_id">
@@ -2733,8 +2792,16 @@
                     <item id="powerB_id">
                       <rank>20</rank>
                     </item>
-                    <item id="description">
+                    <item id="redundancy">
                       <rank>30</rank>
+                    </item>
+                  </items>
+                </item>
+                <item id="fieldset:Server:otherinfo">
+                  <rank>30</rank>
+                  <items>
+                    <item id="description">
+                      <rank>10</rank>
                     </item>
                   </items>
                 </item>
@@ -2817,6 +2884,18 @@
           </items>
         </list>
       </presentation>
+      <methods>
+        <method id="GetRelationQueries">
+          <comment>/**
+	 * Placeholder for backward compatibility (iTop &lt;= 2.1.0)
+	 * in case an extension attempts to redefine this function...	 
+	 */</comment>
+          <static>true</static>
+          <access>public</access>
+          <type>Overload-DBObject</type>
+          <code><![CDATA[	public static function GetRelationQueries($sRelCode){return parent::GetRelationQueries($sRelCode);} ]]></code>
+        </method>
+      </methods>
     </class>
     <class id="ApplicationSolution" _delta="define">
       <parent>FunctionalCI</parent>
@@ -2869,36 +2948,18 @@
           <is_null_allowed>true</is_null_allowed>
           <display_style>list</display_style>
         </field>
+        <field id="redundancy" xsi:type="AttributeRedundancySettings">
+          <sql>redundancy</sql>
+          <relation_code>impacts</relation_code>
+          <from_class>FunctionalCI</from_class>
+          <neighbour_id>applicationsolution</neighbour_id>
+          <enabled>false</enabled>
+          <enabled_mode>user</enabled_mode>
+          <min_up>1</min_up>
+          <min_up_mode>user</min_up_mode>
+          <min_up_type>count</min_up_type>
+        </field>
       </fields>
-      <methods>
-        <method id="GetRelationQueries">
-          <static>true</static>
-          <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[	public static function GetRelationQueries($sRelCode)
-	{
-		switch ($sRelCode)
-		{
-			case "impacts":
-			$aRels = array(
-				"process" => array("sQuery"=>"SELECT BusinessProcess AS p JOIN lnkApplicationSolutionToBusinessProcess AS l1 ON l1.businessprocess_id = p.id WHERE l1.applicationsolution_id = :this->id", "bPropagate"=>true, "iDistance"=>10),
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-			
-			case "depends on":
-			$aRels = array(
-				"solution" => array("sQuery"=>"SELECT FunctionalCI AS ci JOIN lnkApplicationSolutionToFunctionalCI AS l1 ON l1.functionalci_id = ci.id WHERE l1.applicationsolution_id = :this->id", "bPropagate"=>true, "iDistance"=>2),
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-						
-			default:
-			return parent::GetRelationQueries($sRelCode);			
-		}
-	}]]></code>
-        </method>
-      </methods>
       <presentation>
         <details>
           <items>
@@ -2925,9 +2986,6 @@
             </item>
             <item id="documents_list">
               <rank>80</rank>
-            </item>
-            <item id="tickets_list">
-              <rank>90</rank>
             </item>
             <item id="functionalcis_list">
               <rank>100</rank>
@@ -2973,6 +3031,27 @@
           </items>
         </list>
       </presentation>
+      <methods>
+        <method id="GetRelationQueries">
+          <comment>/**
+	 * Placeholder for backward compatibility (iTop &lt;= 2.1.0)
+	 * in case an extension attempts to redefine this function...	 
+	 */</comment>
+          <static>true</static>
+          <access>public</access>
+          <type>Overload-DBObject</type>
+          <code><![CDATA[	public static function GetRelationQueries($sRelCode){return parent::GetRelationQueries($sRelCode);} ]]></code>
+        </method>
+      </methods>
+      <relations>
+        <relation id="impacts">
+          <neighbours>
+            <neighbour id="businessprocess">
+              <attribute>businessprocess_list</attribute>
+            </neighbour>
+          </neighbours>
+        </relation>
+      </relations>
     </class>
     <class id="BusinessProcess" _delta="define">
       <parent>FunctionalCI</parent>
@@ -3018,28 +3097,6 @@
           <display_style>list</display_style>
         </field>
       </fields>
-      <methods>
-        <method id="GetRelationQueries">
-          <static>true</static>
-          <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[	public static function GetRelationQueries($sRelCode)
-	{
-		switch ($sRelCode)
-		{
-			case "depends on":
-			$aRels = array(
-				"solution" => array("sQuery"=>"SELECT ApplicationSolution AS app JOIN lnkApplicationSolutionToBusinessProcess AS l1 ON l1.applicationsolution_id = app.id WHERE l1.businessprocess_id = :this->id", "bPropagate"=>true, "iDistance"=>10),
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-			
-			default:
-			return parent::GetRelationQueries($sRelCode);			
-		}
-	}]]></code>
-        </method>
-      </methods>
       <presentation>
         <details>
           <items>
@@ -3066,9 +3123,6 @@
             </item>
             <item id="documents_list">
               <rank>80</rank>
-            </item>
-            <item id="tickets_list">
-              <rank>90</rank>
             </item>
             <item id="applicationsolutions_list">
               <rank>100</rank>
@@ -3105,6 +3159,18 @@
           </items>
         </list>
       </presentation>
+      <methods>
+        <method id="GetRelationQueries">
+          <comment>/**
+	 * Placeholder for backward compatibility (iTop &lt;= 2.1.0)
+	 * in case an extension attempts to redefine this function...	 
+	 */</comment>
+          <static>true</static>
+          <access>public</access>
+          <type>Overload-DBObject</type>
+          <code><![CDATA[	public static function GetRelationQueries($sRelCode){return parent::GetRelationQueries($sRelCode);} ]]></code>
+        </method>
+      </methods>
     </class>
     <class id="SoftwareInstance" _delta="define">
       <parent>FunctionalCI</parent>
@@ -3189,36 +3255,6 @@
           <display_style>list</display_style>
         </field>
       </fields>
-      <methods>
-        <method id="GetRelationQueries">
-          <static>true</static>
-          <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[	public static function GetRelationQueries($sRelCode)
-	{
-		switch ($sRelCode)
-		{
-			case "impacts":
-			$aRels = array(
-				// Actually this should be limited to the Software instances based on a DBServer Application type...
-
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-			
-			case 'depends on':
-			$aRels = array(
-				"FunctionalCI" => array("sQuery"=>"SELECT FunctionalCI AS s JOIN SoftwareInstance AS app ON app.system_id = s.id WHERE app.id = :this->id", "bPropagate"=>true, "iDistance"=>10),			
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-			
-			default:
-			return parent::GetRelationQueries($sRelCode);			
-		}
-	}]]></code>
-        </method>
-      </methods>
       <presentation>
         <details>
           <items>
@@ -3299,6 +3335,18 @@
           </items>
         </list>
       </presentation>
+      <methods>
+        <method id="GetRelationQueries">
+          <comment>/**
+	 * Placeholder for backward compatibility (iTop &lt;= 2.1.0)
+	 * in case an extension attempts to redefine this function...	 
+	 */</comment>
+          <static>true</static>
+          <access>public</access>
+          <type>Overload-DBObject</type>
+          <code><![CDATA[	public static function GetRelationQueries($sRelCode){return parent::GetRelationQueries($sRelCode);} ]]></code>
+        </method>
+      </methods>
     </class>
     <class id="Middleware" _delta="define">
       <parent>SoftwareInstance</parent>
@@ -3332,39 +3380,11 @@
           <linked_class>MiddlewareInstance</linked_class>
           <ext_key_to_me>middleware_id</ext_key_to_me>
           <edit_mode>in_place</edit_mode>
+          <tracking_level>all</tracking_level>
           <count_min>0</count_min>
           <count_max>0</count_max>
         </field>
       </fields>
-      <methods>
-        <method id="GetRelationQueries">
-          <static>true</static>
-          <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[	public static function GetRelationQueries($sRelCode)
-	{
-		switch ($sRelCode)
-		{
-			case "impacts":
-			$aRels = array(
-				"MiddlewareInstance" => array("sQuery"=>"SELECT MiddlewareInstance AS mi WHERE middleware_id = :this->id", "bPropagate"=>true, "iDistance"=>10),
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-			
-			case 'depends on':
-			$aRels = array(
-			
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-			
-			default:
-			return parent::GetRelationQueries($sRelCode);			
-		}
-	}]]></code>
-        </method>
-      </methods>
       <presentation>
         <details>
           <items>
@@ -3403,9 +3423,6 @@
             </item>
             <item id="documents_list">
               <rank>120</rank>
-            </item>
-            <item id="tickets_list">
-              <rank>130</rank>
             </item>
             <item id="applicationsolution_list">
               <rank>140</rank>
@@ -3454,6 +3471,27 @@
           </items>
         </list>
       </presentation>
+      <methods>
+        <method id="GetRelationQueries">
+          <comment>/**
+	 * Placeholder for backward compatibility (iTop &lt;= 2.1.0)
+	 * in case an extension attempts to redefine this function...	 
+	 */</comment>
+          <static>true</static>
+          <access>public</access>
+          <type>Overload-DBObject</type>
+          <code><![CDATA[	public static function GetRelationQueries($sRelCode){return parent::GetRelationQueries($sRelCode);} ]]></code>
+        </method>
+      </methods>
+      <relations>
+        <relation id="impacts">
+          <neighbours>
+            <neighbour id="middlewareinstance">
+              <attribute>middlewareinstance_list</attribute>
+            </neighbour>
+          </neighbours>
+        </relation>
+      </relations>
     </class>
     <class id="DBServer" _delta="define">
       <parent>SoftwareInstance</parent>
@@ -3487,39 +3525,11 @@
           <linked_class>DatabaseSchema</linked_class>
           <ext_key_to_me>dbserver_id</ext_key_to_me>
           <edit_mode>in_place</edit_mode>
+          <tracking_level>all</tracking_level>
           <count_min>0</count_min>
           <count_max>0</count_max>
         </field>
       </fields>
-      <methods>
-        <method id="GetRelationQueries">
-          <static>true</static>
-          <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[	public static function GetRelationQueries($sRelCode)
-	{
-		switch ($sRelCode)
-		{
-			case "impacts":
-			$aRels = array(
-				"DatabaseSchema" => array("sQuery"=>"SELECT DatabaseSchema AS db WHERE dbserver_id = :this->id", "bPropagate"=>true, "iDistance"=>10),
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-			
-			case 'depends on':
-			$aRels = array(
-			
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-			
-			default:
-			return parent::GetRelationQueries($sRelCode);			
-		}
-	}]]></code>
-        </method>
-      </methods>
       <presentation>
         <details>
           <items>
@@ -3558,9 +3568,6 @@
             </item>
             <item id="documents_list">
               <rank>120</rank>
-            </item>
-            <item id="tickets_list">
-              <rank>130</rank>
             </item>
             <item id="applicationsolution_list">
               <rank>140</rank>
@@ -3609,6 +3616,27 @@
           </items>
         </list>
       </presentation>
+      <methods>
+        <method id="GetRelationQueries">
+          <comment>/**
+	 * Placeholder for backward compatibility (iTop &lt;= 2.1.0)
+	 * in case an extension attempts to redefine this function...	 
+	 */</comment>
+          <static>true</static>
+          <access>public</access>
+          <type>Overload-DBObject</type>
+          <code><![CDATA[	public static function GetRelationQueries($sRelCode){return parent::GetRelationQueries($sRelCode);} ]]></code>
+        </method>
+      </methods>
+      <relations>
+        <relation id="impacts">
+          <neighbours>
+            <neighbour id="databaseschema">
+              <attribute>dbschema_list</attribute>
+            </neighbour>
+          </neighbours>
+        </relation>
+      </relations>
     </class>
     <class id="WebServer" _delta="define">
       <parent>SoftwareInstance</parent>
@@ -3642,39 +3670,11 @@
           <linked_class>WebApplication</linked_class>
           <ext_key_to_me>webserver_id</ext_key_to_me>
           <edit_mode>in_place</edit_mode>
+          <tracking_level>all</tracking_level>
           <count_min>0</count_min>
           <count_max>0</count_max>
         </field>
       </fields>
-      <methods>
-        <method id="GetRelationQueries">
-          <static>true</static>
-          <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[	public static function GetRelationQueries($sRelCode)
-	{
-		switch ($sRelCode)
-		{
-			case "impacts":
-			$aRels = array(
-				"WebApplication" => array("sQuery"=>"SELECT WebApplication AS db WHERE webserver_id = :this->id", "bPropagate"=>true, "iDistance"=>10),
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-			
-			case 'depends on':
-			$aRels = array(
-			
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-			
-			default:
-			return parent::GetRelationQueries($sRelCode);			
-		}
-	}]]></code>
-        </method>
-      </methods>
       <presentation>
         <details>
           <items>
@@ -3713,9 +3713,6 @@
             </item>
             <item id="documents_list">
               <rank>120</rank>
-            </item>
-            <item id="tickets_list">
-              <rank>130</rank>
             </item>
             <item id="applicationsolution_list">
               <rank>140</rank>
@@ -3764,6 +3761,27 @@
           </items>
         </list>
       </presentation>
+      <methods>
+        <method id="GetRelationQueries">
+          <comment>/**
+	 * Placeholder for backward compatibility (iTop &lt;= 2.1.0)
+	 * in case an extension attempts to redefine this function...	 
+	 */</comment>
+          <static>true</static>
+          <access>public</access>
+          <type>Overload-DBObject</type>
+          <code><![CDATA[	public static function GetRelationQueries($sRelCode){return parent::GetRelationQueries($sRelCode);} ]]></code>
+        </method>
+      </methods>
+      <relations>
+        <relation id="impacts">
+          <neighbours>
+            <neighbour id="webapplication">
+              <attribute>webapp_list</attribute>
+            </neighbour>
+          </neighbours>
+        </relation>
+      </relations>
     </class>
     <class id="PCSoftware" _delta="define">
       <parent>SoftwareInstance</parent>
@@ -3832,9 +3850,6 @@
             </item>
             <item id="documents_list">
               <rank>120</rank>
-            </item>
-            <item id="tickets_list">
-              <rank>130</rank>
             </item>
             <item id="applicationsolution_list">
               <rank>140</rank>
@@ -3949,9 +3964,6 @@
             <item id="documents_list">
               <rank>120</rank>
             </item>
-            <item id="tickets_list">
-              <rank>130</rank>
-            </item>
             <item id="applicationsolution_list">
               <rank>140</rank>
             </item>
@@ -4035,35 +4047,6 @@
           <target_attcode>name</target_attcode>
         </field>
       </fields>
-      <methods>
-        <method id="GetRelationQueries">
-          <static>true</static>
-          <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[	public static function GetRelationQueries($sRelCode)
-	{
-		switch ($sRelCode)
-		{
-			case "impacts":
-			$aRels = array(
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-			
-			case 'depends on':
-			$aRels = array(
-				"Middleware" => array("sQuery"=>"SELECT Middleware WHERE id = :this->middleware_id", "bPropagate"=>true, "iDistance"=>10),
-			
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-			
-			default:
-			return parent::GetRelationQueries($sRelCode);			
-		}
-	}]]></code>
-        </method>
-      </methods>
       <presentation>
         <details>
           <items>
@@ -4090,9 +4073,6 @@
             </item>
             <item id="documents_list">
               <rank>80</rank>
-            </item>
-            <item id="tickets_list">
-              <rank>90</rank>
             </item>
             <item id="applicationsolution_list">
               <rank>100</rank>
@@ -4135,6 +4115,18 @@
           </items>
         </list>
       </presentation>
+      <methods>
+        <method id="GetRelationQueries">
+          <comment>/**
+	 * Placeholder for backward compatibility (iTop &lt;= 2.1.0)
+	 * in case an extension attempts to redefine this function...	 
+	 */</comment>
+          <static>true</static>
+          <access>public</access>
+          <type>Overload-DBObject</type>
+          <code><![CDATA[	public static function GetRelationQueries($sRelCode){return parent::GetRelationQueries($sRelCode);} ]]></code>
+        </method>
+      </methods>
     </class>
     <class id="DatabaseSchema" _delta="define">
       <parent>FunctionalCI</parent>
@@ -4172,35 +4164,6 @@
           <target_attcode>name</target_attcode>
         </field>
       </fields>
-      <methods>
-        <method id="GetRelationQueries">
-          <static>true</static>
-          <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[	public static function GetRelationQueries($sRelCode)
-	{
-		switch ($sRelCode)
-		{
-			case "impacts":
-			$aRels = array(
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-			
-			case 'depends on':
-			$aRels = array(
-				"DBServer" => array("sQuery"=>"SELECT DBServer WHERE id = :this->dbserver_id", "bPropagate"=>true, "iDistance"=>10),
-			
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-			
-			default:
-			return parent::GetRelationQueries($sRelCode);			
-		}
-	}]]></code>
-        </method>
-      </methods>
       <presentation>
         <details>
           <items>
@@ -4227,9 +4190,6 @@
             </item>
             <item id="documents_list">
               <rank>80</rank>
-            </item>
-            <item id="tickets_list">
-              <rank>90</rank>
             </item>
             <item id="applicationsolution_list">
               <rank>100</rank>
@@ -4272,6 +4232,18 @@
           </items>
         </list>
       </presentation>
+      <methods>
+        <method id="GetRelationQueries">
+          <comment>/**
+	 * Placeholder for backward compatibility (iTop &lt;= 2.1.0)
+	 * in case an extension attempts to redefine this function...	 
+	 */</comment>
+          <static>true</static>
+          <access>public</access>
+          <type>Overload-DBObject</type>
+          <code><![CDATA[	public static function GetRelationQueries($sRelCode){return parent::GetRelationQueries($sRelCode);} ]]></code>
+        </method>
+      </methods>
     </class>
     <class id="WebApplication" _delta="define">
       <parent>FunctionalCI</parent>
@@ -4315,35 +4287,6 @@
           <target>_blank</target>
         </field>
       </fields>
-      <methods>
-        <method id="GetRelationQueries">
-          <static>true</static>
-          <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[	public static function GetRelationQueries($sRelCode)
-	{
-		switch ($sRelCode)
-		{
-			case "impacts":
-			$aRels = array(
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-			
-			case 'depends on':
-			$aRels = array(
-				"WebServer" => array("sQuery"=>"SELECT WebServer WHERE id = :this->webserver_id", "bPropagate"=>true, "iDistance"=>10),
-			
-			);
-			return array_merge($aRels, parent::GetRelationQueries($sRelCode));
-			break;
-			
-			default:
-			return parent::GetRelationQueries($sRelCode);			
-		}
-	}]]></code>
-        </method>
-      </methods>
       <presentation>
         <details>
           <items>
@@ -4373,9 +4316,6 @@
             </item>
             <item id="documents_list">
               <rank>90</rank>
-            </item>
-            <item id="tickets_list">
-              <rank>100</rank>
             </item>
             <item id="applicationsolution_list">
               <rank>110</rank>
@@ -4418,6 +4358,18 @@
           </items>
         </list>
       </presentation>
+      <methods>
+        <method id="GetRelationQueries">
+          <comment>/**
+	 * Placeholder for backward compatibility (iTop &lt;= 2.1.0)
+	 * in case an extension attempts to redefine this function...	 
+	 */</comment>
+          <static>true</static>
+          <access>public</access>
+          <type>Overload-DBObject</type>
+          <code><![CDATA[	public static function GetRelationQueries($sRelCode){return parent::GetRelationQueries($sRelCode);} ]]></code>
+        </method>
+      </methods>
     </class>
     <class id="Software" _delta="define">
       <parent>cmdbAbstractObject</parent>

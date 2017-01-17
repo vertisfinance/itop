@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1">
+<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2">
   <classes/>
   <user_rights>
     <groups>
@@ -79,6 +79,13 @@
           <class id="lnkFunctionalCIToTicket"/>
           <class id="lnkContactToTicket"/>
           <class id="WorkOrder"/>
+          <class id="Attachment"/>
+        </classes>
+      </group>
+      <group id="Portal" _delta="define">
+        <classes>
+          <class id="lnkFunctionalCIToTicket"/>
+          <class id="lnkContactToTicket"/>
         </classes>
       </group>
       <group id="NormalChange" _delta="define">
@@ -436,6 +443,12 @@
         <name>Portal user</name>
         <description>Has the rights to access to the user portal. People having this profile will not be allowed to access the standard application, they will be automatically redirected to the user portal.</description>
         <groups>
+          <group id="Portal">
+            <actions>
+              <action id="action:write">allow</action>
+              <action id="action:delete">allow</action>
+            </actions>
+          </group>
           <group id="UserRequest">
             <actions>
               <action id="action:write">allow</action>

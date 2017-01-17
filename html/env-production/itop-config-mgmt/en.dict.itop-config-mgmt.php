@@ -31,11 +31,11 @@
 
 Dict::Add('EN US', 'English', 'English', array(
 	'Relation:impacts/Description' => 'Elements impacted by',
-	'Relation:impacts/VerbUp' => 'Impact...',
-	'Relation:impacts/VerbDown' => 'Elements impacted by...',
+	'Relation:impacts/DownStream' => 'Impacts...',
+	'Relation:impacts/UpStream' => 'Depends on......',
 	'Relation:depends on/Description' => 'Elements impacting',
-	'Relation:depends on/VerbUp' => 'Depends on...',
-	'Relation:depends on/VerbDown' => 'Impacts...',
+	'Relation:depends on/DownStream' => 'Depends on...',
+	'Relation:depends on/UpStream' => 'Impacts...',
 ));
 
 
@@ -201,6 +201,8 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:Person/Attribute:tickets_list+' => 'All the tickets this person is the caller',
 	'Class:Person/Attribute:manager_id_friendlyname' => 'Manager friendly name',
 	'Class:Person/Attribute:manager_id_friendlyname+' => '',
+	'Class:Person/Attribute:picture' => 'Picture',
+	'Class:Person/Attribute:picture+' => '',
 ));
 
 //
@@ -329,6 +331,7 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:FunctionalCI/Attribute:tickets_list+' => 'All the tickets for this configuration item',
 	'Class:FunctionalCI/Attribute:finalclass' => 'CI Type',
 	'Class:FunctionalCI/Attribute:finalclass+' => '',
+	'Class:FunctionalCI/Tab:OpenedTickets' => 'Active Tickets',
 ));
 
 //
@@ -480,6 +483,11 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:DatacenterDevice/Attribute:fiberinterfacelist_list+' => 'All the fiber channel interfaces for this device',
 	'Class:DatacenterDevice/Attribute:san_list' => 'SANs',
 	'Class:DatacenterDevice/Attribute:san_list+' => 'All the SAN switches connected to this device',
+	'Class:DatacenterDevice/Attribute:redundancy' => 'Redundancy',
+	'Class:DatacenterDevice/Attribute:redundancy/count' => 'The device is up if at least one power connection (A or B) is up',
+	// Unused yet
+	'Class:DatacenterDevice/Attribute:redundancy/disabled' => 'The device is up if all its power connections are up',
+	'Class:DatacenterDevice/Attribute:redundancy/percent' => 'The device is up if at least %1$s %% of its power connections are up',
 ));
 
 //
@@ -690,6 +698,10 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:ApplicationSolution/Attribute:status/Value:active+' => 'active',
 	'Class:ApplicationSolution/Attribute:status/Value:inactive' => 'inactive',
 	'Class:ApplicationSolution/Attribute:status/Value:inactive+' => 'inactive',
+	'Class:ApplicationSolution/Attribute:redundancy' => 'Impact analysis: configuration of the redundancy',
+	'Class:ApplicationSolution/Attribute:redundancy/disabled' => 'The solution is up if all CIs are up',
+	'Class:ApplicationSolution/Attribute:redundancy/count' => 'The solution is up if at least %1$s CI(s) is(are) up',
+	'Class:ApplicationSolution/Attribute:redundancy/percent' => 'The solution is up if at least %1$s %% of the CIs are up',
 ));
 
 //
@@ -889,6 +901,10 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:Farm+' => '',
 	'Class:Farm/Attribute:hypervisor_list' => 'Hypervisors',
 	'Class:Farm/Attribute:hypervisor_list+' => 'All the hypervisors that compose this farm',
+	'Class:Farm/Attribute:redundancy' => 'High availability',
+	'Class:Farm/Attribute:redundancy/disabled' => 'The farm is up if all the hypervisors are up',
+	'Class:Farm/Attribute:redundancy/count' => 'The farm is up if at least %1$s hypervisor(s) is(are) up',
+	'Class:Farm/Attribute:redundancy/percent' => 'The farm is up if at least %1$s %% of the hypervisors are up',
 ));
 
 //
@@ -1861,10 +1877,12 @@ Dict::Add('EN US', 'English', 'English', array(
 
 Dict::Add('EN US', 'English', 'English', array(
 'Server:baseinfo' => 'General information',
-'Server:Date' => 'Date',
+'Server:Date' => 'Dates',
 'Server:moreinfo' => 'More information',
 'Server:otherinfo' => 'Other information',
+'Server:power' => 'Power supply',
 'Person:info' => 'General information',
+'Person:personal_info' => 'Personal information',
 'Person:notifiy' => 'Notification',
 'Class:Subnet/Tab:IPUsage' => 'IP Usage',
 'Class:Subnet/Tab:IPUsage-explain' => 'Interfaces having an IP in the range: <em>%1$s</em> to <em>%2$s</em>',

@@ -32,11 +32,11 @@
 
 Dict::Add('ES CR', 'Spanish', 'Español, Castellano', array(
 	'Relation:impacts/Description' => 'Elementos Impactados por',
-	'Relation:impacts/VerbUp' => 'Impacto...',
-	'Relation:impacts/VerbDown' => 'Elementos Impactados por...',
+	'Relation:impacts/DownStream' => 'Impacto...',
+	'Relation:impacts/UpStream' => 'Depende de...',
 	'Relation:depends on/Description' => 'Elementos de los cuales depende',
-	'Relation:depends on/VerbUp' => 'Depende de...',
-	'Relation:depends on/VerbDown' => 'Impactos...',
+	'Relation:depends on/DownStream' => 'Depende de...',
+	'Relation:depends on/UpStream' => 'Impactos...',
 ));
 
 
@@ -180,10 +180,10 @@ Dict::Add('ES CR', 'Spanish', 'Español, Castellano', array(
 Dict::Add('ES CR', 'Spanish', 'Español, Castellano', array(
 	'Class:Person' => 'Persona',
 	'Class:Person+' => 'Persona',
-	'Class:Person/Attribute:name' => 'Nombre',
-	'Class:Person/Attribute:name+' => 'Nombre de la Persona',
-	'Class:Person/Attribute:first_name' => 'Apellidos',
-	'Class:Person/Attribute:first_name+' => 'Apellidos',
+	'Class:Person/Attribute:name' => 'Apellidos',
+	'Class:Person/Attribute:name+' => 'Apellidos',
+	'Class:Person/Attribute:first_name' => 'Nombre',
+	'Class:Person/Attribute:first_name+' => 'Nombre de la Persona',
 	'Class:Person/Attribute:employee_number' => 'Número de Empleado',
 	'Class:Person/Attribute:employee_number+' => 'Número de Empleado',
 	'Class:Person/Attribute:mobile_phone' => 'Móvil',
@@ -1869,5 +1869,21 @@ Dict::Add('ES CR', 'Spanish', 'Español, Castellano', array(
 'Class:Subnet/Tab:FreeIPs-count' => 'IPs Libres: %1$s',
 'Class:Subnet/Tab:FreeIPs-explain' => 'Aquí está un extracto de 10 direcciones IP Libres',
 'Class:Document:PreviewTab' => 'Vista Previa',
+	'Class:FunctionalCI/Tab:OpenedTickets' => 'Active Tickets~~',
+	'Class:DatacenterDevice/Attribute:redundancy' => 'Redundancy~~',
+	'Class:DatacenterDevice/Attribute:redundancy/count' => 'The device is up if at least one power connection (A or B) is up~~',
+	'Class:DatacenterDevice/Attribute:redundancy/disabled' => 'The device is up if all its power connections are up~~',
+	'Class:DatacenterDevice/Attribute:redundancy/percent' => 'The device is up if at least %1$s %% of its power connections are up~~',
+	'Class:ApplicationSolution/Attribute:redundancy' => 'Impact analysis: configuration of the redundancy~~',
+	'Class:ApplicationSolution/Attribute:redundancy/disabled' => 'The solution is up if all CIs are up~~',
+	'Class:ApplicationSolution/Attribute:redundancy/count' => 'The solution is up if at least %1$s CI(s) is(are) up~~',
+	'Class:ApplicationSolution/Attribute:redundancy/percent' => 'The solution is up if at least %1$s %% of the CIs are up~~',
+	'Class:Farm/Attribute:redundancy' => 'High availability~~',
+	'Class:Farm/Attribute:redundancy/disabled' => 'The farm is up if all the hypervisors are up~~',
+	'Class:Farm/Attribute:redundancy/count' => 'The farm is up if at least %1$s hypervisor(s) is(are) up~~',
+	'Class:Farm/Attribute:redundancy/percent' => 'The farm is up if at least %1$s %% of the hypervisors are up~~',
+	'Class:Subnet/Attribute:subnet_name' => 'Subnet name~~',
+	'Menu:OSVersion' => 'OS versions~~',
+	'Server:power' => 'Power supply~~',
 ));
 ?>

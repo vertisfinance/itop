@@ -77,11 +77,20 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:Ticket/Attribute:contacts_list' => 'Contacts',
 	'Class:Ticket/Attribute:contacts_list+' => 'All the contacts linked to this ticket',
 	'Class:Ticket/Attribute:functionalcis_list' => 'CIs',
-	'Class:Ticket/Attribute:functionalcis_list+' => 'All the configuration items impacted for this ticket',
+	'Class:Ticket/Attribute:functionalcis_list+' => 'All the configuration items impacted by this ticket. Items marked as "Computed" have been automatically marked as impacted. Items marked as "Not impacted" are excluded from the impact.',
 	'Class:Ticket/Attribute:workorders_list' => 'Work orders',
 	'Class:Ticket/Attribute:workorders_list+' => 'All the work orders for this ticket',
 	'Class:Ticket/Attribute:finalclass' => 'Type',
 	'Class:Ticket/Attribute:finalclass+' => '',
+	'Class:Ticket/Attribute:operational_status' => 'Operational status',
+	'Class:Ticket/Attribute:operational_status+' => 'Computed after the detailed status',
+	'Class:Ticket/Attribute:operational_status/Value:ongoing' => 'Ongoing',
+	'Class:Ticket/Attribute:operational_status/Value:ongoing+' => 'Work in progress',
+	'Class:Ticket/Attribute:operational_status/Value:resolved' => 'Resolved',
+	'Class:Ticket/Attribute:operational_status/Value:resolved+' => '',
+	'Class:Ticket/Attribute:operational_status/Value:closed' => 'Closed',
+	'Class:Ticket/Attribute:operational_status/Value:closed+' => '',
+	'Ticket:ImpactAnalysis' => 'Impact Analysis',
 ));
 
 
@@ -100,8 +109,12 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:lnkContactToTicket/Attribute:contact_id+' => '',
 	'Class:lnkContactToTicket/Attribute:contact_email' => 'Contact Email',
 	'Class:lnkContactToTicket/Attribute:contact_email+' => '',
-	'Class:lnkContactToTicket/Attribute:role' => 'Role',
+	'Class:lnkContactToTicket/Attribute:role' => 'Role (text)',
 	'Class:lnkContactToTicket/Attribute:role+' => '',
+	'Class:lnkContactToTicket/Attribute:role_code' => 'Role',
+	'Class:lnkContactToTicket/Attribute:role_code/Value:manual' => 'Added manually',
+	'Class:lnkContactToTicket/Attribute:role_code/Value:computed' => 'Computed',
+	'Class:lnkContactToTicket/Attribute:role_code/Value:do_not_notify' => 'Do not notify',
 ));
 
 //
@@ -119,8 +132,12 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:lnkFunctionalCIToTicket/Attribute:functionalci_id+' => '',
 	'Class:lnkFunctionalCIToTicket/Attribute:functionalci_name' => 'CI Name',
 	'Class:lnkFunctionalCIToTicket/Attribute:functionalci_name+' => '',
-	'Class:lnkFunctionalCIToTicket/Attribute:impact' => 'Impact',
+	'Class:lnkFunctionalCIToTicket/Attribute:impact' => 'Impact (text)',
 	'Class:lnkFunctionalCIToTicket/Attribute:impact+' => '',
+	'Class:lnkFunctionalCIToTicket/Attribute:impact_code' => 'Impact',
+	'Class:lnkFunctionalCIToTicket/Attribute:impact_code/Value:manual' => 'Added manually',
+	'Class:lnkFunctionalCIToTicket/Attribute:impact_code/Value:computed' => 'Computed',
+	'Class:lnkFunctionalCIToTicket/Attribute:impact_code/Value:not_impacted' => 'Not impacted',
 ));
 
 
@@ -194,7 +211,11 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:cmdbAbstractObject/Method:SetCurrentUser' => 'SetCurrentUser',
 	'Class:cmdbAbstractObject/Method:SetCurrentUser+' => 'Set a field with the currently logged in user',
 	'Class:cmdbAbstractObject/Method:SetCurrentUser/Param:1' => 'Target Field',
-	'Class:cmdbAbstractObject/Method:SetCurrentUser/Param:1+' => 'The field to set, in the current object',
+	'Class:cmdbAbstractObject/Method:SetCurrentUser/Param:1+' => 'The field to set, in the current object. If the field is a string then the friendly name will be used, otherwise the identifier will be used. That friendly name is the name of the person if any is attached to the user, otherwise it is the login.',
+	'Class:cmdbAbstractObject/Method:SetCurrentPerson' => 'SetCurrentPerson',
+	'Class:cmdbAbstractObject/Method:SetCurrentPerson+' => 'Set a field with the currently logged in person (the "person" attached to the logged in "user").',
+	'Class:cmdbAbstractObject/Method:SetCurrentPerson/Param:1' => 'Target Field',
+	'Class:cmdbAbstractObject/Method:SetCurrentPerson/Param:1+' => 'The field to set, in the current object. If the field is a string then the friendly name will be used, otherwise the identifier will be used.',
 	'Class:cmdbAbstractObject/Method:SetElapsedTime' => 'SetElapsedTime',
 	'Class:cmdbAbstractObject/Method:SetElapsedTime+' => 'Set a field with the time (seconds) elapsed since a date given by another field',
 	'Class:cmdbAbstractObject/Method:SetElapsedTime/Param:1' => 'Target Field',
@@ -217,4 +238,15 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:ResponseTicketTTO/Interface:iMetricComputer+' => 'Goal based on a SLT of type TTO',
 	'Class:ResponseTicketTTR/Interface:iMetricComputer' => 'Time To Resolve',
 	'Class:ResponseTicketTTR/Interface:iMetricComputer+' => 'Goal based on a SLT of type TTR',
+
+	'portal:itop-portal' => 'Standard portal', // This is the portal name that will be displayed in portal dispatcher (eg. URL in menus)
+	'Page:DefaultTitle' => 'iTop - User portal',
+	'Brick:Portal:UserProfile:Title' => 'My profile',
+	'Brick:Portal:NewRequest:Title' => 'New request',
+	'Brick:Portal:NewRequest:Title+' => '<p>Need help?</p><p>Pick from the services catalog and submit your request to our support teams.</p>',
+	'Brick:Portal:OngoingRequests:Title' => 'Ongoing requests',
+	'Brick:Portal:OngoingRequests:Title+' => '<p>Follow up with your ongoing requests.</p><p>Check the progress, add comments, attach documents, acknowledge the solution.</p>',
+	'Brick:Portal:OngoingRequests:Tab:OnGoing' => 'On going',
+	'Brick:Portal:OngoingRequests:Tab:Resolved' => 'Resolved',
+	'Brick:Portal:ClosedRequests:Title' => 'Closed requests',
 ));

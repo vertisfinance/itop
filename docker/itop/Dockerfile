@@ -16,7 +16,7 @@ COPY docker/itop/php.ini /etc/php/7.0/cli/
 COPY docker/itop/run.sh /etc/
 RUN cp etc/run.sh /
 
-RUN wget -O /itop.zip http://sourceforge.net/projects/itop/files/itop/2.1.0/iTop-2.1.0-2127.zip/download
+RUN wget -O /itop.zip http://sourceforge.net/projects/itop/files/itop/2.3.1/iTop-2.3.1-2832.zip/download
 RUN unzip itop.zip -d /var/www/html
 RUN cp -r /var/www/html/web/* /var/www/html
 

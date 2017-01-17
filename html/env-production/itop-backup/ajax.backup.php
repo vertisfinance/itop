@@ -1,5 +1,5 @@
 <?php
-// Copyright (C) 2014 Combodo SARL
+// Copyright (C) 2013-2016 Combodo SARL
 //
 //   This file is part of iTop.
 //
@@ -19,12 +19,12 @@
 /**
  * Backup from an interactive session
  *
- * @copyright   Copyright (C) 2013 Combodo SARL
+ * @copyright   Copyright (C) 2013-2016 Combodo SARL
  * @license     http://opensource.org/licenses/AGPL-3.0
  */
 
 if (!defined('__DIR__')) define('__DIR__', dirname(__FILE__));
-require_once(__DIR__.'/../../approot.inc.php');
+if (!defined('APPROOT')) require_once(__DIR__.'/../../approot.inc.php');
 require_once(APPROOT.'/application/application.inc.php');
 require_once(APPROOT.'/application/webpage.class.inc.php');
 require_once(APPROOT.'/application/ajaxwebpage.class.inc.php');
@@ -77,9 +77,8 @@ try
 
 		$sEnvironment = utils::ReadParam('environment', 'production', false, 'raw_data');
 		$oRestoreMutex = new iTopMutex('restore.'.$sEnvironment);
-		if ($oRestoreMutex->TryLock())
+		if (!$oRestoreMutex->IsLocked())
 		{
-			$oRestoreMutex->Unlock();
 			$sFile = utils::ReadParam('file', '', false, 'raw_data');
 			$sToken = str_replace(' ', '', (string)microtime());
 			$sTokenFile = APPROOT.'/data/restore.'.$sToken.'.tok';
@@ -119,7 +118,9 @@ EOF
 		{
 			$sEnvironment = utils::ReadParam('environment', 'production', false, 'raw_data');
 			$oRestoreMutex = new iTopMutex('restore.'.$sEnvironment);
+			IssueLog::Info("Backup Restore - Acquiring the LOCK 'restore.$sEnvironment'");
 			$oRestoreMutex->Lock();
+			IssueLog::Info('Backup Restore - LOCK acquired, executing...');
 			try
 			{
 				set_time_limit(0);
@@ -127,6 +128,10 @@ EOF
 				// Get the file and destroy the token (single usage)
 				$sToken = utils::ReadParam('token', '', false, 'raw_data');
 				$sTokenFile = APPROOT.'/data/restore.'.$sToken.'.tok';
+				if (!is_file($sTokenFile))
+				{
+					throw new Exception("Error: missing token file: '$sTokenFile'");
+				}
 				$sFile = file_get_contents($sTokenFile);
 				unlink($sTokenFile);
 	
@@ -144,6 +149,7 @@ EOF
 				$sBackupFile = $sBackupDir.$sFile;
 				$sRes = $oDBRS->RestoreFromZip($sBackupFile, $sEnvironment);
 	
+				IssueLog::Info('Backup Restore - Done, releasing the LOCK');
 				$oRestoreMutex->Unlock();
 			}
 			catch (Exception $e)

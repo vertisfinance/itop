@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1">
+<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2">
   <classes>
     <class id="lnkVirtualDeviceToVolume" _delta="define">
       <parent>cmdbAbstractObject</parent>
@@ -89,6 +89,17 @@
           </items>
         </list>
       </presentation>
+    </class>
+    <class id="LogicalVolume">
+      <relations>
+        <relation id="impacts">
+          <neighbours>
+            <neighbour id="VirtualDevice" _delta="define">
+              <attribute>virtualdevices_list</attribute>
+            </neighbour>
+          </neighbours>
+        </relation>
+      </relations>
     </class>
   </classes>
 </itop_design>
