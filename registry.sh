@@ -19,10 +19,15 @@ if [ [${BRANCH}] = "[master]" ]; then
           docker build -t $docker_image "$PROJECT_ROOT/docker/mysql/"
         fi
           docker tag $docker_image vertis-docker-registry:5000/$docker_image:latest
+          docker tag $docker_image backup-vertis-docker-registry:5002/$docker_image:latest
           docker tag $docker_image vertis-docker-registry:5000/$docker_image:${timestamp}
+          docker tag $docker_image backup-vertis-docker-registry:5002/$docker_image:${timestamp}
           docker push vertis-docker-registry:5000/$docker_image:latest
+          docker push backup-vertis-docker-registry:5002/$docker_image:latest
           docker push vertis-docker-registry:5000/$docker_image:${timestamp}
+          docker push backup-vertis-docker-registry:5002/$docker_image:${timestamp}
           docker rmi vertis-docker-registry:5000/$docker_image:${timestamp}
+          docker rmi backup-vertis-docker-registry:5002/$docker_image:${timestamp}
       done
     else
       echo "PLEASE PUSH ORIGIN/MASTER"
