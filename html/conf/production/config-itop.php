@@ -56,7 +56,7 @@ $MySettings = array(
 
 	// date_and_time_format: Format for date and time display (per language)
 	//	default: array (
-	//		  'default' => 
+	//		  'default' =>
 	//		  array (
 	//		    'date' => 'Y-m-d',
 	//		    'time' => 'H:i:s',
@@ -64,7 +64,7 @@ $MySettings = array(
 	//		  ),
 	//		)
 	'date_and_time_format' => array (
-	  'default' => 
+	  'default' =>
 	  array (
 	    'date' => 'Y-m-d',
 	    'time' => 'H:i:s',
@@ -230,7 +230,7 @@ $MySettings = array(
  */
 $MyModuleSettings = array(
 	'authent-ldap' => array (
-		'host' => '192.168.1.3',
+		'host' => '192.168.1.2',
 		'default_user' => 'itop',
 		'default_pwd' => 'Sz1m4tsz4ty0r',
 		'base_dn' => 'DC=vertis,DC=local',
