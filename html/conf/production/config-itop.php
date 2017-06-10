@@ -102,23 +102,21 @@ $MySettings = array(
 
 	// email_transport_smtp.encryption: tls or ssl (optional)
 	//	default: ''
-	'email_transport_smtp.encryption' => 'tls',
+	// 'email_transport_smtp.encryption' => 'tls',
 
 	// email_transport_smtp.host: host name or IP address (optional)
 	//	default: 'localhost'
-	'email_transport_smtp.host' => 'smtp.gmail.com',
+	'email_transport_smtp.host' => 'mail.vertis.com',
 
 	// email_transport_smtp.password: Authentication password (optional)
 	//	default: ''
-	'email_transport_smtp.password' => 'vbudeu*22ets',
 
 	// email_transport_smtp.port: port number (optional)
 	//	default: 25
-	'email_transport_smtp.port' => 587,
+	'email_transport_smtp.port' => 25,
 
 	// email_transport_smtp.username: Authentication user (optional)
 	//	default: ''
-	'email_transport_smtp.username' => 'bot@vertis.com',
 
 	// email_validation_pattern: Regular expression to validate/detect the format of an eMail address
 	//	default: '[a-zA-Z0-9._&\'-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z0-9-]{2,}'
@@ -231,7 +229,7 @@ $MySettings = array(
 $MyModuleSettings = array(
 	'authent-ldap' => array (
 		'host' => '192.168.1.2',
-		'default_user' => 'itop',
+		'default_user' => 'vertis\itop',
 		'default_pwd' => 'Sz1m4tsz4ty0r',
 		'base_dn' => 'DC=vertis,DC=local',
 		'user_query' => '(|(&(samaccountname=%1$s)(objectCategory=User))(&(userprincipalname=%1$s)(objectCategory=User)))',
