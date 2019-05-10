@@ -1,31 +1,22 @@
-version: '2'
+version: '3'
 
 volumes:
   itop-data-volume:
-    driver: local
   itop-conf-volume:
-    driver: local
   itop-log-volume:
-    driver: local
   itop-env-production-volume:
-    driver: local
   itop-backup-volume:
-    driver: local
 
 
 services:
   mysql:
     hostname: mysql
-    image: vertis-docker-registry:5000/itop-mysql:latest
-    env_file: .secret
-    environment:
-      MYSQL_DATABASE: itop
-      MYSQL_USER: itop
-      HOST: localhost
-      LDAP_USER: itop
+    image: mysql:5.7.26
+    env_file: .env
     volumes:
       - itop-data-volume:/var/lib/mysql
-      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    ports:
+      - "127.0.0.1:3306:3306"
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -37,25 +28,16 @@ services:
      - 3305:80
 
   itop:
-    image: vertis-docker-registry:5000/itop-itop:latest
+    image: ${REGISTRY_URL}/${COMPOSE_PROJECT_NAME}-${VERSION}:latest
     command: ["bash", "run.sh"]
-    env_file: .secret
-    environment:
-      MYSQL_DATABASE: itop
-      MYSQL_USER: itop
-      HOST: localhost
-      LDAP_USER: itop
+    env_file: .env
     volumes:
       - itop-env-production-volume:/var/www/html/env-production
       - itop-conf-volume:/var/www/html/conf
       - itop-log-volume:/var/www/html/log
       - itop-backup-volume:/var/www/html/data
-      - ./localhost.crt:/certificate.crt
-      - ./localhost.key:/certificate.key
-      - ./docker/itop/apache_conf/dev_000-default.conf:/etc/apache2/sites-available/000-default.conf
-      # - ./html/env-production:/var/www/html/env-production
-      # - ./html/conf:/var/www/html/conf
-      # - ./html/extensions:/var/www/html/extensions
+      - ./.files/certificate.crt:/certificate.crt
+      - ./.files/certificate.key:/certificate.key
     ports:
       - 4430:443
       - 80:80

@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  itop:
+    build:
+        context: .
+        dockerfile: docker/itop/Dockerfile
+    volumes:
+        - ./docker/itop/apache_conf/dev_000-default.conf:/etc/apache2/sites-available/000-default.conf
+        # - ./html/env-production:/var/www/html/env-production
+        # - ./html/conf:/var/www/html/conf
+        # - ./html/extensions:/var/www/html/extensions

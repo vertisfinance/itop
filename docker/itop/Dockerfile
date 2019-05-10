@@ -1,7 +1,24 @@
-FROM ubuntu:16.04
+FROM ubuntu:bionic-20190424
 
-RUN apt-get update && \
-  apt-get -y install vim wget unzip mysql-client unzip apache2 php php-mysql php-ldap php-mcrypt php-cli php-soap php-json graphviz php-xml php-gd php-zip libapache2-mod-php
+RUN apt-get update
+RUN apt-get install -y  wget
+RUN apt-get install -y  mysql-client
+RUN apt-get install -y  unzip
+RUN apt-get install -y  apache2
+ENV TZ=Europe/Budapest
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN apt-get install -y  tzdata
+RUN apt-get install -y  php
+RUN apt-get install -y  php-mysql
+RUN apt-get install -y  php-ldap
+RUN apt-get install -y  php-cli
+RUN apt-get install -y  php-soap
+RUN apt-get install -y  php-json
+RUN apt-get install -y  graphviz
+RUN apt-get install -y  php-xml
+RUN apt-get install -y  php-gd
+RUN apt-get install -y  php-zip
+RUN apt-get install -y  libapache2-mod-php
 RUN a2enmod ssl
 
 RUN rm /var/www/html/index.html
@@ -16,7 +33,7 @@ COPY docker/itop/php.ini /etc/php/7.0/cli/
 COPY docker/itop/run.sh /etc/
 RUN cp etc/run.sh /
 
-RUN wget -O /itop.zip https://sourceforge.net/projects/itop/files/itop/2.4.0/iTop-2.4.0-3585.zip/download
+RUN wget -O /itop.zip https://sourceforge.net/projects/itop/files/itop/2.6.1/iTop-2.6.1-4463.zip/download
 RUN unzip itop.zip -d /var/www/html
 RUN cp -r /var/www/html/web/* /var/www/html
 
@@ -27,7 +44,6 @@ COPY html/env-production /var/www/html/env-production
 RUN mkdir -p /var/www/html/data
 RUN mkdir -p /var/www/html/log
 COPY docker/itop/apache_conf/prod_000-default.conf /etc/apache2/sites-available/000-default.conf
-
 
 RUN chmod 444 /var/www/html/conf/production/config-itop.php
 RUN chown -R www-data:www-data /var/www/html/conf/production
