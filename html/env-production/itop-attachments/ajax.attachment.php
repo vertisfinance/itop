@@ -52,7 +52,7 @@ try
 			'msg' => ''
 		);
 		$sObjClass = stripslashes(utils::ReadParam('obj_class', '', false, 'class'));
-		$sTempId = utils::ReadParam('temp_id', '');
+		$sTempId = utils::ReadParam('temp_id', '', false, 'transaction_id');
 		if (empty($sObjClass))
 		{
 			$aResult['error'] = "Missing argument 'obj_class'";
@@ -67,7 +67,7 @@ try
 			{
 				$oDoc = utils::ReadPostedDocument('file');
 				$oAttachment = MetaModel::NewObject('Attachment');
-				$oAttachment->Set('expire', time() + 3600); // one hour...
+				$oAttachment->Set('expire', time() + MetaModel::GetConfig()->Get('draft_attachments_lifetime'));
 				$oAttachment->Set('temp_id', $sTempId);
 				$oAttachment->Set('item_class', $sObjClass);
 				$oAttachment->SetDefaultOrgId();

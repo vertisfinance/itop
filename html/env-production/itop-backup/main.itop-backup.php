@@ -1,5 +1,5 @@
 <?php
-// Copyright (C) 2014-2016 Combodo SARL
+// Copyright (C) 2014-2017 Combodo SARL
 //
 //   This program is free software; you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -47,42 +47,34 @@ class DBBackupScheduled extends DBBackup
 {
 	protected function LogInfo($sMsg)
 	{
-		static $bDebug = null;
-		if ($bDebug == null)
-		{
-			$bDebug = MetaModel::GetConfig()->GetModuleSetting('itop-backup', 'debug', false);
-		}
-
-		if ($bDebug)
-		{
-			echo $sMsg."\n";
-		}
+		echo $sMsg."\n";
+		IssueLog::Info($sMsg);
 	}
 
 	protected function LogError($sMsg)
 	{
-		static $bDebug = null;
-		if ($bDebug == null)
-		{
-			$bDebug = MetaModel::GetConfig()->GetModuleSetting('itop-backup', 'debug', false);
-		}
-
 		IssueLog::Error($sMsg);
-		if ($bDebug)
-		{
-			echo 'Error: '.$sMsg."\n";
-		}
+		echo 'Error: '.$sMsg."\n";
 	}
 
 	/**
-	 * List and order by date the backups in the given directory 	
+	 * List and order by date the backups in the given directory
 	 * Note: the algorithm is currently based on the file modification date... because there is no "creation date" in general
-	 */	
+	 * @param string $sBackupDir
+	 * @return array
+	 */
 	public function ListFiles($sBackupDir)
 	{
 		$aFiles = array();
 		$aTimes = array();
+		// Legacy format -limited to 4 Gb
 		foreach(glob($sBackupDir.'*.zip') as $sFilePath)
+		{
+			$aFiles[] = $sFilePath;
+			$aTimes[] = filemtime($sFilePath); // unix time
+		}
+		// Modern format
+		foreach(glob($sBackupDir.'*.tar.gz') as $sFilePath)
 		{
 			$aFiles[] = $sFilePath;
 			$aTimes[] = filemtime($sFilePath); // unix time
@@ -123,6 +115,11 @@ class BackupExec implements iScheduledProcess
 		}
 	}
 
+	/**
+	 * @param int $iUnixTimeLimit
+	 * @return string
+	 * @throws Exception
+	 */
 	public function Process($iUnixTimeLimit)
 	{
 		$oMutex = new iTopMutex('backup.'.utils::GetCurrentEnvironment());
@@ -156,15 +153,15 @@ class BackupExec implements iScheduledProcess
 			//
 			$oBackup->SetMySQLBinDir(MetaModel::GetConfig()->GetModuleSetting('itop-backup', 'mysql_bindir', ''));
 	
-			$sBackupFile = MetaModel::GetConfig()->GetModuleSetting('itop-backup', 'file_name_format', '__DB__-%Y-%m-%d_%H_%M');
-			$sName = $oBackup->MakeName($sBackupFile);
+			$sBackupFileFormat = MetaModel::GetConfig()->GetModuleSetting('itop-backup', 'file_name_format', '__DB__-%Y-%m-%d_%H_%M');
+			$sName = $oBackup->MakeName($sBackupFileFormat);
 			if ($sName == '')
 			{
 				$sName = $oBackup->MakeName(BACKUP_DEFAULT_FORMAT);
 			}
-			$sZipFile = $this->sBackupDir.$sName.'.zip';
+			$sBackupFile = $this->sBackupDir.$sName;
 			$sSourceConfigFile = APPCONF.utils::GetCurrentEnvironment().'/'.ITOP_CONFIG_FILE;
-			$oBackup->CreateZip($sZipFile, $sSourceConfigFile);
+			$oBackup->CreateCompressedBackup($sBackupFile, $sSourceConfigFile);
 		}
 		catch (Exception $e)
 		{
@@ -172,13 +169,14 @@ class BackupExec implements iScheduledProcess
 			throw $e;
 		}
 		$oMutex->Unlock();
-		return "Created the backup: $sZipFile";
+		return "Created the backup: $sBackupFile";
 	}
 
-	/*
-		Interpret current setting for the week days
-		@returns array of int (monday = 1)
-	*/
+	/**
+	 *    Interpret current setting for the week days
+	 * @returns array of int (monday = 1)
+	 * @throws Exception
+	 */
 	public function InterpretWeekDays()
 	{
 		static $aWEEKDAYTON = array('monday' => 1, 'tuesday' => 2, 'wednesday' => 3, 'thursday' => 4, 'friday' => 5, 'saturday' => 6, 'sunday' => 7);
@@ -209,10 +207,10 @@ class BackupExec implements iScheduledProcess
 		return $aDays;
 	}
 
-	/*
-		Gives the exact time at which the process must be run next time
-		@returns DateTime
-	*/
+	/** Gives the exact time at which the process must be run next time
+	 * @return DateTime
+	 * @throws Exception
+	 */
 	public function GetNextOccurrence()
 	{
 		$bEnabled = MetaModel::GetConfig()->GetModuleSetting('itop-backup', 'enabled', true);
@@ -244,6 +242,7 @@ class BackupExec implements iScheduledProcess
 					{
 						break;
 					}
+					$iNextPos = false; // necessary on sundays
 				}
 			}
 	
@@ -271,16 +270,3 @@ class BackupExec implements iScheduledProcess
 		return $oRet;
 	}
 }
-
-class ItopBackup extends ModuleHandlerAPI
-{
-	public static function OnMenuCreation()
-	{
-		if (UserRights::IsAdministrator())
-		{
-			$oAdminMenu = new MenuGroup('AdminTools', 80 /* fRank */);
-			new WebPageMenuNode('BackupStatus', utils::GetAbsoluteUrlModulePage('itop-backup', 'status.php'), $oAdminMenu->GetIndex(), 15 /* fRank */);
-		}
-	}
-}
-

@@ -3,7 +3,7 @@
 //
 //   This file is part of iTop.
 //
-//   iTop is free software; you can redistribute it and/or modify	
+//   iTop is free software; you can redistribute it and/or modify
 //   it under the terms of the GNU Affero General Public License as published by
 //   the Free Software Foundation, either version 3 of the License, or
 //   (at your option) any later version.
@@ -15,13 +15,13 @@
 //
 //   You should have received a copy of the GNU Affero General Public License
 //   along with iTop. If not, see <http://www.gnu.org/licenses/>
+/*
+* @author ITOMIG GmbH <martin.raenker@itomig.de>
 
-/**
- * @author		 David M. Gümbel <david.guembel@itomig.de>
- * @copyright   Copyright (C) 2010-2014 Combodo SARL
- * @license     http://opensource.org/licenses/AGPL-3.0
- */
-
+* @copyright     Copyright (C) 2017 Combodo SARL
+* @licence	http://opensource.org/licenses/AGPL-3.0
+*		
+*/
 Dict::Add('DE DE', 'German', 'Deutsch', array(
 	'Menu:DataSources' => 'Datenquellen für die Synchronisation',
 	'Menu:DataSources+' => 'Alle Datenquellen für die Synchronisation',
@@ -56,4 +56,31 @@ Dict::Add('DE DE', 'German', 'Deutsch', array(
 	'Menu:UserAccountsMenu+' => 'Benutzerkonten',
 	'Menu:UserAccountsMenu:Title' => 'Benutzerkonten',
 	'Menu:MyShortcuts' => 'Meine Shortcuts',
+));
+
+//
+// Class: AbstractResource
+//
+
+Dict::Add('DE DE', 'German', 'Deutsch', array(
+	'Class:AbstractResource' => 'Abstract Resource~~',
+	'Class:AbstractResource+' => '~~',
+));
+
+//
+// Class: ResourceAdminMenu
+//
+
+Dict::Add('DE DE', 'German', 'Deutsch', array(
+	'Class:ResourceAdminMenu' => 'Resource Admin Menu~~',
+	'Class:ResourceAdminMenu+' => '~~',
+));
+
+//
+// Class: ResourceRunQueriesMenu
+//
+
+Dict::Add('DE DE', 'German', 'Deutsch', array(
+	'Class:ResourceRunQueriesMenu' => 'Resource Run Queries Menu~~',
+	'Class:ResourceRunQueriesMenu+' => '~~',
 ));

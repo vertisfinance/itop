@@ -3,7 +3,7 @@
 //
 //   This file is part of iTop.
 //
-//   iTop is free software; you can redistribute it and/or modify	
+//   iTop is free software; you can redistribute it and/or modify
 //   it under the terms of the GNU Affero General Public License as published by
 //   the Free Software Foundation, either version 3 of the License, or
 //   (at your option) any later version.
@@ -15,14 +15,12 @@
 //
 //   You should have received a copy of the GNU Affero General Public License
 //   along with iTop. If not, see <http://www.gnu.org/licenses/>
-
 /**
  * Localized data
  *
  * @copyright   Copyright (C) 2010-2012 Combodo SARL
  * @license     http://opensource.org/licenses/AGPL-3.0
  */
-
 Dict::Add('FR FR', 'French', 'Français', array(
 	'Attachments:TabTitle_Count' => 'Pièces jointes (%1$d)',
 	'Attachments:EmptyTabTitle' => 'Pièces jointes',
@@ -37,5 +35,26 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Attachment:Max_Ko' => '(Taille de fichier max.: %1$s Kb)',
 	'Attachments:NoAttachment' => 'Aucune pièce jointe.',
 	'Attachments:PreviewNotAvailable' => 'Pas d\'aperçu pour ce type de pièce jointe.',
+	'Attachments:Error:FileTooLarge' => 'Le fichier est trop gros pour être chargé. %1$s',
 ));
-?>
+
+//
+// Class: Attachment
+//
+
+Dict::Add('FR FR', 'French', 'Français', array(
+	'Class:Attachment' => 'Attachement',
+	'Class:Attachment+' => '',
+	'Class:Attachment/Attribute:expire' => 'Expire',
+	'Class:Attachment/Attribute:expire+' => '',
+	'Class:Attachment/Attribute:temp_id' => 'Id Temporaire',
+	'Class:Attachment/Attribute:temp_id+' => '',
+	'Class:Attachment/Attribute:item_class' => 'Classe d\'Item',
+	'Class:Attachment/Attribute:item_class+' => '',
+	'Class:Attachment/Attribute:item_id' => 'Item',
+	'Class:Attachment/Attribute:item_id+' => '',
+	'Class:Attachment/Attribute:item_org_id' => 'Organisation de l\'Item',
+	'Class:Attachment/Attribute:item_org_id+' => '',
+	'Class:Attachment/Attribute:contents' => 'Contenu',
+	'Class:Attachment/Attribute:contents+' => '',
+));

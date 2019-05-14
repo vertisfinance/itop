@@ -3,7 +3,7 @@
 //
 //   This file is part of iTop.
 //
-//   iTop is free software; you can redistribute it and/or modify	
+//   iTop is free software; you can redistribute it and/or modify
 //   it under the terms of the GNU Affero General Public License as published by
 //   the Free Software Foundation, either version 3 of the License, or
 //   (at your option) any later version.
@@ -15,17 +15,13 @@
 //
 //   You should have received a copy of the GNU Affero General Public License
 //   along with iTop. If not, see <http://www.gnu.org/licenses/>
-
 /**
  * @copyright   Copyright (C) 2010-2012 Combodo SARL
  * @license     http://opensource.org/licenses/AGPL-3.0
  */
-
 //
 // Class: Ticket
 //
-
-
 Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Ticket' => 'Ticket',
 	'Class:Ticket+' => '',
@@ -61,22 +57,22 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Ticket/Attribute:close_date+' => '',
 	'Class:Ticket/Attribute:private_log' => 'Journal privé',
 	'Class:Ticket/Attribute:private_log+' => '',
-	'Class:Ticket/Attribute:contacts_list' => 'Contacts',
+    'Class:Ticket/Attribute:contacts_list' => 'Contacts',
 	'Class:Ticket/Attribute:contacts_list+' => '',
 	'Class:Ticket/Attribute:functionalcis_list' => 'CIs',
 	'Class:Ticket/Attribute:functionalcis_list+' => 'Tous les éléments de configuration impactés par ce ticket. Les éléments marqués comme "Calculés" sont le résultat du calcul de l\'analyse d\'impact. Les éléments marqués comme "Non impactés" sont exclus de cette analyse.',
 	'Class:Ticket/Attribute:workorders_list' => 'Tâches',
 	'Class:Ticket/Attribute:workorders_list+' => '',
-	'Class:Ticket/Attribute:finalclass' => 'Type',
-	'Class:Ticket/Attribute:finalclass+' => '',
+	'Class:Ticket/Attribute:finalclass' => 'Sous-classe de Ticket',
+	'Class:Ticket/Attribute:finalclass+' => 'Nom de la classe instanciable',
 	'Class:Ticket/Attribute:operational_status' => 'Statut opérationnel',
 	'Class:Ticket/Attribute:operational_status+' => 'Calculé à partir du statut détaillé',
 	'Class:Ticket/Attribute:operational_status/Value:ongoing' => 'En cours',
 	'Class:Ticket/Attribute:operational_status/Value:ongoing+' => 'Traitement en cours',
 	'Class:Ticket/Attribute:operational_status/Value:resolved' => 'Résolu',
 	'Class:Ticket/Attribute:operational_status/Value:resolved+' => '',
-	'Class:Ticket/Attribute:operational_status/Value:closed' => 'Clôt',
-	'Class:Ticket/Attribute:operational_status/Value:closed+' => '',
+	'Class:Ticket/Attribute:operational_status/Value:closed' => 'Clos',
+	'Class:Ticket/Attribute:operational_status/Value:closed+' => 'Fermé',
 	'Ticket:ImpactAnalysis' => 'Analyse d\'Impact',
 ));
 
@@ -115,6 +111,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:lnkFunctionalCIToTicket/Attribute:ticket_id+' => '',
 	'Class:lnkFunctionalCIToTicket/Attribute:ticket_ref' => 'Référence',
 	'Class:lnkFunctionalCIToTicket/Attribute:ticket_ref+' => '',
+	'Class:lnkFunctionalCIToTicket/Attribute:ticket_title' => 'Titre Ticket',
+	'Class:lnkFunctionalCIToTicket/Attribute:ticket_title+' => '',
 	'Class:lnkFunctionalCIToTicket/Attribute:functionalci_id' => 'CI',
 	'Class:lnkFunctionalCIToTicket/Attribute:functionalci_id+' => '',
 	'Class:lnkFunctionalCIToTicket/Attribute:functionalci_name' => 'Nom CI',
@@ -128,6 +126,7 @@ Dict::Add('FR FR', 'French', 'Français', array(
 ));
 
 
+//
 // Class: WorkOrder
 //
 
@@ -167,6 +166,7 @@ Dict::Add('FR FR', 'French', 'Français', array(
 ));
 
 
+// Fieldset translation
 Dict::Add('FR FR', 'French', 'Français', array(
 
 	'Ticket:baseinfo' => 'Informations générales',
@@ -219,19 +219,23 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:cmdbAbstractObject/Method:Copy/Param:1+' => 'Le champ à initialiser, dans l\'objet courant',
 	'Class:cmdbAbstractObject/Method:Copy/Param:2' => 'Champ Source',
 	'Class:cmdbAbstractObject/Method:Copy/Param:2+' => 'Le champ dans lequel on va lire la valeur, dans l\'objet courant',
+	'Class:cmdbAbstractObject/Method:ApplyStimulus' => 'ApplyStimulus (appliquer un stimulus)',
+	'Class:cmdbAbstractObject/Method:ApplyStimulus+' => 'Applique le stimulus spécifié à l\'objet courant',
+	'Class:cmdbAbstractObject/Method:ApplyStimulus/Param:1' => 'Code du stimulus',
+	'Class:cmdbAbstractObject/Method:ApplyStimulus/Param:1+' => 'Un code de stimulus valide pour la classe courante',
 	'Class:ResponseTicketTTO/Interface:iMetricComputer' => 'Temps d\'Assignation (TTO)',
 	'Class:ResponseTicketTTO/Interface:iMetricComputer+' => 'Objectif calculé à partir d\'un SLT de type TTO',
 	'Class:ResponseTicketTTR/Interface:iMetricComputer' => 'Temps de Résolution (TTR)',
 	'Class:ResponseTicketTTR/Interface:iMetricComputer+' => 'Objectif calculé à partir d\'un SLT de type TTR',
 
 	'portal:itop-portal' => 'Portail standard', // This is the portal name that will be displayed in portal dispatcher (eg. URL in menus)
-	'Page:DefaultTitle' => 'iTop - Portail utilisateur',
+	'Page:DefaultTitle' => '%1$s - Portail utilisateur',
 	'Brick:Portal:UserProfile:Title' => 'Mon profil',
 	'Brick:Portal:NewRequest:Title' => 'Nouvelle requête',
 	'Brick:Portal:NewRequest:Title+' => '<p>Besoin d\'assistance&nbsp;?</p><p>Choisissez un service (assistance ou dépannage) et soumettez votre requête à nos équipes de support.</p>',
 	'Brick:Portal:OngoingRequests:Title' => 'Requêtes en cours',
 	'Brick:Portal:OngoingRequests:Title+' => '<p>Suivez vos requêtes en cours.</p><p>Consultez l\'avancement, ajoutez des commentaires ou des pièces jointes, validez la solution.</p>',
-	'Brick:Portal:OngoingRequests:Tab:OnGoing' => 'En cours',
+	'Brick:Portal:OngoingRequests:Tab:OnGoing' => 'Ouvertes',
 	'Brick:Portal:OngoingRequests:Tab:Resolved' => 'Résolues',
 	'Brick:Portal:ClosedRequests:Title' => 'Requêtes fermées',
 ));

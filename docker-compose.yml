@@ -11,8 +11,9 @@ volumes:
 services:
   mysql:
     hostname: mysql
-    image: mysql:5.7.26
+    image: ${REGISTRY_URL}/${COMPOSE_PROJECT_NAME}-mysql:${VERSION}
     env_file: .env
+    command: ["mysqld"]
     volumes:
       - itop-data-volume:/var/lib/mysql
     ports:
@@ -28,7 +29,7 @@ services:
      - 3305:80
 
   itop:
-    image: ${REGISTRY_URL}/${COMPOSE_PROJECT_NAME}-${VERSION}:latest
+    image: ${REGISTRY_URL}/${COMPOSE_PROJECT_NAME}-itop:${VERSION}
     command: ["bash", "run.sh"]
     env_file: .env
     volumes:
@@ -41,3 +42,11 @@ services:
     ports:
       - 4430:443
       - 80:80
+
+  curator:
+    image: ${REGISTRY_URL}/${COMPOSE_PROJECT_NAME}-mysql:${VERSION}
+    env_file: .env
+    depends_on: ["mysql"]
+    volumes:
+      - ./backup/:/backup/
+    command: ["python3", "/task.py"]

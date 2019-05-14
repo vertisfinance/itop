@@ -1,5 +1,5 @@
 <?php
-// Copyright (C) 2014 Combodo SARL
+// Copyright (C) 2014-2018 Combodo SARL
 //
 //   This program is free software; you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
@@ -15,7 +15,17 @@
 //   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 if (!defined('__DIR__')) define('__DIR__', dirname(__FILE__));
-if (!defined('APPROOT')) require_once(__DIR__.'/../../approot.inc.php');
+if (!defined('APPROOT'))
+{
+	if (file_exists(__DIR__.'/../../approot.inc.php'))
+	{
+		require_once __DIR__.'/../../approot.inc.php';   // When in env-xxxx folder
+	}
+	else
+	{
+		require_once __DIR__.'/../../../approot.inc.php';   // When in datamodels/x.x folder
+	}
+}
 require_once(APPROOT.'application/application.inc.php');
 require_once(APPROOT.'application/webpage.class.inc.php');
 require_once(APPROOT.'application/csvpage.class.inc.php');
@@ -28,6 +38,9 @@ require_once(APPROOT.'application/startup.inc.php');
 
 class MyDBBackup extends DBBackup
 {
+	/** @var Page used to send log */
+	protected $oPage;
+
 	protected function LogInfo($sMsg)
 	{
 		$this->oPage->p($sMsg);
@@ -39,7 +52,6 @@ class MyDBBackup extends DBBackup
 		ToolsLog::Error($sMsg);
 	}
 
-	protected $oPage;
 	public function __construct($oPage)
 	{
 		$this->oPage = $oPage;
@@ -176,13 +188,12 @@ $sBackupFile =  utils::ReadParam('backup_file', $sDefaultBackupFileName, true, '
 $oBackup = new MyDBBackup($oP);
 $oBackup->SetMySQLBinDir(MetaModel::GetConfig()->GetModuleSetting('itop-backup', 'mysql_bindir', ''));
 $sBackupFile = $oBackup->MakeName($sBackupFile);
-$sZipArchiveFile = $sBackupFile.'.zip';
 
 $bSimulate = utils::ReadParam('simulate', false, true);
 $res = false;
 if ($bSimulate)
 {
-	$oP->p("Simulate: would create file '$sZipArchiveFile'");
+	$oP->p("Simulate: would create file '$sBackupFile'");
 }
 elseif (MetaModel::GetConfig()->Get('demo_mode'))
 {
@@ -190,11 +201,10 @@ elseif (MetaModel::GetConfig()->Get('demo_mode'))
 }
 else
 {
-	$oBackup->CreateZip($sZipArchiveFile);
+	$oBackup->CreateCompressedBackup($sBackupFile);
 }
 if ($res && $bDownloadBackup)
 {
-	$oBackup->DownloadBackup($sZipArchiveFile);
+	$oBackup->DownloadBackup($sBackupFile);
 }
 $oP->output();
-?>

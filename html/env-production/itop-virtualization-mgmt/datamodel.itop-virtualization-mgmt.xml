@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2">
+<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.6">
   <classes>
     <class id="VirtualDevice" _delta="define">
       <parent>FunctionalCI</parent>
@@ -25,6 +25,9 @@
             <attribute id="finalclass"/>
           </attributes>
         </reconciliation>
+        <obsolescence>
+          <condition><![CDATA[status = 'obsolete']]></condition>
+        </obsolescence>
       </properties>
       <fields>
         <field id="status" xsi:type="AttributeEnum">
@@ -145,6 +148,7 @@
             <attribute id="name"/>
             <attribute id="org_id"/>
             <attribute id="organization_name"/>
+            <attribute id="finalclass"/>
           </attributes>
         </reconciliation>
       </properties>
@@ -274,8 +278,13 @@
             <attribute id="name"/>
             <attribute id="org_id"/>
             <attribute id="organization_name"/>
+			<attribute id="server_id"/>
+			<attribute id="farm_id"/>
           </attributes>
         </reconciliation>
+        <obsolescence>
+          <condition><![CDATA[status = 'obsolete']]></condition>
+        </obsolescence>
       </properties>
       <fields>
         <field id="farm_id" xsi:type="AttributeExternalKey">
@@ -565,8 +574,12 @@
             <attribute id="name"/>
             <attribute id="org_id"/>
             <attribute id="organization_name"/>
+            <attribute id="virtualhost_id"/>
           </attributes>
         </reconciliation>
+        <obsolescence>
+        	<condition><![CDATA[status='obsolete']]></condition>
+        </obsolescence>
       </properties>
       <fields>
         <field id="virtualhost_id" xsi:type="AttributeExternalKey">
@@ -807,6 +820,9 @@
             <attribute id="virtualmachine_name"/>
           </attributes>
         </reconciliation>
+        <obsolescence>
+        	<condition>virtualmachine_id_obsolescence_flag</condition>
+        </obsolescence>
       </properties>
       <fields>
         <field id="virtualmachine_id" xsi:type="AttributeExternalKey">

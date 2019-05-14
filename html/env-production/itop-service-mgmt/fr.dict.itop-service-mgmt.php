@@ -3,7 +3,7 @@
 //
 //   This file is part of iTop.
 //
-//   iTop is free software; you can redistribute it and/or modify	
+//   iTop is free software; you can redistribute it and/or modify
 //   it under the terms of the GNU Affero General Public License as published by
 //   the Free Software Foundation, either version 3 of the License, or
 //   (at your option) any later version.
@@ -15,19 +15,45 @@
 //
 //   You should have received a copy of the GNU Affero General Public License
 //   along with iTop. If not, see <http://www.gnu.org/licenses/>
-
 /**
  * @copyright   Copyright (C) 2010-2012 Combodo SARL
  * @license     http://opensource.org/licenses/AGPL-3.0
  */
-
 //
 // Class: ContractType
 //
-
 Dict::Add('FR FR', 'French', 'Français', array(
-	'Class:ContractType' => 'Type de contrat',
-	'Class:ContractType+' => '',
+'Menu:ServiceManagement' => 'Gestion des services',
+'Menu:ServiceManagement+' => '',
+'Menu:Service:Overview' => 'Vue d\'ensemble',
+'Menu:Service:Overview+' => 'Vue d\'ensemble de la Gestion des Services',
+'UI-ServiceManagementMenu-ContractsBySrvLevel' => 'Contrats, par niveau de service',
+'UI-ServiceManagementMenu-ContractsByStatus' => 'Contrats, par état',
+'UI-ServiceManagementMenu-ContractsEndingIn30Days' => 'Contrats se terminant dans moins d\'un mois',
+
+'Menu:ProviderContract' => 'Contrats fournisseurs',
+'Menu:ProviderContract+' => 'Contrats fournisseurs',
+'Menu:CustomerContract' => 'Contrats clients',
+'Menu:CustomerContract+' => 'Contrats clients',
+'Menu:ServiceSubcategory' => 'Sous catégories de service',
+'Menu:ServiceSubcategory+' => 'Sous catégories de service',
+'Menu:Service' => 'Services',
+'Menu:Service+' => 'Services',
+'Menu:ServiceElement' => 'Eléments de service',
+'Menu:ServiceElement+' => 'Eléments de service',
+'Menu:SLA' => 'SLAs',
+'Menu:SLA+' => 'Accords de niveau de service (SLA)',
+'Menu:SLT' => 'SLTs',
+'Menu:SLT+' => 'Objectifs de niveau de service (SLT)',
+'Menu:DeliveryModel' => 'Modèles de support',
+'Menu:DeliveryModel+' => 'Modèles de support',
+'Menu:ServiceFamily' => 'Familles de service',
+'Menu:ServiceFamily+' => 'Familles de service',
+'Menu:Procedure' => 'Catalogue des procédures',
+'Menu:Procedure+' => 'Catalogue des procédures',
+
+
+
 ));
 
 //
@@ -38,7 +64,17 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Organization/Attribute:deliverymodel_id' => 'Modèle de support',
 	'Class:Organization/Attribute:deliverymodel_id+' => '',
 	'Class:Organization/Attribute:deliverymodel_name' => 'Nom modèle de support',
-	'Class:Organization/Attribute:deliverymodel_name+' => '',
+
+));
+
+
+//
+// Class: ContractType
+//
+
+Dict::Add('FR FR', 'French', 'Français', array(
+	'Class:ContractType' => 'Type de contrat',
+	'Class:ContractType+' => '',
 ));
 
 //
@@ -92,10 +128,9 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Contract/Attribute:status/Value:obsolete+' => 'obsolète',
 	'Class:Contract/Attribute:status/Value:production' => 'production',
 	'Class:Contract/Attribute:status/Value:production+' => 'production',
-	'Class:Contract/Attribute:finalclass' => 'Type',
-	'Class:Contract/Attribute:finalclass+' => '',
+	'Class:Contract/Attribute:finalclass' => 'Sous-classe de Contrat',
+	'Class:Contract/Attribute:finalclass+' => 'Nom de la classe instanciable',
 ));
-
 //
 // Class: CustomerContract
 //
@@ -122,7 +157,7 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:ProviderContract/Attribute:coverage+' => '',
 	'Class:ProviderContract/Attribute:contracttype_id' => 'Type de contrat',
 	'Class:ProviderContract/Attribute:contracttype_id+' => '',
-	'Class:ProviderContract/Attribute:contracttype_name' => 'Nom type de contrat',
+	'Class:ProviderContract/Attribute:contracttype_name' => 'Nom Type de contrat',
 	'Class:ProviderContract/Attribute:contracttype_name+' => '',
 ));
 
@@ -148,7 +183,7 @@ Dict::Add('FR FR', 'French', 'Français', array(
 //
 
 Dict::Add('FR FR', 'French', 'Français', array(
-	'Class:lnkContractToDocument' => 'Lien Contract / Document',
+	'Class:lnkContractToDocument' => 'Lien Contrat / Document',
 	'Class:lnkContractToDocument+' => '',
 	'Class:lnkContractToDocument/Attribute:contract_id' => 'Contrat',
 	'Class:lnkContractToDocument/Attribute:contract_id+' => '',
@@ -186,6 +221,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:ServiceFamily+' => '',
 	'Class:ServiceFamily/Attribute:name' => 'Nom',
 	'Class:ServiceFamily/Attribute:name+' => '',
+	'Class:ServiceFamily/Attribute:icon' => 'Icône',
+	'Class:ServiceFamily/Attribute:icon+' => '',
 	'Class:ServiceFamily/Attribute:services_list' => 'Services',
 	'Class:ServiceFamily/Attribute:services_list+' => '',
 ));
@@ -221,6 +258,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Service/Attribute:status/Value:obsolete+' => '',
 	'Class:Service/Attribute:status/Value:production' => 'en production',
 	'Class:Service/Attribute:status/Value:production+' => '',
+	'Class:Service/Attribute:icon' => 'Icône',
+	'Class:Service/Attribute:icon+' => '',
 	'Class:Service/Attribute:customercontracts_list' => 'Contrats client',
 	'Class:Service/Attribute:customercontracts_list+' => '',
 	'Class:Service/Attribute:providercontracts_list' => 'Contrats fournisseur',
@@ -373,6 +412,16 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:lnkSLAToSLT/Attribute:slt_id+' => '',
 	'Class:lnkSLAToSLT/Attribute:slt_name' => 'Nom SLT',
 	'Class:lnkSLAToSLT/Attribute:slt_name+' => '',
+	'Class:lnkSLAToSLT/Attribute:slt_metric' => 'Métriques SLT',
+	'Class:lnkSLAToSLT/Attribute:slt_metric+' => '',
+	'Class:lnkSLAToSLT/Attribute:slt_request_type' => 'Type de requête',
+	'Class:lnkSLAToSLT/Attribute:slt_request_type+' => '',
+	'Class:lnkSLAToSLT/Attribute:slt_ticket_priority' => 'Priorité du ticket',
+	'Class:lnkSLAToSLT/Attribute:slt_ticket_priority+' => '',
+	'Class:lnkSLAToSLT/Attribute:slt_value' => 'Valeur SLT',
+	'Class:lnkSLAToSLT/Attribute:slt_value+' => '',
+	'Class:lnkSLAToSLT/Attribute:slt_value_unit' => 'Unité SLT',
+	'Class:lnkSLAToSLT/Attribute:slt_value_unit+' => '',
 ));
 
 //
@@ -442,7 +491,7 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:DeliveryModel/Attribute:org_id' => 'Organisation',
 	'Class:DeliveryModel/Attribute:org_id+' => '',
 	'Class:DeliveryModel/Attribute:organization_name' => 'Nom organisation',
-	'Class:DeliveryModel/Attribute:organization_name+' => 'Common name',
+	'Class:DeliveryModel/Attribute:organization_name+' => '',
 	'Class:DeliveryModel/Attribute:description' => 'Description',
 	'Class:DeliveryModel/Attribute:description+' => '',
 	'Class:DeliveryModel/Attribute:contacts_list' => 'Contacts',
@@ -471,35 +520,3 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:lnkDeliveryModelToContact/Attribute:role_name' => 'Nom Rôle',
 	'Class:lnkDeliveryModelToContact/Attribute:role_name+' => '',
 ));
-
-
-Dict::Add('FR FR', 'French', 'Français', array(
-	'Menu:ServiceManagement' => 'Gestion des services',
-	'Menu:ServiceManagement+' => '',
-	'Menu:Service:Overview' => 'Vue d\'ensemble',
-	'Menu:Service:Overview+' => 'Vue d\'ensemble de la Gestion des Services',
-	'UI-ServiceManagementMenu-ContractsBySrvLevel' => 'Contrats, par niveau de service',
-	'UI-ServiceManagementMenu-ContractsByStatus' => 'Contrats, par état',
-	'UI-ServiceManagementMenu-ContractsEndingIn30Days' => 'Contrats se terminant dans moins d\'un mois',
-	'Menu:ServiceFamily' => 'Familles de service',
-	'Menu:ServiceFamily+' => 'Familles de service',
-	'Menu:ProviderContract' => 'Contrats fournisseurs',
-	'Menu:ProviderContract+' => 'Contrats fournisseurs',
-	'Menu:CustomerContract' => 'Contrats clients',
-	'Menu:CustomerContract+' => 'Contrats clients',
-	'Menu:ServiceElement' => 'Eléments de service',
-	'Menu:ServiceElement+' => 'Eléments de service',
-	'Menu:ServiceSubcategory' => 'Sous catégories de service',
-	'Menu:ServiceSubcategory+' => 'Sous catégories de service',
-	'Menu:Service' => 'Services',
-	'Menu:Service+' => 'Services',
-	'Menu:SLA' => 'SLAs',
-	'Menu:SLA+' => 'Accords de niveau de service (SLA)',
-	'Menu:SLT' => 'SLTs',
-	'Menu:SLT+' => 'Objectifs de niveau de service (SLT)',
-	'Menu:DeliveryModel' => 'Modèles de support',
-	'Menu:DeliveryModel+' => 'Modèles de support',
-	'Menu:Procedure' => 'Catalogue des procédures',
-	'Menu:Procedure+' => 'Catalogue des procédures',
-));
-?>

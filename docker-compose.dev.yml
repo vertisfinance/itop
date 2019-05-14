@@ -7,6 +7,21 @@ services:
         dockerfile: docker/itop/Dockerfile
     volumes:
         - ./docker/itop/apache_conf/dev_000-default.conf:/etc/apache2/sites-available/000-default.conf
-        # - ./html/env-production:/var/www/html/env-production
-        # - ./html/conf:/var/www/html/conf
-        # - ./html/extensions:/var/www/html/extensions
+        - ./html/env-production:/var/www/html/env-production
+        - ./html/conf:/var/www/html/conf
+        - ./html/extensions:/var/www/html/extensions
+
+  mysql:
+    build:
+        context: .
+        dockerfile: docker/mysql/Dockerfile
+    volumes:
+        - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+        - ./docker/mysql/entrypoint.sh:/my_entrypoint.sh
+
+  curator:
+    volumes:
+      - ./services/backup/task.py:/task.py
+      - ./services/backup/backup.sh:/backup.sh
+      - ./docker/mysql/entrypoint.sh:/my_entrypoint.sh
+    command: ["python3", "/task.py"]

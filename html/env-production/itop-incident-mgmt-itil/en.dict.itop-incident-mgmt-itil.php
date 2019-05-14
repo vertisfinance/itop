@@ -1,27 +1,24 @@
 <?php
-// Copyright (C) 2010-2014 Combodo SARL
-//
-//   This file is part of iTop.
-//
-//   iTop is free software; you can redistribute it and/or modify	
-//   it under the terms of the GNU Affero General Public License as published by
-//   the Free Software Foundation, either version 3 of the License, or
-//   (at your option) any later version.
-//
-//   iTop is distributed in the hope that it will be useful,
-//   but WITHOUT ANY WARRANTY; without even the implied warranty of
-//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//   GNU Affero General Public License for more details.
-//
-//   You should have received a copy of the GNU Affero General Public License
-//   along with iTop. If not, see <http://www.gnu.org/licenses/>
-
-
 /**
  * Localized data
  *
- * @copyright   Copyright (C) 2010-2012 Combodo SARL
- * @license     http://opensource.org/licenses/AGPL-3.0
+ * @copyright Copyright (C) 2010-2018 Combodo SARL
+ * @license	http://opensource.org/licenses/AGPL-3.0
+ *
+ * This file is part of iTop.
+ *
+ * iTop is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * iTop is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with iTop. If not, see <http://www.gnu.org/licenses/>
  */
 
 Dict::Add('EN US', 'English', 'English', array(
@@ -116,8 +113,8 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:Incident/Attribute:urgency/Value:4+' => 'low',
 	'Class:Incident/Attribute:origin' => 'Origin',
 	'Class:Incident/Attribute:origin+' => '',
-	'Class:Incident/Attribute:origin/Value:mail' => 'mail',
-	'Class:Incident/Attribute:origin/Value:mail+' => 'mail',
+	'Class:Incident/Attribute:origin/Value:mail' => 'email',
+	'Class:Incident/Attribute:origin/Value:mail+' => 'email',
 	'Class:Incident/Attribute:origin/Value:monitoring' => 'monitoring',
 	'Class:Incident/Attribute:origin/Value:monitoring+' => 'monitoring',
 	'Class:Incident/Attribute:origin/Value:phone' => 'phone',
@@ -194,6 +191,10 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:Incident/Attribute:parent_change_id+' => '',
 	'Class:Incident/Attribute:parent_change_ref' => 'Parent change ref',
 	'Class:Incident/Attribute:parent_change_ref+' => '',
+	'Class:Incident/Attribute:parent_problem_id' => 'Parent problem id',
+	'Class:Incident/Attribute:parent_problem_id+' => '',
+	'Class:Incident/Attribute:parent_problem_ref' => 'Parent problem ref',
+	'Class:Incident/Attribute:parent_problem_ref+' => '',
 	'Class:Incident/Attribute:related_request_list' => 'Child requests',
 	'Class:Incident/Attribute:related_request_list+' => '',
 	'Class:Incident/Attribute:child_incidents_list' => 'Child incidents',
@@ -237,4 +238,15 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:Incident/Method:ResolveChildTickets' => 'ResolveChildTickets',
 	'Class:Incident/Method:ResolveChildTickets+' => 'Cascade the resolution to child ticket (ev_autoresolve), and align the following characteristics: service, team, agent, resolution info',
 	'Tickets:Related:OpenIncidents' => 'Open incidents',
+));
+
+//
+// Class: Incident
+//
+
+Dict::Add('EN US', 'English', 'English', array(
+	'Class:Incident/Attribute:parent_problem_id' => 'Parent problem id',
+	'Class:Incident/Attribute:parent_problem_id+' => '',
+	'Class:Incident/Attribute:parent_problem_ref' => 'Parent problem ref',
+	'Class:Incident/Attribute:parent_problem_ref+' => '',
 ));
