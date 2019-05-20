@@ -6,17 +6,10 @@ services:
         context: .
         dockerfile: docker/itop/Dockerfile
     volumes:
-<<<<<<< HEAD
         - ./html/env-production:/var/www/html/env-production
         - ./html/conf:/var/www/html/conf
         - ./html/extensions:/var/www/html/extensions
         - ./docker/itop/run.sh:/run.sh
-=======
-        - ./docker/itop/apache_conf/dev_000-default.conf:/etc/apache2/sites-available/000-default.conf
-        - ./html/env-production:/var/www/html/env-production
-        - ./html/conf:/var/www/html/conf
-        - ./html/extensions:/var/www/html/extensions
->>>>>>> 79032b8abf5915118813de20607fe77349b14764
 
   mysql:
     build:
@@ -25,11 +18,8 @@ services:
     volumes:
         - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
         - ./docker/mysql/entrypoint.sh:/my_entrypoint.sh
-<<<<<<< HEAD
         - ./docker/utils.sh:/utils.sh
         - ./docker/secret.sh:/secret.sh
-=======
->>>>>>> 79032b8abf5915118813de20607fe77349b14764
 
   curator:
     volumes:

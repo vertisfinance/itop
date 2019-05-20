@@ -1,10 +1,6 @@
 <?php
 //
-<<<<<<< HEAD
-// File generated on 2019-05-20T15:27:42+0200
-=======
-// File generated on 2019-05-14T16:12:33+0200
->>>>>>> 79032b8abf5915118813de20607fe77349b14764
+// File generated on 2019-05-20T16:09:22+0200
 // Please do not edit manually
 //
 MetaModel::IncludeModule(MODULESROOT.'/core/main.php');

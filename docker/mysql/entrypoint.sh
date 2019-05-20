@@ -5,7 +5,7 @@ set -e
 . /utils.sh
 ################################################################################
 set_backup_perms
-<<<<<<< HEAD
+
 ################################################################################
 if [ "$1" = 'createsecret' ] || [ "$1" = 'readsecret' ]; then
   . /secret.sh
@@ -16,13 +16,6 @@ fi
 MYSQL_ROOT_PASSWORD=$(readsecret MYSQL_ROOT_PASSWORD)
 MYSQL_PASSWORD=$(readsecret MYSQL_PASSWORD)
 LDAP_PASSWORD=$(readsecret LDAP_PASSWORD)
-
-=======
-
-env MYSQL_ROOT_PASSWORD=$(readsecret MYSQL_PASSWORD)
-env MYSQL_PASSWORD=$(readsecret MYSQL_DATABASE)
-env LDAP_PASSWORD=$(readsecret LDAP_PASSWORD)
->>>>>>> 79032b8abf5915118813de20607fe77349b14764
 
 if [ "$1" = 'mysqld' ]; then
   docker-entrypoint.sh mysqld
