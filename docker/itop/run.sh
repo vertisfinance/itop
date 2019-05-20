@@ -20,6 +20,9 @@ mkdir -p /var/www/html/data /var/www/html/log
 chmod 444 /var/www/html/conf/production/config-itop.php
 chown -R www-data:www-data /var/www/html/conf/production /var/www/html/conf /var/www/html/env-production /var/www/html/data /var/www/html/log
 
+echo "auth_user = root" > /params
+echo "auth_pwd = $MYSQL_ROOT_PASSWORD" >> /params
+
 : "${APACHE_CONFDIR:=/etc/apache2}"
 : "${APACHE_ENVVARS:=$APACHE_CONFDIR/envvars}"
 if test -f "$APACHE_ENVVARS"; then

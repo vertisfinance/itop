@@ -57,7 +57,7 @@ $MySettings = array(
 
 	// date_and_time_format: Format for date and time display (per language)
 	//	default: array (
-	//		  'default' =>
+	//		  'default' => 
 	//		  array (
 	//		    'date' => 'Y-m-d',
 	//		    'time' => 'H:i:s',
@@ -65,7 +65,7 @@ $MySettings = array(
 	//		  ),
 	//		)
 	'date_and_time_format' => array (
-	  'default' =>
+	  'default' => 
 	  array (
 	    'date' => 'Y-m-d',
 	    'time' => 'H:i:s',
@@ -85,11 +85,19 @@ $MySettings = array(
 
 	'db_name' => getenv('MYSQL_DATABASE'),
 
+<<<<<<< HEAD
 	'db_pwd' => getenv('MYSQL_PASSWORD'),
 
 	'db_subname' => '',
 
 	'db_user' => getenv('MYSQL_USER'),
+=======
+	'db_pwd' => 'kacsa',
+
+	'db_subname' => '',
+
+	'db_user' => 'root',
+>>>>>>> 79032b8abf5915118813de20607fe77349b14764
 
 	// deadline_format: The format used for displaying "deadline" attributes: any string with the following placeholders: $date$, $difference$
 	//	default: '$difference$'
@@ -119,11 +127,19 @@ $MySettings = array(
 
 	// email_transport_smtp.host: host name or IP address (optional)
 	//	default: 'localhost'
+<<<<<<< HEAD
 	'email_transport_smtp.host' => getenv('EMAIL_HOST'),
 
 	// email_transport_smtp.port: port number (optional)
 	//	default: 25
 	'email_transport_smtp.port' => getenv('EMAIL_PORT'),
+=======
+	'email_transport_smtp.host' => 'mail.vertis.com',
+
+	// email_transport_smtp.port: port number (optional)
+	//	default: 25
+	'email_transport_smtp.port' => 25,
+>>>>>>> 79032b8abf5915118813de20607fe77349b14764
 
 	// email_validation_pattern: Regular expression to validate/detect the format of an eMail address
 	//	default: '[a-zA-Z0-9._&\'-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z0-9-]{2,}'
@@ -253,11 +269,19 @@ $MySettings = array(
  */
 $MyModuleSettings = array(
 	'authent-ldap' => array (
+<<<<<<< HEAD
 		'host' => getenv('DC_IP'),
 		'default_user' => getenv('LDAP_USER'),
 		'default_pwd' => getenv('LDAP_PASSWORD'),
 		'base_dn' => getenv('BASE_DN'),
 		'user_query' => getenv('USER_QUERY'),
+=======
+		'host' => '192.168.1.2',
+		'default_user' => 'vertis\\itop',
+		'default_pwd' => 'Sz1m4tsz4ty0r',
+		'base_dn' => 'DC=vertis,DC=local',
+		'user_query' => '(|(&(samaccountname=%1$s)(objectCategory=User))(&(userprincipalname=%1$s)(objectCategory=User)))',
+>>>>>>> 79032b8abf5915118813de20607fe77349b14764
 		'options' => array (
 		  17 => 3,
 		  8 => 0,
@@ -276,6 +300,16 @@ $MyModuleSettings = array(
 		'position' => 'relations',
 		'preview_max_width' => 290,
 	),
+<<<<<<< HEAD
+=======
+	'itop-backup' => array (
+		'mysql_bindir' => '',
+		'week_days' => 'monday, tuesday, wednesday, thursday, friday',
+		'time' => '13:40',
+		'retention_count' => 5,
+		'enabled' => true,
+	),
+>>>>>>> 79032b8abf5915118813de20607fe77349b14764
 );
 
 /**
