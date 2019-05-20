@@ -3,7 +3,7 @@
 
 SetupWebPage::AddModule(
 	__FILE__,
-	'itop-tickets/2.3.0',
+	'itop-tickets/2.6.1',
 	array(
 		// Identification
 		//
@@ -13,7 +13,7 @@ SetupWebPage::AddModule(
 		// Setup
 		//
 		'dependencies' => array(
-			'itop-config-mgmt/2.2.0',
+			'itop-config-mgmt/2.4.0',
 		),
 		'mandatory' => true,
 		'visible' => false,
@@ -70,4 +70,3 @@ class TicketsInstaller extends ModuleInstallerAPI
 		}
 	}
 }
-?>

@@ -28,11 +28,6 @@ RUN ln -sf /proc/self/fd/1 /var/log/apache2/error.log
 
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
-COPY docker/itop/php.ini /etc/php/7.0/apache2/
-COPY docker/itop/php.ini /etc/php/7.0/cli/
-COPY docker/itop/run.sh /etc/
-RUN cp etc/run.sh /
-
 RUN wget -O /itop.zip https://sourceforge.net/projects/itop/files/itop/2.6.1/iTop-2.6.1-4463.zip/download
 RUN unzip itop.zip -d /var/www/html
 RUN cp -r /var/www/html/web/* /var/www/html
@@ -41,13 +36,10 @@ RUN rm itop.zip && rm -rf /var/www/html/web
 COPY html/conf /var/www/html/conf
 COPY html/extensions /var/www/html/extensions
 COPY html/env-production /var/www/html/env-production
-RUN mkdir -p /var/www/html/data
-RUN mkdir -p /var/www/html/log
-COPY docker/itop/apache_conf/prod_000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY docker/itop/apache_conf/000-default.conf /etc/apache2/sites-available/000-default.conf
 
-RUN chmod 444 /var/www/html/conf/production/config-itop.php
-RUN chown -R www-data:www-data /var/www/html/conf/production
-RUN chown -R www-data:www-data /var/www/html/conf
-RUN chown -R www-data:www-data /var/www/html/env-production
-RUN chown -R www-data:www-data /var/www/html/data
-RUN chown -R www-data:www-data /var/www/html/log
+COPY docker/itop/php.ini /etc/php/7.0/apache2/
+COPY docker/itop/php.ini /etc/php/7.0/cli/
+COPY docker/itop/run.sh /
+COPY docker/utils.sh /
+COPY docker/secret.sh /

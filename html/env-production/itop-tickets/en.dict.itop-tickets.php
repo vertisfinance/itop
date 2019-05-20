@@ -1,27 +1,24 @@
 <?php
-// Copyright (C) 2010-2014 Combodo SARL
-//
-//   This file is part of iTop.
-//
-//   iTop is free software; you can redistribute it and/or modify	
-//   it under the terms of the GNU Affero General Public License as published by
-//   the Free Software Foundation, either version 3 of the License, or
-//   (at your option) any later version.
-//
-//   iTop is distributed in the hope that it will be useful,
-//   but WITHOUT ANY WARRANTY; without even the implied warranty of
-//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//   GNU Affero General Public License for more details.
-//
-//   You should have received a copy of the GNU Affero General Public License
-//   along with iTop. If not, see <http://www.gnu.org/licenses/>
-
-
 /**
  * Localized data
  *
- * @copyright   Copyright (C) 2010-2012 Combodo SARL
- * @license     http://opensource.org/licenses/AGPL-3.0
+ * @copyright Copyright (C) 2010-2018 Combodo SARL
+ * @license	http://opensource.org/licenses/AGPL-3.0
+ *
+ * This file is part of iTop.
+ *
+ * iTop is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * iTop is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with iTop. If not, see <http://www.gnu.org/licenses/>
  */
 
 // Dictionnay conventions
@@ -74,14 +71,14 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:Ticket/Attribute:close_date+' => '',
 	'Class:Ticket/Attribute:private_log' => 'Private log',
 	'Class:Ticket/Attribute:private_log+' => '',
-	'Class:Ticket/Attribute:contacts_list' => 'Contacts',
+    'Class:Ticket/Attribute:contacts_list' => 'Contacts',
 	'Class:Ticket/Attribute:contacts_list+' => 'All the contacts linked to this ticket',
 	'Class:Ticket/Attribute:functionalcis_list' => 'CIs',
 	'Class:Ticket/Attribute:functionalcis_list+' => 'All the configuration items impacted by this ticket. Items marked as "Computed" have been automatically marked as impacted. Items marked as "Not impacted" are excluded from the impact.',
 	'Class:Ticket/Attribute:workorders_list' => 'Work orders',
 	'Class:Ticket/Attribute:workorders_list+' => 'All the work orders for this ticket',
-	'Class:Ticket/Attribute:finalclass' => 'Type',
-	'Class:Ticket/Attribute:finalclass+' => '',
+	'Class:Ticket/Attribute:finalclass' => 'Ticket sub-class',
+	'Class:Ticket/Attribute:finalclass+' => 'Name of the final class',
 	'Class:Ticket/Attribute:operational_status' => 'Operational status',
 	'Class:Ticket/Attribute:operational_status+' => 'Computed after the detailed status',
 	'Class:Ticket/Attribute:operational_status/Value:ongoing' => 'Ongoing',
@@ -128,6 +125,8 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:lnkFunctionalCIToTicket/Attribute:ticket_id+' => '',
 	'Class:lnkFunctionalCIToTicket/Attribute:ticket_ref' => 'Ref',
 	'Class:lnkFunctionalCIToTicket/Attribute:ticket_ref+' => '',
+	'Class:lnkFunctionalCIToTicket/Attribute:ticket_title' => 'Ticket title',
+	'Class:lnkFunctionalCIToTicket/Attribute:ticket_title+' => '',
 	'Class:lnkFunctionalCIToTicket/Attribute:functionalci_id' => 'CI',
 	'Class:lnkFunctionalCIToTicket/Attribute:functionalci_id+' => '',
 	'Class:lnkFunctionalCIToTicket/Attribute:functionalci_name' => 'CI Name',
@@ -234,19 +233,32 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:cmdbAbstractObject/Method:Copy/Param:1+' => 'The field to set, in the current object',
 	'Class:cmdbAbstractObject/Method:Copy/Param:2' => 'Source Field',
 	'Class:cmdbAbstractObject/Method:Copy/Param:2+' => 'The field to get the value from, in the current object',
+	'Class:cmdbAbstractObject/Method:ApplyStimulus' => 'ApplyStimulus',
+	'Class:cmdbAbstractObject/Method:ApplyStimulus+' => 'Apply the specified stimulus to the current object',
+	'Class:cmdbAbstractObject/Method:ApplyStimulus/Param:1' => 'Stimulus code',
+	'Class:cmdbAbstractObject/Method:ApplyStimulus/Param:1+' => 'A valid stimulus code for the current class',
 	'Class:ResponseTicketTTO/Interface:iMetricComputer' => 'Time To Own',
 	'Class:ResponseTicketTTO/Interface:iMetricComputer+' => 'Goal based on a SLT of type TTO',
 	'Class:ResponseTicketTTR/Interface:iMetricComputer' => 'Time To Resolve',
 	'Class:ResponseTicketTTR/Interface:iMetricComputer+' => 'Goal based on a SLT of type TTR',
 
 	'portal:itop-portal' => 'Standard portal', // This is the portal name that will be displayed in portal dispatcher (eg. URL in menus)
-	'Page:DefaultTitle' => 'iTop - User portal',
+	'Page:DefaultTitle' => '%1$s - User portal',
 	'Brick:Portal:UserProfile:Title' => 'My profile',
 	'Brick:Portal:NewRequest:Title' => 'New request',
 	'Brick:Portal:NewRequest:Title+' => '<p>Need help?</p><p>Pick from the services catalog and submit your request to our support teams.</p>',
 	'Brick:Portal:OngoingRequests:Title' => 'Ongoing requests',
 	'Brick:Portal:OngoingRequests:Title+' => '<p>Follow up with your ongoing requests.</p><p>Check the progress, add comments, attach documents, acknowledge the solution.</p>',
-	'Brick:Portal:OngoingRequests:Tab:OnGoing' => 'On going',
+	'Brick:Portal:OngoingRequests:Tab:OnGoing' => 'Open',
 	'Brick:Portal:OngoingRequests:Tab:Resolved' => 'Resolved',
 	'Brick:Portal:ClosedRequests:Title' => 'Closed requests',
+));
+
+//
+// Class: lnkFunctionalCIToTicket
+//
+
+Dict::Add('EN US', 'English', 'English', array(
+	'Class:lnkFunctionalCIToTicket/Attribute:ticket_title' => 'Ticket title',
+	'Class:lnkFunctionalCIToTicket/Attribute:ticket_title+' => '',
 ));

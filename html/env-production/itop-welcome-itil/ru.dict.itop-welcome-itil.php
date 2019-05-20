@@ -1,26 +1,13 @@
 <?php
-// Copyright (C) 2010-2014 Combodo SARL
-//
-//   This file is part of iTop.
-//
-//   iTop is free software; you can redistribute it and/or modify	
-//   it under the terms of the GNU Affero General Public License as published by
-//   the Free Software Foundation, either version 3 of the License, or
-//   (at your option) any later version.
-//
-//   iTop is distributed in the hope that it will be useful,
-//   but WITHOUT ANY WARRANTY; without even the implied warranty of
-//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//   GNU Affero General Public License for more details.
-//
-//   You should have received a copy of the GNU Affero General Public License
-//   along with iTop. If not, see <http://www.gnu.org/licenses/>
-
 /**
- * @copyright   Copyright (C) 2010-2014 Combodo SARL
+ * Локализация интерфейса Combodo iTop подготовлена сообществом iTop по-русски http://community.itop-itsm.ru.
+ *
+ * @author      Vladimir Kunin <v.b.kunin@gmail.com>
+ * @link        http://community.itop-itsm.ru  iTop Russian Community
+ * @link        https://github.com/itop-itsm-ru/itop-rus
  * @license     http://opensource.org/licenses/AGPL-3.0
+ *
  */
-
 Dict::Add('RU RU', 'Russian', 'Русский', array(
 	'Menu:DataSources' => 'Синхронизация данных',
 	'Menu:DataSources+' => 'Синхронизация данных',
@@ -28,9 +15,9 @@ Dict::Add('RU RU', 'Russian', 'Русский', array(
 	'Menu:WelcomeMenu+' => 'Добро пожаловать в iTop',
 	'Menu:WelcomeMenuPage' => 'Добро пожаловать',
 	'Menu:WelcomeMenuPage+' => 'Добро пожаловать в iTop',
-	'Menu:AdminTools' => 'Инструменты админа',
-	'Menu:AdminTools+' => 'Административные инструменты',
-	'Menu:AdminTools?' => 'Инструменты доступны только для пользователей, имеющих профиль администратора',
+	'Menu:AdminTools' => 'Инструменты администратора',
+	'Menu:AdminTools+' => 'Инструменты администратора',
+	'Menu:AdminTools?' => 'Инструменты доступны только для пользователей c правами администратора',
 	'Menu:DataModelMenu' => 'Модель данных',
 	'Menu:DataModelMenu+' => 'Обзор модели данных',
 	'Menu:ExportMenu' => 'Экспорт',
@@ -43,16 +30,43 @@ Dict::Add('RU RU', 'Russian', 'Русский', array(
 	'Menu:RunQueriesMenu' => 'Выполнение запросов',
 	'Menu:RunQueriesMenu+' => 'Выполнение любых запросов',
 	'Menu:QueryMenu' => 'Книга запросов',
-	'Menu:QueryMenu+' => 'Query phrasebook',
+	'Menu:QueryMenu+' => 'Книга запросов',
 	'Menu:UniversalSearchMenu' => 'Универсальный поиск',
 	'Menu:UniversalSearchMenu+' => 'Поиск чего угодно...',
 	'Menu:UserManagementMenu' => 'Управление пользователями',
 	'Menu:UserManagementMenu+' => 'Управление пользователями',
-	'Menu:ProfilesMenu' => 'Профили',
-	'Menu:ProfilesMenu+' => 'Профили',
-	'Menu:ProfilesMenu:Title' => 'Профили',
+	'Menu:ProfilesMenu' => 'Профили пользователей',
+	'Menu:ProfilesMenu+' => 'Профили пользователей',
+	'Menu:ProfilesMenu:Title' => 'Профили пользователей',
 	'Menu:UserAccountsMenu' => 'Учетные записи пользователей',
 	'Menu:UserAccountsMenu+' => 'Учетные записи пользователей',
-	'Menu:UserAccountsMenu:Title' => 'Учетные записи пользователей',	
+	'Menu:UserAccountsMenu:Title' => 'Учетные записи пользователей',
 	'Menu:MyShortcuts' => 'Избранное',
+));
+
+//
+// Class: AbstractResource
+//
+
+Dict::Add('RU RU', 'Russian', 'Русский', array(
+	'Class:AbstractResource' => 'Ресурс',
+	'Class:AbstractResource+' => '',
+));
+
+//
+// Class: ResourceAdminMenu
+//
+
+Dict::Add('RU RU', 'Russian', 'Русский', array(
+	'Class:ResourceAdminMenu' => 'Меню Инструменты администратора',
+	'Class:ResourceAdminMenu+' => '',
+));
+
+//
+// Class: ResourceRunQueriesMenu
+//
+
+Dict::Add('RU RU', 'Russian', 'Русский', array(
+	'Class:ResourceRunQueriesMenu' => 'Меню Выполнение запросов',
+	'Class:ResourceRunQueriesMenu+' => '~~',
 ));

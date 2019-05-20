@@ -1,5 +1,5 @@
 <?php
-// Copyright (C) 2010-2016 Combodo SARL
+// Copyright (C) 2010-2017 Combodo SARL
 //
 //   This file is part of iTop.
 //
@@ -20,6 +20,10 @@ define('ATTACHMENT_DOWNLOAD_URL', 'pages/ajax.document.php?operation=download_do
 
 class AttachmentPlugIn implements iApplicationUIExtension, iApplicationObjectExtension
 {
+    const ENUM_GUI_ALL = 'all';
+    const ENUM_GUI_BACKOFFICE = 'backoffice';
+    const ENUM_GUI_PORTALS = 'portals';
+
 	protected static $m_bIsModified = false;
 
 	public function OnDisplayProperties($oObject, WebPage $oPage, $bEditMode = false)
@@ -50,16 +54,42 @@ class AttachmentPlugIn implements iApplicationUIExtension, iApplicationObjectExt
 		}
 	}
 
-	protected function GetMaxUpload()
+	/**
+	 * Returns the value of "upload_max_filesize" in bytes if upload allowed, false otherwise.
+	 *
+	 * @since 2.6.1
+	 *
+	 * @return number|boolean
+	 */
+	public static function GetMaxUploadSize()
 	{
-		$iMaxUpload = ini_get('upload_max_filesize');
+		$sMaxUpload = ini_get('upload_max_filesize');
+		if (!$sMaxUpload)
+		{
+			$result = false;
+		}
+		else
+		{
+			$result = utils::ConvertToBytes($sMaxUpload);
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Returns the max. file upload size allowed as a dictionary entry
+	 *
+	 * @return string
+	 */
+	public static function GetMaxUpload()
+	{
+		$iMaxUpload = static::GetMaxUploadSize();
 		if (!$iMaxUpload)
 		{
 			$sRet = Dict::S('Attachments:UploadNotAllowedOnThisSystem');
 		}
 		else
 		{
-			$iMaxUpload = utils::ConvertToBytes($iMaxUpload);
 			if ($iMaxUpload > 1024*1024*1024)
 			{
 				$sRet = Dict::Format('Attachment:Max_Go', sprintf('%0.2f', $iMaxUpload/(1024*1024*1024)));
@@ -193,19 +223,38 @@ class AttachmentPlugIn implements iApplicationUIExtension, iApplicationObjectExt
 		$this->m_bDeleteEnabled = $bEnabled;
 	}
 
-	public function DisplayAttachments($oObject, WebPage $oPage, $bEditMode = false)
+	/**
+	 * @param \DBObject $oObject
+	 * @param \WebPage $oPage
+	 * @param bool $bEditMode
+	 *
+	 * @throws \CoreCannotSaveObjectException
+	 * @throws \CoreException
+	 * @throws \CoreUnexpectedValue
+	 * @throws \MissingQueryArgument
+	 * @throws \MySQLException
+	 * @throws \MySQLHasGoneAwayException
+	 * @throws \OQLException
+	 */
+	public function DisplayAttachments(DBObject $oObject, WebPage $oPage, $bEditMode = false)
 	{
 		// Exit here if the class is not allowed
 		if (!$this->IsTargetObject($oObject)) return;
 		
 		$oSearch = DBObjectSearch::FromOQL("SELECT Attachment WHERE item_class = :class AND item_id = :item_id");
 		$oSet = new DBObjectSet($oSearch, array(), array('class' => get_class($oObject), 'item_id' => $oObject->GetKey()));
+
+		$iTransactionId = $oPage->GetTransactionId();
+		$sTempId = utils::GetUploadTempId($iTransactionId);
+		$oSearchTemp = DBObjectSearch::FromOQL("SELECT Attachment WHERE temp_id = :temp_id");
+		$oSetTemp = new DBObjectSet($oSearchTemp, array(), array('temp_id' => $sTempId));
+
 		if ($this->GetAttachmentsPosition() == 'relations')
 		{
-			$sTitle = ($oSet->Count() > 0)? Dict::Format('Attachments:TabTitle_Count', $oSet->Count()) : Dict::S('Attachments:EmptyTabTitle');
+			$iCount = $oSet->Count() + $oSetTemp->Count();
+			$sTitle = ($iCount > 0)? Dict::Format('Attachments:TabTitle_Count', $iCount) : Dict::S('Attachments:EmptyTabTitle');
 			$oPage->SetCurrentTab($sTitle);
 		}
-		$sMaxWidth = MetaModel::GetModuleSetting('itop-attachment', 'inline_image_max_width', '450px');
 		$oPage->add_style(
 <<<EOF
 .attachment {
@@ -243,13 +292,10 @@ EOF
 		$oPage->add('<fieldset>');
 		$oPage->add('<legend>'.Dict::S('Attachments:FieldsetTitle').'</legend>');
 
-		if ($bEditMode)
+		if ($bEditMode && !static::IsReadonlyState($oObject, $oObject->GetState(), static::ENUM_GUI_BACKOFFICE) )
 		{
 			$sIsDeleteEnabled = $this->m_bDeleteEnabled ? 'true' : 'false';
-			$iTransactionId = $oPage->GetTransactionId();
 			$sClass = get_class($oObject);
-			$iObjectId = $oObject->Getkey();
-			$sTempId = session_id().'_'.$iTransactionId;
 			$sDeleteBtn = Dict::S('Attachments:DeleteBtn');
 			$oPage->add_script(
 <<<EOF
@@ -273,15 +319,16 @@ EOF
 			$oPage->add('<span id="attachments">');
 			while ($oAttachment = $oSet->Fetch())
 			{
-				$iAttId = $oAttachment->GetKey();
-				$oDoc = $oAttachment->Get('contents');
-				$sFileName = htmlentities($oDoc->GetFileName(), ENT_QUOTES, 'UTF-8');
-				$sIcon = utils::GetAbsoluteUrlAppRoot().AttachmentPlugIn::GetFileIcon($sFileName);
-				$sPreview = $oDoc->IsPreviewAvailable() ? 'true' : 'false';
-				$sDownloadLink = utils::GetAbsoluteUrlAppRoot().ATTACHMENT_DOWNLOAD_URL.$iAttId;
-				$oPage->add('<div class="attachment" id="display_attachment_' . $iAttId . '"><a data-preview="' . $sPreview . '" href="' . $sDownloadLink . '"><img src="' . $sIcon . '"><br/>' . $sFileName . '<input id="attachment_' . $iAttId . '" type="hidden" name="attachments[]" value="' . $iAttId . '"/></a><br/>&nbsp;<input id="btn_remove_' . $iAttId . '" type="button" class="btn_hidden" value="' . Dict::S('Attachments:DeleteBtn') . '" onClick="RemoveAttachment(' . $iAttId . ');"/>&nbsp;</div>');
+				$this->DisplayOneAttachment($oPage, $oAttachment);
 			}
-			
+
+			// Display Temporary attachments
+			while ($oAttachment = $oSetTemp->Fetch())
+			{
+				$this->DisplayOneAttachment($oPage, $oAttachment, true);
+			}
+
+
 			// Suggested attachments are listed here but treated as temporary
 			$aDefault = utils::ReadParam('default', array(), false, 'raw_data');
 			if (array_key_exists('suggested_attachments', $aDefault))
@@ -301,25 +348,21 @@ EOF
 						$oAttachment->Set('temp_id', $sTempId);
 						$oAttachment->DBUpdate();
 						// Display them
-						$iAttId = $oAttachment->GetKey();
-						$oDoc = $oAttachment->Get('contents');
-						$sFileName = htmlentities($oDoc->GetFileName(), ENT_QUOTES, 'UTF-8');
-						$sIcon = utils::GetAbsoluteUrlAppRoot().AttachmentPlugIn::GetFileIcon($sFileName);
-						$sDownloadLink = utils::GetAbsoluteUrlAppRoot().ATTACHMENT_DOWNLOAD_URL.$iAttId;
-						$sPreview = $oDoc->IsPreviewAvailable() ? 'true' : 'false';
-						$oPage->add('<div class="attachment" id="display_attachment_'.$iAttId.'"><a data-preview="'.$sPreview.'" href="'.$sDownloadLink.'"><img src="'.$sIcon.'"><br/>'.$sFileName.'<input id="attachment_'.$iAttId.'" type="hidden" name="attachments[]" value="'.$iAttId.'"/></a><br/>&nbsp;<input id="btn_remove_'.$iAttId.'" type="button" class="btn_hidden" value="Delete" onClick="RemoveAttachment('.$iAttId.');"/>&nbsp;</div>');
-						$oPage->add_ready_script("$('#attachment_plugin').trigger('add_attachment', [$iAttId, '".addslashes($sFileName)."', false /* not an line image */]);");
+						$this->DisplayOneAttachment($oPage, $oAttachment, true);
 					}
 				}
 			}
-			
-			$oPage->add('</span>');			
-			$oPage->add('<div style="clear:both"></div>');			
-			$sMaxUpload = $this->GetMaxUpload();
-			$oPage->p(Dict::S('Attachments:AddAttachment').'<input type="file" name="file" id="file"><span style="display:none;" id="attachment_loading">&nbsp;<img src="../images/indicator.gif"></span> '.$sMaxUpload);
+
+			$oPage->add('</span>');
+			$oPage->add('<div style="clear:both"></div>');
+			$iMaxUploadInBytes = $this->GetMaxUploadSize();
+			$sMaxUploadLabel = $this->GetMaxUpload();
+			$sFileTooBigLabel = Dict::Format('Attachments:Error:FileTooLarge', $sMaxUploadLabel);
+			$sFileTooBigLabelForJS = addslashes($sFileTooBigLabel);
+			$oPage->p(Dict::S('Attachments:AddAttachment').'<input type="file" name="file" id="file"><span style="display:none;" id="attachment_loading">&nbsp;<img src="../images/indicator.gif"></span> '.$sMaxUploadLabel);
 			
 			$oPage->add_linked_script(utils::GetAbsoluteUrlAppRoot().'js/jquery.iframe-transport.js');
-			$oPage->add_linked_script(utils::GetAbsoluteUrlAppRoot().'js/jquery.fileupload.js');		
+			$oPage->add_linked_script(utils::GetAbsoluteUrlAppRoot().'js/jquery.fileupload.js');
 			
 			$sDownloadLink = utils::GetAbsoluteUrlAppRoot().ATTACHMENT_DOWNLOAD_URL;		
 			$oPage->add_ready_script(
@@ -348,6 +391,21 @@ EOF
 				}
 			}
         },
+	    send: function(e, data){
+	        // Don't send attachment if size is greater than PHP post_max_size, otherwise it will break the request and all its parameters (\$_REQUEST, \$_POST, ...)
+	        // Note: We loop on the files as the data structures is an array but in this case, we only upload 1 file at a time.
+	        var iTotalSizeInBytes = 0;
+	        for(var i = 0; i < data.files.length; i++)
+	        {
+	            iTotalSizeInBytes += data.files[i].size;
+	        }
+	        
+	        if(iTotalSizeInBytes > $iMaxUploadInBytes)
+	        {
+	            alert('$sFileTooBigLabelForJS');
+		        return false;
+		    }
+	    },
         start: function() {
         	$('#attachment_loading').show();
 		},
@@ -472,8 +530,8 @@ EOF
 			// Leave silently if there is no trace of the attachment form
 			return;
 		}
-		$iTransactionId = utils::ReadParam('transaction_id', null);
-		if (!is_null($iTransactionId))
+		$sTransactionId = utils::ReadParam('transaction_id', null, false, 'transaction_id');
+		if (!is_null($sTransactionId))
 		{
 			$aActions = array();
 			$aAttachmentIds = utils::ReadParam('attachments', array());
@@ -492,8 +550,8 @@ EOF
 				}
 			}			
 
-			// Attach new (temporary) attachements
-			$sTempId = session_id().'_'.$iTransactionId;
+			// Attach new (temporary) attachments
+			$sTempId = utils::GetUploadTempId($sTransactionId);
 			// The object is being created from a form, check if there are pending attachments
 			// for this object, but deleting the "new" ones that were already removed from the form
 			$sOQL = 'SELECT Attachment WHERE temp_id = :temp_id';
@@ -526,6 +584,21 @@ EOF
 				}
 				self::$m_bIsModified = true;
 			}
+		}
+	}
+
+	public static function CopyAttachments($oObject, $sTransactionId)
+	{
+		$oSearch = DBObjectSearch::FromOQL("SELECT Attachment WHERE item_class = :class AND item_id = :item_id");
+		$oSet = new DBObjectSet($oSearch, array(), array('class' => get_class($oObject), 'item_id' => $oObject->GetKey()));
+		// Attach new (temporary) attachments
+		$sTempId = utils::GetUploadTempId($sTransactionId);
+		while ($oAttachment = $oSet->Fetch())
+		{
+			$oTempAttachment = clone $oAttachment;
+			$oTempAttachment->Set('item_id', null);
+			$oTempAttachment->Set('temp_id', $sTempId);
+			$oTempAttachment->DBInsert();
 		}
 	}
 	
@@ -622,7 +695,7 @@ EOF
 		}
 		$oMyChangeOp->Set("objclass", get_class($oTargetObject));
 		$oMyChangeOp->Set("objkey", $oTargetObject->GetKey());
-		$iId = $oMyChangeOp->DBInsertNoReload();
+		$oMyChangeOp->DBInsertNoReload();
 	}
 
 	/////////////////////////////////////////////////////////////////////////
@@ -642,7 +715,91 @@ EOF
 			$oChangeOp->Set('filename', $sFileName);
 		}
 		return $oChangeOp;
-	}	
+	}
+
+	/////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Returns if Attachments should be readonly for $oObject in the $sState state for the $sGUI GUI
+	 *
+	 * @param DBObject $oObject
+	 * @param string $sState
+	 * @param string $sGUI
+	 *
+	 * @return bool
+	 * @throws \CoreException
+	 */
+    public static function IsReadonlyState(DBObject $oObject, $sState, $sGUI = self::ENUM_GUI_ALL)
+    {
+        $aParamDefaultValue = array(
+            static::ENUM_GUI_ALL => array(
+                'Ticket' => array('closed')
+            )
+        );
+
+        $bReadonly = false;
+        $sClass = get_class($oObject);
+        $aReadonlyStatus = MetaModel::GetModuleSetting('itop-attachments', 'readonly_states', $aParamDefaultValue);
+        if(!empty($aReadonlyStatus))
+        {
+            // Merging GUIs entries
+            $aEntries = array();
+            // - All
+            if( array_key_exists(static::ENUM_GUI_ALL, $aReadonlyStatus) )
+            {
+                $aEntries = array_merge_recursive($aEntries, $aReadonlyStatus[static::ENUM_GUI_ALL]);
+            }
+            // - Backoffice & Portals
+            foreach( array(static::ENUM_GUI_BACKOFFICE, static::ENUM_GUI_PORTALS) as $sEnumGUI)
+            {
+                if( in_array($sGUI, array(static::ENUM_GUI_ALL, $sEnumGUI)) )
+                {
+                    if( array_key_exists($sEnumGUI, $aReadonlyStatus) )
+                    {
+                        $aEntries = array_merge_recursive($aEntries, $aReadonlyStatus[$sEnumGUI]);
+                    }
+                }
+            }
+
+            $aParentClasses = array_reverse( MetaModel::EnumParentClasses($sClass, ENUM_PARENT_CLASSES_ALL) );
+            foreach($aParentClasses as $sParentClass)
+            {
+                if( array_key_exists($sParentClass, $aEntries) )
+                {
+                    // If we found an ancestor of the object's class, we stop looking event if the current state is not specified
+                    if( in_array($oObject->GetState(), $aEntries[$sParentClass]) )
+                    {
+                        $bReadonly = true;
+                    }
+                    break;
+                }
+            }
+        }
+
+        return $bReadonly;
+    }
+
+	/**
+	 * @param \WebPage $oPage
+	 * @param $oAttachment
+	 * @param bool $bIsTemporary
+	 *
+	 * @throws \Exception
+	 */
+	protected function DisplayOneAttachment(WebPage $oPage, $oAttachment, $bIsTemporary = false)
+	{
+		$iAttId = $oAttachment->GetKey();
+		$oDoc = $oAttachment->Get('contents');
+		$sFileName = htmlentities($oDoc->GetFileName(), ENT_QUOTES, 'UTF-8');
+		$sIcon = utils::GetAbsoluteUrlAppRoot().AttachmentPlugIn::GetFileIcon($sFileName);
+		$sDownloadLink = utils::GetAbsoluteUrlAppRoot().ATTACHMENT_DOWNLOAD_URL.$iAttId;
+		$sPreview = $oDoc->IsPreviewAvailable() ? 'true' : 'false';
+		$oPage->add('<div class="attachment" id="display_attachment_'.$iAttId.'"><a data-preview="'.$sPreview.'" href="'.$sDownloadLink.'"><img src="'.$sIcon.'"><br/>'.$sFileName.'<input id="attachment_'.$iAttId.'" type="hidden" name="attachments[]" value="'.$iAttId.'"/></a><br/>&nbsp;<input id="btn_remove_'.$iAttId.'" type="button" class="btn_hidden" value="'.Dict::S('Attachments:DeleteBtn').'" onClick="RemoveAttachment('.$iAttId.');"/>&nbsp;</div>');
+		if ($bIsTemporary)
+		{
+			$oPage->add_ready_script("$('#attachment_plugin').trigger('add_attachment', [$iAttId, '".addslashes($sFileName)."', false /* not an line image */]);");
+		}
+	}
 }
 
 /**
@@ -684,9 +841,6 @@ class CMDBChangeOpAttachmentAdded extends CMDBChangeOp
 	public function GetDescription()
 	{
 		// Temporary, until we change the options of GetDescription() -needs a more global revision
-		$bIsHtml = true;
-		
-		$sResult = '';
 		$sTargetObjectClass = 'Attachment';
 		$iTargetObjectKey = $this->Get('attachment_id');
 		$sFilename = htmlentities($this->Get('filename'), ENT_QUOTES, 'UTF-8');
@@ -739,8 +893,6 @@ class CMDBChangeOpAttachmentRemoved extends CMDBChangeOp
 	public function GetDescription()
 	{
 		// Temporary, until we change the options of GetDescription() -needs a more global revision
-		$bIsHtml = true;
-
 		$sResult = Dict::Format('Attachments:History_File_Removed', '<span class="attachment-history-deleted">'.htmlentities($this->Get('filename'), ENT_QUOTES, 'UTF-8').'</span>');
 		return $sResult;
 	}

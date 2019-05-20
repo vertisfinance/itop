@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2">
+<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.6">
   <classes>
     <class id="Organization">
       <fields>
@@ -65,6 +65,11 @@
         <reconciliation>
           <attributes>
             <attribute id="name"/>
+            <attribute id="org_id"/>
+            <attribute id="organization_name"/>
+            <attribute id="provider_id"/>
+            <attribute id="provider_name"/>
+            <attribute id="finalclass"/>
           </attributes>
         </reconciliation>
       </properties>
@@ -172,9 +177,37 @@
           <display_style>list</display_style>
         </field>
       </fields>
-      <methods/>
+      <methods>
+        <method id="PrefillSearchForm">
+        <code>
+              <![CDATA[
+public function PrefillSearchForm(&$aContextParam)
+{
+  if($aContextParam['dest_class'] == 'Service' || is_subclass_of($aContextParam['dest_class'], 'Service'))
+  {
+    if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'org_id') && !empty($aContextParam['source_obj']->Get('provider_id')))
+    {
+        $aContextParam['filter']->ResetCondition();
+        $aContextParam['filter']->AddCondition('org_id', $aContextParam['source_obj']->Get('provider_id'));
+    }
+  }
+  elseif (($aContextParam['dest_class'] == 'Contact' || is_subclass_of($aContextParam['dest_class'], 'Contact'))
+          || ($aContextParam['dest_class'] == 'Document' || is_subclass_of($aContextParam['dest_class'], 'Document')))
+  {
+    if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'org_id') && !empty($aContextParam['source_obj']->Get('provider_id')) && !empty($aContextParam['source_obj']->Get('org_id')))
+    {
+      $aContextParam['filter']->ResetCondition();
+      $aOrgIds = array( $aContextParam['source_obj']->Get('provider_id'),
+                        $aContextParam['source_obj']->Get('org_id'));
+      $aContextParam['filter']->AddCondition('org_id', $aOrgIds , 'IN');
+    }
+  }
+}
+]]>
+          </code>
+        </method>
+      </methods>
       <presentation>
-        <parent>Typology</parent>
         <details>
           <items>
             <item id="name">
@@ -221,6 +254,19 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="org_id">
+              <rank>20</rank>
+            </item>
+            <item id="provider_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -355,6 +401,10 @@
         <reconciliation>
           <attributes>
             <attribute id="name"/>
+            <attribute id="org_id"/>
+            <attribute id="organization_name"/>
+            <attribute id="provider_id"/>
+            <attribute id="provider_name"/>
           </attributes>
         </reconciliation>
       </properties>
@@ -499,6 +549,10 @@
         <reconciliation>
           <attributes>
             <attribute id="name"/>
+            <attribute id="org_id"/>
+            <attribute id="organization_name"/>
+            <attribute id="provider_id"/>
+            <attribute id="provider_name"/>
           </attributes>
         </reconciliation>
       </properties>
@@ -923,6 +977,14 @@
           <default_value/>
           <is_null_allowed>false</is_null_allowed>
         </field>
+        <field id="icon" xsi:type="AttributeImage">
+          <display_max_width>96</display_max_width>
+          <display_max_height>96</display_max_height>
+          <storage_max_width>256</storage_max_width>
+          <storage_max_height>256</storage_max_height>
+          <default_image/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
         <field id="services_list" xsi:type="AttributeLinkedSet">
           <linked_class>Service</linked_class>
           <ext_key_to_me>servicefamily_id</ext_key_to_me>
@@ -939,11 +1001,21 @@
             <item id="name">
               <rank>10</rank>
             </item>
+            <item id="icon">
+              <rank>15</rank>
+            </item>
             <item id="services_list">
               <rank>20</rank>
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -1042,6 +1114,14 @@
           <is_null_allowed>true</is_null_allowed>
           <display_style>list</display_style>
         </field>
+        <field id="icon" xsi:type="AttributeImage">
+          <display_max_width>96</display_max_width>
+          <display_max_height>96</display_max_height>
+          <storage_max_width>256</storage_max_width>
+          <storage_max_height>256</storage_max_height>
+          <default_image/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
         <field id="customercontracts_list" xsi:type="AttributeLinkedSetIndirect">
           <linked_class>lnkCustomerContractToService</linked_class>
           <ext_key_to_me>service_id</ext_key_to_me>
@@ -1094,6 +1174,9 @@
             <item id="status">
               <rank>50</rank>
             </item>
+            <item id="icon">
+              <rank>55</rank>
+            </item>
             <item id="servicesubcategories_list">
               <rank>60</rank>
             </item>
@@ -1114,6 +1197,19 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="org_id">
+              <rank>30</rank>
+            </item>
+            <item id="servicefamily_id">
+              <rank>40</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -1410,6 +1506,19 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="service_id">
+              <rank>20</rank>
+            </item>
+            <item id="service_org_id">
+              <rank>60</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">

@@ -9,6 +9,10 @@ start_update:
 	docker-compose exec itop chmod 777 /var/www/html/
 	docker-compose exec itop mv /var/www/html/conf/production/config-itop.php /var/www/html/conf/production/old-config-itop.php
 
+end_update:
+	docker-compose up -d itop
+	docker-compose exec itop mv /var/www/html/conf/production/old-config-itop.php /var/www/html/conf/production/config-itop.php
+
 
 certificates:
 	docker-compose run --rm -u $(usr) -w /src/.files postgres ./create_dev_certificates.sh
@@ -21,48 +25,21 @@ build:
 	$(devcompose) docker-compose build
 	$(devcompose) docker-compose down
 
-build_fast:
-	docker-compose build
-	docker-compose down
-
-node_shell:
-	docker-compose run --rm -u "$(usr)" build_js bash
-
-main_shell:
-	docker-compose run --rm -u "$(usr)" postgres bash
-
-collectstatic:
-	docker-compose run --rm django collectstatic
-
-bash:
-	docker-compose run --rm django bash $(shell id -u)
-
 .PHONY: backup
 backup:
-	docker-compose run --rm backup backup
+	docker-compose run --rm curator backup
 
 restore:
 	docker-compose down
-	docker-compose run --rm backup restore
-
-makemessages:
-	docker-compose run --rm django makemessages
-
-makemigrations:
-	docker-compose run --rm django makemigrations
-
-shell_plus:
-	docker-compose run --rm django django-admin shell_plus
-
-migrate:
-	docker-compose run --rm django migrate
+	docker-compose run --rm curator restore
+	docker-compose down
 
 createsecret:
-	@docker-compose run --rm -u "$(usr)" -v "$(CURDIR):/project" \
-	  postgres createsecret
+	@docker-compose run --rm -v "$(CURDIR):/project" \
+	  mysql createsecret
 
 readsecret:
-	@docker-compose run -T --rm -u "$(usr)" postgres readsecret
+	@docker-compose run -T --rm mysql readsecret
 
 git_pull:
 	git pull

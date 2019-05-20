@@ -3,7 +3,7 @@
 
 SetupWebPage::AddModule(
 	__FILE__, // Path to the current file, all other file names are relative to the directory containing this file
-	'itop-backup/2.2.0',
+	'itop-backup/2.6.1',
 	array(
 		// Identification
 		//
@@ -21,7 +21,7 @@ SetupWebPage::AddModule(
 		//
 		'datamodel' => array(
 			'main.itop-backup.php',
-			//'model.itop-backup.php',
+			'model.itop-backup.php',
 		),
 		'webservice' => array(
 			//'webservices.itop-backup.php',
@@ -52,9 +52,8 @@ SetupWebPage::AddModule(
 			//'file_name_format' => '__DB__-%Y-%m-%d_%H_%M',
 			'retention_count' => 5, 
 			'enabled' => true,
-			'debug' => false
+			'itop_root' => '',
+			'itop_backup_incident' => '',
 		),
 	)
 );
-
-?>

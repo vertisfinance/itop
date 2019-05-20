@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.3">
+<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.6">
   <classes>
     <class id="Organization" _delta="define">
       <parent>cmdbAbstractObject</parent>
@@ -7,7 +7,7 @@
         <comment><![CDATA[/**
  * Persistent classes for a CMDB
  *
- * @copyright   Copyright (C) 2010-2012 Combodo SARL
+ * @copyright   Copyright (C) 2010-2017 Combodo SARL
  * @license     http://opensource.org/licenses/AGPL-3.0
  */]]></comment>
         <category>bizmodel,searchable,structure</category>
@@ -29,6 +29,9 @@
             <attribute id="code"/>
           </attributes>
         </reconciliation>
+        <obsolescence>
+          <condition><![CDATA[status = 'inactive']]></condition>
+        </obsolescence>
       </properties>
       <fields>
         <field id="name" xsi:type="AttributeString">
@@ -60,6 +63,51 @@
           <extkey_attcode>parent_id</extkey_attcode>
           <target_attcode>name</target_attcode>
         </field>
+        <field id="overview" xsi:type="AttributeDashboard">
+            <is_user_editable>true</is_user_editable>
+            <definition>
+              <layout>DashboardLayoutTwoCols</layout>
+              <auto_reload>
+                <enabled>false</enabled>
+                <interval>300</interval>
+              </auto_reload>
+              <cells>
+                <cell id="0">
+                  <rank>0</rank>
+                  <dashlets>
+                    <dashlet id="11" xsi:type="DashletHeaderDynamic">
+                      <rank>0</rank>
+                      <title>Organization:Overview:FunctionalCIs</title>
+                      <icon>itop-config-mgmt/images/server.png</icon>
+                      <subtitle>Organization:Overview:FunctionalCIs:subtitle</subtitle>
+                      <query>SELECT FunctionalCI WHERE org_id=:this-&gt;id</query>
+                      <group_by>finalclass</group_by>
+                      <values>NetworkDevice,Server,ApplicationSolution</values>
+                    </dashlet>
+                  </dashlets>
+                </cell>
+                <cell id="2">
+                  <rank>20</rank>
+                  <dashlets>
+                    <dashlet id="12" xsi:type="DashletObjectList">
+                      <rank>0</rank>
+                      <title>Organization:Overview:Users</title>
+                      <query>SELECT Person AS p JOIN User AS u ON u.contactid=p.id WHERE p.org_id=:this-&gt;id</query>
+                      <menu>true</menu>
+                    </dashlet>
+                  </dashlets>
+                </cell>
+                <cell id="9000">
+                  <rank>5</rank>
+                  <dashlets>
+                    <dashlet id="0" xsi:type="DashletEmptyCell">
+                      <rank>0</rank>
+                    </dashlet>
+                  </dashlets>
+                </cell>
+              </cells>
+            </definition>
+        </field>
       </fields>
       <methods/>
       <presentation>
@@ -77,8 +125,18 @@
             <item id="parent_id">
               <rank>40</rank>
             </item>
+            <item id="overview">
+              <rank>50</rank>
+            </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -133,6 +191,9 @@
             <attribute id="org_name"/>
           </attributes>
         </reconciliation>
+        <obsolescence>
+          <condition><![CDATA[status = 'inactive']]></condition>
+        </obsolescence>
       </properties>
       <fields>
         <field id="name" xsi:type="AttributeString">
@@ -228,6 +289,19 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="country">
+              <rank>20</rank>
+            </item>
+            <item id="org_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -293,8 +367,12 @@
             <attribute id="org_id"/>
             <attribute id="org_name"/>
             <attribute id="email"/>
+            <attribute id="finalclass"/>
           </attributes>
         </reconciliation>
+        <obsolescence>
+          <condition>status='inactive'</condition>
+        </obsolescence>
       </properties>
       <fields>
         <field id="name" xsi:type="AttributeString">
@@ -327,7 +405,7 @@
           <default_value/>
           <is_null_allowed>true</is_null_allowed>
         </field>
-        <field id="phone" xsi:type="AttributeString">
+        <field id="phone" xsi:type="AttributePhoneNumber">
           <sql>phone</sql>
           <default_value/>
           <is_null_allowed>true</is_null_allowed>
@@ -408,6 +486,19 @@
             </item>
           </items>
         </search>
+        <default_search>
+          <items>
+            <item id="friendlyname">
+              <rank>10</rank>
+            </item>
+            <item id="email">
+              <rank>20</rank>
+            </item>
+            <item id="org_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </default_search>
         <list>
           <items>
             <item id="status">
@@ -456,6 +547,27 @@
             <attribute id="employee_number"/>
           </attributes>
         </reconciliation>
+        <uniqueness_rules>
+          <rule id="employee_number">
+            <attributes>
+              <attribute id="org_id"/>
+              <attribute id="employee_number"/>
+            </attributes>
+            <filter><![CDATA[employee_number != '']]></filter>
+            <disabled>false</disabled>
+            <is_blocking>true</is_blocking>
+          </rule>
+          <rule id="name">
+            <attributes>
+              <attribute id="org_id"/>
+              <attribute id="name"/>
+              <attribute id="first_name"/>
+            </attributes>
+            <filter/>
+            <disabled>false</disabled>
+            <is_blocking>false</is_blocking>
+          </rule>
+        </uniqueness_rules>
       </properties>
       <fields>
         <field id="picture" xsi:type="AttributeImage">
@@ -476,7 +588,7 @@
           <default_value/>
           <is_null_allowed>true</is_null_allowed>
         </field>
-        <field id="mobile_phone" xsi:type="AttributeString">
+        <field id="mobile_phone" xsi:type="AttributePhoneNumber">
           <sql>mobile_phone</sql>
           <default_value/>
           <is_null_allowed>true</is_null_allowed>
@@ -552,7 +664,7 @@
           <static>false</static>
           <access>public</access>
           <type>Overload-DBObject</type>
-          <code><![CDATA[  	public function DBDeleteSingleObject(&$oDeletionPlan)
+          <code><![CDATA[  	public function DBDeleteSingleObject()
 	{
 		if (MetaModel::GetConfig()->Get('demo_mode'))
 		{
@@ -880,9 +992,15 @@
         <icon>images/document.png</icon>
         <reconciliation>
           <attributes>
-            <attribute id=""/>
+            <attribute id="name"/>
+            <attribute id="org_id"/>
+            <attribute id="org_name"/>
+            <attribute id="finalclass"/>
           </attributes>
         </reconciliation>
+        <obsolescence>
+          <condition><![CDATA[status = 'obsolete']]></condition>
+        </obsolescence>
       </properties>
       <fields>
         <field id="name" xsi:type="AttributeString">
@@ -989,6 +1107,19 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="description">
+              <rank>20</rank>
+            </item>
+            <item id="org_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -1509,6 +1640,16 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="friendlyname">
+              <rank>10</rank>
+            </item>
+            <item id="org_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -1582,10 +1723,12 @@
 					$sStateAttCode = MetaModel::GetStateAttributeCode($sSubClass);
 					if ($sStateAttCode != '')
 					{
-						$oSearch = DBSearch::FromOQL("SELECT $sSubClass AS t JOIN $sLnkClass AS lnk ON lnk.$sExtKeyToRemote = t.id WHERE $sExtKeyToMe = :myself AND $sStateAttCode NOT IN ('rejected', 'resolved', 'closed')", array('myself' => $this->GetKey()));
+					    // Todo: base the search condition on operational_status = 'ongoing' for a more flexible behavior
+						$oSearch = DBSearch::FromOQL("SELECT $sSubClass AS t JOIN $sLnkClass AS lnk ON lnk.$sExtKeyToRemote = t.id WHERE lnk.$sExtKeyToMe = :myself AND t.$sStateAttCode NOT IN ('rejected', 'resolved', 'closed') AND lnk.impact_code != 'not_impacted'", array('myself' => $this->GetKey()));
 						$aSearches[$sSubClass] = $oSearch;
 
 						$oSet = new DBObjectSet($oSearch);
+						$oSet->SetShowObsoleteData(utils::ShowObsoleteData());
 						$iTotal += $oSet->Count();
 					}
 				}
@@ -1646,9 +1789,14 @@
             <attribute id="name"/>
             <attribute id="org_id"/>
             <attribute id="organization_name"/>
+            <attribute id="location_id"/>
+            <attribute id="location_name"/>
             <attribute id="finalclass"/>
           </attributes>
         </reconciliation>
+        <obsolescence>
+          <condition><![CDATA[status = 'obsolete']]></condition>
+        </obsolescence>
       </properties>
       <fields>
         <field id="serialnumber" xsi:type="AttributeString">
@@ -1774,6 +1922,19 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="friendlyname">
+              <rank>10</rank>
+            </item>
+            <item id="location_id">
+              <rank>20</rank>
+            </item>
+            <item id="org_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -1865,6 +2026,7 @@
             <attribute id="name"/>
             <attribute id="org_id"/>
             <attribute id="organization_name"/>
+            <attribute id="finalclass"/>
           </attributes>
         </reconciliation>
       </properties>
@@ -2042,6 +2204,7 @@
             <attribute id="name"/>
             <attribute id="org_id"/>
             <attribute id="organization_name"/>
+            <attribute id="finalclass"/>
           </attributes>
         </reconciliation>
       </properties>
@@ -2216,6 +2379,19 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="friendlyname">
+              <rank>10</rank>
+            </item>
+            <item id="managementip">
+              <rank>20</rank>
+            </item>
+            <item id="org_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -2920,6 +3096,9 @@
             <attribute id="organization_name"/>
           </attributes>
         </reconciliation>
+        <obsolescence>
+          <condition><![CDATA[status='inactive']]></condition>
+        </obsolescence>
       </properties>
       <fields>
         <field id="functionalcis_list" xsi:type="AttributeLinkedSetIndirect">
@@ -3076,6 +3255,9 @@
             <attribute id="organization_name"/>
           </attributes>
         </reconciliation>
+        <obsolescence>
+          <condition><![CDATA[status = 'inactive']]></condition>
+        </obsolescence>
       </properties>
       <fields>
         <field id="applicationsolutions_list" xsi:type="AttributeLinkedSetIndirect">
@@ -3199,6 +3381,9 @@
             <attribute id="finalclass"/>
           </attributes>
         </reconciliation>
+        <obsolescence>
+          <condition><![CDATA[status = 'inactive']]></condition>
+        </obsolescence>
       </properties>
       <fields>
         <field id="system_id" xsi:type="AttributeExternalKey">
@@ -3299,6 +3484,19 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="friendlyname">
+              <rank>10</rank>
+            </item>
+            <item id="system_id">
+              <rank>20</rank>
+            </item>
+            <item id="org_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -4034,6 +4232,9 @@
             <attribute id="middleware_name"/>
           </attributes>
         </reconciliation>
+        <obsolescence>
+          <condition>middleware_id_obsolescence_flag</condition>
+        </obsolescence>
       </properties>
       <fields>
         <field id="middleware_id" xsi:type="AttributeExternalKey">
@@ -4085,6 +4286,19 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="friendlyname">
+              <rank>10</rank>
+            </item>
+            <item id="middleware_id">
+              <rank>20</rank>
+            </item>
+            <item id="org_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -4151,6 +4365,9 @@
             <attribute id="organization_name"/>
           </attributes>
         </reconciliation>
+        <obsolescence>
+          <condition>dbserver_id_obsolescence_flag</condition>
+        </obsolescence>
       </properties>
       <fields>
         <field id="dbserver_id" xsi:type="AttributeExternalKey">
@@ -4202,6 +4419,19 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="friendlyname">
+              <rank>10</rank>
+            </item>
+            <item id="dbserver_id">
+              <rank>20</rank>
+            </item>
+            <item id="org_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -4268,6 +4498,9 @@
             <attribute id="organization_name"/>
           </attributes>
         </reconciliation>
+        <obsolescence>
+          <condition>webserver_id_obsolescence_flag</condition>
+        </obsolescence>
       </properties>
       <fields>
         <field id="webserver_id" xsi:type="AttributeExternalKey">
@@ -4328,6 +4561,19 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="friendlyname">
+              <rank>10</rank>
+            </item>
+            <item id="webserver_id">
+              <rank>20</rank>
+            </item>
+            <item id="org_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -4485,6 +4731,19 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="vendor">
+              <rank>20</rank>
+            </item>
+            <item id="type">
+              <rank>30</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -4535,6 +4794,7 @@
         <reconciliation>
           <attributes>
             <attribute id="name"/>
+            <attribute id="finalclass"/>
           </attributes>
         </reconciliation>
       </properties>
@@ -4573,6 +4833,16 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="description">
+              <rank>20</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -4789,8 +5059,12 @@
             <attribute id="name"/>
             <attribute id="org_id"/>
             <attribute id="organization_name"/>
+            <attribute id="finalclass"/>
           </attributes>
         </reconciliation>
+        <obsolescence>
+          <condition><![CDATA[perpetual='no' AND ISNULL(end_date)=0 AND end_date < DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 15 MONTH),'%Y-%m-%d 00:00:00')]]></condition>
+        </obsolescence>
       </properties>
       <fields>
         <field id="name" xsi:type="AttributeString">
@@ -4859,20 +5133,17 @@
             <item id="name">
               <rank>10</rank>
             </item>
-            <item id="documents_list">
+            <item id="org_id">
               <rank>20</rank>
             </item>
-            <item id="org_id">
+            <item id="usage_limit">
               <rank>30</rank>
             </item>
-            <item id="usage_limit">
+            <item id="description">
               <rank>40</rank>
             </item>
-            <item id="description">
-              <rank>50</rank>
-            </item>
             <item id="perpetual">
-              <rank>55</rank>
+              <rank>50</rank>
             </item>
             <item id="start_date">
               <rank>60</rank>
@@ -4883,8 +5154,24 @@
             <item id="licence_key">
               <rank>80</rank>
             </item>
+            <item id="documents_list">
+              <rank>90</rank>
+            </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="description">
+              <rank>20</rank>
+            </item>
+            <item id="licence_key">
+              <rank>30</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -5299,6 +5586,7 @@
         <reconciliation>
           <attributes>
             <attribute id="name"/>
+            <attribute id="finalclass"/>
           </attributes>
         </reconciliation>
       </properties>
@@ -5318,6 +5606,13 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -5566,6 +5861,14 @@
             <attribute id="name"/>
           </attributes>
         </reconciliation>
+        <uniqueness_rules>
+          <rule id="name">
+            <attributes>
+              <attribute id="name"/>
+            </attributes>
+            <is_blocking>true</is_blocking>
+          </rule>
+        </uniqueness_rules>
       </properties>
       <fields>
         <field id="physicaldevices_list" xsi:type="AttributeLinkedSet">
@@ -5629,6 +5932,15 @@
             <attribute id="type"/>
           </attributes>
         </reconciliation>
+        <uniqueness_rules>
+          <rule id="name_brand">
+            <attributes>
+              <attribute id="name"/>
+              <attribute id="brand_id"/>
+            </attributes>
+            <is_blocking>true</is_blocking>
+          </rule>
+        </uniqueness_rules>
       </properties>
       <fields>
         <field id="brand_id" xsi:type="AttributeExternalKey">
@@ -6479,6 +6791,19 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="ip">
+              <rank>10</rank>
+            </item>
+            <item id="subnet_name">
+              <rank>20</rank>
+            </item>
+            <item id="org_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="ip">
@@ -6603,6 +6928,16 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="vlan_tag">
+              <rank>10</rank>
+            </item>
+            <item id="org_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="vlan_tag">
@@ -6732,6 +7067,7 @@
         <reconciliation>
           <attributes>
             <attribute id="name"/>
+            <attribute id="finalclass"/>
           </attributes>
         </reconciliation>
       </properties>
@@ -6751,6 +7087,13 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -6786,6 +7129,7 @@
         <reconciliation>
           <attributes>
             <attribute id="name"/>
+            <attribute id="finalclass"/>
           </attributes>
         </reconciliation>
       </properties>
@@ -6850,6 +7194,19 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="friendlyname">
+              <rank>10</rank>
+            </item>
+            <item id="ipaddress">
+              <rank>20</rank>
+            </item>
+            <item id="macaddress">
+              <rank>30</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -6920,6 +7277,9 @@
             <attribute id="connectableci_name"/>
           </attributes>
         </reconciliation>
+        <obsolescence>
+          <condition>connectableci_id_obsolescence_flag</condition>
+        </obsolescence>
       </properties>
       <fields>
         <field id="connectableci_id" xsi:type="AttributeExternalKey">
@@ -7645,6 +8005,9 @@
             <attribute id="owner_name"/>
           </attributes>
         </reconciliation>
+        <obsolescence>
+          <condition>status='obsolete'</condition>
+        </obsolescence>
       </properties>
       <fields>
         <field id="name" xsi:type="AttributeString">
@@ -7731,6 +8094,19 @@
             </item>
           </items>
         </details>
+        <default_search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="type">
+              <rank>20</rank>
+            </item>
+            <item id="org_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </default_search>
         <search>
           <items>
             <item id="name">
@@ -8132,6 +8508,13 @@
           </cell>
         </cells>
       </definition>
+    </menu>
+    <menu id="TagAdminMenu" xsi:type="WebPageMenuNode" _delta="define">
+      <rank>100</rank>
+      <parent>Catalogs</parent>
+      <url>$pages/tagadmin.php</url>
+      <enable_class>TagSetFieldData</enable_class>
+      <enable_action>UR_ACTION_MODIFY</enable_action>
     </menu>
   </menus>
 </itop_design>

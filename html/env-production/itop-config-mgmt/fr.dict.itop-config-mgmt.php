@@ -3,7 +3,7 @@
 //
 //   This file is part of iTop.
 //
-//   iTop is free software; you can redistribute it and/or modify	
+//   iTop is free software; you can redistribute it and/or modify
 //   it under the terms of the GNU Affero General Public License as published by
 //   the Free Software Foundation, either version 3 of the License, or
 //   (at your option) any later version.
@@ -15,13 +15,62 @@
 //
 //   You should have received a copy of the GNU Affero General Public License
 //   along with iTop. If not, see <http://www.gnu.org/licenses/>
-
 /**
- * @copyright   Copyright (C) 2010-2012 Combodo SARL
+ * @copyright   Copyright (C) 2010-2018 Combodo SARL
  * @license     http://opensource.org/licenses/AGPL-3.0
  */
+//
+// Class: Organization
+//
+Dict::Add('FR FR', 'French', 'Français', array(
+	'Relation:impacts/Description' => 'Eléments impactés par',
+	'Relation:impacts/DownStream' => 'Impacte...',
+	'Relation:impacts/DownStream+' => 'Eléments impactés par',
+	'Relation:impacts/UpStream' => 'Dépend de...',
+	'Relation:impacts/UpStream+' => 'Eléments dont dépend',
+	// Legacy entries
+	'Relation:depends on/Description' => 'Eléments dont dépend',
+	'Relation:depends on/DownStream' => 'Dépend de...',
+	'Relation:depends on/UpStream' => 'Impacte...',
+));
 
 
+// Dictionnay conventions
+// Class:<class_name>
+// Class:<class_name>+
+// Class:<class_name>/Attribute:<attribute_code>
+// Class:<class_name>/Attribute:<attribute_code>+
+// Class:<class_name>/Attribute:<attribute_code>/Value:<value>
+// Class:<class_name>/Attribute:<attribute_code>/Value:<value>+
+// Class:<class_name>/Stimulus:<stimulus_code>
+// Class:<class_name>/Stimulus:<stimulus_code>+
+// Class:<class_name>/UniquenessRule:<rule_code>
+// Class:<class_name>/UniquenessRule:<rule_code>+
+
+//////////////////////////////////////////////////////////////////////
+// Classes in 'bizmodel'
+//////////////////////////////////////////////////////////////////////
+//
+
+// Dictionnay conventions
+// Class:<class_name>
+// Class:<class_name>+
+// Class:<class_name>/Attribute:<attribute_code>
+// Class:<class_name>/Attribute:<attribute_code>+
+// Class:<class_name>/Attribute:<attribute_code>/Value:<value>
+// Class:<class_name>/Attribute:<attribute_code>/Value:<value>+
+// Class:<class_name>/Stimulus:<stimulus_code>
+// Class:<class_name>/Stimulus:<stimulus_code>+
+// Class:<class_name>/UniquenessRule:<rule_code>
+// Class:<class_name>/UniquenessRule:<rule_code>+
+
+//////////////////////////////////////////////////////////////////////
+// Note: The classes have been grouped by categories: bizmodel
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+// Classes in 'bizmodel'
+//////////////////////////////////////////////////////////////////////
+//
 
 
 //
@@ -45,8 +94,16 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Organization/Attribute:parent_id+' => 'Organisation parent',
 	'Class:Organization/Attribute:parent_name' => 'Nom du parent',
 	'Class:Organization/Attribute:parent_name+' => 'Nom de l\'organisation parente',
+	'Class:Organization/Attribute:deliverymodel_id' => 'Modèle de support',
+	'Class:Organization/Attribute:deliverymodel_id+' => '~~',
+	'Class:Organization/Attribute:deliverymodel_name' => 'Nom modèle de support',
+	'Class:Organization/Attribute:deliverymodel_name+' => '~~',
 	'Class:Organization/Attribute:parent_id_friendlyname' => 'Nom commun',
 	'Class:Organization/Attribute:parent_id_friendlyname+' => '',
+	'Class:Organization/Attribute:overview' => 'Tableau de bord',
+	'Organization:Overview:FunctionalCIs' => 'Infrastructure de cette organisation',
+	'Organization:Overview:FunctionalCIs:subtitle' => 'par type',
+	'Organization:Overview:Users' => 'Utilisateurs iTop dans cette organisation',
 ));
 
 //
@@ -115,8 +172,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Contact/Attribute:function+' => '',
 	'Class:Contact/Attribute:cis_list' => 'CIs',
 	'Class:Contact/Attribute:cis_list+' => '',
-	'Class:Contact/Attribute:finalclass' => 'Type de contact',
-	'Class:Contact/Attribute:finalclass+' => '',
+	'Class:Contact/Attribute:finalclass' => 'Sous-classe de Contact',
+	'Class:Contact/Attribute:finalclass+' => 'Nom de la classe instanciable',
 ));
 
 //
@@ -126,6 +183,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Person' => 'Personne',
 	'Class:Person+' => '',
+	'Class:Person/Attribute:name' => 'Nom',
+	'Class:Person/Attribute:name+' => '~~',
 	'Class:Person/Attribute:first_name' => 'Prénom',
 	'Class:Person/Attribute:first_name+' => '',
 	'Class:Person/Attribute:employee_number' => 'Numéro d\'employé',
@@ -148,6 +207,11 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Person/Attribute:manager_id_friendlyname+' => '',
 	'Class:Person/Attribute:picture' => 'Photo',
 	'Class:Person/Attribute:picture+' => '',
+	'Class:Person/UniquenessRule:employee_number+' => 'Le numéro d\'employé doit être unique dans l\'organisation',
+	'Class:Person/UniquenessRule:employee_number' => 'il y a déjà une personne avec ce numéro d\'employé dans l\'organisation 
+	\'$this->org_name$\'',
+	'Class:Person/UniquenessRule:name+' => 'Le nom de l\'employé devrait être unique dans l\'organisation',
+	'Class:Person/UniquenessRule:name' => 'Il y a déjà une personne avec ce nom dans l\'organisation \'$this->org_name$\'',
 ));
 
 //
@@ -198,8 +262,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Document/Attribute:contracts_list+' => '',
 	'Class:Document/Attribute:services_list' => 'Services',
 	'Class:Document/Attribute:services_list+' => '',
-	'Class:Document/Attribute:finalclass' => 'Type de document',
-	'Class:Document/Attribute:finalclass+' => '',
+	'Class:Document/Attribute:finalclass' => 'Sous-classe de Document',
+	'Class:Document/Attribute:finalclass+' => 'Nom de la classe instanciable',
 ));
 
 //
@@ -274,8 +338,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:FunctionalCI/Attribute:softwares_list+' => '',
 	'Class:FunctionalCI/Attribute:tickets_list' => 'Tickets',
 	'Class:FunctionalCI/Attribute:tickets_list+' => '',
-	'Class:FunctionalCI/Attribute:finalclass' => 'Type de CI',
-	'Class:FunctionalCI/Attribute:finalclass+' => '',
+	'Class:FunctionalCI/Attribute:finalclass' => 'Sous-classe de CI',
+	'Class:FunctionalCI/Attribute:finalclass+' => 'Nom de la classe instanciable',
 	'Class:FunctionalCI/Tab:OpenedTickets' => 'Tickets en cours',
 ));
 
@@ -685,7 +749,7 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:SoftwareInstance/Attribute:softwarelicence_id+' => '',
 	'Class:SoftwareInstance/Attribute:softwarelicence_name' => 'Nom Licence logiciel',
 	'Class:SoftwareInstance/Attribute:softwarelicence_name+' => '',
-	'Class:SoftwareInstance/Attribute:path' => 'Chemin d`installation',
+	'Class:SoftwareInstance/Attribute:path' => 'Chemin d\'installation',
 	'Class:SoftwareInstance/Attribute:path+' => '',
 	'Class:SoftwareInstance/Attribute:status' => 'Statut',
 	'Class:SoftwareInstance/Attribute:status+' => '',
@@ -734,7 +798,7 @@ Dict::Add('FR FR', 'French', 'Français', array(
 
 Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:PCSoftware' => 'Logiciel PC',
-	'Class:PCsoftware+' => '',
+	'Class:PCSoftware+' => '~~',
 ));
 
 //
@@ -786,6 +850,7 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:WebApplication/Attribute:url' => 'URL',
 	'Class:WebApplication/Attribute:url+' => '',
 ));
+
 
 //
 // Class: VirtualDevice
@@ -1058,8 +1123,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Patch/Attribute:documents_list+' => '',
 	'Class:Patch/Attribute:description' => 'Description',
 	'Class:Patch/Attribute:description+' => '',
-	'Class:Patch/Attribute:finalclass' => 'Type',
-	'Class:Patch/Attribute:finalclass+' => '',
+	'Class:Patch/Attribute:finalclass' => 'Sous-classe de Patch',
+	'Class:Patch/Attribute:finalclass+' => 'Nom de la classe instanciable',
 ));
 
 //
@@ -1123,8 +1188,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Licence/Attribute:perpetual/Value:no+' => 'non',
 	'Class:Licence/Attribute:perpetual/Value:yes' => 'oui',
 	'Class:Licence/Attribute:perpetual/Value:yes+' => 'oui',
-	'Class:Licence/Attribute:finalclass' => 'Type',
-	'Class:Licence/Attribute:finalclass+' => '',
+	'Class:Licence/Attribute:finalclass' => 'Sous-classe de License',
+	'Class:Licence/Attribute:finalclass+' => 'Nom de la classe instanciable',
 ));
 
 //
@@ -1185,8 +1250,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Typology+' => '',
 	'Class:Typology/Attribute:name' => 'Nom',
 	'Class:Typology/Attribute:name+' => '',
-	'Class:Typology/Attribute:finalclass' => 'Type',
-	'Class:Typology/Attribute:finalclass+' => '',
+	'Class:Typology/Attribute:finalclass' => 'Sous-classe de Typologie',
+	'Class:Typology/Attribute:finalclass+' => 'Nom de la classe instanciable',
 ));
 
 //
@@ -1238,6 +1303,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Brand+' => '',
 	'Class:Brand/Attribute:physicaldevices_list' => 'Matériels',
 	'Class:Brand/Attribute:physicaldevices_list+' => '',
+	'Class:Brand/UniquenessRule:name+' => 'Le nom doit être unique',
+	'Class:Brand/UniquenessRule:name' => 'cette marque existe déjà',
 ));
 
 //
@@ -1255,6 +1322,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Model/Attribute:type+' => '',
 	'Class:Model/Attribute:type/Value:PowerSource' => 'Arrivée électrique',
 	'Class:Model/Attribute:type/Value:PowerSource+' => 'Arrivée électrique',
+	'Class:Model/Attribute:type/Value:DiskArray' => 'Baie de disques',
+	'Class:Model/Attribute:type/Value:DiskArray+' => 'Baie de disques',
 	'Class:Model/Attribute:type/Value:Enclosure' => 'Chassis',
 	'Class:Model/Attribute:type/Value:Enclosure+' => 'Chassis',
 	'Class:Model/Attribute:type/Value:IPPhone' => 'Téléphone IP',
@@ -1289,6 +1358,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Model/Attribute:type/Value:Phone+' => 'Téléphone',
 	'Class:Model/Attribute:physicaldevices_list' => 'Matériels',
 	'Class:Model/Attribute:physicaldevices_list+' => '',
+	'Class:Model/UniquenessRule:name_brand+' => 'Le nom doit être unique dans une marque',
+	'Class:Model/UniquenessRule:name_brand' => 'ce modèle existe déjà dans cette marque',
 ));
 
 //
@@ -1426,6 +1497,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Subnet+' => '',
 	'Class:Subnet/Attribute:description' => 'Description',
 	'Class:Subnet/Attribute:description+' => '',
+	'Class:Subnet/Attribute:subnet_name' => 'Nom de subnet',
+	'Class:Subnet/Attribute:subnet_name+' => '~~',
 	'Class:Subnet/Attribute:org_id' => 'Organisation',
 	'Class:Subnet/Attribute:org_id+' => '',
 	'Class:Subnet/Attribute:org_name' => 'Nom organisation',
@@ -1477,6 +1550,7 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:lnkSubnetToVLAN/Attribute:vlan_tag' => 'VLAN Tag',
 	'Class:lnkSubnetToVLAN/Attribute:vlan_tag+' => '',
 ));
+
 //
 // Class: NetworkInterface
 //
@@ -1486,8 +1560,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:NetworkInterface+' => '',
 	'Class:NetworkInterface/Attribute:name' => 'Nom',
 	'Class:NetworkInterface/Attribute:name+' => '',
-	'Class:NetworkInterface/Attribute:finalclass' => 'Type',
-	'Class:NetworkInterface/Attribute:finalclass+' => '',
+	'Class:NetworkInterface/Attribute:finalclass' => 'Sous-classe d\'Interface Réseau',
+	'Class:NetworkInterface/Attribute:finalclass+' => 'Nom de la classe instanciable',
 ));
 
 //
@@ -1499,9 +1573,11 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:IPInterface+' => '',
 	'Class:IPInterface/Attribute:ipaddress' => 'Adresse IP',
 	'Class:IPInterface/Attribute:ipaddress+' => '',
+
+
 	'Class:IPInterface/Attribute:macaddress' => 'Adresse MAC',
 	'Class:IPInterface/Attribute:macaddress+' => '',
-	'Class:IPInterface/Attribute:coment' => 'Commentaire',
+	'Class:IPInterface/Attribute:comment' => 'Commentaire',
 	'Class:IPInterface/Attribute:coment+' => '',
 	'Class:IPInterface/Attribute:ipgateway' => 'Passerelle',
 	'Class:IPInterface/Attribute:ipgateway+' => '',
@@ -1546,6 +1622,7 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:lnkPhysicalInterfaceToVLAN/Attribute:vlan_tag' => 'VLAN Tag',
 	'Class:lnkPhysicalInterfaceToVLAN/Attribute:vlan_tag+' => '',
 ));
+
 
 //
 // Class: LogicalInterface
@@ -1687,6 +1764,7 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Group/Attribute:type' => 'Type',
 	'Class:Group/Attribute:type+' => '',
 	'Class:Group/Attribute:parent_id' => 'Groupe parent',
+
 	'Class:Group/Attribute:parent_id+' => '',
 	'Class:Group/Attribute:parent_name' => 'Nom groupe parent',
 	'Class:Group/Attribute:parent_name+' => '',
@@ -1716,21 +1794,9 @@ Dict::Add('FR FR', 'French', 'Français', array(
 ));
 
 
-
-
-
 //
-// Class extensions
+// Application Menu
 //
-
-Dict::Add('FR FR', 'French', 'Français', array(
-'Class:Subnet/Tab:IPUsage' => 'IP Utilisées',
-'Class:Subnet/Tab:IPUsage-explain' => 'Interfaces ayant une IP dans l\'interval: <em>%1$s</em> à <em>%2$s</em>',
-'Class:Subnet/Tab:FreeIPs' => 'IPs libres',
-'Class:Subnet/Tab:FreeIPs-count' => 'IPs libres: %1$s',
-'Class:Subnet/Tab:FreeIPs-explain' => 'Extrait des 10 premières IPs libres',
-));
-
 
 Dict::Add('FR FR', 'French', 'Français', array(
 	'Menu:DataAdministration' => 'Administration des données',
@@ -1761,6 +1827,7 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Menu:Document' => 'Documents',
 	'Menu:Document+' => 'Tous les documents',
 	'Menu:Location' => 'Lieux',
+
 	'Menu:Location+' => 'Tous les lieux',
 	'Menu:ConfigManagementCI' => 'CIs',
 	'Menu:ConfigManagementCI+' => 'CIs',
@@ -1780,8 +1847,6 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Menu:Subnet+' => '',
 	'Menu:NetworkDevice' => 'Equipements réseaux',
 	'Menu:NetworkDevice+' => 'Tous les équipements réseaux',
-	'Menu:System' => 'Systèmes',
-	'Menu:System+' => '',
 	'Menu:Server' => 'Serveurs',
 	'Menu:Server+' => '',
 	'Menu:Printer' => 'Imprimantes',
@@ -1800,75 +1865,41 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Menu:SearchCIs+' => 'Rechercher des CIs',
 	'Menu:ConfigManagement:Devices' => 'Equipements',
 	'Menu:ConfigManagement:AllDevices' => 'Infrastructures',
-	'Menu:ConfigManagementInfrastructure' => 'Infrastructures',
+	'Menu:ConfigManagement:virtualization' => 'Virtualisation',
+	'Menu:ConfigManagement:EndUsers' => 'Périphériques utilisateurs',
 	'Menu:ConfigManagement:SWAndApps' => 'Logiciels et applications',
 	'Menu:ConfigManagement:Misc' => 'Divers',
 	'Menu:Group' => 'Groupe de CIs',
 	'Menu:Group+' => 'Groupe de CIs',
 	'Menu:ConfigManagement:Shortcuts' => 'Raccourcis',
 	'Menu:ConfigManagement:AllContacts' => 'Tous les contacts: %1$d',
-	'Menu:DocumentType' => 'Types de documents',
-	'Menu:DocumentType+' => '',
-	'Menu:Software' => 'Catalogue des logiciels de références',
-	'Menu:Software+' => 'Catalogue des logiciels de références',
-	'Menu:Model' => 'Modèles',
-	'Menu:Model+' => 'Modèles',
-	'Menu:Brand+' => 'Marques',
-	'Menu:Brand' => 'Marques',
-	'Menu:NetworkType' => 'Types réseau',
-	'Menu:NetworkType+' => '',
 	'Menu:Typology' => 'Typologie configuration',
 	'Menu:Typology+' => 'Typologie configuration',
 	'Menu:OSVersion' => 'Versions d\'OS',
 	'Menu:OSVersion+' => '',
-	'Menu:ContactType' => 'Types de contact',
-	'Menu:ContactType+' => '',
-	'Menu:LicenceType' => 'Types de licence',
-	'Menu:LicenceType+' => '',
-	'Menu:Environment' => 'Environnements',
-	'Menu:Environment+' => '',
-	'Menu:PeripheralType' => 'Type de périphérique',
-	'Menu:PeripheralType+' => 'Tous les types de périphérique',
-	'UI-ConfigMgmtMenuOverview-DeviceBySite' => 'Equipements par site',
-	'UI-ConfigMgmtMenuOverview-FunctionalCIByTypeStock' => 'Equipements en stock par type',
-	'UI-ConfigMgmtMenuOverview-DeviceByBrand' => 'Equipements par marque',
-	'UI-ConfigMgmtMenuOverview-DeviceToRenew' => 'Equipements à remplacer dans 6 mois',
-	'Menu:UI_WelcomeMenu_AllConfigItems' => 'Résumé',
-	'Relation:impacts/Description' => 'Eléments impactés par',
-	'Relation:impacts/DownStream' => 'Impacte...',
-	'Relation:impacts/UpStream' => 'Dépend de...',
-	'Relation:depends on/Description' => 'Eléments dont dépend',
-	'Relation:depends on/DownStream' => 'Dépend de...',
-	'Relation:depends on/UpStream' => 'Impacte...',
+	'Menu:Software' => 'Catalogue des logiciels de références',
+	'Menu:Software+' => 'Catalogue des logiciels de références',
+	'UI_WelcomeMenu_AllConfigItems' => 'Résumé',
 	'Menu:ConfigManagement:Typology' => 'Configuration des typologies',
+
 ));
+
 
 // Add translation for Fieldsets
 
 Dict::Add('FR FR', 'French', 'Français', array(
-'Server:baseinfo' => 'Informations générales',
-'Server:Date' => 'Dates',
-'Server:moreinfo' => 'Informations complémentaires',
-'Server:otherinfo' => 'Autres informations',
-'Server:power' => 'Alimentation électrique',
-'Person:info' => 'Informations générales',
-'Person:personal_info' => 'Informations personnelles',
-'Person:notifiy' => 'Notification',
-'Class:Subnet/Tab:IPUsage' => 'IP utilisées',
-'Class:Subnet/Tab:IPUsage-explain' => 'Interfaces ayant une IP dans la plage: <em>%1$s</em> à <em>%2$s</em>',
-'Class:Subnet/Tab:FreeIPs' => 'IP disponibles',
-'Class:Subnet/Tab:FreeIPs-count' => 'IP disponibles: %1$s',
-'Class:Subnet/Tab:FreeIPs-explain' => 'Voici un échantillon de dix addresses IP disponibles',
-'Class:Document:PreviewTab' => 'Aperçu',
-	'Class:Organization/Attribute:deliverymodel_id' => 'Modèle de support',
-	'Class:Organization/Attribute:deliverymodel_name' => 'Nom modèle de support',
-	'Class:Person/Attribute:name' => 'Nom',
-	'Class:Model/Attribute:type/Value:DiskArray' => 'Baie de disques',
-	'Class:Model/Attribute:type/Value:DiskArray+' => 'Baie de disques',
-	'Class:Subnet/Attribute:subnet_name' => 'Nom de subnet',
-	'Class:IPInterface/Attribute:comment' => 'Commentaire',
-	'Menu:ConfigManagement:virtualization' => 'Virtualisation',
-	'Menu:ConfigManagement:EndUsers' => 'Périphériques utilisateurs',
-	'UI_WelcomeMenu_AllConfigItems' => 'Résumé',
+	'Server:baseinfo' => 'Informations générales',
+	'Server:Date' => 'Dates',
+	'Server:moreinfo' => 'Informations complémentaires',
+	'Server:otherinfo' => 'Autres informations',
+	'Server:power' => 'Alimentation électrique',
+	'Person:info' => 'Informations générales',
+	'Person:personal_info' => 'Informations personnelles',
+	'Person:notifiy' => 'Notification',
+	'Class:Subnet/Tab:IPUsage' => 'IP utilisées',
+	'Class:Subnet/Tab:IPUsage-explain' => 'Interfaces ayant une IP dans la plage: <em>%1$s</em> à <em>%2$s</em>',
+	'Class:Subnet/Tab:FreeIPs' => 'IP disponibles',
+	'Class:Subnet/Tab:FreeIPs-count' => 'IP disponibles: %1$s',
+	'Class:Subnet/Tab:FreeIPs-explain' => 'Voici un échantillon de dix addresses IP disponibles',
+	'Class:Document:PreviewTab' => 'Aperçu',
 ));
-?>

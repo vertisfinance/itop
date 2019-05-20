@@ -1,5 +1,5 @@
 <?php
-// Copyright (C) 2014 Combodo SARL
+// Copyright (C) 2014-2017 Combodo SARL
 //
 //   This file is part of iTop.
 //
@@ -19,10 +19,24 @@
 
 class DBRestore extends DBBackup
 {
+	/** @var string */
+	private $sDBPwd;
+	/** @var string */
+	private $sDBUser;
+
+	public function __construct(\Config $oConfig = null)
+	{
+		parent::__construct($oConfig);
+
+		$this->sDBUser = $oConfig->Get('db_user');
+		$this->sDBPwd = $oConfig->Get('db_pwd');
+	}
+
 	protected function LogInfo($sMsg)
 	{
 		//IssueLog::Info('non juste info: '.$sMsg);
 	}
+
 	protected function LogError($sMsg)
 	{
 		IssueLog::Error($sMsg);
@@ -57,8 +71,8 @@ class DBRestore extends DBBackup
 		}
 
 		$sDataFileEscaped = self::EscapeShellArg($sDataFile);
-		$sCommand = "$sMySQLExe --default-character-set=utf8 --host=$sHost $sPortOption --user=$sUser --password=$sPwd $sDBName <$sDataFileEscaped 2>&1";
-		$sCommandDisplay = "$sMySQLExe --default-character-set=utf8 --host=$sHost $sPortOption --user=xxxx --password=xxxx $sDBName <$sDataFileEscaped 2>&1";
+		$sCommand = "$sMySQLExe --default-character-set=".DEFAULT_CHARACTER_SET." --host=$sHost $sPortOption --user=$sUser --password=$sPwd $sDBName <$sDataFileEscaped 2>&1";
+		$sCommandDisplay = "$sMySQLExe --default-character-set=".DEFAULT_CHARACTER_SET." --host=$sHost $sPortOption --user=xxxx --password=xxxx $sDBName <$sDataFileEscaped 2>&1";
 
 		// Now run the command for real
 		$this->LogInfo("Executing command: $sCommandDisplay");
@@ -78,7 +92,7 @@ class DBRestore extends DBBackup
 			}
 			if (count($aOutput) == 1) 
 			{
-				$sMoreInfo = trim($aOutput[0]); 
+				$sMoreInfo = trim($aOutput[0]);
 			}
 			else
 			{
@@ -88,30 +102,66 @@ class DBRestore extends DBBackup
 		}
 	}
 
+	/**
+	 * @deprecated Use RestoreFromCompressedBackup instead
+	 *
+	 * @param $sZipFile
+	 * @param string $sEnvironment
+	 */
 	public function RestoreFromZip($sZipFile, $sEnvironment = 'production')
 	{
-		$this->LogInfo("Starting restore of ".basename($sZipFile));
+		$this->RestoreFromCompressedBackup($sZipFile, $sEnvironment);
+	}
 
-		$oZip = new ZipArchiveEx();
-		$res = $oZip->open($sZipFile);
+	/**
+	 * <strong>Warning</strong> : can't be called with a loaded DataModel as we're compiling after restore
+	 *
+	 * @param string $sFile A file with the extension .zip or .tar.gz
+	 * @param string $sEnvironment Target environment
+	 *
+	 * @throws \BackupException
+	 *
+	 * @uses \RunTimeEnvironment::CompileFrom()
+	 */
+	public function RestoreFromCompressedBackup($sFile, $sEnvironment = 'production')
+	{
+		$this->LogInfo("Starting restore of ".basename($sFile));
+
+		$sNormalizedFile = strtolower(basename($sFile));
+		if (substr($sNormalizedFile, -4) == '.zip')
+		{
+			$this->LogInfo('zip file detected');
+			$oArchive = new ZipArchiveEx();
+			$oArchive->open($sFile);
+		}
+		elseif (substr($sNormalizedFile, -7) == '.tar.gz')
+		{
+			$this->LogInfo('tar.gz file detected');
+			$oArchive = new TarGzArchive($sFile);
+		}
+		else
+		{
+			throw new BackupException('Unsupported format for a backup file: '.$sFile);
+		}
 
 		// Load the database
 		//
-		$sDataDir = tempnam(SetupUtils::GetTmpDir(), 'itop-');
-		unlink($sDataDir); // I need a directory, not a file...
+		$sDataDir = APPROOT.'data/tmp-backup-'.rand(10000, getrandmax());
+
 		SetupUtils::builddir($sDataDir); // Here is the directory
-		$oZip->extractTo($sDataDir, 'itop-dump.sql');
+		$oArchive->extractTo($sDataDir);
+
 		$sDataFile = $sDataDir.'/itop-dump.sql';
 		$this->LoadDatabase($sDataFile);
-		unlink($sDataFile);
 
 		// Update the code
 		//
 		$sDeltaFile = APPROOT.'data/'.$sEnvironment.'.delta.xml';
-		if ($oZip->locateName('delta.xml') !== false)
+
+		if (is_file($sDataDir.'/delta.xml'))
 		{
 			// Extract and rename delta.xml => <env>.delta.xml;
-			file_put_contents($sDeltaFile, $oZip->getFromName('delta.xml'));
+			rename($sDataDir.'/delta.xml', $sDeltaFile);
 		}
 		else
 		{
@@ -119,20 +169,35 @@ class DBRestore extends DBBackup
 		}
 		if (is_dir(APPROOT.'data/production-modules/'))
 		{
-			SetupUtils::rrmdir(APPROOT.'data/production-modules/');
+			try
+			{
+				SetupUtils::rrmdir(APPROOT.'data/production-modules/');
+			}
+			catch (Exception $e)
+			{
+				throw new BackupException("Can't remove production-modules dir", 0, $e);
+			}
 		}
-		if ($oZip->locateName('production-modules/') !== false)
+		if (is_dir($sDataDir.'/production-modules'))
 		{
-			$oZip->extractDirTo(APPROOT.'data/', 'production-modules/');
+			rename($sDataDir.'/production-modules', APPROOT.'data/production-modules/');
 		}
 
 		$sConfigFile = APPROOT.'conf/'.$sEnvironment.'/config-itop.php';
 		@chmod($sConfigFile, 0770); // Allow overwriting the file
-		$oZip->extractTo(APPROOT.'conf/'.$sEnvironment, 'config-itop.php');
+		rename($sDataDir.'/config-itop.php', $sConfigFile);
 		@chmod($sConfigFile, 0444); // Read-only
+
+		try
+		{
+			SetupUtils::rrmdir($sDataDir);
+		}
+		catch (Exception $e)
+		{
+			throw new BackupException("Can't remove data dir", 0, $e);
+		}
 
 		$oEnvironment = new RunTimeEnvironment($sEnvironment);
 		$oEnvironment->CompileFrom($sEnvironment);
 	}
 }
-

@@ -13,7 +13,7 @@ $MySettings = array(
 	//	default: 'iTop is temporarily frozen, please wait... (the admin team)'
 	'access_message' => 'iTop is temporarily frozen, please wait... (the admin team)',
 
-	// access_mode: Combination of flags (ACCESS_USER_WRITE | ACCESS_ADMIN_WRITE, or ACCESS_FULL)
+	// access_mode: Access mode: ACCESS_READONLY = 0, ACCESS_ADMIN_WRITE = 2, ACCESS_FULL = 3
 	//	default: 3
 	'access_mode' => 3,
 
@@ -29,7 +29,8 @@ $MySettings = array(
 
 	// app_root_url: Root URL used for navigating within the application, or from an email to the application (you can put $SERVER_NAME$ as a placeholder for the server's name)
 	//	default: ''
-	'app_root_url' => 'http://localhost/',
+  $host = getenv('HOST')
+	'app_root_url' => "https://$host/",
 
 	// buttons_position: Position of the forms buttons: bottom | top | both
 	//	default: 'both'
@@ -72,19 +73,23 @@ $MySettings = array(
 	  ),
 	),
 
+	// db_character_set: Deprecated since iTop 2.5 : now using utf8mb4
+	//	default: 'DEPRECATED_2.5'
 	'db_character_set' => 'utf8',
 
+	// db_collation: Deprecated since iTop 2.5 : now using utf8mb4_unicode_ci
+	//	default: 'DEPRECATED_2.5'
 	'db_collation' => 'utf8_unicode_ci',
 
 	'db_host' => 'mysql',
 
-	'db_name' => 'itop',
+	'db_name' => getenv('MYSQL_DATABASE'),
 
-	'db_pwd' => 'itop',
+	'db_pwd' => getenv('MYSQL_PASSWORD'),
 
 	'db_subname' => '',
 
-	'db_user' => 'itop',
+	'db_user' => getenv('MYSQL_USER'),
 
 	// deadline_format: The format used for displaying "deadline" attributes: any string with the following placeholders: $date$, $difference$
 	//	default: '$difference$'
@@ -92,37 +97,41 @@ $MySettings = array(
 
 	'default_language' => 'EN US',
 
+	// disable_attachments_download_legacy_portal: Disable attachments download from legacy portal
+	//	default: true
+	'disable_attachments_download_legacy_portal' => true,
+
 	// email_asynchronous: If set, the emails are sent off line, which requires cron.php to be activated. Exception: some features like the email test utility will force the serialized mode
 	//	default: false
 	'email_asynchronous' => false,
 
-	// email_transport: Mean to send emails: PHPMail (uses the function mail()) or SMTP (implements the client protocole)
+	// email_default_sender_address: Default address provided in the email from header field.
+	//	default: ''
+	'email_default_sender_address' => '',
+
+	// email_default_sender_label: Default label provided in the email from header field.
+	//	default: ''
+	'email_default_sender_label' => '',
+
+	// email_transport: Mean to send emails: PHPMail (uses the function mail()) or SMTP (implements the client protocol)
 	//	default: 'PHPMail'
 	'email_transport' => 'SMTP',
 
-	// email_transport_smtp.encryption: tls or ssl (optional)
-	//	default: ''
-	// 'email_transport_smtp.encryption' => 'tls',
-
 	// email_transport_smtp.host: host name or IP address (optional)
 	//	default: 'localhost'
-	'email_transport_smtp.host' => 'mail.vertis.com',
-
-	// email_transport_smtp.password: Authentication password (optional)
-	//	default: ''
+	'email_transport_smtp.host' => getenv('EMAIL_HOST'),
 
 	// email_transport_smtp.port: port number (optional)
 	//	default: 25
-	'email_transport_smtp.port' => 25,
-
-	// email_transport_smtp.username: Authentication user (optional)
-	//	default: ''
+	'email_transport_smtp.port' => getenv('EMAIL_PORT'),
 
 	// email_validation_pattern: Regular expression to validate/detect the format of an eMail address
 	//	default: '[a-zA-Z0-9._&\'-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z0-9-]{2,}'
 	'email_validation_pattern' => '[a-zA-Z0-9._&\'-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z0-9-]{2,}',
 
 	'encryption_key' => '@iT0pEncr1pti0n!',
+
+	'encryption_library' => 'Sodium',
 
 	'ext_auth_variable' => '$_SERVER[\'REMOTE_USER\']',
 
@@ -131,6 +140,12 @@ $MySettings = array(
 	// graphviz_path: Path to the Graphviz "dot" executable for graphing objects lifecycle
 	//	default: '/usr/bin/dot'
 	'graphviz_path' => '/usr/bin/dot',
+
+	// high_cardinality_classes: List of classes with high cardinality (Force manual submit of search)
+	//	default: array (
+	//		)
+	'high_cardinality_classes' => array (
+	),
 
 	// inline_image_max_display_width: The maximum width (in pixels) when displaying images inside an HTML formatted attribute. Images will be displayed using this this maximum width.
 	//	default: '250'
@@ -162,8 +177,6 @@ $MySettings = array(
 
 	'log_notification' => true,
 
-	'log_queries' => false,
-
 	// log_usage: Log the usage of the application (i.e. the date/time and the user name of each login)
 	//	default: false
 	'log_usage' => true,
@@ -182,6 +195,10 @@ $MySettings = array(
 	//	default: 'http://www.combodo.com/itop-help'
 	'online_help' => 'http://www.combodo.com/itop-help',
 
+	// optimize_requests_for_join_count: Optimize request joins to minimize the count (default is true, try to set it to false in case of performance issues)
+	//	default: true
+	'optimize_requests_for_join_count' => true,
+
 	// php_path: Path to the php executable in CLI mode
 	//	default: 'php'
 	'php_path' => 'php',
@@ -191,6 +208,10 @@ $MySettings = array(
 	'portal_tickets' => 'UserRequest',
 
 	'query_cache_enabled' => true,
+
+	// search_manual_submit: Force manual submit of search all requests
+	//	default: false
+	'search_manual_submit' => false,
 
 	'secure_connection_required' => false,
 
@@ -212,9 +233,13 @@ $MySettings = array(
 	//	default: 'none'
 	'synchro_trace' => 'none',
 
-	// timezone: Timezone (reference: http://php.net/manual/en/timezones.php). If empty, it will be left unchanged and MUST be explicitely configured in PHP
+	// tag_set_item_separator: Tag set from string: tag label separator
+	//	default: '|'
+	'tag_set_item_separator' => '|',
+
+	// timezone: Timezone (reference: http://php.net/manual/en/timezones.php). If empty, it will be left unchanged and MUST be explicitly configured in PHP
 	//	default: 'Europe/Paris'
-	'timezone' => 'Europe/Paris',
+	'timezone' => 'Europe/Budapest',
 
 	// url_validation_pattern: Regular expression to validate/detect the format of an URL (URL attributes and Wiki formatting for Text attributes)
 	//	default: '(https?|ftp)\\://([a-zA-Z0-9+!*(),;?&=\\$_.-]+(\\:[a-zA-Z0-9+!*(),;?&=\\$_.-]+)?@)?([a-zA-Z0-9-.]{3,})(\\:[0-9]{2,5})?(/([a-zA-Z0-9%+\\$_-]\\.?)+)*/?(\\?[a-zA-Z+&\\$_.-][a-zA-Z0-9;:[\\]@&%=+/\\$_.-]*)?(#[a-zA-Z_.-][a-zA-Z0-9+\\$_.-]*)?'
@@ -228,11 +253,11 @@ $MySettings = array(
  */
 $MyModuleSettings = array(
 	'authent-ldap' => array (
-		'host' => '192.168.1.2',
-		'default_user' => 'vertis\itop',
-		'default_pwd' => 'Sz1m4tsz4ty0r',
-		'base_dn' => 'DC=vertis,DC=local',
-		'user_query' => '(|(&(samaccountname=%1$s)(objectCategory=User))(&(userprincipalname=%1$s)(objectCategory=User)))',
+		'host' => getenv('DC_IP'),
+		'default_user' => getenv('LDAP_USER'),
+		'default_pwd' => getenv('LDAP_PASSWORD'),
+		'base_dn' => getenv('BASE_DN'),
+		'user_query' => getenv('USER_QUERY'),
 		'options' => array (
 		  17 => 3,
 		  8 => 0,
@@ -241,30 +266,15 @@ $MyModuleSettings = array(
 		'port' => 389,
 		'start_tls' => false,
 	),
+	'email-reply' => array (
+		'enabled_default' => true,
+	),
 	'itop-attachments' => array (
 		'allowed_classes' => array (
 		  0 => 'Ticket',
 		),
 		'position' => 'relations',
 		'preview_max_width' => 290,
-	),
-	'itop-backup' => array (
-		'mysql_bindir' => '',
-		'week_days' => 'monday, tuesday, wednesday, thursday, friday',
-		'time' => '13:20',
-		'retention_count' => 5,
-		'enabled' => true,
-		'debug' => false,
-	),
-	'itop-standard-email-synchro' => array (
-		'inline_image_max_width' => '500',
-		'ticket_log' => array (
-		  'UserRequest' => 'public_log',
-		  'Incident' => 'public_log',
-		),
-	),
-	'email-reply' => array (
-		'enabled_default' => true,
 	),
 );
 
