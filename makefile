@@ -45,7 +45,8 @@ git_pull:
 
 push: git_pull build
 	VERSION=$(timestamp) docker-compose build
-	VERSION=$(timestamp) docker-compose push postgres
+	VERSION=$(timestamp) docker-compose push mysql
+	VERSION=$(timestamp) docker-compose push itop
 	docker-compose down
 	@echo "========================="
 	@echo "VERSION: $(timestamp)"
