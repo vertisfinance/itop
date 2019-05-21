@@ -21,7 +21,7 @@ export LDAP_PASSWORD
 
 # Note: we don't just use "apache2ctl" here because it itself is just a shell-script wrapper around apache2 which provides extra functionality like "apache2ctl start" for launching apache2 in the background.
 # (also, when run as "apache2ctl <apache args>", it does not use "exec", which leaves an undesirable resident shell process)
-mkdir -p /var/www/html/data /var/www/html/log
+mkdir -p /var/www/html/data /var/www/html/log /var/www/html/env-production
 chmod 444 /var/www/html/conf/production/config-itop.php
 chown -R www-data:www-data /var/www/html/conf/production /var/www/html/conf /var/www/html/env-production /var/www/html/data /var/www/html/log
 

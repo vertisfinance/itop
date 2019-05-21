@@ -15,7 +15,10 @@ fi
 
 MYSQL_ROOT_PASSWORD=$(readsecret MYSQL_ROOT_PASSWORD)
 MYSQL_PASSWORD=$(readsecret MYSQL_PASSWORD)
-LDAP_PASSWORD=$(readsecret LDAP_PASSWORD)
+
+
+export MYSQL_ROOT_PASSWORD
+export MYSQL_PASSWORD
 
 if [ "$1" = 'mysqld' ]; then
   docker-entrypoint.sh mysqld

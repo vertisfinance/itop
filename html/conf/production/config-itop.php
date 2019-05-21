@@ -81,7 +81,7 @@ $MySettings = array(
 
 	'db_subname' => '',
 
-	'db_user' => 'itop',
+	'db_user' => getenv('MYSQL_USER'),
 
   // deadline_format: The format used for displaying "deadline" attributes: any string with the following placeholders: $date$, $difference$
 	//	default: '$difference$'

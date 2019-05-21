@@ -1,11 +1,8 @@
 version: '3'
 
 volumes:
-  itop-data-volume:
-  itop-conf-volume:
-  itop-log-volume:
-  itop-env-production-volume:
-  itop-backup-volume:
+  mysql:
+  itop:
 
 
 services:
@@ -15,7 +12,7 @@ services:
     env_file: .env
     command: ["mysqld"]
     volumes:
-      - itop-data-volume:/var/lib/mysql
+      - mysql:/var/lib/mysql
       - "./.secret.env:/.secret.env"
     ports:
       - "127.0.0.1:3306:3306"
@@ -25,10 +22,8 @@ services:
     command: ["itop"]
     env_file: .env
     volumes:
-      - itop-env-production-volume:/var/www/html/env-production
-      - itop-conf-volume:/var/www/html/conf
-      - itop-log-volume:/var/www/html/log
-      - itop-backup-volume:/var/www/html/data
+      # - itop-env-production-volume:/var/www/html/env-production
+      - itop:/var/www/html
       - ./.files/certificate.crt:/certificate.crt
       - ./.files/certificate.key:/certificate.key
       - "./.secret.env:/.secret.env"

@@ -14,7 +14,7 @@ end_update:
 	docker-compose up -d itop
 	docker-compose exec itop mv /var/www/html/conf/production/old-config-itop.php /var/www/html/conf/production/config-itop.php
 	docker-compose exec itop chmod -R 777 /var/www/html/conf/
-	docker-compose exec itop chmod 644 /var/www/html/conf/production/config-itop.php
+	docker-compose exec itop chmod 444 /var/www/html/conf/production/config-itop.php
 
 certificates:
 	docker-compose run --rm -u $(usr) -w /src/.files postgres ./create_dev_certificates.sh
