@@ -22,14 +22,13 @@ services:
     command: ["itop"]
     env_file: .env
     volumes:
-      # - itop-env-production-volume:/var/www/html/env-production
       - itop:/var/www/html
       - ./.files/certificate.crt:/certificate.crt
       - ./.files/certificate.key:/certificate.key
       - "./.secret.env:/.secret.env"
     ports:
       - 4430:443
-      - 80:80
+
 
   curator:
     image: ${REGISTRY_URL}/${COMPOSE_PROJECT_NAME}-mysql:${VERSION}

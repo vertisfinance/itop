@@ -22,9 +22,6 @@ certificates:
 build:
 	$(devcompose) docker-compose down
 	$(devcompose) docker-compose build
-	$(devcompose) docker-compose run --rm django django-admin createcachetable
-	$(devcompose) docker-compose run --rm django collectstatic
-	$(devcompose) docker-compose build
 	$(devcompose) docker-compose down
 
 .PHONY: backup

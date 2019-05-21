@@ -10,6 +10,8 @@ services:
         - ./html/conf:/var/www/html/conf
         - ./html/extensions:/var/www/html/extensions
         - ./docker/itop/entrypoint.sh:/entrypoint.sh
+    ports:
+      - 80:80
 
   mysql:
     build:
