@@ -22,7 +22,7 @@ services:
 
   itop:
     image: ${REGISTRY_URL}/${COMPOSE_PROJECT_NAME}-itop:${VERSION}
-    command: ["bash", "run.sh"]
+    command: ["itop"]
     env_file: .env
     volumes:
       - itop-env-production-volume:/var/www/html/env-production

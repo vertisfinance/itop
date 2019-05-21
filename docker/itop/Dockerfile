@@ -40,10 +40,8 @@ COPY docker/itop/apache_conf/000-default.conf /etc/apache2/sites-available/000-d
 
 COPY docker/itop/php.ini /etc/php/7.0/apache2/
 COPY docker/itop/php.ini /etc/php/7.0/cli/
-COPY docker/itop/run.sh /
+COPY docker/itop/entrypoint.sh /
 COPY docker/utils.sh /
 COPY docker/secret.sh /
 
-RUN apt-get install -y curl
-RUN curl -s http://getcomposer.org/installer | php
-RUN php composer.phar require vlucas/phpdotenv
+ENTRYPOINT ["./entrypoint.sh"]

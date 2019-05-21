@@ -9,7 +9,7 @@ services:
         - ./html/env-production:/var/www/html/env-production
         - ./html/conf:/var/www/html/conf
         - ./html/extensions:/var/www/html/extensions
-        - ./docker/itop/run.sh:/run.sh
+        - ./docker/itop/entrypoint.sh:/entrypoint.sh
 
   mysql:
     build:
@@ -17,7 +17,7 @@ services:
         dockerfile: docker/mysql/Dockerfile
     volumes:
         - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
-        - ./docker/mysql/entrypoint.sh:/my_entrypoint.sh
+        - ./docker/mysql/my_entrypoint.sh:/my_entrypoint.sh
         - ./docker/utils.sh:/utils.sh
         - ./docker/secret.sh:/secret.sh
 
@@ -25,5 +25,5 @@ services:
     volumes:
       - ./services/backup/task.py:/task.py
       - ./services/backup/backup.sh:/backup.sh
-      - ./docker/mysql/entrypoint.sh:/my_entrypoint.sh
+      - ./docker/mysql/my_entrypoint.sh:/my_entrypoint.sh
     command: ["python3", "/task.py"]

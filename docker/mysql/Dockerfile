@@ -14,7 +14,7 @@ RUN pip3 install --no-cache-dir periodtask==0.7.0
 
 COPY docker/mysql/my.cnf /etc/mysql/conf.d/my.cnf
 COPY services/backup /
-COPY docker/mysql/entrypoint.sh /my_entrypoint.sh
+COPY docker/mysql/my_entrypoint.sh /my_entrypoint.sh
 COPY docker/utils.sh /utils.sh
 COPY docker/secret.sh /secret.sh
 
