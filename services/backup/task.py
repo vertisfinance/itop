@@ -27,7 +27,7 @@ if os.environ.get('BACKUP') == 'True':
         Task(
             "Backup",
             ('bash', '/backup.sh',),
-            os.environ.get('BACKUP_CRON', '0 0 19 * * * Europe/Budapest'),
+            os.environ.get('BACKUP_CRON', '0 0 18 * * * Europe/Budapest'),
             run_on_start=os.environ.get('BACKUP_RUN_ON_START') == 'True',
             policy=RUN,
             max_lines=None,
