@@ -1,4 +1,4 @@
-FROM ubuntu:bionic-20190424
+FROM ubuntu:bionic-20190912.1
 
 RUN apt-get update
 RUN apt-get install -y  wget
@@ -38,8 +38,8 @@ COPY html/extensions /var/www/html/extensions
 COPY html/env-production /var/www/html/env-production
 COPY docker/itop/apache_conf/000-default.conf /etc/apache2/sites-available/000-default.conf
 
-COPY docker/itop/php.ini /etc/php/7.0/apache2/
-COPY docker/itop/php.ini /etc/php/7.0/cli/
+COPY docker/itop/php.ini /etc/php/7.2/apache2/
+COPY docker/itop/php.ini /etc/php/7.2/cli/
 COPY docker/itop/entrypoint.sh /
 COPY docker/utils.sh /
 COPY docker/secret.sh /
