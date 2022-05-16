@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dashboard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <layout>DashboardLayoutOneCol</layout>
-  <title/>
+  <title>Menu:ConfigManagementOverview</title>
   <cells xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <cell id="0">
       <rank>0</rank>
@@ -9,7 +9,7 @@
         <dashlet id="1" xsi:type="DashletHeaderStatic">
           <rank>0</rank>
           <title>Menu:ConfigManagement:AllDevices</title>
-          <icon>itop-config-mgmt/images/server.png</icon>
+          <icon>../images/icons/icons8-server.svg</icon>
           <subtitle>Menu_ConfigManagement_AllDevices</subtitle>
         </dashlet>
         <dashlet id="2" xsi:type="DashletBadge">
@@ -56,7 +56,7 @@
         <dashlet id="4" xsi:type="DashletHeaderStatic">
           <rank>0</rank>
           <title>Menu:ConfigManagement:SWAndApps</title>
-          <icon>itop-config-mgmt/images/application.png</icon>
+          <icon>../images/icons/icons8-software.svg</icon>
         </dashlet>
         <dashlet id="5" xsi:type="DashletBadge">
           <rank>1</rank>
@@ -106,7 +106,7 @@
         <dashlet id="15" xsi:type="DashletHeaderStatic">
           <rank>0</rank>
           <title>Menu:ConfigManagement:Misc</title>
-          <icon>itop-config-mgmt/images/subnet.png</icon>
+          <icon>../images/icons/icons8-network.svg</icon>
         </dashlet>
         <dashlet id="16" xsi:type="DashletBadge">
           <rank>1</rank>
@@ -144,7 +144,7 @@
         <dashlet id="25" xsi:type="DashletHeaderStatic">
           <rank>0</rank>
           <title>Menu:ConfigManagement:EndUsers</title>
-          <icon>itop-config-mgmt/images/team.png</icon>
+          <icon>../images/icons/icons8-team.svg</icon>
         </dashlet>
         <dashlet id="26" xsi:type="DashletBadge">
           <rank>1</rank>
@@ -182,7 +182,7 @@
         <dashlet id="38" xsi:type="DashletHeaderStatic">
           <rank>0</rank>
           <title>Menu:ConfigManagement:virtualization</title>
-          <icon>itop-virtualization-mgmt/images/hypervisor-sw.png</icon>
+          <icon>../images/icons/icons8-old-vmware-logo.svg</icon>
         </dashlet>
         <dashlet id="39" xsi:type="DashletBadge">
           <rank>1</rank>

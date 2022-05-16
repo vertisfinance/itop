@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dashboard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <layout>DashboardLayoutOneCol</layout>
-  <title/>
+  <title>Menu:WelcomeMenuPage</title>
   <cells xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <cell id="0">
       <rank>0</rank>
@@ -9,15 +9,7 @@
         <dashlet id="1" xsi:type="DashletHeaderStatic">
           <rank>0</rank>
           <title>Menu:ConfigManagementCI</title>
-          <icon>itop-welcome-itil/images/database.png</icon>
-        </dashlet>
-        <dashlet id="2" xsi:type="DashletBadge">
-          <rank>1</rank>
-          <class>BusinessProcess</class>
-        </dashlet>
-        <dashlet id="3" xsi:type="DashletBadge">
-          <rank>2</rank>
-          <class>ApplicationSolution</class>
+          <icon>../images/icons/icons8-database.svg</icon>
         </dashlet>
         <dashlet id="4" xsi:type="DashletBadge">
           <rank>3</rank>
@@ -27,17 +19,25 @@
           <rank>4</rank>
           <class>Location</class>
         </dashlet>
-        <dashlet id="6" xsi:type="DashletBadge">
-          <rank>5</rank>
-          <class>Contract</class>
+        <dashlet id="2" xsi:type="DashletBadge" _altered_in="itop-config-mgmt">
+          <rank>1</rank>
+          <class>BusinessProcess</class>
         </dashlet>
-        <dashlet id="7" xsi:type="DashletBadge">
+        <dashlet id="3" xsi:type="DashletBadge" _altered_in="itop-config-mgmt">
+          <rank>2</rank>
+          <class>ApplicationSolution</class>
+        </dashlet>
+        <dashlet id="7" xsi:type="DashletBadge" _altered_in="itop-config-mgmt">
           <rank>6</rank>
           <class>Server</class>
         </dashlet>
-        <dashlet id="8" xsi:type="DashletBadge">
+        <dashlet id="8" xsi:type="DashletBadge" _altered_in="itop-config-mgmt">
           <rank>7</rank>
           <class>NetworkDevice</class>
+        </dashlet>
+        <dashlet id="6" xsi:type="DashletBadge" _altered_in="itop-service-mgmt">
+          <rank>5</rank>
+          <class>Contract</class>
         </dashlet>
       </dashlets>
     </cell>
@@ -47,7 +47,7 @@
         <dashlet id="11" xsi:type="DashletHeaderDynamic">
           <rank>0</rank>
           <title>Menu:RequestManagement</title>
-          <icon>itop-welcome-itil/images/user-request-deadline.png</icon>
+          <icon>itop-welcome-itil/images/user-request-deadline.svg</icon>
           <subtitle>Menu:UserRequest:OpenRequests</subtitle>
           <query>SELECT UserRequest WHERE status != "closed"</query>
           <group_by>status</group_by>
