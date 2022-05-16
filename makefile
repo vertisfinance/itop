@@ -7,14 +7,11 @@ devcompose := COMPOSE_FILE=docker-compose.yml:docker-compose.dev.yml
 start_update:
 	docker-compose up -d itop mysql
 	docker-compose exec itop chmod 777 /var/www/html/
-	docker-compose exec itop mv /var/www/html/conf/production/config-itop.php /var/www/html/conf/production/old-config-itop.php
 	docker-compose exec itop chmod 644 /var/www/html/conf/production/config-itop.php
 	docker-compose exec itop chmod -R 777 /var/www/html/conf/
 
 end_update:
 	docker-compose up -d itop
-	docker-compose exec itop mv /var/www/html/conf/production/old-config-itop.php /var/www/html/conf/production/config-itop.php
-	docker-compose exec itop chmod -R 777 /var/www/html/conf/
 	docker-compose exec itop chmod 444 /var/www/html/conf/production/config-itop.php
 
 certificates:
