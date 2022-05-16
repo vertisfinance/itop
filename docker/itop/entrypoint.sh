@@ -23,7 +23,7 @@ export LDAP_PASSWORD
 # (also, when run as "apache2ctl <apache args>", it does not use "exec", which leaves an undesirable resident shell process)
 mkdir -p /var/www/html/data /var/www/html/log /var/www/html/env-production
 chmod 444 /var/www/html/conf/production/config-itop.php
-chown -R www-data:www-data /var/www/html/conf/production /var/www/html/conf /var/www/html/env-production /var/www/html/data /var/www/html/log /var/www/html/css/
+chown -R www-data:www-data /var/www/html/conf/production /var/www/html/conf /var/www/html/env-production /var/www/html/data /var/www/html/log
 
 if [ "$1" = 'itop' ]; then
   echo "auth_user = root" > /params
