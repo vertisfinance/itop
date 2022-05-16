@@ -184,9 +184,7 @@ $MySettings = array(
 	//	default: array (
 	//		  '@' => 'Person',
 	//		)
-	'mentions.allowed_classes' => array (
-	  '@' => 'Person',
-	),
+	'mentions.allowed_classes' => array('@' => 'Person'),
 
 	'min_display_limit' => '10',
 
