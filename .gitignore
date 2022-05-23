@@ -4,3 +4,4 @@
 *.env
 *.pyc
 backup/*.*
+html/conf/production/*.*
