@@ -31,7 +31,7 @@ RUN ln -sf /proc/self/fd/1 /var/log/apache2/error.log
 
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
-RUN wget -O /itop.zip https://sourceforge.net/projects/itop/files/itop/3.0.1/iTop-3.0.1-9191.zip/download
+RUN wget -O /itop.zip https://sourceforge.net/projects/itop/files/itop/2.7.0-2/iTop-2.7.0-2-5689.zip/download
 RUN unzip itop.zip -d /var/www/html
 RUN cp -r /var/www/html/web/* /var/www/html
 
